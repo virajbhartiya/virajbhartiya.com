@@ -1,6 +1,5 @@
 import { IProject } from '@/types/interface'
 import { Link } from 'react-router-dom'
-
 import { Badge } from '@/components/ui/badge'
 
 export const Project = ({ project }: { project: IProject }) => {

@@ -55,13 +55,23 @@
 }
 
 
-
+/* geist */
 @font-face {
   font-family: "geist";
   src: url("/fonts/GeistVariableVF.woff2") format("woff2");
 
 }
 
+/* Proto Mono */
+@font-face {
+  font-family: "protoMono";
+  src: url("/fonts/protoMono/ProtoMono-Light.woff2") format("woff");
+
+}
+
+.proto {
+  font-family: "protoMono";
+}
 
 
 @layer base {
@@ -72,7 +82,6 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'geist';
-
   }
 }
 

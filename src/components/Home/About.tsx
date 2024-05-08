@@ -8,7 +8,7 @@ export const About = () => {
       <Tag/>
       <div> 
         <div className="flex items-end pb-4">
-          <h2 className="text-4xl font-thin accent">
+          <h2 className="text-4xl font-thin accent proto">
            Viraj Bhartiya
             </h2>
           <p className="text-base font-thin px-3">Life Full of Pixels</p>

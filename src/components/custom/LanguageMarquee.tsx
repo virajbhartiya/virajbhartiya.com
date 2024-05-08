@@ -21,7 +21,7 @@ export function LanguageMaqruee() {
   return (
     <section id="press">
       <div className="py-14">
-          <h3 className="text-center text-3xl font-thin  accent">
+          <h3 className="text-center text-3xl font-thin accent proto">
             Proficiencies
           </h3>
           <div className="relative mt-6 overflow-hidden">
