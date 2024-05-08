@@ -26,7 +26,7 @@
     --ring: 240 5.9% 10%;
     --radius: 0.75rem;
     --gap: 1rem;
-    --accent: #00efa6;
+    --accent: rgb(0, 239, 166);
   }
 
   .dark {
@@ -114,7 +114,7 @@ html {
 
 .hue-animation:hover {
 
-  animation: microdose-hover .6s ease-in-out forwards, hue-rotate 1s ease-out forwards;
+  animation: hue-hover .6s ease-in-out forwards, hue-rotate 1s ease-out forwards;
   transition: box-shadow .5s ease;
   box-shadow: 0 0 0 2px var(--accent);
 }
@@ -130,7 +130,7 @@ html {
 
 }
 
-@keyframes microdose-hover {
+@keyframes hue-hover {
   0% {
     box-shadow: 0 0 0 1px transparent;
   }
