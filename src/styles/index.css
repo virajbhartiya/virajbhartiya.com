@@ -1,0 +1,145 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+    --gap: 1rem;
+    --accent: #00efa6;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --gap: 1rem;
+    --accent: #00efa6;
+  }
+}
+
+
+
+@font-face {
+  font-family: "geist";
+  src: url("/fonts/GeistVariableVF.woff2") format("woff2");
+
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'geist';
+
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #141414;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3939;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.accent {
+  color: var(--accent);
+
+}
+
+.blur {
+  filter: blur(10px);
+  /* Adjust the blur intensity as needed */
+}
+
+.gradient {
+  @apply bg-gradient-to-r from-[#40ffc6] to-[#069268] text-transparent bg-clip-text
+}
+
+.hue-animation:hover {
+
+  animation: microdose-hover .6s ease-in-out forwards, hue-rotate 1s ease-out forwards;
+  transition: box-shadow .5s ease;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+@keyframes hue-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(1turn);
+  }
+
+}
+
+@keyframes microdose-hover {
+  0% {
+    box-shadow: 0 0 0 1px transparent;
+  }
+
+  50% {
+    box-shadow: 0 0 0 2px var(--accent), 0 0 0 5px hsla(0, 0%, 100%, .3), 0 0 0 9px hsla(0, 0%, 100%, .1), 0 0 0 14px hsla(0, 0%, 100%, .05), 0 0 0 19px hsla(0, 0%, 100%, .05), 0 0 0 24px hsla(0, 0%, 100%, .05);
+  }
+
+  100% {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+}
