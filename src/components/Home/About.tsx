@@ -1,5 +1,5 @@
 
-import { Tag } from "../custom/Tag"
+import { Tag } from "../custom/Spline/Tag"
 
 
 export const About = () => {
