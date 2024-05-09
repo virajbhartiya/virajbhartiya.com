@@ -27,7 +27,7 @@ const Header = () => {
   }
 
   return (
-    <header className="flex items-center justify-between pb-4">
+    <header className="fixed top-0 w-screen flex items-center justify-between py-4 z-50">
       <div className="flex flex-col gap-2">
         <Link to={''}>
           <UnderlineHover text='virajbhartiya.com'/>

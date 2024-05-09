@@ -19,7 +19,7 @@ export function LanguageMaqruee() {
   ];
 
   return (
-    <section id="press">
+
       <div className="py-14">
           <h3 className="text-center text-3xl font-thin accent proto">
             Proficiencies
@@ -38,6 +38,5 @@ export function LanguageMaqruee() {
               </Marquee>
           </div>
       </div>
-    </section>
   );
 }
