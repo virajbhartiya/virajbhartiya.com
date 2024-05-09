@@ -52,7 +52,7 @@ const Header = () => {
           </Link>
         ))}
       </nav>
-      <span className="flex lg:hidden">
+      <span className="flex px-4 lg:hidden">
         <Sheet open={isOpen} onOpenChange={handleMenuClick}>
           <SheetTrigger className="px-2" onClick={handleMenuClick}>
             <Menu className="flex lg:hidden h-5 w-5">
