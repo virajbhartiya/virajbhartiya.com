@@ -27,7 +27,7 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 w-screen flex items-center justify-between py-4 z-50">
+    <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50">
       <div className="flex flex-col gap-2">
         <Link to={''}>
           <UnderlineHover text='virajbhartiya.com'/>
@@ -52,7 +52,7 @@ const Header = () => {
           </Link>
         ))}
       </nav>
-      <span className="flex px-4 lg:hidden">
+      <span className="flex px-4 sm:hidden">
         <Sheet open={isOpen} onOpenChange={handleMenuClick}>
           <SheetTrigger className="px-2" onClick={handleMenuClick}>
             <Menu className="flex lg:hidden h-5 w-5">
