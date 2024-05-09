@@ -27,7 +27,7 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50 bg-background">
+    <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50 backdrop-blur-lg ">
       <div className="flex flex-col gap-2">
         <Link to={''}>
           <UnderlineHover text='virajbhartiya.com'/>
