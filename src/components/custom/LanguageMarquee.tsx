@@ -16,6 +16,7 @@ export function LanguageMaqruee() {
     "Appscript",
     "Nodejs",
     "Sass",
+    "Swift",
     "Git",
     "Figma",
   ];
