@@ -38,7 +38,7 @@ const Header = () => {
           ))}
         </div>
       </div>
-      <nav className="hidden sm:flex gap-4 sm:gap-6 proto">
+      {/* <nav className="hidden sm:flex gap-4 sm:gap-6 proto">
         {routeList.map(({ href, label }) => (
           <Link key={label} to={href}>
             <Button
@@ -82,7 +82,7 @@ const Header = () => {
             </nav>
           </SheetContent>
         </Sheet>
-      </span>
+      </span> */}
     </header>
   );
 };
