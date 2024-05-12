@@ -1,28 +1,28 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import { shareIcons, routeList } from "@/data/navbarData";
+// import { useState } from "react";
+import { Link } from "react-router-dom";
+// import { Button, buttonVariants } from "@/components/ui/button";
+// import {
+//   Sheet,
+//   SheetTrigger,
+//   SheetContent,
+//   SheetHeader,
+//   SheetTitle,
+// } from "@/components/ui/sheet";
+// import { Menu } from "lucide-react";
+import { shareIcons } from "@/data/navbarData";
 import { UnderlineHover } from "../custom/UnderlineHover";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const location = useLocation();
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
+  // const location = useLocation();
 
-  const handleMenuClick = () => {
-    setIsOpen(!isOpen);
-  };
+  // const handleMenuClick = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
-  const handleCloseMenu = () => {
-    setIsOpen(false);
-  };
+  // const handleCloseMenu = () => {
+  //   setIsOpen(false);
+  // };
 
   return (
     <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50 backdrop-blur-lg ">
