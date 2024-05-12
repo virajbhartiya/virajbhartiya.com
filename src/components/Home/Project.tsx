@@ -1,6 +1,6 @@
-import { IProject } from '@/types/interface'
-import { Link } from 'react-router-dom'
-import { Badge } from '@/components/ui/badge'
+import { IProject } from "@/types/interface";
+import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 
 export const Project = ({ project }: { project: IProject }) => {
   return (
@@ -14,7 +14,10 @@ export const Project = ({ project }: { project: IProject }) => {
             </p>
           </Link>
           <div className="flex gap-2">
-            <Badge variant={'outline'} className=" font-light ">
+            <Badge
+              variant={"outline"}
+              className="font-light whitespace-nowrap "
+            >
               {project.date}
             </Badge>
           </div>
@@ -28,5 +31,5 @@ export const Project = ({ project }: { project: IProject }) => {
         </p>
       </div>
     </>
-  )
-}
+  );
+};

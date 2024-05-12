@@ -1,4 +1,4 @@
-import { useScramble } from 'use-scramble'
+import { useScramble } from "use-scramble";
 
 const Scrambler = ({ text }: { text: string }) => {
   const { ref, replay } = useScramble({
@@ -12,9 +12,9 @@ const Scrambler = ({ text }: { text: string }) => {
     chance: 1,
     overdrive: true,
     overflow: true,
-  })
+  });
 
-  return <a ref={ref} onMouseOver={replay} onFocus={replay} />
-}
+  return <a ref={ref} onMouseOver={replay} onFocus={replay} />;
+};
 
-export default Scrambler
+export default Scrambler;

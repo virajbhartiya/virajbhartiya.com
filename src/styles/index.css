@@ -2,7 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -17,7 +16,6 @@
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    /* --accent: 240 4.8% 95.9%; */
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -42,7 +40,6 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    /* --accent: 240 3.7% 15.9%; */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -54,25 +51,21 @@
   }
 }
 
-
 /* geist */
 @font-face {
   font-family: "geist";
   src: url("/fonts/GeistVariableVF.woff2") format("woff2");
-
 }
 
 /* Proto Mono */
 @font-face {
   font-family: "protoMono";
   src: url("/fonts/protoMono/ProtoMono-Light.woff2") format("woff");
-
 }
 
 .proto {
   font-family: "protoMono";
 }
-
 
 @layer base {
   * {
@@ -81,10 +74,9 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'geist';
+    font-family: "geist";
   }
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -109,7 +101,6 @@ html {
 
 .accent {
   color: var(--accent);
-
 }
 
 .blur {
@@ -117,13 +108,14 @@ html {
 }
 
 .gradient {
-  @apply bg-gradient-to-r from-[#40ffc6] to-[#069268] text-transparent bg-clip-text
+  @apply bg-gradient-to-r from-[#40ffc6] to-[#069268] text-transparent bg-clip-text;
 }
 
 .hue-animation:hover {
-
-  animation: hue-hover .6s ease-in-out forwards, hue-rotate 1s ease-out forwards;
-  transition: box-shadow .5s ease;
+  animation:
+    hue-hover 0.6s ease-in-out forwards,
+    hue-rotate 1s ease-out forwards;
+  transition: box-shadow 0.5s ease;
   box-shadow: 0 0 0 2px var(--accent);
 }
 
@@ -135,7 +127,6 @@ html {
   100% {
     filter: hue-rotate(1turn);
   }
-
 }
 
 @keyframes hue-hover {
@@ -144,7 +135,13 @@ html {
   }
 
   50% {
-    box-shadow: 0 0 0 2px var(--accent), 0 0 0 5px hsla(0, 0%, 100%, .3), 0 0 0 9px hsla(0, 0%, 100%, .1), 0 0 0 14px hsla(0, 0%, 100%, .05), 0 0 0 19px hsla(0, 0%, 100%, .05), 0 0 0 24px hsla(0, 0%, 100%, .05);
+    box-shadow:
+      0 0 0 2px var(--accent),
+      0 0 0 5px hsla(0, 0%, 100%, 0.3),
+      0 0 0 9px hsla(0, 0%, 100%, 0.1),
+      0 0 0 14px hsla(0, 0%, 100%, 0.05),
+      0 0 0 19px hsla(0, 0%, 100%, 0.05),
+      0 0 0 24px hsla(0, 0%, 100%, 0.05);
   }
 
   100% {

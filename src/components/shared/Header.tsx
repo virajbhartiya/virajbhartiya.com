@@ -1,36 +1,34 @@
-
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
   SheetTrigger,
   SheetContent,
   SheetHeader,
   SheetTitle,
-} from '@/components/ui/sheet'
-import { Menu } from 'lucide-react'
-import { shareIcons, routeList } from '@/data/navbarData'
-import { UnderlineHover } from '../custom/UnderlineHover'
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { shareIcons, routeList } from "@/data/navbarData";
+import { UnderlineHover } from "../custom/UnderlineHover";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const location = useLocation()
-
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const location = useLocation();
 
   const handleMenuClick = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const handleCloseMenu = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   return (
     <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50 backdrop-blur-lg ">
       <div className="flex flex-col gap-2">
-        <Link to={''}>
-          <UnderlineHover text='virajbhartiya.com'/>
+        <Link to={""}>
+          <UnderlineHover text="virajbhartiya.com" />
         </Link>
         <div className="flex gap-4">
           {shareIcons.map((shareIcon, index) => (
@@ -45,7 +43,7 @@ const Header = () => {
           <Link key={label} to={href}>
             <Button
               variant="link"
-              className={location.pathname === href ? 'accent' : ''}
+              className={location.pathname === href ? "accent" : ""}
             >
               {label}
             </Button>
@@ -71,11 +69,11 @@ const Header = () => {
                   key={label}
                   to={href}
                   onClick={handleCloseMenu}
-                  className={buttonVariants({ variant: 'ghost' })}
+                  className={buttonVariants({ variant: "ghost" })}
                 >
                   <Button
                     variant="link"
-                    className={location.pathname === href ? 'accent' : ''}
+                    className={location.pathname === href ? "accent" : ""}
                   >
                     {label}
                   </Button>
@@ -86,7 +84,7 @@ const Header = () => {
         </Sheet>
       </span>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
