@@ -20,7 +20,7 @@ export const projectData = [
     description:
       'The project "Deep-Q-Network-AtariBreakoutGame" utilizes Deep Q Learning with Python, Numpy, OpenCV, PyGame, and PyTorch for playing Atari Breakout. The GitHub repository provides commands for training and testing. The neural network processes preprocessed Atari frames using a specific architecture outlined in the project.',
     image: "images/Projects/Atari Breakout.gif",
-    link: "./projects/atariBreakout.html",
+    link: "https://github.com/virajbhartiya/Atari-Breakout-DeepQ",
     tags: ["PyTorch", "OpenCV", "PyGame"],
   },
   {
@@ -28,7 +28,7 @@ export const projectData = [
     description:
       "Email spam detection is a crucial task in ensuring the security and efficiency of email communication. By leveraging machine learning techniques, such as Natural Language Processing and the Multinomial Naive Bayes algorithm, we can develop effective solutions for detecting spam emails",
     image: "images/Projects/spam email.jpg",
-    link: "https://virajbhartiya.github.io/projects/spam-email-detection-nlp.html",
+    link: "https://github.com/virajbhartiya/Spam-Email-Detection-NLP",
     tags: ["NLP", "Machine Learning"],
   },
   {
@@ -36,7 +36,7 @@ export const projectData = [
     description:
       "Alien is a desktop app that turns any device with a web browser into a secondary screen for your computer over WiFi. Alien can be used to mirror entire computer display onto any device screen that has a web browser.",
     image: "images/Projects/alien.png",
-    link: "https://virajbhartiya.github.io/projects/alien",
+    link: "https://github.com/virajbhartiya/Alien",
     tags: ["Electron", "React", "WebRTC"],
   },
   {
@@ -52,7 +52,7 @@ export const projectData = [
     description:
       "A collection of Spyware tools for monitoring another device stealthily. Text Message, Live picture from front and back camera, Keylogger, Notifications",
     image: "images/Projects/spyware.webp",
-    link: "https://virajbhartiya.github.io/projects/pyxis",
+    link: "https://github.com/virajbhartiya/pyxis-spyware",
     tags: ["Kotlin", "Firebase"],
   },
   {
