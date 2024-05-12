@@ -8,8 +8,8 @@ export const Home = () => {
   return (
     <Layout>
       <About />
-      <LanguageMaqruee />
       <Projects />
+      <LanguageMaqruee />
       <Hello />
     </Layout>
   );

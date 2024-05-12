@@ -75,6 +75,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: "geist";
+    overflow-x: hidden;
   }
 }
 
@@ -146,5 +147,20 @@ html {
 
   100% {
     box-shadow: 0 0 0 2px var(--accent);
+  }
+}
+
+
+.rotate-animation {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
