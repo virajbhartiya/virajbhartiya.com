@@ -14,6 +14,5 @@ export interface IProject {
   image: string;
   link: string;
   tags: string[];
-  github: string;
-  date: string;
+  // date: string;
 }

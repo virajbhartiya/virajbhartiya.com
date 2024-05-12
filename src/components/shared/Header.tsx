@@ -32,7 +32,7 @@ const Header = () => {
         </Link>
         <div className="flex gap-4">
           {shareIcons.map((shareIcon, index) => (
-            <Link key={index} to={shareIcon.link}>
+            <Link target="_blank" key={index} to={shareIcon.link}>
               {shareIcon.icon}
             </Link>
           ))}

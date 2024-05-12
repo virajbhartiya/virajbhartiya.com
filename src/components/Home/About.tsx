@@ -1,3 +1,4 @@
+import { DownloadCVMarquee } from "../Marquees/downloadCVMarquee";
 import { Tag } from "../custom/Spline/Tag";
 
 export const About = () => {
@@ -12,18 +13,24 @@ export const About = () => {
           </p>
         </div>
         <p className="font-thin text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsa
-          laboriosam? Enim maxime ex corrupti nihil accusantium perferendis
-          dolor ipsam ratione ipsa velit deserunt, ad illo, explicabo quae
-          architecto consequuntur laudantium, asperiores beatae iusto rem fugit
-          officiis quam et autem?
+          I enjoy creating things that{" "}
+          <span className="accent italic font-normal">
+            {" "}
+            live on the internet
+          </span>
+          . Started in 2019 as a past time, now is my passion just like
+          trekking, cycling and running.
           <br />
-          <br /> Commodi ipsam doloribus repellendus nihil ab tempore dicta,
-          eveniet architecto, natus voluptatum laborum sed, dolor voluptatem qui
-          non officia dolores ullam doloremque nisi perferendis velit similique
-          sunt! Doloribus eius, vero nostrum sapiente sit quia quo error aliquam
-          ut dolorum quibusdam.
+          <br /> My abundant energy fuels me in the pursuit of many interests,
+          hobbies, areas of study and artistic endeavors. I'm a fast learner,
+          able to pick up new skills and juggle different projects and roles
+          with relative ease.
         </p>
+        <a href="/Viraj_Bhartiya.pdf" target="_blank">
+          <div className=" w-24 border border-[var(--accent)] rounded-full mt-4 hover:bg-white">
+            <DownloadCVMarquee />
+          </div>
+        </a>
       </div>
     </section>
   );

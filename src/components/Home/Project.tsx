@@ -1,35 +1,59 @@
+import { useState } from "react";
 import { IProject } from "@/types/interface";
-import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 
-export const Project = ({ project }: { project: IProject }) => {
+export const Project = ({
+  project,
+  index,
+}: {
+  project: IProject;
+  index: number;
+}) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <>
-      <div className="w-full pb-4 space-y-2">
-        <div className="w-full justify-between flex">
-          <Link to={project.github}>
-            <p className="accent underline-offset-4 underline ">
-              {/* {project.title} */}
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </p>
-          </Link>
+    <a href={project.link} target="_blank">
+      <div
+        className={`border my-4 p-4 rounded ${hovered ? "bg-[var(--accent)]" : ""}`}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{ position: "relative" }}
+      >
+        <div className="w-full justify-between flex flex-col md:flex-row gap-4">
+          <div className={`flex flex-row items-center gap-4`}>
+            <div className={`${hovered ? "text-white" : "accent"}`}>
+              [{index}]
+            </div>
+
+            <p className="text-2xl">{project.title}</p>
+          </div>
           <div className="flex gap-2">
-            <Badge
-              variant={"outline"}
-              className="font-light whitespace-nowrap "
-            >
-              {project.date}
-            </Badge>
+            {project.tags.map((tag) => (
+              <Badge
+                variant={"outline"}
+                className={`font-normal ${hovered ? "text-black" : "accent"}`}
+                key={tag}
+              >
+                {tag}
+              </Badge>
+            ))}
           </div>
         </div>
-        <p className=" text-muted-foreground text-sm  ">
-          {/* {project.description} */}
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-          mollitia laudantium minus excepturi quia voluptatem ad! Iusto,
-          consectetur necessitatibus nostrum voluptatibus repudiandae atque qui
-          soluta, ratione, quas cumque accusantium. Voluptate.
-        </p>
+        {hovered && (
+          <div className="absolute z-10 w-full justify-between flex">
+            <div className="absolute z-10 max-w-[30vw] max-h-[10vh] ">
+              <img
+                src={project.image}
+                alt="Project Photo"
+                className="rounded-lg w-full border border-[var(--accent)] bg-black"
+              />
+            </div>
+            <div className="bg-black p-4 rounded m-2 w-3/12 right-0 absolute border border-[var(--accent)]">
+              <p>{project.description}</p>
+            </div>
+          </div>
+        )}
       </div>
-    </>
+    </a>
   );
 };

@@ -6,7 +6,7 @@ export const Projects = () => {
     <>
       <h3 className="text-center text-2xl font-thin accent proto">Projects</h3>
       {projectData.map((project, index) => (
-        <Project key={index} project={project} />
+        <Project key={index} project={project} index={index} />
       ))}
     </>
   );

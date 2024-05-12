@@ -19,18 +19,18 @@ export const routeList: IRoute[] = [
 export const shareIcons: IShareIcon[] = [
   {
     icon: <Github size={16} />,
-    link: "#",
+    link: "https://github.com/virajbhartiya",
   },
   {
     icon: <Linkedin size={16} />,
-    link: "#",
+    link: "https://www.linkedin.com/in/viraj-bhartiya/",
   },
   {
     icon: <Twitter size={16} />,
-    link: "#",
+    link: "https://twitter.com/heyxviraj",
   },
   {
     icon: <Youtube size={16} />,
-    link: "#",
+    link: "https://www.youtube.com/channel/UCvwfCZDYeUKWdmHUAGhgsnQ",
   },
 ];
