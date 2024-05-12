@@ -3,7 +3,6 @@ import Layout from "@/components/Layout";
 import { LanguageMaqruee } from "@/components/Marquees/LanguageMarquee";
 import { Hello } from "@/components/custom/Spline/Hello";
 import { Projects } from "./Projects";
-import { SentenceMarquee } from "@/components/Marquees/SentenceMarquee";
 
 export const Home = () => {
   return (
@@ -11,7 +10,6 @@ export const Home = () => {
       <About />
       <LanguageMaqruee />
       <Projects />
-      <SentenceMarquee />
       <Hello />
     </Layout>
   );
