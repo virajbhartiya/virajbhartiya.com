@@ -17,6 +17,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@types/js-cookie": "^3.0.6",
     "@vitejs/plugin-react": "^4.2.1",
+    "aos": "^2.3.4",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^1.0.0",
@@ -39,6 +40,7 @@
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",

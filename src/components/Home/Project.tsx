@@ -37,7 +37,11 @@ export const Project = ({
         onMouseLeave={handleMouseLeave}
         style={{ position: "relative" }}
       >
-        <div className="w-full justify-between flex flex-col md:flex-row gap-4">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="w-full justify-between flex flex-col md:flex-row gap-4"
+        >
           <div className={`flex flex-row items-center gap-4`}>
             <div className={`proto ${hovered ? "text-white" : "accent"}`}>
               [{index}]

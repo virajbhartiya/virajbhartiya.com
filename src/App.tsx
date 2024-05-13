@@ -1,8 +1,11 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "@/router/routes";
 import AnimatedCursor from "react-animated-cursor";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+  AOS.init();
   const isMobileOrTablet = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent,

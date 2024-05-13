@@ -7,13 +7,19 @@ export const About = () => {
     <section className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center">
       <div className="hidden md:block relative  m-0 p-0 w-auto h-auto">
         <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
           className=" flex-row w-max hidden md:flex"
           style={{ transform: "rotate(10deg)" }}
         >
           <p className="text-black proto bg-[var(--accent)]">That's me!</p>
           <Arrow />
         </div>
-        <div className="m-0 p-0 w-[40vw] h-[70vh]">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1400"
+          className="m-0 p-0 w-[40vw] h-[70vh]"
+        >
           <Tag />
         </div>
       </div>
@@ -21,13 +27,18 @@ export const About = () => {
         <Tag />
       </div>
       <div>
-        <div className="flex items-end pb-4">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="flex items-end pb-4"
+        >
           <h2 className="text-4xl font-thin accent proto">Viraj Bhartiya</h2>
-          {/* <p className="text-sm md:text-base font-thin px-3 whitespace-nowrap proto">
-            Life Full of Pixels
-          </p> */}
         </div>
-        <p className="font-thin text-justify">
+        <p
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          className="font-thin text-justify"
+        >
           I enjoy creating things that{" "}
           <span className="accent font-normal text-sm proto">
             {" "}
@@ -49,7 +60,7 @@ export const About = () => {
             *(or whatever, who knows what the future holds?).
           </span>{" "}
         </p>
-        <div className="flex">
+        <div data-aos="fade-up" data-aos-duration="1400" className="flex">
           <a href="/Viraj_Bhartiya.pdf" target="_blank">
             <div className=" w-24 border border-[var(--accent)] rounded-full mt-4 hover:bg-white">
               <DownloadCVMarquee />
