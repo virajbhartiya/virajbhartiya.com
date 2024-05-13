@@ -27,9 +27,9 @@ export const About = () => {
       <div>
         <div className="flex items-end pb-4">
           <h2 className="text-4xl font-thin accent proto">Viraj Bhartiya</h2>
-          <p className="text-sm md:text-base font-thin px-3 whitespace-nowrap proto">
+          {/* <p className="text-sm md:text-base font-thin px-3 whitespace-nowrap proto">
             Life Full of Pixels
-          </p>
+          </p> */}
         </div>
         <p className="font-thin text-justify">
           I enjoy creating things that{" "}

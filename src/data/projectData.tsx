@@ -7,6 +7,7 @@ export const projectData = [
     link: "https://license.virajbhartiya.com",
     tags: ["Rust", "CLI"],
   },
+
   {
     title: "DevOpia: The Tech Fest Extravaganza",
     description:
@@ -14,6 +15,14 @@ export const projectData = [
     image: "images/Projects/devopia.png",
     link: "https://devopia.kjsce.com",
     tags: ["React", "Sass"],
+  },
+  {
+    title: "SciOps: A superfast scientific calaculator ",
+    description:
+      "With an interactive prompt for seamless computations and a wide range of functions, SciOps simplifies calculations Perform basic arithmetic, advanced functions, and more with ease. Developed with 64-bit binary floating-point arithmetic, accuracy is ensured, though be aware of potential rounding errors.",
+    image: "images/Projects/sciops.png",
+    link: "https://github.com/virajbhartiya/sciops",
+    tags: ["Rust", "CLI"],
   },
   {
     title: "Atari Breakout Game with Reinforcement Learning",
