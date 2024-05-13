@@ -25,7 +25,10 @@ const Header = () => {
   // };
 
   return (
-    <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50">
+    <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50 backdrop-blur-sm">
+      <div className="fixed top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-10">
+        <img src="/images/star.png" className="rotate-animation" alt="star" />
+      </div>
       <div className="flex flex-col gap-2">
         <Link to={""}>
           <UnderlineHover text="virajbhartiya.com" />

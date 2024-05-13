@@ -5,10 +5,6 @@ import { Arrow } from "../svg/arrow";
 export const About = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center">
-      <div className="fixed top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-10">
-        <img src="/images/star.png" className="rotate-animation" alt="star" />
-      </div>
-
       <div className="hidden md:block relative  m-0 p-0 w-auto h-auto">
         <div
           className=" flex-row w-max hidden md:flex"
