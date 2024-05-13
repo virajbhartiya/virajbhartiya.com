@@ -14,6 +14,7 @@ export function LanguageMaqruee() {
     "Express",
     "Tailwind",
     "Appscript",
+    "PostgreSQL",
     "Nodejs",
     "Shopify",
     "Sass",
