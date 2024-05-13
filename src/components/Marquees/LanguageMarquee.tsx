@@ -9,7 +9,6 @@ export function LanguageMaqruee() {
     "Python",
     "Firebase",
     "React",
-    "Vercel",
     "AWS",
     "Flutter",
     "Express",
