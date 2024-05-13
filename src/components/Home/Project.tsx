@@ -14,24 +14,24 @@ export const Project = ({
   return (
     <a href={project.link} target="_blank">
       <div
-        className={`border my-4 p-4 rounded ${hovered ? "bg-[var(--accent)]" : ""}`}
+        className={`border my-4 p-4  ${hovered ? "bg-[var(--accent)] rounded-full" : "rounded"}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{ position: "relative" }}
       >
         <div className="w-full justify-between flex flex-col md:flex-row gap-4">
           <div className={`flex flex-row items-center gap-4`}>
-            <div className={`${hovered ? "text-white" : "accent"}`}>
+            <div className={`proto ${hovered ? "text-white" : "accent"}`}>
               [{index}]
             </div>
 
-            <p className="text-2xl">{project.title}</p>
+            <p className="text-2xl ">{project.title}</p>
           </div>
           <div className="flex gap-2">
             {project.tags.map((tag) => (
               <Badge
                 variant={"outline"}
-                className={`font-normal ${hovered ? "text-black" : "accent"}`}
+                className={`font-normal proto ${hovered ? "text-black" : "accent"}`}
                 key={tag}
               >
                 {tag}

@@ -67,6 +67,16 @@
   font-family: "protoMono";
 }
 
+::-moz-selection {
+  color: black;
+  background: var(--accent);
+}
+
+::selection {
+  color: black;
+  background: var(--accent);
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -114,9 +124,9 @@ html {
 
 .hue-animation:hover {
   animation:
-    hue-hover 0.6s ease-in-out forwards,
-    hue-rotate 1s ease-out forwards;
-  transition: box-shadow 0.5s ease;
+    hue-hover 1s ease-in-out forwards,
+    hue-rotate 1.5s ease-out forwards;
+  transition: box-shadow 1s ease;
   box-shadow: 0 0 0 2px var(--accent);
 }
 
