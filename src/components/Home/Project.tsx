@@ -11,12 +11,30 @@ export const Project = ({
 }) => {
   const [hovered, setHovered] = useState(false);
 
+  const isMobileOrTablet = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    );
+  };
+
+  const handleMouseEnter = () => {
+    if (!isMobileOrTablet()) {
+      setHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobileOrTablet()) {
+      setHovered(false);
+    }
+  };
+
   return (
     <a href={project.link} target="_blank">
       <div
         className={`border my-4 p-4  ${hovered ? "bg-[var(--accent)] rounded-full" : "rounded"}`}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{ position: "relative" }}
       >
         <div className="w-full justify-between flex flex-col md:flex-row gap-4">
