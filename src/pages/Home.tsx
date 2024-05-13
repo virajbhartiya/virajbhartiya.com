@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { LanguageMaqruee } from "@/components/Marquees/LanguageMarquee";
 import { Hello } from "@/components/custom/Spline/Hello";
 import { Projects } from "./Projects";
+import { ContactMarquee } from "@/components/Marquees/ContactMe";
 
 export const Home = () => {
   return (
@@ -11,6 +12,7 @@ export const Home = () => {
       <Projects />
       <LanguageMaqruee />
       <Hello />
+      <ContactMarquee />
     </Layout>
   );
 };
