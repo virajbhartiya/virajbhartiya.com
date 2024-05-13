@@ -15,6 +15,7 @@ export function LanguageMaqruee() {
     "Tailwind",
     "Appscript",
     "Nodejs",
+    "Shopify",
     "Sass",
     "Swift",
     "Git",
@@ -31,7 +32,7 @@ export function LanguageMaqruee() {
         <Arrow />
       </div>
       <div className="relative mt-6 overflow-hidden">
-        <Marquee speed={50}>
+        <Marquee speed={100}>
           {languages.map((logo, idx) => (
             <img
               key={idx}
