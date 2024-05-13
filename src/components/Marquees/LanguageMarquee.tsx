@@ -31,9 +31,6 @@ export function LanguageMaqruee() {
         <p className="accent proto">Stuff I've Worked with</p>
         <Arrow />
       </div>
-      <h3 className="md:hidden text-center text-2xl font-thin accent proto">
-        Proficiencies
-      </h3>
       <div className="relative mt-6 overflow-hidden">
         <Marquee speed={50}>
           {languages.map((logo, idx) => (

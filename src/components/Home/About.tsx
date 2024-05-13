@@ -33,17 +33,25 @@ export const About = () => {
         </div>
         <p className="font-thin text-justify">
           I enjoy creating things that{" "}
-          <span className="accent italic font-normal">
+          <span className="accent font-normal text-sm proto">
             {" "}
-            live on the internet
+            live on the internet.{" "}
           </span>
-          . Started in 2019 as a past time, now is my passion just like
-          trekking, cycling and running.
+          What Started as a past time in my summer vacations has now turned into
+          my life.
           <br />
-          <br /> My abundant energy fuels me in the pursuit of many interests,
-          hobbies, areas of study and artistic endeavors. I'm a fast learner,
-          able to pick up new skills and juggle different projects and roles
-          with relative ease.
+          <br /> I like to build{" "}
+          <span className="proto accent text-sm">
+            weird, wacky, wonderful things
+          </span>{" "}
+          that make people go "Wow, that's cool". I am a self-taught developer
+          who loves to learn new things and experiment with them. I can help you
+          build websites or apps or basically anything that can run on a piece
+          of <span className="proto text-sm accent">silicon*</span>
+          <br />
+          <span className=" text-xs proto accent">
+            *(or whatever, who knows what the future holds?).
+          </span>{" "}
         </p>
         <div className="flex">
           <a href="/Viraj_Bhartiya.pdf" target="_blank">
