@@ -118,7 +118,7 @@ export const projectData = [
       "A Flappy Bird AI that learns to play by itself. Built by implementing reinforcement Learning",
     image: "images/Projects/falppy bird.gif",
     link: "https://github.com/virajbhartiya/Flappy-Bird-AI",
-    tags: ["Python", "Pygame", "Reinforcement Learning"],
+    tags: ["JavaScript", "Reinforcement Learning", "P5.js"],
   },
   {
     title: "Face Recognition Attendance System: The Facial Gatekeeper",
