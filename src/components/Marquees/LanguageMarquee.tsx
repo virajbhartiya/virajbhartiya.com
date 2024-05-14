@@ -11,6 +11,7 @@ export function LanguageMaqruee() {
     "React",
     "AWS",
     "Flutter",
+    "Rust",
     "Express",
     "Tailwind",
     "Appscript",
@@ -33,7 +34,7 @@ export function LanguageMaqruee() {
         <Arrow />
       </div>
       <div className="relative mt-6 overflow-hidden">
-        <Marquee speed={100}>
+        <Marquee speed={125}>
           {languages.map((logo, idx) => (
             <img
               key={idx}
