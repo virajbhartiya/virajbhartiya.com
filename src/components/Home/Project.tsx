@@ -44,7 +44,7 @@ export const Project = ({
         >
           <div className={`flex flex-row items-center gap-4`}>
             <div className={`proto ${hovered ? "text-white" : "accent"}`}>
-              [{index}]
+              [ {index} ]
             </div>
 
             <p className="text-2xl ">{project.title}</p>
