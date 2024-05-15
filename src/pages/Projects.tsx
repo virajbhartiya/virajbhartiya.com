@@ -22,7 +22,7 @@ export const Projects = () => {
       >
         <div className="w-full justify-between flex flex-col md:flex-row gap-4">
           <div className={`flex flex-row items-center gap-4`}>
-            <div className={"accent"}>[{projectData.length}]</div>
+            <div className={"accent"}>[ {projectData.length} ]</div>
 
             <p className="text-2xl">
               <Scrambler text={"Easter eggthings"} />
