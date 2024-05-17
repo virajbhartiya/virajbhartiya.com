@@ -12,6 +12,7 @@ export function LanguageMaqruee() {
     "AWS",
     "Flutter",
     "Rust",
+    "Docker",
     "Express",
     "Tailwind",
     "Appscript",
