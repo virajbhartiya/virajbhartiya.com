@@ -1,7 +1,15 @@
 import Marquee from "react-fast-marquee";
 
 export function DownloadCVMarquee() {
-  const sentence = ["Resume"];
+  const sentence = [
+    "Resume",
+    "Resume",
+    "Resume",
+    "Resume",
+    "Resume",
+    "Resume",
+    "Resume",
+  ];
 
   return (
     <div className="relative overflow-hidden ">

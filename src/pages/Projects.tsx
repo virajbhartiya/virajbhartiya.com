@@ -15,7 +15,7 @@ export const Projects = () => {
         <Project key={index} project={project} index={index} />
       ))}
       <div
-        className={`border my-4 p-4 rounded ${hovered ? "hue-animation rounded-full" : "rounded"}`}
+        className={`border my-4 p-4 rounded steam`}
         style={{ position: "relative" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

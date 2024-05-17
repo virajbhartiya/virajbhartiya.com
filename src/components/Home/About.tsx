@@ -60,9 +60,9 @@ export const About = () => {
             *(or whatever, who knows what the future holds?).
           </span>{" "}
         </p>
-        <div data-aos="fade-up" data-aos-duration="1400" className="flex">
+        <div className="flex flex-col md:flex-row">
           <a href="/Viraj_Bhartiya.pdf" target="_blank">
-            <div className=" w-24 border border-[var(--accent)] rounded-full mt-4 hover:bg-white">
+            <div className=" w-full md:w-24 border border-[var(--accent)] rounded-full mt-4 hover:bg-white">
               <DownloadCVMarquee />
             </div>
           </a>
