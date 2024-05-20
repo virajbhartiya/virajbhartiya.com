@@ -32,7 +32,7 @@ export const Project = ({
   return (
     <a href={project.link} target="_blank">
       <div
-        className={`border my-4 p-4  ${hovered ? "bg-[var(--accent)] rounded-full" : "rounded"}`}
+        className={`border my-4 p-4 rounded ${hovered ? "border-[var(--accent)] " : ""}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ position: "relative" }}
@@ -53,7 +53,7 @@ export const Project = ({
             {project.tags.map((tag) => (
               <Badge
                 variant={"outline"}
-                className={`font-normal proto ${hovered ? "text-black" : "accent"}`}
+                className={`font-normal proto `}
                 key={tag}
               >
                 {tag}

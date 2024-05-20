@@ -2,10 +2,8 @@ import { Project } from "@/components/Home/Project";
 import Scrambler from "@/components/custom/Scrambler";
 import { Badge } from "@/components/ui/badge";
 import { projectData } from "@/data/projectData";
-import { useState } from "react";
 
 export const Projects = () => {
-  const [hovered, setHovered] = useState(false);
   return (
     <>
       <h3 className=" mt-24 md:mt-auto text-center text-2xl font-thin accent proto">
@@ -17,8 +15,6 @@ export const Projects = () => {
       <div
         className={`border my-4 p-4 rounded steam`}
         style={{ position: "relative" }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
         <div className="w-full justify-between flex flex-col md:flex-row gap-4">
           <div className={`flex flex-row items-center gap-4`}>
