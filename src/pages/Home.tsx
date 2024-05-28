@@ -10,9 +10,9 @@ export const Home = () => {
   return (
     <Layout>
       <About />
-      <Projects />
-      <LanguageMaqruee />
       <Experience />
+      <LanguageMaqruee />
+      <Projects />
       <Hello />
       <ContactMarquee />
     </Layout>
