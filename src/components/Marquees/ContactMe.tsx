@@ -10,9 +10,9 @@ export function ContactMarquee() {
       </p>
     </a>,
     <p className="accent proto text-2xl md:text-6xl m-6">Collaboration?</p>,
-    <a href="tel:+918485837871">
+    <a href="mailto:vlbhartiya@gmail.com">
       <p className="proto bg-[var(--accent)] text-black text-2xl md:text-6xl">
-        <Scrambler duration={5} text="Call Me"></Scrambler>
+        <Scrambler duration={5} text="Email me" />
       </p>
     </a>,
   ];

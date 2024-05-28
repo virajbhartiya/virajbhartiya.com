@@ -12,10 +12,7 @@ export const Projects = () => {
       {projectData.map((project, index) => (
         <Project key={index} project={project} index={index} />
       ))}
-      <div
-        className={`border my-4 p-4 rounded steam`}
-        style={{ position: "relative" }}
-      >
+      <div className="border my-4 p-4 rounded steam relative">
         <div className="w-full justify-between flex flex-col md:flex-row gap-4">
           <div className={`flex flex-row items-center gap-4`}>
             <div className={"accent"}>[ {projectData.length} ]</div>
