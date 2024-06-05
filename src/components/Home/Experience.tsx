@@ -29,13 +29,9 @@ const experiences = [
     badge: "Mar 2024 - Present",
   },
   {
-    title: "Founding Team Member",
+    title: "Software Developer",
     company: "Top Club, New Jersey",
-    description: [
-      "Building a Fantasy Sports platform for Football involving the top 5 Football leagues in the world.",
-      "You can build your own team and compete with others on the leaderboard",
-      "Built the frontend using React.js and Scss.",
-    ],
+    description: ["Building a Fantasy Sports platform for Football ."],
     badge: "Jan 2024 - Present",
   },
 ];
