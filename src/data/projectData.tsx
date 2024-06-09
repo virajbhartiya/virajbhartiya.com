@@ -1,5 +1,13 @@
 export const projectData = [
   {
+    title: "Inter IIT Compititive Programming Conaclave",
+    description:
+      "Designed and developed the official website for the Inter IIT Competitive Programming Conclave, India's largest competitive programming camp according to statistics involving 30+ colleges including IITs, NITs, and BITS",
+    image: "images/Projects/IICPC.png",
+    link: "https://iicpc.com",
+    tags: ["React", "TailwindCSS"],
+  },
+  {
     title: "Rusty License Generator",
     description:
       '"LICENSE GENERATOR" is a versatile software tool designed to simplify the process of generating license files for your projects. With an easy installation process, it allows users to quickly create license files by specifying the license type, year, full name, project name, and file extension.',
