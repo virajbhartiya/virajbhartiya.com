@@ -31,7 +31,7 @@ const experiences = [
   {
     title: "Software Developer",
     company: "Top Club, New Jersey",
-    description: ["Building a Fantasy Sports platform for Football ."],
+    description: ["Founding team member for Football Fantasy league app."],
     badge: "Jan 2024 - Present",
   },
 ];
