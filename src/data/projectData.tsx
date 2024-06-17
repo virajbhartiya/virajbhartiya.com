@@ -1,6 +1,6 @@
 export const projectData = [
   {
-    title: "Inter IIT Compititive Programming Conaclave",
+    title: "Inter IIT Competitive Programming Conaclave",
     description:
       "Designed and developed the official website for the Inter IIT Competitive Programming Conclave, India's largest competitive programming camp according to statistics involving 30+ colleges including IITs, NITs, and BITS",
     image: "images/Projects/IICPC.png",
