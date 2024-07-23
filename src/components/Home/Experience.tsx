@@ -38,12 +38,6 @@ const experiences = [
     ],
     badge: "Mar 2024 - Present",
   },
-  {
-    title: "Software Developer",
-    company: "Top Club, USA",
-    description: ["Founding team member for Football Fantasy league app."],
-    badge: "Feb 2024 - Present",
-  },
 ];
 
 export const Experience = () => {
