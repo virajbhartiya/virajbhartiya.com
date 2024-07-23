@@ -20,6 +20,16 @@ const experiences = [
   },
   {
     title: "Software Developer",
+    company: "TopClub, New Jersey",
+    description: [
+      "Engineered the front end with React.js and SCSS, delivering an extraordinary user interface characterized by innovative UX solutions that significantly elevated user engagement and satisfaction.",
+      "Architected and implemented highly robust backend services in Node.js, establishing an ultra-scalable server-side infrastructure and fortifying APIs to guarantee peak performance and security.",
+      "Seamlessly integrated cutting-edge third-party services via RapidAPI to retrieve real-time player data, substantially augmenting the app's functionality and user interaction.",
+    ],
+    badge: "Feb 2024 - Present",
+  },
+  {
+    title: "Software Developer",
     company: "MGPEL, Mumbai",
     description: [
       "Designed and implemented the backend and frontend infrastructure for the company's website, utilizing React.js and Tailwind CSS with a Node.js backend, alongside AWS RDS for PostgreSQL and S3 for storage.",
