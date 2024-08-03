@@ -94,7 +94,8 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
+  border-radius: 100%;
 }
 
 /* Track */
@@ -103,7 +104,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3a3939;
+  background: var(--accent);
 }
 
 ::-webkit-scrollbar-thumb:hover {
