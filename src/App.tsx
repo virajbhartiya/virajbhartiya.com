@@ -3,6 +3,7 @@ import AppRoutes from "@/router/routes";
 import AnimatedCursor from "react-animated-cursor";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   AOS.init();
@@ -53,6 +54,7 @@ function App() {
 
   return (
     <Router>
+      <Analytics />
       {renderCursor()}
       <AppRoutes />
     </Router>
