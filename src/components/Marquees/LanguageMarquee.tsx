@@ -23,6 +23,7 @@ export function LanguageMaqruee() {
     "Swift",
     "Git",
     "Figma",
+    "Terraform",
   ];
 
   return (
