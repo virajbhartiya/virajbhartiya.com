@@ -7,6 +7,7 @@ export default function UseLenis() {
   useEffect(() => {
     const lenis = new Lenis({
       smoothWheel: true,
+      easing: (x: number) => 1 - Math.pow(1 - x, 5),
     });
 
     lenis.on("scroll", (e: any) => {
