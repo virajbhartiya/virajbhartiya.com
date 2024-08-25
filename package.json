@@ -24,6 +24,7 @@
     "cmdk": "^1.0.0",
     "dotenv": "^16.4.5",
     "js-cookie": "^3.0.5",
+    "lenis": "^1.1.11",
     "lucide-react": "^0.376.0",
     "meshline": "^3.3.0",
     "mini-svg-data-uri": "^1.4.4",
