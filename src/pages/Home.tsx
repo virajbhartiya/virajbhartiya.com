@@ -6,6 +6,7 @@ import { Projects } from "../components/Home/Projects";
 import { ContactMarquee } from "@/components/Marquees/ContactMe";
 import { Experience } from "@/components/Home/Experience";
 import { DrawPad } from "@/components/Home/DrawPad";
+import { ContributionGraph } from "@/components/Home/ContributionGraph";
 
 export const Home = () => {
   return (
@@ -13,8 +14,9 @@ export const Home = () => {
       <About />
       <DrawPad />
       <Experience />
-      <LanguageMaqruee />
+      <ContributionGraph />
       <Projects />
+      <LanguageMaqruee />
       <Hello />
       <ContactMarquee />
     </Layout>

@@ -36,7 +36,7 @@ export function LanguageMaqruee() {
         <Arrow />
       </div>
       <div className="relative mt-6 overflow-hidden">
-        <Marquee speed={125}>
+        <Marquee speed={125} direction="right">
           {languages.map((logo, idx) => (
             <img
               key={idx}
