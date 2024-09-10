@@ -10,10 +10,6 @@ export default function UseLenis() {
       easing: (x: number) => 1 - Math.pow(1 - x, 5),
     });
 
-    lenis.on("scroll", (e: any) => {
-      console.log(e);
-    });
-
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
