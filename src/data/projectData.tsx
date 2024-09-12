@@ -1,5 +1,13 @@
 export const projectData = [
   {
+    title: "Structurize: Opensource JSON to structured data",
+    description:
+      "Structurize simplifies the conversion of JSON data from APIs into structured formats. This open-source tool supports TypeScript, JavaScript, Dart, and more, allowing users to effortlessly transform complex JSON into manageable tabular data. Perfect for developers looking to streamline their data processing workflows.",
+    image: "images/Projects/structurize.png",
+    link: "https://structurize.virajbhartiya.com",
+    tags: ["React", "TailwindCSS"],
+  },
+  {
     title: "Inter IIT Competitive Programming Conaclave",
     description:
       "Designed and developed the official website for the Inter IIT Competitive Programming Conclave, India's largest competitive programming camp according to statistics involving 30+ colleges including IITs, NITs, and BITS",
