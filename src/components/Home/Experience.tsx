@@ -9,6 +9,14 @@ const experiences = [
     badge: "Nov 2023 - Present",
   },
   {
+    title: "Core Team Member",
+    company: "GDSC KJSCE, Mumbai",
+    description: [
+      "Core team member of Google Developer Student Club at KJSCE, Mumbai.",
+    ],
+    badge: "Oct 2024 - Present",
+  },
+  {
     title: "Web Developer",
     company: "Inter IIT Competitive Programming Conclave, IIT Madras",
     description: [

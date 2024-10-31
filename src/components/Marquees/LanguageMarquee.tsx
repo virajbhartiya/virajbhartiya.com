@@ -24,6 +24,7 @@ export function LanguageMaqruee() {
     "Git",
     "Figma",
     "Terraform",
+    "Golang",
   ];
 
   return (
