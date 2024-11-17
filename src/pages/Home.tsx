@@ -5,14 +5,14 @@ import { Hello } from "@/components/custom/Spline/Hello";
 import { Projects } from "../components/Home/Projects";
 import { ContactMarquee } from "@/components/Marquees/ContactMe";
 import { Experience } from "@/components/Home/Experience";
-import { DrawPad } from "@/components/Home/DrawPad";
+// import { DrawPad } from "@/components/Home/DrawPad";
 import { ContributionGraph } from "@/components/Home/ContributionGraph";
 
 export const Home = () => {
   return (
     <Layout>
       <About />
-      <DrawPad />
+      {/* <DrawPad /> */}
       <Experience />
       <ContributionGraph />
       <Projects />

@@ -1,5 +1,15 @@
 const experiences = [
   {
+    title: "Open Source Engineer",
+    company: "Protocol Labs",
+    description: [
+      "Contributed to the development of Lotus, the Go-based reference implementation of the Filecoin Protocol, a decentralized storage network.",
+      "Collaborated with ChainSafe to enhance Forest, the Rust-based implementation of the Filecoin Protocol.",
+      "Developed Ethereum RPC integrations to simplify interactions between Ethereum developers and the Filecoin network.",
+    ],
+    badge: "Oct 2024 - Present",
+  },
+  {
     title: "Tech Team Member",
     company: "KJSCE CodeCell, Mumbai",
     description: [
