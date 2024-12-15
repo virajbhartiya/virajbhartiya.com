@@ -33,7 +33,7 @@ export const projectData = [
     tags: ["React", "Sass"],
   },
   {
-    title: "SciOps: A superfast scientific calaculator ",
+    title: "SciOps: A superfast scientific Calculator ",
     description:
       "With an interactive prompt for seamless computations and a wide range of functions, SciOps simplifies calculations Perform basic arithmetic, advanced functions, and more with ease. Developed with 64-bit binary floating-point arithmetic, accuracy is ensured, though be aware of potential rounding errors.",
     image: "images/Projects/sciops.png",
