@@ -1,6 +1,7 @@
 import UseLenis from "@/Hook/useLenis";
 import { Home } from "@/pages/Home";
 import { Route, Routes } from "react-router-dom";
+import { MeetRedirect } from "@/pages/MeetRedirect";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
           </>
         }
       />
+      <Route path="/meet" element={<MeetRedirect />} />
     </Routes>
   );
 };
