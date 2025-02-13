@@ -16,7 +16,7 @@ const organizations: Organization[] = [
     logo: "https://github.com/filecoin-project.png",
     url: "https://github.com/filecoin-project",
     description: "The decentralized storage network protocol",
-    contributions: "Core Protocol Development",
+    contributions: "Protocol Development",
   },
   {
     name: "FilOz",
