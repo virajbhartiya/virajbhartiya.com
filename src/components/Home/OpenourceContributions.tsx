@@ -15,11 +15,11 @@ const organizations: Organization[] = [
     name: "Filecoin",
     logo: "https://github.com/filecoin-project.png",
     url: "https://github.com/filecoin-project",
-    description: "The decentralized storage network protocol",
-    contributions: "Protocol Development",
+    description: "Decentralized Storage Network",
+    contributions: "Protocol & SDK Development",
   },
   {
-    name: "FilOz",
+    name: "FilOzone",
     logo: "https://github.com/FilOzone.png",
     url: "https://github.com/FilOzone",
     description: "We work on Filecoin.",
@@ -29,50 +29,50 @@ const organizations: Organization[] = [
     name: "Chainsafe",
     logo: "https://github.com/ChainSafe.png",
     url: "https://github.com/ChainSafe",
-    description: "Building blockchain solutions & tools",
-    contributions: "Forest Implementation",
+    description: "Blockchain Infrastructure & Tools",
+    contributions: "Forest Client",
   },
   {
     name: "Bacalhau",
     logo: "https://github.com/bacalhau-project.png",
     url: "https://github.com/bacalhau-project",
-    description: "Compute over Data Framework",
-    contributions: "Core Development",
+    description: "Decentralized Compute Framework",
+    contributions: "Core Systems",
   },
   {
-    name: "Near",
+    name: "Near Protocol",
     logo: "https://github.com/near.png",
     url: "https://github.com/near",
-    description: "Blockchain for Open Web Development",
-    contributions: "Protocol Development",
+    description: "Layer 1 Blockchain Platform",
+    contributions: "Protocol Engineering",
   },
   {
     name: "Parity Tech",
     logo: "https://github.com/paritytech.png",
     url: "https://github.com/paritytech",
-    description: "Core Blockchain Infrastructure",
-    contributions: "Polkadot SDK",
+    description: "Substrate & Polkadot Ecosystem",
+    contributions: "SDK & Runtime Modules",
   },
   {
     name: "CCExtractor",
     logo: "https://github.com/CCExtractor.png",
     url: "https://github.com/CCExtractor",
-    description: "Open Source Video Tools",
-    contributions: "Core Development",
+    description: "Media Processing Framework",
+    contributions: "App Development",
   },
   {
     name: "Polkadot EVM",
     logo: "https://github.com/polkadot-evm.png",
     url: "https://github.com/polkadot-evm",
-    description: "EVM Implementation for Polkadot",
-    contributions: "Protocol Development",
+    description: "Ethereum Compatibility Layer",
+    contributions: "Protocol Integration",
   },
   {
     name: "Moonbeam",
     logo: "https://github.com/moonbeam-foundation.png",
     url: "https://github.com/moonbeam-foundation",
-    description: "Smart Contract Platform",
-    contributions: "Core Development",
+    description: "EVM on Polkadot",
+    contributions: "Runtime Development",
   },
 ];
 
@@ -99,7 +99,7 @@ export function OpenSourceContributions() {
                   </div>
                   <h2 className="text-4xl font-thin tracking-tighter">
                     <span className="accent bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/70 bg-clip-text text-transparent proto">
-                      Open Source
+                      OPEN SOURCE
                     </span>
                   </h2>
                 </motion.div>
@@ -113,14 +113,14 @@ export function OpenSourceContributions() {
               >
                 <div className="absolute -left-[2px] top-0 h-8 w-[2px] animate-pulse bg-[var(--accent)]" />
                 <p className="font-mono text-sm tracking-tight text-muted-foreground">
-                  <span className="text-[var(--accent)]">{">"}</span> Weird |
-                  Wacky | Wonderful Things
+                  <span className="text-[var(--accent)]">{">"}</span> Crafting
+                  Digital Infrastructure
                 </p>
                 <p className="mt-2 font-mono text-xs tracking-wider text-muted-foreground">
                   <span className="animate-bounce inline-block text-[var(--accent)]">
                     ↓
-                  </span>{" "}
-                  Building in Public, For the public
+                  </span>
+                  Building in Public, for the public
                 </p>
               </motion.div>
             </div>
