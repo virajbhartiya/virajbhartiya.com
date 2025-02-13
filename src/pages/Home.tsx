@@ -7,6 +7,7 @@ import { ContactMarquee } from "@/components/Marquees/ContactMe";
 import { Experience } from "@/components/Home/Experience";
 // import { DrawPad } from "@/components/Home/DrawPad";
 import { ContributionGraph } from "@/components/Home/ContributionGraph";
+import { OpenSourceContributions } from "@/components/Home/OpenourceContributions";
 
 export const Home = () => {
   return (
@@ -14,6 +15,7 @@ export const Home = () => {
       <About />
       {/* <DrawPad /> */}
       <Experience />
+      <OpenSourceContributions />
       <ContributionGraph />
       <Projects />
       <LanguageMaqruee />
