@@ -13,7 +13,7 @@ export const MeetRedirect = () => {
   };
 
   useEffect(() => {
-    window.location.href = "https://meet.google.com/tcd-yewk-mkv";
+    window.location.href = "https://meet.google.com/kwo-xsia-poo";
   }, []);
 
   return (
