@@ -1,4 +1,5 @@
 import { BrowserRouter as Router } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import AppRoutes from "@/router/routes";
 // import AnimatedCursor from "react-animated-cursor";
 import AOS from "aos";
@@ -53,11 +54,13 @@ function App() {
   // };
 
   return (
-    <Router>
-      <Analytics />
-      {/* {renderCursor()} */}
-      <AppRoutes />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Analytics />
+        {/* {renderCursor()} */}
+        <AppRoutes />
+      </Router>
+    </HelmetProvider>
   );
 }
 

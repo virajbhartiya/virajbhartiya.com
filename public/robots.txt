@@ -1,2 +1,26 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://virajbhartiya.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Additional rules
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+# Social media profiles
+Allow: /github
+Allow: /linkedin
+Allow: /twitter
+Allow: /cv
+Allow: /meet

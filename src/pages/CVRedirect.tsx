@@ -1,19 +1,25 @@
+import Layout from "@/components/Layout";
 import { useEffect } from "react";
 
 export const CVRedirect = () => {
+  const seoData = {
+    title: "Viraj Bhartiya | Resume - Blockchain & Full-Stack Engineer",
+    description:
+      "Professional resume of Viraj Bhartiya - Expert Blockchain Developer & Full-Stack Engineer with experience in Web3, DApps, and Smart Contracts.",
+    keywords:
+      "viraj bhartiya resume, blockchain developer cv, smart contract developer resume, web3 resume, full stack developer cv, blockchain engineer resume",
+    image: "https://virajbhartiya.com/og-image.png",
+  };
+
   useEffect(() => {
-    window.history.replaceState({}, "", "/cv");
+    window.location.href = "https://drive.google.com/file/d/1234567890/view";
   }, []);
 
   return (
-    <iframe
-      src="/Viraj_Bhartiya.pdf"
-      style={{
-        width: "100%",
-        height: "100vh",
-        border: "none",
-      }}
-      title="Viraj Bhartiya CV"
-    />
+    <Layout {...seoData}>
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-lg">Redirecting to CV...</p>
+      </div>
+    </Layout>
   );
 };
