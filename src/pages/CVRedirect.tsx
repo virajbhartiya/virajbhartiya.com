@@ -12,7 +12,7 @@ export const CVRedirect = () => {
   };
 
   useEffect(() => {
-    window.location.href = "https://drive.google.com/file/d/1234567890/view";
+    window.location.href = "https://virajbhartiya.com/Viraj_Bhartiya.pdf";
   }, []);
 
   return (

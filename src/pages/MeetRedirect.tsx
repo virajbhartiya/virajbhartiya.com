@@ -13,13 +13,13 @@ export const MeetRedirect = () => {
   };
 
   useEffect(() => {
-    window.location.href = "https://calendly.com/virajbhartiya/30min";
+    window.location.href = "https://meet.google.com/tcd-yewk-mkv";
   }, []);
 
   return (
     <Layout {...seoData}>
       <div className="flex min-h-screen items-center justify-center">
-        <p className="text-lg">Redirecting to scheduling page...</p>
+        <p className="text-lg">Redirecting to Google Meet...</p>
       </div>
     </Layout>
   );
