@@ -137,7 +137,7 @@ const Layout = ({
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
 
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen container">
         <Header />
         <main>{children}</main>
         <Footer />

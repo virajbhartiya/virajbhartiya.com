@@ -4,12 +4,12 @@ import { Arrow } from "../svg/arrow";
 
 export const About = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center">
-      <div className="hidden md:block relative  m-0 p-0 h-auto">
+    <section className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center ">
+      <div className="hidden md:block relative  m-0 p-0 h-auto pt-20">
         <div
           data-aos="fade-up"
           data-aos-duration="1500"
-          className=" flex-row hidden md:flex"
+          className="flex-row hidden md:flex"
           style={{ transform: "rotate(10deg)" }}
         >
           <p className="text-black proto bg-[var(--accent)]">That's me!</p>
