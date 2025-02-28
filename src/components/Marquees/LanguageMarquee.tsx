@@ -14,6 +14,7 @@ export function LanguageMaqruee() {
     "Rust",
     "Docker",
     "Express",
+    "Hardhat",
     "Tailwind",
     "Appscript",
     "PostgreSQL",
@@ -25,6 +26,8 @@ export function LanguageMaqruee() {
     "Figma",
     "Terraform",
     "Golang",
+    "Supabase",
+    "Solidity",
   ];
 
   return (
