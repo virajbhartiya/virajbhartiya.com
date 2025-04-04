@@ -1,14 +1,19 @@
 {
-  "rewrites": [
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/index.html",
       "headers": [
         {
           "key": "Content-Language",
           "value": "en"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
