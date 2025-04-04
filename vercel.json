@@ -2,7 +2,13 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "en"
+        }
+      ]
     }
   ]
 }
