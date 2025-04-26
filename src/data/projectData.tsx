@@ -144,4 +144,12 @@ export const projectData = [
     link: "https://mapleattendance.github.io/",
     tags: ["Python", "OpenCV", "Firebase"],
   },
+  {
+    title: "HotVault: Filecoin Hot Storage Solution",
+    description:
+      "Prototype for a data storage drive application that leverages Filecoin's verifiable storage, powered by Proof of Data Possession (PDP), payable with FIL-backed Stablecoin.",
+    image: "images/Projects/hotvault.png",
+    link: "https://github.com/FilOzone/hotvault-demo",
+    tags: ["Filecoin", "Blockchain", "Storage"],
+  },
 ];

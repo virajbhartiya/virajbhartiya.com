@@ -81,6 +81,13 @@ const organizations: Organization[] = [
     description: "Ethereum-Compatible Network",
     contributions: "Smart Contract Platform",
   },
+  {
+    name: "Blit Labs",
+    logo: "https://github.com/theblitlabs.png",
+    url: "https://github.com/theblitlabs",
+    description: "Trustless Cloudless Distributed Compute Network",
+    contributions: "Core Protocol Development",
+  },
 ];
 
 export function OpenSourceContributions() {
