@@ -12,6 +12,13 @@ type Organization = {
 
 const organizations: Organization[] = [
   {
+    name: "Blit Labs",
+    logo: "https://github.com/theblitlabs.png",
+    url: "https://github.com/theblitlabs",
+    description: "Trustless Cloudless Distributed Compute Network",
+    contributions: "Core Protocol Development",
+  },
+  {
     name: "Filecoin",
     logo: "https://github.com/filecoin-project.png",
     url: "https://github.com/filecoin-project",
@@ -81,12 +88,13 @@ const organizations: Organization[] = [
     description: "Ethereum-Compatible Network",
     contributions: "Smart Contract Platform",
   },
+
   {
-    name: "Blit Labs",
-    logo: "https://github.com/theblitlabs.png",
-    url: "https://github.com/theblitlabs",
-    description: "Trustless Cloudless Distributed Compute Network",
-    contributions: "Core Protocol Development",
+    name: "KJSCE CodeCell",
+    logo: "https://github.com/kjsce-codecell.png",
+    url: "https://github.com/kjsce-codecell",
+    description: "Open Source Community",
+    contributions: "Core Development",
   },
 ];
 
