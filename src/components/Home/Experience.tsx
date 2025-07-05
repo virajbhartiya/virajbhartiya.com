@@ -28,10 +28,9 @@ const experiences = [
   },
   {
     title: "Web Developer",
-    company: "Inter-IIT Competitive Programming Conclave, IIT Madras",
+    company: "InterCollegiate Informatic and Competitive Programming Camp",
     description: [
-      "Designed and developed the official website for the Inter-IIT Competitive Programming Conclave, India's largest competitive programming camp, involving 30+ colleges, including IITs, NITs, and BITS.",
-      "Utilized React.js and Tailwind CSS for development, creating a website used for event information, registration, and leaderboards.",
+      "Designed and developed the official website for the InterCollegiate Informatic and Competitive Programming Camp, India's largest competitive programming camp, involving 30+ colleges, including IITs, NITs, and BITS.",
       "Achieved over 70,000 page views and 15,000+ unique visitors during the event.",
     ],
     badge: "May 2024",
