@@ -36,7 +36,7 @@
     "react-helmet-async": "^2.0.5",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^7.6.3",
-    "sonner": "^1.4.3",
+    "sonner": "^2.0.6",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "use-scramble": "^2.2.15"
