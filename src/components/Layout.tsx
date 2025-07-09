@@ -177,12 +177,9 @@ const Layout = ({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <meta
-          name="google-site-verification"
-          content="your-verification-code"
-        />
-        <meta name="msvalidate.01" content="your-bing-verification-code" />
-        <meta property="og:updated_time" content={new Date().toISOString()} />
+        {((modifiedTime || publishedTime)) && (
+          <meta property="og:updated_time" content={modifiedTime || publishedTime} />
+        )}
         <meta
           property="og:see_also"
           content="https://github.com/virajbhartiya"

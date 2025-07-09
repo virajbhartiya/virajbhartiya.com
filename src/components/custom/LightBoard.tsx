@@ -342,6 +342,39 @@ function LightBoard({
           startY += sy;
         }
       }
+
+      // Draw the final endpoint
+      const finalColIndex = Math.floor(endX / (lightSize + gap));
+      const finalRowIndex = Math.floor(endY / (lightSize + gap));
+
+      if (
+        finalRowIndex >= 0 &&
+        finalRowIndex < rows &&
+        finalColIndex >= 0 &&
+        finalColIndex < columns
+      ) {
+        const actualColIndex = (finalColIndex + offset) % basePattern[0].length;
+
+        if (basePattern[finalRowIndex][actualColIndex] !== drawState) {
+          setBasePattern((prevPattern) => {
+            const newPattern = [...prevPattern];
+            newPattern[finalRowIndex] = [...newPattern[finalRowIndex]];
+            newPattern[finalRowIndex][actualColIndex] = drawState;
+            return newPattern;
+          });
+
+          ctx.fillStyle = getLightColor(drawState, mergedColors);
+          ctx.beginPath();
+          ctx.arc(
+            finalColIndex * (lightSize + gap) + lightSize / 2,
+            finalRowIndex * (lightSize + gap) + lightSize / 2,
+            lightSize / 2,
+            0,
+            2 * Math.PI,
+          );
+          ctx.fill();
+        }
+      }
     },
     [
       basePattern,
