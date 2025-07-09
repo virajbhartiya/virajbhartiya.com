@@ -33,6 +33,7 @@
     "react-day-picker": "^9.8.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.5",
+    "react-github-calendar": "^4.5.9",
     "react-helmet-async": "^2.0.5",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^7.6.3",
