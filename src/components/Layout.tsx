@@ -45,8 +45,8 @@ const Layout = ({
     },
     sameAs: [
       "https://github.com/virajbhartiya",
-      "https://linkedin.com/in/virajbhartiya",
-      "https://twitter.com/virajbhartiya",
+      "https://linkedin.com/in/viraj-bhartiya",
+      "https://twitter.com/heyxviraj",
     ],
     jobTitle: "Blockchain Developer & Full-Stack Engineer",
     description: description,
@@ -79,6 +79,20 @@ const Layout = ({
         "Solidity",
       ],
     },
+    worksFor: [
+      {
+        "@type": "Organization",
+        name: "Protocol Labs",
+        url: "https://protocol.ai",
+      },
+    ],
+    alumniOf: [
+      {
+        "@type": "Organization",
+        name: "KJSCE CodeCell",
+        url: "https://github.com/kjsce-codecell",
+      },
+    ],
   };
 
   return (
@@ -105,6 +119,7 @@ const Layout = ({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
+        <meta property="og:image:alt" content={title} />
         <meta property="og:site_name" content="Viraj Bhartiya" />
         <meta property="og:locale" content="en_US" />
         {publishedTime && (
@@ -120,18 +135,103 @@ const Layout = ({
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="@virajbhartiya" />
-        <meta name="twitter:site" content="@virajbhartiya" />
+        <meta name="twitter:creator" content="@heyxviraj" />
+        <meta name="twitter:site" content="@heyxviraj" />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <meta name="twitter:image:alt" content={title} />
 
         {/* Additional SEO */}
         <link rel="author" href="https://virajbhartiya.com" />
         <meta name="geo.region" content="IN" />
         <meta name="geo.position" content="20.5937;78.9629" />
         <meta name="ICBM" content="20.5937, 78.9629" />
+        <meta name="language" content="en" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta
+          name="googlebot"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta
+          name="bingbot"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta name="color-scheme" content="dark light" />
+        <meta name="supported-color-schemes" content="dark light" />
+        <meta
+          name="twitter:app:name:iphone"
+          content="Viraj Bhartiya Portfolio"
+        />
+        <meta name="twitter:app:name:ipad" content="Viraj Bhartiya Portfolio" />
+        <meta
+          name="twitter:app:name:googleplay"
+          content="Viraj Bhartiya Portfolio"
+        />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta
+          name="google-site-verification"
+          content="your-verification-code"
+        />
+        <meta name="msvalidate.01" content="your-bing-verification-code" />
+        <meta property="og:updated_time" content={new Date().toISOString()} />
+        <meta
+          property="og:see_also"
+          content="https://github.com/virajbhartiya"
+        />
+        <meta
+          property="og:see_also"
+          content="https://linkedin.com/in/viraj-bhartiya"
+        />
+        <meta property="og:see_also" content="https://twitter.com/heyxviraj" />
+        <meta
+          name="theme-color"
+          content="#000000"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#00efa6"
+          media="(prefers-color-scheme: dark)"
+        />
+        <meta property="og:determiner" content="the" />
+        <meta property="og:audio" content="" />
+        <meta property="og:video" content="" />
+        <meta name="generator" content="React, Vite, TypeScript" />
+        <meta name="application-name" content="Viraj Bhartiya Portfolio" />
+        <meta
+          name="twitter:app:url:iphone"
+          content="https://virajbhartiya.com"
+        />
+        <meta name="twitter:app:url:ipad" content="https://virajbhartiya.com" />
+        <meta
+          name="twitter:app:url:googleplay"
+          content="https://virajbhartiya.com"
+        />
+        <meta name="twitter:app:id:iphone" content="virajbhartiya-portfolio" />
+        <meta name="twitter:app:id:ipad" content="virajbhartiya-portfolio" />
+        <meta
+          name="twitter:app:id:googleplay"
+          content="virajbhartiya-portfolio"
+        />
+        <meta name="twitter:app:country" content="IN" />
+        <meta
+          name="twitter:app:name:iphone"
+          content="Viraj Bhartiya Portfolio"
+        />
+        <meta name="twitter:app:name:ipad" content="Viraj Bhartiya Portfolio" />
+        <meta
+          name="twitter:app:name:googleplay"
+          content="Viraj Bhartiya Portfolio"
+        />
 
         {/* Schema.org markup */}
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>

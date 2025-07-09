@@ -5,10 +5,10 @@ import { projectData } from "@/data/projectData";
 
 export const Projects = () => {
   return (
-    <>
-      <h3 className=" mt-24 md:mt-auto text-center text-2xl font-thin accent proto">
-        Things I've Built
-      </h3>
+    <section aria-label="Projects Portfolio">
+      <h2 className=" mt-24 md:mt-auto text-center text-2xl font-thin accent proto">
+        Things I&apos;ve Built
+      </h2>
       {projectData.map((project, index) => (
         <Project key={index} project={project} index={index} />
       ))}
@@ -28,6 +28,6 @@ export const Projects = () => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };

@@ -100,7 +100,10 @@ const organizations: Organization[] = [
 
 export function OpenSourceContributions() {
   return (
-    <section className="relative min-h-screen w-full py-16">
+    <section
+      className="relative min-h-screen w-full py-16"
+      aria-label="Open Source Contributions"
+    >
       <div className="absolute -right-4 -top-4 h-32 w-32 rotate-12 bg-[var(--accent)]/10 blur-3xl" />
       <div className="absolute -left-4 bottom-4 h-32 w-32 -rotate-12 bg-[var(--accent)]/5 blur-3xl" />
       <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 bg-[var(--accent)]/5 blur-3xl" />
@@ -184,7 +187,7 @@ export function OpenSourceContributions() {
                       <div className="relative z-10 h-16 w-16 overflow-hidden rounded-xl border border-[var(--accent)]/20 bg-black/20">
                         <img
                           src={org.logo}
-                          alt={`${org.name} logo`}
+                          alt={`${org.name} - ${org.description}`}
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />

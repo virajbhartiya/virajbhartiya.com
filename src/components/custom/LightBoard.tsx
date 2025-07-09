@@ -291,7 +291,7 @@ function LightBoard({
       let err = dx - dy;
 
       // We keep drawing until we reach the end of our line
-      while (true) {
+      while (startX !== endX || startY !== endY) {
         // We figure out which light we're on
         const colIndex = Math.floor(startX / (lightSize + gap));
         const rowIndex = Math.floor(startY / (lightSize + gap));
@@ -330,9 +330,6 @@ function LightBoard({
             ctx.fill();
           }
         }
-
-        // If we've reached the end of our line, we stop
-        if (startX === endX && startY === endY) break;
 
         // We figure out where to draw next
         const e2 = 2 * err;
