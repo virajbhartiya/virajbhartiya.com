@@ -14,8 +14,10 @@ export function DownloadCVMarquee() {
   return (
     <div className="relative overflow-hidden ">
       <Marquee speed={100}>
-        {sentence.map((word) => (
-          <p className="proto accent mx-4 ">{word}</p>
+        {sentence.map((word, index) => (
+          <p key={index} className="proto accent mx-4 ">
+            {word}
+          </p>
         ))}
       </Marquee>
     </div>

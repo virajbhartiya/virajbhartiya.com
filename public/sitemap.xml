@@ -7,7 +7,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://virajbhartiya.com/</loc>
-    <lastmod>2024-02-20</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
   <!-- CV Page -->
   <url>
     <loc>https://virajbhartiya.com/cv</loc>
-    <lastmod>2024-02-20</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -23,7 +23,7 @@
   <!-- Meeting Scheduler -->
   <url>
     <loc>https://virajbhartiya.com/meet</loc>
-    <lastmod>2024-02-20</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,6 +37,18 @@
 
   <url>
     <loc>https://virajbhartiya.com/linkedin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://virajbhartiya.com/twitter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://virajbhartiya.com/youtube</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

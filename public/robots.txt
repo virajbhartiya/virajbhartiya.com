@@ -22,5 +22,6 @@ Allow: /*.ico
 Allow: /github
 Allow: /linkedin
 Allow: /twitter
+Allow: /youtube
 Allow: /cv
 Allow: /meet

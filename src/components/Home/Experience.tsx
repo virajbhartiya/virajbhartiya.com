@@ -59,10 +59,10 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <>
-      <h3 className="mt-24 md:mt-auto text-center text-3xl font-light accent proto">
+    <section aria-label="Professional Experience">
+      <h2 className="mt-24 md:mt-auto text-center text-3xl font-light accent proto">
         Experience
-      </h3>
+      </h2>
       <div className="relative pl-12 mt-8">
         <div className="absolute top-0 left-6 w-1 bg-[var(--accent)] h-full"></div>
         {experiences.map((experience, index) => (
@@ -90,6 +90,6 @@ export const Experience = () => {
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 };

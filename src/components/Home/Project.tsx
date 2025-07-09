@@ -30,7 +30,7 @@ export const Project = ({
   };
 
   return (
-    <a href={project.link} target="_blank">
+    <a href={project.link} target="_blank" rel="noreferrer">
       <div
         className={`border my-4 p-4 rounded ${hovered ? "border-[var(--accent)] " : ""}`}
         onMouseEnter={handleMouseEnter}
@@ -66,7 +66,7 @@ export const Project = ({
             <div className="absolute z-10 max-w-[30vw] max-h-[10vh] ">
               <img
                 src={project.image}
-                alt="Project Photo"
+                alt={`${project.title} - ${project.description.substring(0, 100)}...`}
                 className="rounded-lg w-full border border-[var(--accent)] bg-black"
               />
             </div>

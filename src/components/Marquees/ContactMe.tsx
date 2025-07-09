@@ -3,14 +3,18 @@ import Scrambler from "../custom/Scrambler";
 
 export function ContactMarquee() {
   const elements = [
-    <p className="accent proto text-2xl md:text-6xl m-6">Freelance?</p>,
-    <a href="mailto:vlbhartiya@gmail.com">
+    <p key="freelance" className="accent proto text-2xl md:text-6xl m-6">
+      Freelance?
+    </p>,
+    <a key="email1" href="mailto:vlbhartiya@gmail.com">
       <p className="proto bg-[var(--accent)] text-black text-2xl md:text-6xl">
         <Scrambler duration={5} text="Email me" />
       </p>
     </a>,
-    <p className="accent proto text-2xl md:text-6xl m-6">Collaboration?</p>,
-    <a href="mailto:vlbhartiya@gmail.com">
+    <p key="collaboration" className="accent proto text-2xl md:text-6xl m-6">
+      Collaboration?
+    </p>,
+    <a key="email2" href="mailto:vlbhartiya@gmail.com">
       <p className="proto bg-[var(--accent)] text-black text-2xl md:text-6xl">
         <Scrambler duration={5} text="Email me" />
       </p>

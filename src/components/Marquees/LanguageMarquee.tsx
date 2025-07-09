@@ -33,7 +33,7 @@ export function LanguageMaqruee() {
         className="flex-row w-max flex"
         style={{ transform: "rotate(4deg)" }}
       >
-        <p className="accent proto">Stuff I've Worked with</p>
+        <p className="accent proto">Stuff I&apos;ve Worked with</p>
         <Arrow />
       </div>
       <div className="relative mt-6 overflow-hidden">

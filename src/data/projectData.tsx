@@ -1,5 +1,13 @@
 export const projectData = [
   {
+    title: "Cachly: The Cache Manager",
+    description:
+      "Cachly is a type-safe, production-ready in-memory cache system for Node.js and TypeScript. It features advanced dependency tracking, intelligent invalidation, TTL, stale-while-revalidate, async operations, event system, statistics, advanced eviction, partitioning, compression, circuit breaker, distributed support, tags, groups, bulk operations, decorators, middleware, CLI tools, and cache hit/miss hooks. Perfect for high-performance applications requiring sophisticated caching strategies.",
+    image: "images/Projects/cachly.png",
+    link: "https://www.npmjs.com/package/cachly",
+    tags: ["TypeScript", "Node.js", "NPM Package"],
+  },
+  {
     title: "Structurize: Opensource JSON to structured data",
     description:
       "Structurize simplifies the conversion of JSON data from APIs into structured formats. This open-source tool supports TypeScript, JavaScript, Dart, and more, allowing users to effortlessly transform complex JSON into manageable tabular data. Perfect for developers looking to streamline their data processing workflows.",
