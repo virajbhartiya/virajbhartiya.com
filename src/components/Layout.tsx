@@ -177,8 +177,11 @@ const Layout = ({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        {((modifiedTime || publishedTime)) && (
-          <meta property="og:updated_time" content={modifiedTime || publishedTime} />
+        {(modifiedTime || publishedTime) && (
+          <meta
+            property="og:updated_time"
+            content={modifiedTime || publishedTime}
+          />
         )}
         <meta
           property="og:see_also"
