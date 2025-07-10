@@ -5,6 +5,7 @@ import { Hello } from "@/components/custom/Spline/Hello";
 import { Projects } from "../components/Home/Projects";
 import { ContactMarquee } from "@/components/Marquees/ContactMe";
 import { Experience } from "@/components/Home/Experience";
+import { HackathonWins } from "@/components/Home/HackathonWins";
 // import { DrawPad } from "@/components/Home/DrawPad";
 import { ContributionGraph } from "@/components/Home/ContributionGraph";
 import { OpenSourceContributions } from "@/components/Home/OpenourceContributions";
@@ -25,6 +26,7 @@ export const Home = () => {
       <About />
       {/* <DrawPad /> */}
       <Experience />
+      <HackathonWins />
       <OpenSourceContributions />
       <ContributionGraph />
       <Projects />
