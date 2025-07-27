@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { loadBlogData } from "@/data/blogData";
 import { IBlog } from "@/types/interface";
 import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const Blog = () => {
@@ -37,6 +37,16 @@ export const Blog = () => {
     <Layout {...seoData}>
       <section className="min-h-screen pt-20 pb-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 font-thin proto hover:accent transition-colors duration-300"
+            >
+              <ArrowLeft size={16} />
+              back to home
+            </Link>
+          </div>
+
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
