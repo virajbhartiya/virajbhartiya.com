@@ -180,15 +180,56 @@ export const BlogPost = () => {
   const renderInlineMarkdown = (text: string): JSX.Element[] => {
     const elements: JSX.Element[] = [];
     let currentIndex = 0;
-    const boldRegex = /\*\*(.*?)\*\*/g;
-    let match;
-
-    while ((match = boldRegex.exec(text)) !== null) {
-      // Add text before the bold
-      if (match.index > currentIndex) {
+    
+    // Handle links first
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let linkMatch;
+    let processedText = text;
+    
+    while ((linkMatch = linkRegex.exec(text)) !== null) {
+      // Add text before the link
+      if (linkMatch.index > currentIndex) {
         elements.push(
           <span key={`text-${currentIndex}`}>
-            {text.slice(currentIndex, match.index)}
+            {text.slice(currentIndex, linkMatch.index)}
+          </span>
+        );
+      }
+
+      // Add link
+      elements.push(
+        <a
+          key={`link-${linkMatch.index}`}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="accent hover:text-white underline transition-colors duration-300"
+        >
+          {linkMatch[1]}
+        </a>
+      );
+
+      currentIndex = linkMatch.index + linkMatch[0].length;
+    }
+
+    // Add remaining text after links
+    if (currentIndex < text.length) {
+      processedText = text.slice(currentIndex);
+    } else {
+      processedText = '';
+    }
+
+    // Handle bold text
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    let boldMatch;
+    let boldIndex = 0;
+
+    while ((boldMatch = boldRegex.exec(processedText)) !== null) {
+      // Add text before the bold
+      if (boldMatch.index > boldIndex) {
+        elements.push(
+          <span key={`text-${boldIndex}`}>
+            {processedText.slice(boldIndex, boldMatch.index)}
           </span>,
         );
       }
@@ -196,19 +237,19 @@ export const BlogPost = () => {
       // Add bold text
       elements.push(
         <strong
-          key={`bold-${match.index}`}
+          key={`bold-${boldMatch.index}`}
           className="accent font-normal proto"
         >
-          {match[1]}
+          {boldMatch[1]}
         </strong>,
       );
 
-      currentIndex = match.index + match[0].length;
+      boldIndex = boldMatch.index + boldMatch[0].length;
     }
 
     // Add remaining text
-    if (currentIndex < text.length) {
-      elements.push(<span key={`text-end`}>{text.slice(currentIndex)}</span>);
+    if (boldIndex < processedText.length) {
+      elements.push(<span key={`text-end`}>{processedText.slice(boldIndex)}</span>);
     }
 
     return elements.length > 0 ? elements : [<span key="text">{text}</span>];
