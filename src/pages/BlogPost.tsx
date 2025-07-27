@@ -269,7 +269,6 @@ export const BlogPost = () => {
         );
       }
 
-      // Add italic text
       elements.push(
         <em key={`italic-${italicMatch.index}`} className="italic font-thin">
           {italicMatch[2]}
@@ -279,20 +278,17 @@ export const BlogPost = () => {
       italicIndex = italicMatch.index + italicMatch[0].length;
     }
 
-    // Add remaining text after italics
     if (italicIndex < processedText.length) {
       processedText = processedText.slice(italicIndex);
     } else {
       processedText = "";
     }
 
-    // Handle inline code (backticks)
     const codeRegex = /`([^`]+)`/g;
     let codeMatch;
     let codeIndex = 0;
 
     while ((codeMatch = codeRegex.exec(processedText)) !== null) {
-      // Add text before the code
       if (codeMatch.index > codeIndex) {
         elements.push(
           <span key={`text-${codeIndex}`}>
@@ -301,7 +297,6 @@ export const BlogPost = () => {
         );
       }
 
-      // Add inline code
       elements.push(
         <code
           key={`code-${codeMatch.index}`}
