@@ -15,7 +15,7 @@ export const Blog = () => {
         const loadedBlogs = await loadBlogData();
         setBlogs(loadedBlogs);
       } catch (error) {
-        console.error('Error loading blogs:', error);
+        console.error("Error loading blogs:", error);
       } finally {
         setLoading(false);
       }
@@ -26,8 +26,10 @@ export const Blog = () => {
 
   const seoData = {
     title: "Blog | Viraj Bhartiya - Blockchain Developer & Full-Stack Engineer",
-    description: "Insights, tutorials, and thoughts on blockchain development, Web3, smart contracts, and full-stack engineering from Viraj Bhartiya.",
-    keywords: "blog, blockchain development, web3, smart contracts, full stack development, tutorials, insights, viraj bhartiya",
+    description:
+      "Insights, tutorials, and thoughts on blockchain development, Web3, smart contracts, and full-stack engineering from Viraj Bhartiya.",
+    keywords:
+      "blog, blockchain development, web3, smart contracts, full stack development, tutorials, insights, viraj bhartiya",
     image: "https://virajbhartiya.com/og-image.png",
   };
 
@@ -70,10 +72,10 @@ export const Blog = () => {
 
 const BlogCard = ({ blog, index }: { blog: IBlog; index: number }) => {
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     });
   };
 
@@ -87,18 +89,20 @@ const BlogCard = ({ blog, index }: { blog: IBlog; index: number }) => {
       >
         <div className="flex items-start gap-6">
           <div className="flex-shrink-0">
-            <span className="text-sm proto accent">[{String(index + 1).padStart(2, '0')}]</span>
+            <span className="text-sm proto accent">
+              [{String(index + 1).padStart(2, "0")}]
+            </span>
           </div>
-          
+
           <div className="flex-1 min-w-0">
             <h2 className="text-xl font-thin mb-2 group-hover:accent transition-colors duration-300">
               {blog.title}
             </h2>
-            
+
             <p className="font-thin text-gray-400 mb-4 line-clamp-2">
               {blog.description}
             </p>
-            
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-1">
@@ -110,7 +114,7 @@ const BlogCard = ({ blog, index }: { blog: IBlog; index: number }) => {
                   <span className="proto">{blog.readTime} min</span>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <div className="flex gap-1">
                   {blog.tags.slice(0, 2).map((tag) => (
@@ -127,7 +131,10 @@ const BlogCard = ({ blog, index }: { blog: IBlog; index: number }) => {
                     </span>
                   )}
                 </div>
-                <ArrowRight size={14} className="accent group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight
+                  size={14}
+                  className="accent group-hover:translate-x-1 transition-transform duration-300"
+                />
               </div>
             </div>
           </div>
@@ -135,4 +142,4 @@ const BlogCard = ({ blog, index }: { blog: IBlog; index: number }) => {
       </article>
     </Link>
   );
-}; 
+};

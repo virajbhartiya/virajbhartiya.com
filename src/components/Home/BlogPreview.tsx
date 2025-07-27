@@ -15,7 +15,7 @@ export const BlogPreview = () => {
         const blogs = getRecentBlogs(3);
         setRecentBlogs(blogs);
       } catch (error) {
-        console.error('Error loading blogs:', error);
+        console.error("Error loading blogs:", error);
       } finally {
         setLoading(false);
       }
@@ -25,11 +25,13 @@ export const BlogPreview = () => {
   }, []);
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    }).toUpperCase();
+    return new Date(dateString)
+      .toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+      .toUpperCase();
   };
 
   return (
@@ -62,30 +64,36 @@ export const BlogPreview = () => {
                   >
                     <div className="flex items-start gap-6">
                       <div className="flex-shrink-0">
-                        <span className="text-sm proto accent">[{index + 1}]</span>
+                        <span className="text-sm proto accent">
+                          [{index + 1}]
+                        </span>
                       </div>
-                      
+
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xl font-thin mb-2 group-hover:accent transition-colors duration-300">
                           {blog.title}
                         </h3>
-                        
+
                         <p className="font-thin text-gray-400 mb-4 line-clamp-2">
                           {blog.description}
                         </p>
-                        
+
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4 text-sm">
                             <div className="flex items-center gap-1">
                               <Calendar size={14} className="accent" />
-                              <span className="proto">{formatDate(blog.publishedAt)}</span>
+                              <span className="proto">
+                                {formatDate(blog.publishedAt)}
+                              </span>
                             </div>
                             <div className="flex items-center gap-1">
                               <Clock size={14} className="accent" />
-                              <span className="proto">{blog.readTime} MIN READ</span>
+                              <span className="proto">
+                                {blog.readTime} MIN READ
+                              </span>
                             </div>
                           </div>
-                          
+
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1">
                               {blog.tags.slice(0, 2).map((tag) => (
@@ -102,7 +110,10 @@ export const BlogPreview = () => {
                                 </span>
                               )}
                             </div>
-                            <ArrowRight size={14} className="accent group-hover:translate-x-1 transition-transform duration-300" />
+                            <ArrowRight
+                              size={14}
+                              className="accent group-hover:translate-x-1 transition-transform duration-300"
+                            />
                           </div>
                         </div>
                       </div>
@@ -129,4 +140,4 @@ export const BlogPreview = () => {
       </div>
     </section>
   );
-}; 
+};

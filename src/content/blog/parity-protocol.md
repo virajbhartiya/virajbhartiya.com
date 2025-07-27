@@ -2,27 +2,34 @@
 title: "Parity Protocol: Deterministic Compute with Teeth"
 description: "A deep dive into a decentralized compute network that enforces deterministic execution through Docker sandboxes and hash-based consensus."
 publishedAt: "2025-07-27"
-tags: ["Decentralized Compute", "Docker", "Deterministic Execution", "Blockchain", "Protocol"]
+tags:
+  [
+    "Decentralized Compute",
+    "Docker",
+    "Deterministic Execution",
+    "Blockchain",
+    "Protocol",
+  ]
 image: "/images/Blog/parity-protocol.png"
 author: "Viraj Bhartiya"
 ---
 
-# Inside Parity Protocol  
-*A real-time, trustless, slightly angry compute network built with Docker, hash comparisons, and no tolerance for bullshit.*
+# Inside Parity Protocol
 
+_A real-time, trustless, slightly angry compute network built with Docker, hash comparisons, and no tolerance for bullshit._
 
 ## Why This Exists
 
 Everyone loves saying “decentralized compute.” Most of them mean “expensive cloud wrappers” or “semi-centralized trust games with extra steps.”
 
-We wanted something simpler:  
-- You submit a job  
-- Multiple machines run it in the same environment  
-- If the outputs match, you can trust it  
+We wanted something simpler:
+
+- You submit a job
+- Multiple machines run it in the same environment
+- If the outputs match, you can trust it
 - If they don’t, someone’s cheating (or bad at writing deterministic code)
 
 That’s it. Parity Protocol runs today. It’s lean, deterministic, and slightly hostile to corner-cutters.
-
 
 ## The Architecture (Nothing Hypothetical)
 
@@ -41,6 +48,7 @@ It’s dumb-simple by design. Complexity invites exploits. We don’t have room 
 You can’t use randomness, system clocks, or hidden state. We catch that instantly via hash mismatches.
 
 If you run a task twice and the outputs don’t match, congratulations—you’ve disqualified yourself. This includes:
+
 - Using `Math.random()` without a seed
 - Accessing current time
 - Reading from disk without strict input bounds
@@ -51,6 +59,7 @@ No amount of excuses or clever logging will change it. The system does not negot
 ## The Role of Docker (and Why We Trust It More Than You)
 
 Every runner executes tasks in a **Docker container** spun up from scratch per job. That means:
+
 - No leftover memory
 - No cached files
 - No surprise network calls
@@ -72,10 +81,10 @@ No staking. No reputation. No social capital. You either matched or didn’t.
 
 There is no retry loop for incompetence. Either your environment is reproducible or you’re wasting everyone’s electricity.
 
-
 ## What It Can Run (Right Now)
 
 This is not a theoretical system. It runs real tasks. Today. Examples include:
+
 - AI model inference (if deterministic and CPU-bound)
 - Static analysis tools
 - File transformation pipelines
@@ -83,6 +92,7 @@ This is not a theoretical system. It runs real tasks. Today. Examples include:
 - Data scoring, parsing, linting, compiling
 
 Basically: anything that
+
 - Runs inside a Docker container
 - Doesn't rely on external state or timing
 - Can be verified by matching outputs across multiple machines
