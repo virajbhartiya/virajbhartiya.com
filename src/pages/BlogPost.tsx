@@ -279,10 +279,45 @@ export const BlogPost = () => {
       italicIndex = italicMatch.index + italicMatch[0].length;
     }
 
-    // Add remaining text
+    // Add remaining text after italics
     if (italicIndex < processedText.length) {
+      processedText = processedText.slice(italicIndex);
+    } else {
+      processedText = "";
+    }
+
+    // Handle inline code (backticks)
+    const codeRegex = /`([^`]+)`/g;
+    let codeMatch;
+    let codeIndex = 0;
+
+    while ((codeMatch = codeRegex.exec(processedText)) !== null) {
+      // Add text before the code
+      if (codeMatch.index > codeIndex) {
+        elements.push(
+          <span key={`text-${codeIndex}`}>
+            {processedText.slice(codeIndex, codeMatch.index)}
+          </span>,
+        );
+      }
+
+      // Add inline code
       elements.push(
-        <span key={`text-end`}>{processedText.slice(italicIndex)}</span>,
+        <code
+          key={`code-${codeMatch.index}`}
+          className="bg-[#07251c] text-[#00efa6] px-1 py-0.5 rounded text-sm font-mono"
+        >
+          {codeMatch[1]}
+        </code>,
+      );
+
+      codeIndex = codeMatch.index + codeMatch[0].length;
+    }
+
+    // Add remaining text
+    if (codeIndex < processedText.length) {
+      elements.push(
+        <span key={`text-end`}>{processedText.slice(codeIndex)}</span>,
       );
     }
 
