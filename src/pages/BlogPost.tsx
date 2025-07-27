@@ -180,19 +180,19 @@ export const BlogPost = () => {
   const renderInlineMarkdown = (text: string): JSX.Element[] => {
     const elements: JSX.Element[] = [];
     let currentIndex = 0;
-    
+
     // Handle links first
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
     let linkMatch;
     let processedText = text;
-    
+
     while ((linkMatch = linkRegex.exec(text)) !== null) {
       // Add text before the link
       if (linkMatch.index > currentIndex) {
         elements.push(
           <span key={`text-${currentIndex}`}>
             {text.slice(currentIndex, linkMatch.index)}
-          </span>
+          </span>,
         );
       }
 
@@ -206,7 +206,7 @@ export const BlogPost = () => {
           className="accent hover:text-white underline transition-colors duration-300"
         >
           {linkMatch[1]}
-        </a>
+        </a>,
       );
 
       currentIndex = linkMatch.index + linkMatch[0].length;
@@ -216,7 +216,7 @@ export const BlogPost = () => {
     if (currentIndex < text.length) {
       processedText = text.slice(currentIndex);
     } else {
-      processedText = '';
+      processedText = "";
     }
 
     // Handle bold text
@@ -251,7 +251,7 @@ export const BlogPost = () => {
     if (boldIndex < processedText.length) {
       processedText = processedText.slice(boldIndex);
     } else {
-      processedText = '';
+      processedText = "";
     }
 
     // Handle italics (both *text* and _text_)
@@ -271,10 +271,7 @@ export const BlogPost = () => {
 
       // Add italic text
       elements.push(
-        <em
-          key={`italic-${italicMatch.index}`}
-          className="italic font-thin"
-        >
+        <em key={`italic-${italicMatch.index}`} className="italic font-thin">
           {italicMatch[2]}
         </em>,
       );
@@ -284,7 +281,9 @@ export const BlogPost = () => {
 
     // Add remaining text
     if (italicIndex < processedText.length) {
-      elements.push(<span key={`text-end`}>{processedText.slice(italicIndex)}</span>);
+      elements.push(
+        <span key={`text-end`}>{processedText.slice(italicIndex)}</span>,
+      );
     }
 
     return elements.length > 0 ? elements : [<span key="text">{text}</span>];
