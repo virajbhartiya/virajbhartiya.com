@@ -247,9 +247,44 @@ export const BlogPost = () => {
       boldIndex = boldMatch.index + boldMatch[0].length;
     }
 
-    // Add remaining text
+    // Add remaining text after bold
     if (boldIndex < processedText.length) {
-      elements.push(<span key={`text-end`}>{processedText.slice(boldIndex)}</span>);
+      processedText = processedText.slice(boldIndex);
+    } else {
+      processedText = '';
+    }
+
+    // Handle italics (both *text* and _text_)
+    const italicRegex = /(\*|_)(.*?)\1/g;
+    let italicMatch;
+    let italicIndex = 0;
+
+    while ((italicMatch = italicRegex.exec(processedText)) !== null) {
+      // Add text before the italic
+      if (italicMatch.index > italicIndex) {
+        elements.push(
+          <span key={`text-${italicIndex}`}>
+            {processedText.slice(italicIndex, italicMatch.index)}
+          </span>,
+        );
+      }
+
+      // Add italic text
+      elements.push(
+        <em
+          key={`italic-${italicMatch.index}`}
+          className="italic font-thin"
+        >
+          {italicMatch[2]}
+        </em>,
+      );
+
+      italicIndex = italicMatch.index + italicMatch[0].length;
+    }
+
+    // Add remaining text
+    if (italicIndex < processedText.length) {
+      elements.push(<span key={`text-end`}>{processedText.slice(italicIndex)}</span>);
     }
 
     return elements.length > 0 ? elements : [<span key="text">{text}</span>];
