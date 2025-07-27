@@ -7,6 +7,10 @@ export const routeList: IRoute[] = [
     label: "/",
   },
   {
+    href: "/blog",
+    label: "/blog",
+  },
+  {
     href: "/projects",
     label: "/projects",
   },

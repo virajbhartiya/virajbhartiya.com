@@ -9,6 +9,7 @@ import { HackathonWins } from "@/components/Home/HackathonWins";
 // import { DrawPad } from "@/components/Home/DrawPad";
 import { ContributionGraph } from "@/components/Home/ContributionGraph";
 import { OpenSourceContributions } from "@/components/Home/OpenourceContributions";
+import { BlogPreview } from "@/components/Home/BlogPreview";
 
 export const Home = () => {
   const seoData = {
@@ -30,6 +31,7 @@ export const Home = () => {
       <OpenSourceContributions />
       <ContributionGraph />
       <Projects />
+      <BlogPreview />
       <LanguageMaqruee />
       <Hello />
       <ContactMarquee />

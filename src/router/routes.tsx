@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import { MeetRedirect } from "@/pages/MeetRedirect";
 import { CVRedirect } from "@/pages/CVRedirect";
 import { SocialRedirect } from "@/pages/SocialRedirect";
+import { Blog } from "@/pages/Blog";
+import { BlogPost } from "@/pages/BlogPost";
 
 const AppRoutes = () => {
   return (
@@ -30,6 +32,8 @@ const AppRoutes = () => {
           <SocialRedirect url="https://www.youtube.com/channel/UCvwfCZDYeUKWdmHUAGhgsnQ" />
         }
       />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route
         path="*"
         element={

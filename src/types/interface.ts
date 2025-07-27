@@ -16,3 +16,17 @@ export interface IProject {
   tags: string[];
   // date: string;
 }
+
+export interface IBlog {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  image: string;
+  publishedAt: string;
+  updatedAt?: string;
+  tags: string[];
+  readTime: number;
+  author: string;
+  slug: string;
+}
