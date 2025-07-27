@@ -16,7 +16,7 @@ export const loadBlogPosts = async (): Promise<IBlog[]> => {
         const [, frontmatter, markdownContent] = frontmatterMatch;
         
         // Parse frontmatter
-        const metadata: any = {};
+        const metadata: Record<string, string | string[] | undefined> = {};
         frontmatter.split('\n').forEach((line: string) => {
           const [key, ...valueParts] = line.split(':');
           if (key && valueParts.length > 0) {
@@ -33,17 +33,17 @@ export const loadBlogPosts = async (): Promise<IBlog[]> => {
 
         // Create blog post object
         const blog: IBlog = {
-          id: metadata.title?.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-') || '',
-          title: metadata.title || '',
-          description: metadata.description || '',
+          id: (metadata.title as string)?.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-') || '',
+          title: metadata.title as string || '',
+          description: metadata.description as string || '',
           content: markdownContent.trim(),
-          image: metadata.image || 'images/Blog/default.jpg',
-          publishedAt: metadata.publishedAt || '',
-          updatedAt: metadata.updatedAt,
-          tags: metadata.tags || [],
+          image: metadata.image as string || 'images/Blog/default.jpg',
+          publishedAt: metadata.publishedAt as string || '',
+          updatedAt: metadata.updatedAt as string,
+          tags: metadata.tags as string[] || [],
           readTime: Math.ceil(markdownContent.split(/\s+/).length / 200),
-          author: metadata.author || 'Viraj Bhartiya',
-          slug: metadata.title?.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-') || ''
+          author: metadata.author as string || 'Viraj Bhartiya',
+          slug: (metadata.title as string)?.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-') || ''
         };
 
         blogs.push(blog);
