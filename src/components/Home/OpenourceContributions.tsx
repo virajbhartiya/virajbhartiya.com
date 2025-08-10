@@ -61,6 +61,13 @@ const organizations: Organization[] = [
     contributions: "Protocol Engineering",
   },
   {
+    name: "Storacha",
+    logo: "https://github.com/storacha.png",
+    url: "https://github.com/storacha",
+    description: "Decentralized Storage Protocol",
+    contributions: "Core Protocol Development",
+  },
+  {
     name: "Parity Tech",
     logo: "https://github.com/paritytech.png",
     url: "https://github.com/paritytech",
