@@ -10,7 +10,7 @@ const experiences = [
     badge: "Oct 2024 - Present",
   },
   {
-    title: "Tech Team Member",
+    title: "Committee Head",
     company: "KJSCE CodeCell, Mumbai",
     description: [
       "Developed responsive websites for the Debating Society, Voices of Somaiya Vidyavihar University, and the tech fest - KJSCE DevOpia.",
