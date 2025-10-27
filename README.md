@@ -1,13 +1,4 @@
-# Viraj Bhartiya - Portfolio
-
-![React](https://img.shields.io/badge/React-18.0.0-61DAFB?style=for-the-badge&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-3178C6?style=for-the-badge&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0.0-38B2AC?style=for-the-badge&logo=tailwind-css)
-![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel)
-
-[![Website](https://img.shields.io/badge/Website-Live_Site-4A90E2?style=for-the-badge)](https://virajbhartiya.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/virajbhartiya/)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/virajbhartiya)
+# Viraj Bhartiya - The Portfolio
 
 _My portfolio. Because apparently everyone needs one. Here's mine._
 
