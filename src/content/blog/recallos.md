@@ -1,6 +1,6 @@
 ---
-title: "Recall OS: Memory Without Permission"
-description: "What I built for ETHGlobal 2025 a decentralized memory layer that captures, indexes, and recalls your digital actions without gatekeepers."
+title: "Recall OS: Personal Memory Infrastructure"
+description: "What I built for ETHGlobal 2025 a decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
 publishedAt: "2025-10-27"
 tags: ["AI Memory", "Vector Search", "Recall OS", "ETHGlobal"] 
 image: "/images/Blog/recallos.png"
@@ -8,7 +8,7 @@ author: "Viraj Bhartiya"
 
 ---
 
-# Recall OS: Memory Without Permission
+# Recall OS: Personal Memory Infrastructure
 
 *A real-time, trustless, slightly angry memory network built with PostgreSQL, pgvector, and no tolerance for data hostage negotiation.*
 
@@ -17,7 +17,7 @@ author: "Viraj Bhartiya"
 Everyone's pretending "AI memory" is solved.
 What they really built are **surveillance silos** that remember *for you*, but not *with you* context locked behind API keys and usage tiers.
 
-Recall OS doesn't ask permission to remember. It records everything that matters: web pages, code, thoughts, links, files, chat logs whatever defines you as a digital organism and keeps it available across devices and agents without middlemen.
+Recall OS gives you complete control over your digital memory. It records everything that matters: web pages, code, thoughts, links, files, chat logs whatever defines you as a digital organism and keeps it available across devices and agents without middlemen.
 
 No SaaS, no "sync," no data hostage negotiation.
 
@@ -137,6 +137,18 @@ Basically: anything that
 
 No GPU support. No async callbacks. No cloud APIs. Just content → vector → search.
 
+## Complete Local Control with Ollama
+
+Recall OS runs entirely on your machine when you want it to. The system supports **Ollama** for local AI processing, ensuring your data never leaves your device:
+
+- **Local AI Processing**: All AI operations can run through Ollama models on your hardware
+- **Zero External Dependencies**: No cloud APIs required for core functionality  
+- **Privacy by Design**: Your memories stay on your machine, under your control
+- **Offline Capable**: Full functionality without internet connection
+- **Model Flexibility**: Use any Ollama-compatible model for your specific needs
+
+This isn't just "local-first" it's "local-only" when you want it to be.
+
 ## Tooling Already Live
 
 - **Browser Extension**: Captures web content automatically as you browse.
@@ -158,7 +170,7 @@ Everything here is built. Running. Used. No pitch decks or vaporware.
 ## Technical Backbone
 
 * **Storage:** PostgreSQL with pgvector for semantic search.
-* **AI:** Google Gemini API with Ollama fallback.
+* **AI:** Google Gemini API with full Ollama local support for complete privacy.
 * **Embeddings:** text-embedding-004 (768-dimensional vectors).
 * **Frontend:** React with Three.js for 3D visualization.
 * **Extension:** Chrome extension with content script injection.
