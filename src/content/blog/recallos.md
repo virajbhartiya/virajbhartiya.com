@@ -1,6 +1,6 @@
 ---
 title: "Recall OS: Personal Memory Infrastructure"
-description: "What I built for ETHGlobal 2025 a decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
+description: "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
 publishedAt: "2025-10-27"
 tags: ["AI Memory", "Vector Search", "Recall OS", "ETHGlobal"]
 image: "/images/Blog/recallos.png"
@@ -9,60 +9,31 @@ author: "Viraj Bhartiya"
 
 # Recall OS: Personal Memory Infrastructure
 
-_A real-time, trustless, slightly angry memory network built with PostgreSQL, pgvector, and no tolerance for data hostage negotiation._
+A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy.
 
-## Why This Exists
+## Architecture
 
-Everyone's pretending "AI memory" is solved.
-What they really built are **surveillance silos** that remember _for you_, but not _with you_ context locked behind API keys and usage tiers.
-
-Recall OS gives you complete control over your digital memory. It records everything that matters: web pages, code, thoughts, links, files, chat logs whatever defines you as a digital organism and keeps it available across devices and agents without middlemen.
-
-No SaaS, no "sync," no data hostage negotiation.
-
-You own your recall.
-
-## The Architecture (Nothing Hypothetical)
-
-Here's how things actually work:
-
-1. **Browser Extension** captures web content as you browse automatically, silently, persistently.
-2. Each page becomes a **Memory Object** hashed, summarized, and vectorized using Google's text-embedding-004 model.
-3. The object is stored in PostgreSQL with pgvector embeddings and processed through multiple similarity algorithms.
-4. A semantic search engine maps queries to content via cosine similarity with domain-aware adjustments.
-5. Any device or agent can request recall by wallet address pure content addressing, no trust needed.
-
-It's dumb-simple by design. Complexity invites exploits. We don't have room for those.
+1. **Browser Extension** captures web content automatically
+2. Each page becomes a **Memory Object** hashed, summarized, and vectorized using Google's text-embedding-004 model
+3. Objects are stored in PostgreSQL with pgvector embeddings
+4. Semantic search engine maps queries to content via cosine similarity
+5. Any device or agent can request recall by wallet address
 
 ## Memory Enforcement
 
-Data cannot mutate.
-There is no "edit memory" endpoint.
-Updates spawn new hashes. The old ones stay.
+- Data cannot mutate
+- No "edit memory" endpoint
+- Updates spawn new hashes, old ones remain
+- Memory is verifiable, not curated
 
-This isn't nostalgia it's auditability.
+## Search System
 
-Memory should be **verifiable**, not curated.
-If you said something dumb last week, Recall will show it to you in full fidelity.
-No selective erasure. No algorithmic redemption arc.
+- Query hits vector database
+- Similarity scores calculated via pgvector cosine distance
+- Results ranked by blended keyword + semantic scores (60% semantic, 40% keyword)
+- AI answers generated with inline citations
 
-You get the truth, not the version you wish existed.
-
-## The Search System: Brutally Fair
-
-- A query hits the vector database.
-- Similarity scores are calculated via pgvector cosine distance.
-- Results are ranked by blended keyword + semantic scores (60% semantic, 40% keyword).
-- AI answers are generated with inline citations [1], [2].
-- No retry loop for incompetence. Either your query makes sense or you're wasting everyone's electricity.
-
-No staking. No reputation. No social capital. You either found it or didn't.
-
-There is no retry loop for incompetence. Either your content is searchable or you're wasting everyone's electricity.
-
-## Similarity Score Calculation (The Math)
-
-The system uses a **hybrid scoring algorithm** that combines multiple similarity measures:
+## Similarity Score Calculation
 
 ### 1. Cosine Similarity (Primary)
 
@@ -125,82 +96,41 @@ const boostedScore = hybridScore * (1 + coverageRatio * 0.3);
 - **Same Week**: 0.4 + exponential decay
 - **Same Month**: 0.1 + exponential decay
 
-## What It Can Store (Right Now)
-
-This is not a theoretical system. It stores real memories. Today. Examples include:
+## What It Can Store
 
 - Web pages (via browser extension)
 - Manual content (via web client)
 - SDK integrations
 - MCP server connections
 
-Basically: anything that
-
+Requirements:
 - Runs through the API
 - Doesn't rely on external state or timing
 - Can be vectorized and searched
 
-No GPU support. No async callbacks. No cloud APIs. Just content → vector → search.
+## Local Control with Ollama
 
-## Complete Local Control with Ollama
+- **Local AI Processing**: All AI operations can run through Ollama models
+- **Zero External Dependencies**: No cloud APIs required
+- **Privacy by Design**: Data stays on your machine
+- **Offline Capable**: Full functionality without internet
+- **Model Flexibility**: Use any Ollama-compatible model
 
-Recall OS runs entirely on your machine when you want it to. The system supports **Ollama** for local AI processing, ensuring your data never leaves your device:
+## Technical Stack
 
-- **Local AI Processing**: All AI operations can run through Ollama models on your hardware
-- **Zero External Dependencies**: No cloud APIs required for core functionality
-- **Privacy by Design**: Your memories stay on your machine, under your control
-- **Offline Capable**: Full functionality without internet connection
-- **Model Flexibility**: Use any Ollama-compatible model for your specific needs
+- **Storage**: PostgreSQL with pgvector
+- **AI**: Google Gemini API with Ollama local support
+- **Embeddings**: text-embedding-004 (768-dimensional vectors)
+- **Frontend**: React with Three.js for 3D visualization
+- **Extension**: Chrome extension with content script injection
+- **Visualization**: UMAP for latent space projection
 
-This isn't just "local-first" it's "local-only" when you want it to be.
+## Tooling
 
-## Tooling Already Live
-
-- **Browser Extension**: Captures web content automatically as you browse.
-- **Web Client**: React app with 3D memory mesh visualization using UMAP.
-- **API Server**: Express.js with PostgreSQL + pgvector for semantic search.
-- **SDK**: TypeScript client for programmatic access.
-- **MCP Server**: Model Context Protocol integration for AI agents.
-
-Everything here is built. Running. Used. No pitch decks or vaporware.
-
-## Design Philosophy
-
-- No trust, no reputation, no staking-as-a-filter
-- No complex coordination protocols
-- Every memory is independently verifiable by content hash
-- Incentives are tight, minimal, and enforced by logic, not vibe
-- Assume malicious actors exist; remove their influence through architecture, not policing
-
-## Technical Backbone
-
-- **Storage:** PostgreSQL with pgvector for semantic search.
-- **AI:** Google Gemini API with full Ollama local support for complete privacy.
-- **Embeddings:** text-embedding-004 (768-dimensional vectors).
-- **Frontend:** React with Three.js for 3D visualization.
-- **Extension:** Chrome extension with content script injection.
-- **Visualization:** UMAP for latent space projection.
-
-No smart contracts complexity, no on-chain verbosity.
-Just content addressing done right.
-
-## The Ethos
-
-- Memory is a right, not a feature.
-- Context shouldn't require API credits.
-- Truth should outlive convenience.
-- Forgetting should be intentional, not engineered.
-
-This isn't an AI toy or a "productivity tool."
-It's infrastructure for cognition owned, portable, immutable.
-
-## Summary
-
-Recall OS does one thing: captures your digital actions, stores them with vector embeddings, and lets you search them semantically.
-It doesn't ask you to believe in it.
-It shows you the similarity score and dares you to dispute it.
-If you're still clinging to centralized note apps that sync to "the cloud," we get it. We've been there.
-This is what we built to replace that.
-And it's already running.
+- **Browser Extension**: Captures web content automatically
+- **Web Client**: React app with 3D memory mesh visualization
+- **API Server**: Express.js with PostgreSQL + pgvector
+- **SDK**: TypeScript client for programmatic access
+- **MCP Server**: Model Context Protocol integration for AI agents
 
 [View the repository →](https://github.com/virajbhartiya/RecallOS)
