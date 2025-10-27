@@ -1,11 +1,27 @@
 export const projectData = [
   {
+    title: "Recall OS: Personal Memory Infrastructure",
+    description:
+      "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy. Built with PostgreSQL, pgvector, and full Ollama support for local AI processing. Features browser extension, semantic search, 3D visualization, and MCP server integration.",
+    image: "images/Projects/recallos.png",
+    link: "https://github.com/virajbhartiya/RecallOS",
+    tags: ["PostgreSQL", "pgvector", "Ollama", "ETHGlobal"],
+  },
+  {
     title: "Cachly: The Cache Manager",
     description:
       "Cachly is a type-safe, production-ready in-memory cache system for Node.js and TypeScript. It features advanced dependency tracking, intelligent invalidation, TTL, stale-while-revalidate, async operations, event system, statistics, advanced eviction, partitioning, compression, circuit breaker, distributed support, tags, groups, bulk operations, decorators, middleware, CLI tools, and cache hit/miss hooks. Perfect for high-performance applications requiring sophisticated caching strategies.",
     image: "images/Projects/cachly.png",
     link: "https://www.npmjs.com/package/cachly",
     tags: ["TypeScript", "Node.js", "NPM Package"],
+  },
+  {
+    title: "HotVault: Filecoin Hot Storage Solution",
+    description:
+      "Prototype for a data storage drive application that leverages Filecoin's verifiable storage, powered by Proof of Data Possession (PDP), payable with FIL-backed Stablecoin.",
+    image: "images/Projects/hotvault.png",
+    link: "https://github.com/FilOzone/hotvault-demo",
+    tags: ["Filecoin", "Blockchain", "Storage"],
   },
   {
     title: "Structurize: Opensource JSON to structured data",
@@ -152,12 +168,5 @@ export const projectData = [
     link: "https://mapleattendance.github.io/",
     tags: ["Python", "OpenCV", "Firebase"],
   },
-  {
-    title: "HotVault: Filecoin Hot Storage Solution",
-    description:
-      "Prototype for a data storage drive application that leverages Filecoin's verifiable storage, powered by Proof of Data Possession (PDP), payable with FIL-backed Stablecoin.",
-    image: "images/Projects/hotvault.png",
-    link: "https://github.com/FilOzone/hotvault-demo",
-    tags: ["Filecoin", "Blockchain", "Storage"],
-  },
+
 ];
