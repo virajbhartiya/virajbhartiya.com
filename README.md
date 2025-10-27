@@ -21,25 +21,27 @@ It's a website. About me. Built because recruiters kept asking for one and I got
 
 ## Tech Stack (The Stuff That Actually Matters)
 
-| Thing | What I Used | Why |
-|-------|-------------|-----|
-| **Frontend** | React 18, TypeScript | Because vanilla JS is for masochists |
-| **Styling** | Tailwind CSS | Because writing CSS is boring |
-| **Animation** | Lenis, AOS, Spline | Because static is boring |
-| **Build** | Vite | Because Webpack is slow as hell |
-| **Hosting** | Vercel | Because it just works |
+| Thing         | What I Used          | Why                                  |
+| ------------- | -------------------- | ------------------------------------ |
+| **Frontend**  | React 18, TypeScript | Because vanilla JS is for masochists |
+| **Styling**   | Tailwind CSS         | Because writing CSS is boring        |
+| **Animation** | Lenis, AOS, Spline   | Because static is boring             |
+| **Build**     | Vite                 | Because Webpack is slow as hell      |
+| **Hosting**   | Vercel               | Because it just works                |
 
 ---
 
 ## Features (The Cool Shit)
 
 ### What You'll Actually Notice
+
 - Smooth scrolling that doesn't make you nauseous
 - 3D stuff that actually looks good
 - Animations that serve a purpose (not just because I can)
 - Mobile experience that doesn't suck
 
 ### What You Won't Notice (But Should)
+
 - TypeScript everywhere (because runtime errors are for amateurs)
 - Proper accessibility (because not everyone can see)
 - Performance optimization (because slow sites are trash)
@@ -50,6 +52,7 @@ It's a website. About me. Built because recruiters kept asking for one and I got
 ## Getting Started (If You Really Want To)
 
 ### Prerequisites
+
 - Node.js (v18+)
 - npm (or yarn, I don't care)
 - Basic understanding of how computers work
@@ -74,18 +77,19 @@ Open `http://localhost:5173` and there you go.
 
 ### Commands That Actually Work
 
-| Command | What It Does |
-|---------|--------------|
-| `npm run dev` | Starts the dev server (obviously) |
-| `npm run build` | Builds for production |
-| `npm run preview` | Shows you the built version |
-| `npm run lint` | Yells at you for bad code |
+| Command           | What It Does                      |
+| ----------------- | --------------------------------- |
+| `npm run dev`     | Starts the dev server (obviously) |
+| `npm run build`   | Builds for production             |
+| `npm run preview` | Shows you the built version       |
+| `npm run lint`    | Yells at you for bad code         |
 
 ---
 
 ## Deployment
 
 It's on **Vercel** because:
+
 - It's free
 - It works
 - I don't have to think about it
@@ -105,6 +109,7 @@ Want to contribute? Sure, why not.
 5. Hope I'm in a good mood
 
 ### Rules (Because There Have To Be Some)
+
 - Don't make it worse
 - Use TypeScript (seriously)
 - Test your shit

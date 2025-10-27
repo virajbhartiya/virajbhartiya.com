@@ -2,20 +2,19 @@
 title: "Recall OS: Personal Memory Infrastructure"
 description: "What I built for ETHGlobal 2025 a decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
 publishedAt: "2025-10-27"
-tags: ["AI Memory", "Vector Search", "Recall OS", "ETHGlobal"] 
+tags: ["AI Memory", "Vector Search", "Recall OS", "ETHGlobal"]
 image: "/images/Blog/recallos.png"
 author: "Viraj Bhartiya"
-
 ---
 
 # Recall OS: Personal Memory Infrastructure
 
-*A real-time, trustless, slightly angry memory network built with PostgreSQL, pgvector, and no tolerance for data hostage negotiation.*
+_A real-time, trustless, slightly angry memory network built with PostgreSQL, pgvector, and no tolerance for data hostage negotiation._
 
 ## Why This Exists
 
 Everyone's pretending "AI memory" is solved.
-What they really built are **surveillance silos** that remember *for you*, but not *with you* context locked behind API keys and usage tiers.
+What they really built are **surveillance silos** that remember _for you_, but not _with you_ context locked behind API keys and usage tiers.
 
 Recall OS gives you complete control over your digital memory. It records everything that matters: web pages, code, thoughts, links, files, chat logs whatever defines you as a digital organism and keeps it available across devices and agents without middlemen.
 
@@ -66,36 +65,39 @@ There is no retry loop for incompetence. Either your content is searchable or yo
 The system uses a **hybrid scoring algorithm** that combines multiple similarity measures:
 
 ### 1. Cosine Similarity (Primary)
+
 ```typescript
 cosineSimilarity(vecA: number[], vecB: number[]): number {
   let dotProduct = 0;
   let normA = 0;
   let normB = 0;
-  
+
   for (let i = 0; i < vecA.length; i++) {
     dotProduct += vecA[i] * vecB[i];
     normA += vecA[i] * vecA[i];
     normB += vecB[i] * vecB[i];
   }
-  
+
   return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
 }
 ```
 
 ### 2. Domain-Aware Adjustments
+
 - **Penalty**: Meet ↔ GitHub cross-links get -0.4 similarity unless very high (>0.7)
 - **Boost**: GitHub ↔ GitHub Filecoin-related items get +0.2 similarity
 - **URL Matching**: Same domain gets +0.1 similarity boost
 
 ### 3. Keyword Matching (Secondary)
+
 ```typescript
 // Token-based matching with word boundaries
 for (const token of queryTokens) {
-  const tokenRegex = new RegExp(`\\b${token}\\b`, 'gi');
-  
-  if (tokenRegex.test(title)) keywordScore += 0.5;      // Title weight
-  if (tokenRegex.test(summary)) keywordScore += 0.3;    // Summary weight  
-  if (tokenRegex.test(content)) keywordScore += 0.2;    // Content weight
+  const tokenRegex = new RegExp(`\\b${token}\\b`, "gi");
+
+  if (tokenRegex.test(title)) keywordScore += 0.5; // Title weight
+  if (tokenRegex.test(summary)) keywordScore += 0.3; // Summary weight
+  if (tokenRegex.test(content)) keywordScore += 0.2; // Content weight
 }
 
 // Normalize by query token count
@@ -103,20 +105,23 @@ keywordScore = keywordScore / queryTokens.length;
 ```
 
 ### 4. Final Hybrid Score
+
 ```typescript
-const hybridScore = (semanticScore * 0.6) + (keywordScore * 0.4);
-const boostedScore = hybridScore * (1 + (coverageRatio * 0.3));
+const hybridScore = semanticScore * 0.6 + keywordScore * 0.4;
+const boostedScore = hybridScore * (1 + coverageRatio * 0.3);
 ```
 
 ### 5. Topical Relations (Metadata-Based)
+
 - **Topic Overlap**: 40% weight using Jaccard similarity
 - **Category Overlap**: 30% weight
 - **Key Points Overlap**: 20% weight
 - **Searchable Terms**: 10% weight
 
 ### 6. Temporal Relations (Time-Based)
+
 - **Same Hour**: 0.9 + exponential decay
-- **Same Day**: 0.7 + exponential decay  
+- **Same Day**: 0.7 + exponential decay
 - **Same Week**: 0.4 + exponential decay
 - **Same Month**: 0.1 + exponential decay
 
@@ -142,7 +147,7 @@ No GPU support. No async callbacks. No cloud APIs. Just content → vector → s
 Recall OS runs entirely on your machine when you want it to. The system supports **Ollama** for local AI processing, ensuring your data never leaves your device:
 
 - **Local AI Processing**: All AI operations can run through Ollama models on your hardware
-- **Zero External Dependencies**: No cloud APIs required for core functionality  
+- **Zero External Dependencies**: No cloud APIs required for core functionality
 - **Privacy by Design**: Your memories stay on your machine, under your control
 - **Offline Capable**: Full functionality without internet connection
 - **Model Flexibility**: Use any Ollama-compatible model for your specific needs
@@ -169,22 +174,22 @@ Everything here is built. Running. Used. No pitch decks or vaporware.
 
 ## Technical Backbone
 
-* **Storage:** PostgreSQL with pgvector for semantic search.
-* **AI:** Google Gemini API with full Ollama local support for complete privacy.
-* **Embeddings:** text-embedding-004 (768-dimensional vectors).
-* **Frontend:** React with Three.js for 3D visualization.
-* **Extension:** Chrome extension with content script injection.
-* **Visualization:** UMAP for latent space projection.
+- **Storage:** PostgreSQL with pgvector for semantic search.
+- **AI:** Google Gemini API with full Ollama local support for complete privacy.
+- **Embeddings:** text-embedding-004 (768-dimensional vectors).
+- **Frontend:** React with Three.js for 3D visualization.
+- **Extension:** Chrome extension with content script injection.
+- **Visualization:** UMAP for latent space projection.
 
 No smart contracts complexity, no on-chain verbosity.
 Just content addressing done right.
 
 ## The Ethos
 
-* Memory is a right, not a feature.
-* Context shouldn't require API credits.
-* Truth should outlive convenience.
-* Forgetting should be intentional, not engineered.
+- Memory is a right, not a feature.
+- Context shouldn't require API credits.
+- Truth should outlive convenience.
+- Forgetting should be intentional, not engineered.
 
 This isn't an AI toy or a "productivity tool."
 It's infrastructure for cognition owned, portable, immutable.

@@ -168,5 +168,4 @@ export const projectData = [
     link: "https://mapleattendance.github.io/",
     tags: ["Python", "OpenCV", "Firebase"],
   },
-
 ];
