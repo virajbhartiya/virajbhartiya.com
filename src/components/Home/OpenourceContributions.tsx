@@ -40,6 +40,13 @@ const organizations: Organization[] = [
     contributions: "Forest Client",
   },
   {
+    name: "Zed Industries",
+    logo: "https://github.com/zed-industries.png",
+    url: "https://github.com/zed-industries",
+    description: "High-Performance Code Editor",
+    contributions: "Core Editor Development",
+  },
+  {
     name: "Bacalhau",
     logo: "https://github.com/bacalhau-project.png",
     url: "https://github.com/bacalhau-project",
