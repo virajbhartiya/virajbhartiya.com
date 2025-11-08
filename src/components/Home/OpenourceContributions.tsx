@@ -47,11 +47,11 @@ const organizations: Organization[] = [
     contributions: "Core Editor Development",
   },
   {
-    name: "Bacalhau",
-    logo: "https://github.com/bacalhau-project.png",
-    url: "https://github.com/bacalhau-project",
-    description: "Decentralized Compute Framework",
-    contributions: "Core Systems",
+    name: "Blender",
+    logo: "https://github.com/blender.png",
+    url: "https://projects.blender.org/blender/blender",
+    description: "Free and Open Source 3D Creation Suite",
+    contributions: "3D Engine Development",
   },
   {
     name: "Ethereum",
@@ -88,21 +88,6 @@ const organizations: Organization[] = [
     description: "Open Source Video Tools",
     contributions: "Core Development",
   },
-  {
-    name: "Polkadot EVM",
-    logo: "https://github.com/polkadot-evm.png",
-    url: "https://github.com/polkadot-evm",
-    description: "EVM on Substrate Framework",
-    contributions: "Protocol Integration",
-  },
-  {
-    name: "Moonbeam",
-    logo: "https://github.com/moonbeam-foundation.png",
-    url: "https://github.com/moonbeam-foundation",
-    description: "Ethereum-Compatible Network",
-    contributions: "Smart Contract Platform",
-  },
-
   {
     name: "KJSCE CodeCell",
     logo: "https://github.com/kjsce-codecell.png",
