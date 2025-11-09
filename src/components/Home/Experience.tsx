@@ -27,7 +27,7 @@ const experiences = [
     badge: "Oct 2024 - Present",
   },
   {
-    title: "Web Developer",
+    title: "Web and ML Lead",
     company: "InterCollegiate Informatic and Competitive Programming Camp",
     description: [
       "Designed and developed the official website for the InterCollegiate Informatic and Competitive Programming Camp, India's largest competitive programming camp, involving 30+ colleges, including IITs, NITs, and BITS.",
