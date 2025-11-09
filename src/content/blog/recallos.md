@@ -104,6 +104,7 @@ const boostedScore = hybridScore * (1 + coverageRatio * 0.3);
 - MCP server connections
 
 Requirements:
+
 - Runs through the API
 - Doesn't rely on external state or timing
 - Can be vectorized and searched
