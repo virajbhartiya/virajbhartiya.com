@@ -8,7 +8,7 @@ import { Experience } from "@/components/Home/Experience";
 import { HackathonWins } from "@/components/Home/HackathonWins";
 // import { DrawPad } from "@/components/Home/DrawPad";
 import { ContributionGraph } from "@/components/Home/ContributionGraph";
-import { OpenSourceContributions } from "@/components/Home/OpenourceContributions";
+import { OpenSourceContributions } from "@/components/Home/OpenSourceContributions";
 import { BlogPreview } from "@/components/Home/BlogPreview";
 
 export const Home = () => {

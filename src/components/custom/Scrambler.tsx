@@ -14,7 +14,7 @@ const Scrambler = ({ text, duration }: { text: string; duration?: number }) => {
   });
 
   return (
-    <a ref={ref} onMouseOver={replay} onFocus={replay} className="proto" />
+    <span ref={ref} onMouseOver={replay} onFocus={replay} className="proto" />
   );
 };
 

@@ -1,4 +1,4 @@
-import { DownloadCVMarquee } from "../Marquees/downloadCVMarquee";
+import { DownloadCVMarquee } from "../Marquees/DownloadCVMarquee";
 import { Tag } from "../custom/Spline/Tag";
 import { Arrow } from "../svg/arrow";
 

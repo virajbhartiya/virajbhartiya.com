@@ -22,7 +22,7 @@ export function ContactMarquee() {
   ];
 
   return (
-    <a>
+    <div>
       <div className="w-full h-0.5 bg-[var(--accent)]" />
 
       <div className="relative overflow-hidden ">
@@ -32,6 +32,6 @@ export function ContactMarquee() {
       </div>
 
       <div className="w-full h-0.5 bg-[var(--accent)]" />
-    </a>
+    </div>
   );
 }
