@@ -1,4 +1,3 @@
-import UseLenis from "@/Hook/useLenis";
 import { Home } from "@/pages/Home";
 import { Route, Routes } from "react-router-dom";
 import { MeetRedirect } from "@/pages/MeetRedirect";
@@ -12,6 +11,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/meet" element={<MeetRedirect />} />
       <Route path="/cv" element={<CVRedirect />} />
+      <Route path="/resume" element={<CVRedirect />} />
       <Route
         path="/github"
         element={<SocialRedirect url="https://github.com/virajbhartiya" />}
@@ -34,15 +34,7 @@ const AppRoutes = () => {
       />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
-      <Route
-        path="*"
-        element={
-          <>
-            <UseLenis />
-            <Home />
-          </>
-        }
-      />
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 };
