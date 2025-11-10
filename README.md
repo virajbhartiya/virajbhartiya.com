@@ -25,7 +25,7 @@ It's a website. About me. Built because recruiters kept asking for one and I got
 | ------------- | -------------------- | ------------------------------------ |
 | **Frontend**  | React 18, TypeScript | Because vanilla JS is for masochists |
 | **Styling**   | Tailwind CSS         | Because writing CSS is boring        |
-| **Animation** | Lenis, AOS, Spline   | Because static is boring             |
+| **Animation** | AOS, Spline          | Because static is boring             |
 | **Build**     | Vite                 | Because Webpack is slow as hell      |
 | **Hosting**   | Vercel               | Because it just works                |
 
