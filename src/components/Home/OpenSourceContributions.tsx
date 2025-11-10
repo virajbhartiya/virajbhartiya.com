@@ -209,4 +209,3 @@ export function OpenSourceContributions() {
     </section>
   );
 }
-
