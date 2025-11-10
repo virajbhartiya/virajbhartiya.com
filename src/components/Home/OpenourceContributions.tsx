@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { ExternalLink, Code2, GitFork } from "lucide-react";
 
 type Organization = {
@@ -111,11 +110,7 @@ export function OpenSourceContributions() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-16">
             <div className="flex w-full flex-col gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="flex items-center justify-between"
-              >
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-8">
                   <div className="relative">
                     <Code2 className="h-14 w-14 text-[var(--accent)]" />
@@ -132,14 +127,9 @@ export function OpenSourceContributions() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="relative border-l-2 border-[var(--accent)] pl-6"
-              >
+              <div className="relative border-l-2 border-[var(--accent)] pl-6">
                 <div className="absolute -left-[2px] top-0 h-12 w-[2px] animate-pulse bg-[var(--accent)]" />
                 <div className="space-y-4">
                   <p className="font-mono text-sm tracking-tight text-muted-foreground/90 flex items-center gap-3">
@@ -155,18 +145,14 @@ export function OpenSourceContributions() {
                     Building in Public, for the public
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-8 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {organizations.map((org, index) => (
-              <motion.div
+            {organizations.map((org) => (
+              <div
                 key={org.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
                 className="group h-full"
               >
                 <a
@@ -188,6 +174,8 @@ export function OpenSourceContributions() {
                           src={org.logo}
                           alt={`${org.name} - ${org.description}`}
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          loading="lazy"
+                          decoding="async"
                         />
                         <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
                       </div>
@@ -216,7 +204,7 @@ export function OpenSourceContributions() {
                     </div>
                   </div>
                 </a>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

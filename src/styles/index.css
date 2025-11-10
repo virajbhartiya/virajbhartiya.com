@@ -114,7 +114,7 @@ html.lenis body {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 ::-webkit-scrollbar {
@@ -185,8 +185,10 @@ html {
   }
 }
 
-.rotate-animation {
-  animation: rotate 4s linear infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .rotate-animation {
+    animation: rotate 4s linear infinite;
+  }
 }
 
 @keyframes rotate {

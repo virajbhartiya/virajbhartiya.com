@@ -68,6 +68,9 @@ export const Project = ({
                 src={project.image}
                 alt={`${project.title} - ${project.description.substring(0, 100)}...`}
                 className="rounded-lg w-full border border-[var(--accent)] bg-black"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
             </div>
             <div className="bg-black p-4 rounded m-2 w-3/12 right-0 absolute border border-[var(--accent)]">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import AppRoutes from "@/router/routes";
@@ -7,7 +8,18 @@ import "aos/dist/aos.css";
 import { Analytics } from "@vercel/analytics/react";
 
 function App() {
-  AOS.init();
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    AOS.init({
+      once: true,
+      duration: 600,
+      offset: 40,
+      mirror: false,
+      disable: prefersReducedMotion || window.innerWidth < 768,
+    });
+  }, []);
   // const isMobileOrTablet = () => {
   //   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
   //     navigator.userAgent,

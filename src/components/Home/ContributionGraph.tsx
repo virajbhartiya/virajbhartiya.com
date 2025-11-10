@@ -1,5 +1,7 @@
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { Arrow } from "../svg/arrow";
-import GitHubCalendar from "react-github-calendar";
+
+const GitHubCalendar = lazy(() => import("react-github-calendar"));
 
 const accent = "#00efa6";
 
@@ -9,6 +11,40 @@ const theme = {
 };
 
 export const ContributionGraph = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element || isVisible) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isVisible]);
+
+  const placeholder = (
+    <div className="flex h-64 min-w-[800px] items-center justify-center text-xs uppercase tracking-wide text-muted-foreground/60">
+      Loading activity...
+    </div>
+  );
+
   return (
     <section
       className="relative w-full py-20 px-4 sm:px-6 lg:px-8"
@@ -34,20 +70,28 @@ export const ContributionGraph = () => {
           </div>
           <div className="rounded-3xl border border-[var(--accent)]/20 bg-background/50 backdrop-blur-sm shadow-xl w-full p-8">
             <div className="w-full overflow-x-auto">
-              <GitHubCalendar
-                username="virajbhartiya"
-                blockSize={16}
-                blockRadius={4}
-                fontSize={14}
-                theme={theme}
-                hideTotalCount={true}
-                hideColorLegend={false}
-                style={{
-                  width: "100%",
-                  display: "block",
-                  minWidth: "800px",
-                }}
-              />
+              <div ref={containerRef}>
+                {isVisible ? (
+                  <Suspense fallback={placeholder}>
+                    <GitHubCalendar
+                      username="virajbhartiya"
+                      blockSize={16}
+                      blockRadius={4}
+                      fontSize={14}
+                      theme={theme}
+                      hideTotalCount={true}
+                      hideColorLegend={false}
+                      style={{
+                        width: "100%",
+                        display: "block",
+                        minWidth: "800px",
+                      }}
+                    />
+                  </Suspense>
+                ) : (
+                  placeholder
+                )}
+              </div>
             </div>
           </div>
         </div>

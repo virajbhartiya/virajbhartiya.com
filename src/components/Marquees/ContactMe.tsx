@@ -26,7 +26,7 @@ export function ContactMarquee() {
       <div className="w-full h-0.5 bg-[var(--accent)]" />
 
       <div className="relative overflow-hidden ">
-        <Marquee pauseOnHover={true} speed={150}>
+        <Marquee pauseOnHover={true} speed={60} gradient={false}>
           {elements.map((element) => element)}
         </Marquee>
       </div>
