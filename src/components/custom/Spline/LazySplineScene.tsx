@@ -48,12 +48,11 @@ export const LazySplineScene = ({
     };
   }, [shouldLoad]);
 
-  const fallbackElement =
-    fallback ?? (
-      <div className="flex h-full w-full items-center justify-center text-xs uppercase tracking-wide text-muted-foreground/60">
-        Loading scene...
-      </div>
-    );
+  const fallbackElement = fallback ?? (
+    <div className="flex h-full w-full items-center justify-center text-xs uppercase tracking-wide text-muted-foreground/60">
+      Loading scene...
+    </div>
+  );
 
   return (
     <div ref={containerRef} className={className}>
@@ -67,4 +66,3 @@ export const LazySplineScene = ({
     </div>
   );
 };
-
