@@ -1,84 +1,53 @@
-import { useState } from "react";
 import { IProject } from "@/types/interface";
 import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight } from "lucide-react";
 
-export const Project = ({
-  project,
-  index,
-}: {
+interface ProjectProps {
   project: IProject;
   index: number;
-}) => {
-  const [hovered, setHovered] = useState(false);
+}
 
-  const isMobileOrTablet = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    );
-  };
-
-  const handleMouseEnter = () => {
-    if (!isMobileOrTablet()) {
-      setHovered(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobileOrTablet()) {
-      setHovered(false);
-    }
-  };
+export const Project = ({ project, index }: ProjectProps) => {
+  const indexLabel = (index + 1).toString().padStart(2, "0");
 
   return (
-    <a href={project.link} target="_blank" rel="noreferrer">
-      <div
-        className={`border my-4 p-4 rounded ${hovered ? "border-[var(--accent)] " : ""}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ position: "relative" }}
-      >
-        <div
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          className="w-full justify-between flex flex-col md:flex-row gap-4"
-        >
-          <div className={`flex flex-row items-center gap-4`}>
-            <div className={`proto ${hovered ? "text-white" : "accent"}`}>
-              [{index}]
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`Open ${project.title}`}
+      className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+    >
+      <article className="rounded-[24px] border border-white/10 bg-black/30 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-white/5">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="proto text-xs uppercase tracking-[0.4em] text-white/60">
+                [{indexLabel}]
+              </span>
+              <div>
+                <p className="proto text-[0.65rem] uppercase tracking-[0.35em] text-white/45">
+                  Proof point
+                </p>
+                <h3 className="mt-1 text-2xl font-light leading-tight">{project.title}</h3>
+              </div>
             </div>
-
-            <p className="text-2xl ">{project.title}</p>
+            <ArrowUpRight className="h-6 w-6 text-[var(--accent)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
           </div>
-          <div className="flex gap-2">
+          <p className="text-sm text-white/70">{project.description}</p>
+          <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <Badge
-                variant={"outline"}
-                className={`font-normal proto `}
                 key={tag}
+                variant="outline"
+                className="font-normal proto text-[0.65rem] uppercase tracking-wide"
               >
                 {tag}
               </Badge>
             ))}
           </div>
         </div>
-        {hovered && (
-          <div className="absolute z-10 w-full justify-between flex">
-            <div className="absolute z-10 max-w-[30vw] max-h-[10vh] ">
-              <img
-                src={project.image}
-                alt={`${project.title} - ${project.description.substring(0, 100)}...`}
-                className="rounded-lg w-full border border-[var(--accent)] bg-black"
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
-              />
-            </div>
-            <div className="bg-black p-4 rounded m-2 w-3/12 right-0 absolute border border-[var(--accent)]">
-              <p>{project.description}</p>
-            </div>
-          </div>
-        )}
-      </div>
+      </article>
     </a>
   );
 };

@@ -1,32 +1,28 @@
 import { Project } from "@/components/Home/Project";
-import Scrambler from "@/components/custom/Scrambler";
-import { Badge } from "@/components/ui/badge";
 import { projectData } from "@/data/projectData";
 
 export const Projects = () => {
   return (
-    <section aria-label="Projects Portfolio">
-      <h2 className=" mt-24 md:mt-auto text-center text-2xl font-thin accent proto">
-        Things I&apos;ve Built
-      </h2>
-      {projectData.map((project, index) => (
-        <Project key={index} project={project} index={index} />
-      ))}
-      <div className="border my-4 p-4 rounded steam relative">
-        <div className="w-full justify-between flex flex-col md:flex-row gap-4">
-          <div className={`flex flex-row items-center gap-4`}>
-            <div className={"accent"}>[ {projectData.length} ]</div>
+    <section
+      aria-label="Projects Portfolio"
+      className="mt-24 space-y-10 md:mt-32"
+      id="projects"
+    >
+      <div className="space-y-4 text-center md:text-left">
+        <h2 className="gradient proto text-4xl font-light tracking-tight drop-shadow-[0_8px_20px_rgba(0,239,166,0.35)] md:text-5xl">
+          Proof of Work
+        </h2>
+        <div className="mx-auto h-0.5 w-20 bg-[var(--accent)]/60 md:mx-0" />
+        <p className="mx-auto max-w-2xl text-sm text-white/70 md:mx-0 md:text-base">
+          Minimal snapshots of shipped things—one design system across stacks, surfaces, and
+          problem sets.
+        </p>
+      </div>
 
-            <p className="text-2xl">
-              <Scrambler text={"Easter eggthings"} />
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Badge variant={"outline"} className={`font-normal accent proto`}>
-              Coming Soon
-            </Badge>
-          </div>
-        </div>
+      <div className="space-y-4">
+        {projectData.map((project, index) => (
+          <Project key={project.title} project={project} index={index} />
+        ))}
       </div>
     </section>
   );
