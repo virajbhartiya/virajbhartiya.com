@@ -14,8 +14,8 @@ export const Projects = () => {
         </h2>
         <div className="mx-auto h-0.5 w-20 bg-[var(--accent)]/60 md:mx-0" />
         <p className="mx-auto max-w-2xl text-sm text-white/70 md:mx-0 md:text-base">
-          Minimal snapshots of shipped things—one design system across stacks, surfaces, and
-          problem sets.
+          Minimal snapshots of shipped things—one design system across stacks,
+          surfaces, and problem sets.
         </p>
       </div>
 

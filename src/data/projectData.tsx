@@ -8,6 +8,14 @@ export const projectData = [
     tags: ["PostgreSQL", "pgvector", "Ollama", "ETHGlobal"],
   },
   {
+    title: "Rail Infrastructure Optimization",
+    description:
+      "Built a rail infrastructure optimization algorithm focused on maximizing train throughput per track section.",
+    image: "images/Projects/iris.png",
+    link: "https://github.com/virajbhartiya/team-nyx-sih-2025",
+    tags: ["Optimization", "Operations Research"],
+  },
+  {
     title: "Cachly: The Cache Manager",
     description:
       "Cachly is a type-safe, production-ready in-memory cache system for Node.js and TypeScript. It features advanced dependency tracking, intelligent invalidation, TTL, stale-while-revalidate, async operations, event system, statistics, advanced eviction, partitioning, compression, circuit breaker, distributed support, tags, groups, bulk operations, decorators, middleware, CLI tools, and cache hit/miss hooks. Perfect for high-performance applications requiring sophisticated caching strategies.",

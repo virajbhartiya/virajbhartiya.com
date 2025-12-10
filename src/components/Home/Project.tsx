@@ -29,7 +29,9 @@ export const Project = ({ project, index }: ProjectProps) => {
                 <p className="proto text-[0.65rem] uppercase tracking-[0.35em] text-white/45">
                   Proof point
                 </p>
-                <h3 className="mt-1 text-2xl font-light leading-tight">{project.title}</h3>
+                <h3 className="mt-1 text-2xl font-light leading-tight">
+                  {project.title}
+                </h3>
               </div>
             </div>
             <ArrowUpRight className="h-6 w-6 text-[var(--accent)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
