@@ -12,7 +12,7 @@ export const projectData = [
     description:
       "Built a rail infrastructure optimization algorithm focused on maximizing train throughput per track section.",
     image: "images/Projects/iris.png",
-    link: "https://github.com/virajbhartiya/team-nyx-sih-2025",
+    link: "https://github.com/virajbhartiya/sih-2025-team-nyx",
     tags: ["Optimization", "Operations Research"],
   },
   {
