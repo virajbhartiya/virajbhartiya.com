@@ -1,13 +1,13 @@
 ---
-title: "Recall OS: Personal Memory Infrastructure"
+title: "Cognia: Personal Memory Infrastructure"
 description: "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
 publishedAt: "2025-10-27"
-tags: ["AI Memory", "Vector Search", "Recall OS", "ETHGlobal"]
+tags: ["AI Memory", "Vector Search"]
 image: "/images/Blog/recallos.png"
 author: "Viraj Bhartiya"
 ---
 
-# Recall OS: Personal Memory Infrastructure
+# Cognia: Personal Memory Infrastructure
 
 A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy.
 
@@ -134,4 +134,4 @@ Requirements:
 - **SDK**: TypeScript client for programmatic access
 - **MCP Server**: Model Context Protocol integration for AI agents
 
-[View the repository →](https://github.com/virajbhartiya/RecallOS)
+[View the repository →](https://github.com/cogniahq/cognia)

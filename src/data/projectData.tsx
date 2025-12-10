@@ -1,10 +1,10 @@
 export const projectData = [
   {
-    title: "Recall OS: Personal Memory Infrastructure",
+    title: "Cognia: Personal Memory Infrastructure",
     description:
       "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy. Built with PostgreSQL, pgvector, and full Ollama support for local AI processing. Features browser extension, semantic search, 3D visualization, and MCP server integration.",
     image: "images/Projects/recallos.png",
-    link: "https://github.com/virajbhartiya/RecallOS",
+    link: "https://github.com/cogniahq/cognia",
     tags: ["PostgreSQL", "pgvector", "Ollama", "ETHGlobal"],
   },
   {
