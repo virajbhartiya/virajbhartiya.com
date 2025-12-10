@@ -18,7 +18,7 @@ const hackathonWins = [
   {
     title: "Prakalpa 2025",
     project: "Parity Protocol",
-    award: "Best Software Track Winner",
+    award: "Software Track Winner",
     description:
       "National-level engineering project competition. Presented Parity Protocol, a decentralized compute execution network; awarded best software track project.",
     year: "2025",
