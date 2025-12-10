@@ -31,6 +31,14 @@ const hackathonWins = [
       "Demoed HotVault, a PDP-based hot storage client on Filecoin. Showcased fast retrievals, encrypted chunking, and sync pipeline with proof verification.",
     year: "2025",
   },
+  {
+    title: "SIH 2025",
+    project: "Rail Infrastructure Optimization",
+    award: "Winner",
+    description:
+      "Built a rail infrastructure optimization algorithm focused on maximizing train throughput per track section for Ministry of Railways.",
+    year: "2025",
+  },
 ];
 
 export const HackathonWins = () => {
