@@ -32,7 +32,7 @@ const hackathonWins = [
     year: "2025",
   },
   {
-    title: "SIH 2025",
+    title: "Smart India Hackathon 2025",
     project: "Rail Infrastructure Optimization",
     award: "Winner",
     description:
