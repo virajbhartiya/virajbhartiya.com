@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState, lazy, Suspense } from "react";
-import { Arrow } from "../svg/arrow";
+import { AsciiDivider, AsciiSpinner } from "@/components/ascii";
 
 const GitHubCalendar = lazy(() => import("react-github-calendar"));
 
 const accent = "#00efa6";
 
 const theme = {
-  light: ["#23272f", accent + "33", accent + "66", accent + "99", accent],
-  dark: ["#18181b", accent + "33", accent + "66", accent + "99", accent],
+  light: ["#0a0a0a", accent + "33", accent + "66", accent + "99", accent],
+  dark: ["#0a0a0a", accent + "33", accent + "66", accent + "99", accent],
 };
 
 export const ContributionGraph = () => {
@@ -40,58 +40,66 @@ export const ContributionGraph = () => {
   }, [isVisible]);
 
   const placeholder = (
-    <div className="flex h-64 min-w-[800px] items-center justify-center text-xs uppercase tracking-wide text-muted-foreground/60">
-      Loading activity...
+    <div className="flex h-48 items-center justify-center font-mono text-xs text-white/40">
+      <AsciiSpinner size="md" />
+      <span className="ml-3">Loading...</span>
     </div>
   );
 
   return (
     <section
-      className="relative w-full py-20 px-4 sm:px-6 lg:px-8"
+      className="mt-24 md:mt-32 px-4"
       aria-label="GitHub Contribution Activity"
     >
-      <div className="absolute -right-4 -top-4 h-32 w-32 rotate-12 bg-[var(--accent)]/10 blur-3xl" />
-      <div className="absolute -left-4 bottom-4 h-32 w-32 -rotate-12 bg-[var(--accent)]/5 blur-3xl" />
-      <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 bg-[var(--accent)]/5 blur-3xl" />
-      <div className="relative w-full max-w-6xl mx-auto">
-        <div className="w-full">
-          <div
-            className="w-full flex justify-end pb-12"
-            style={{ transform: "rotate(4deg)" }}
-          >
-            <div
-              style={{
-                transform: "rotateX(0deg) rotateY(180deg) rotateZ(10Deg)",
-              }}
-            >
-              <Arrow />
-            </div>
-            <p className="accent proto ml-3 text-lg">THE GITHUB FLEX</p>
-          </div>
-          <div className="rounded-3xl border border-[var(--accent)]/20 bg-background/50 backdrop-blur-sm shadow-xl w-full p-8">
-            <div className="w-full overflow-x-auto">
-              <div ref={containerRef}>
-                {isVisible ? (
-                  <Suspense fallback={placeholder}>
-                    <GitHubCalendar
-                      username="virajbhartiya"
-                      blockSize={16}
-                      blockRadius={4}
-                      fontSize={14}
-                      theme={theme}
-                      hideTotalCount={true}
-                      hideColorLegend={false}
-                      style={{
-                        width: "100%",
-                        display: "block",
-                        minWidth: "800px",
-                      }}
-                    />
-                  </Suspense>
-                ) : (
-                  placeholder
-                )}
-              </div>
+      {/* Section Header */}
+      <div className="space-y-4 mb-12">
+        <div className="flex items-center gap-4 font-mono">
+          <span className="text-[var(--accent)] text-xs">{">>>"}</span>
+          <h2 className="text-2xl md:text-3xl text-white font-light tracking-wide">
+            GITHUB ACTIVITY
+          </h2>
+          <span className="hidden md:inline text-white/20 text-xs flex-1 overflow-hidden whitespace-nowrap">
+            {"─".repeat(40)}
+          </span>
+        </div>
+        <p className="font-mono text-xs text-white/50 max-w-2xl leading-relaxed">
+          Contribution activity visualization
+        </p>
+      </div>
+
+      <AsciiDivider variant="dashed" className="mb-8" />
+
+      {/* Calendar Container */}
+      <div className="relative max-w-5xl mx-auto">
+        <div className="relative border border-white/10 bg-black/40 backdrop-blur-sm p-6 md:p-8">
+          {/* Corner decorations */}
+          <span className="absolute -top-[1px] -left-[1px] font-mono text-[var(--accent)] text-[8px]">+</span>
+          <span className="absolute -top-[1px] -right-[1px] font-mono text-[var(--accent)] text-[8px]">+</span>
+          <span className="absolute -bottom-[1px] -left-[1px] font-mono text-[var(--accent)] text-[8px]">+</span>
+          <span className="absolute -bottom-[1px] -right-[1px] font-mono text-[var(--accent)] text-[8px]">+</span>
+
+          {/* Calendar */}
+          <div className="w-full overflow-x-auto">
+            <div ref={containerRef} className="min-w-[700px]">
+              {isVisible ? (
+                <Suspense fallback={placeholder}>
+                  <GitHubCalendar
+                    username="virajbhartiya"
+                    blockSize={12}
+                    blockRadius={2}
+                    fontSize={11}
+                    theme={theme}
+                    hideTotalCount={true}
+                    hideColorLegend={false}
+                    style={{
+                      width: "100%",
+                      display: "block",
+                    }}
+                  />
+                </Suspense>
+              ) : (
+                placeholder
+              )}
             </div>
           </div>
         </div>

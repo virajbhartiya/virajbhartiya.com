@@ -1,3 +1,5 @@
+import { AsciiDivider } from "@/components/ascii";
+
 const experiences = [
   {
     title: "Open Source Engineer",
@@ -59,36 +61,85 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section aria-label="Professional Experience">
-      <h2 className="mt-24 md:mt-auto text-center text-3xl font-light accent proto">
-        Experience
-      </h2>
-      <div className="relative pl-12 mt-8">
-        <div className="absolute top-0 left-6 w-1 bg-[var(--accent)] h-full"></div>
-        {experiences.map((experience, index) => (
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            key={index}
-            className="relative mb-16 flex items-start"
-          >
-            <div className="flex flex-col md:flex-row gap-8 relative w-full">
-              <div className="flex-shrink-0 md:w-1/4">
-                <p className="text-2xl font-semibold accent proto">
-                  {experience.title}
-                </p>
-                <p className="text-lg text-gray-400">{experience.company}</p>
+    <section aria-label="Professional Experience" className="mt-24 md:mt-32 px-4">
+      {/* Section Header */}
+      <div className="space-y-4 mb-12">
+        <div className="flex items-center gap-4 font-mono">
+          <span className="text-[var(--accent)] text-xs">{">>>"}</span>
+          <h2 className="text-2xl md:text-3xl text-white font-light tracking-wide">
+            EXPERIENCE
+          </h2>
+          <span className="hidden md:inline text-white/20 text-xs flex-1 overflow-hidden whitespace-nowrap">
+            {"─".repeat(40)}
+          </span>
+        </div>
+      </div>
+
+      <AsciiDivider variant="dashed" className="mb-8" />
+
+      {/* Timeline */}
+      <div className="relative">
+        {/* Vertical line */}
+        <div className="absolute left-0 md:left-[200px] top-0 bottom-0 w-px bg-white/10" />
+        <div className="absolute left-0 md:left-[200px] top-0 w-px h-16 bg-gradient-to-b from-[var(--accent)] to-transparent" />
+
+        {/* Experience items */}
+        <div className="space-y-8">
+          {experiences.map((experience, index) => (
+            <div
+              key={index}
+              className="relative pl-8 md:pl-0 md:grid md:grid-cols-[200px_1fr] gap-8"
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-0 md:left-[200px] top-2 w-2 h-2 -translate-x-[3px] bg-black border border-[var(--accent)] z-10" />
+
+              {/* Date column */}
+              <div className="hidden md:block text-right pr-8">
+                <span className="font-mono text-xs text-[var(--accent)]">
+                  {experience.badge}
+                </span>
               </div>
-              <div className="flex-grow md:w-3/4">
-                {experience.description.map((desc, descIndex) => (
-                  <p key={descIndex} className="text-base text-gray-300 mt-2">
-                    {desc}
+
+              {/* Content */}
+              <div className="group relative border border-white/10 bg-black/40 backdrop-blur-sm p-6 hover:border-[var(--accent)]/30 transition-colors card-hover">
+                {/* Corner decorations */}
+                <span className="absolute -top-[1px] -left-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+                <span className="absolute -top-[1px] -right-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+                <span className="absolute -bottom-[1px] -left-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+                <span className="absolute -bottom-[1px] -right-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+
+                {/* Mobile date */}
+                <div className="md:hidden font-mono text-xs text-[var(--accent)] mb-2">
+                  {experience.badge}
+                </div>
+
+                {/* Header */}
+                <div className="mb-4">
+                  <h3 className="font-mono text-lg text-white">
+                    {experience.title}
+                  </h3>
+                  <p className="font-mono text-sm text-white/40">
+                    {experience.company}
                   </p>
-                ))}
+                </div>
+
+                {/* Description */}
+                <div className="space-y-2">
+                  {experience.description.map((desc, descIndex) => (
+                    <p key={descIndex} className="font-mono text-xs text-white/60 leading-relaxed">
+                      {desc}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Index marker */}
+                <div className="absolute top-4 right-4 font-mono text-[10px] text-white/20">
+                  [{(index + 1).toString().padStart(2, "0")}]
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

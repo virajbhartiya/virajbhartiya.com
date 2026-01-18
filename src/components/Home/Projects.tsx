@@ -1,25 +1,38 @@
 import { Project } from "@/components/Home/Project";
 import { projectData } from "@/data/projectData";
+import { AsciiDivider } from "@/components/ascii";
 
 export const Projects = () => {
   return (
     <section
       aria-label="Projects Portfolio"
-      className="mt-24 space-y-10 md:mt-32"
+      className="mt-24 space-y-10 md:mt-32 px-4"
       id="projects"
     >
-      <div className="space-y-4 text-center md:text-left">
-        <h2 className="gradient proto text-4xl font-light tracking-tight drop-shadow-[0_8px_20px_rgba(0,239,166,0.35)] md:text-5xl">
-          Proof of Work
-        </h2>
-        <div className="mx-auto h-0.5 w-20 bg-[var(--accent)]/60 md:mx-0" />
-        <p className="mx-auto max-w-2xl text-sm text-white/70 md:mx-0 md:text-base">
-          Minimal snapshots of shipped things—one design system across stacks,
-          surfaces, and problem sets.
+      {/* Section Header */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-4 font-mono">
+          <span className="text-[var(--accent)] text-xs">{">>>"}</span>
+          <h2 className="text-2xl md:text-3xl text-white font-light tracking-wide">
+            PROJECTS
+          </h2>
+          <span className="hidden md:inline text-white/20 text-xs flex-1 overflow-hidden whitespace-nowrap">
+            {"─".repeat(40)}
+          </span>
+          <span className="font-mono text-xs text-white/30">
+            [{projectData.length.toString().padStart(2, "0")}]
+          </span>
+        </div>
+
+        <p className="font-mono text-xs text-white/50 max-w-2xl leading-relaxed">
+          Minimal snapshots of shipped things—one design system across stacks, surfaces, and problem sets.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <AsciiDivider variant="dashed" />
+
+      {/* Projects Grid */}
+      <div className="space-y-3 stagger-fade-in">
         {projectData.map((project, index) => (
           <Project key={project.title} project={project} index={index} />
         ))}

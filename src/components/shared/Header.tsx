@@ -1,95 +1,75 @@
-// import { useState } from "react";
-import { Link } from "react-router-dom";
-// import { Button, buttonVariants } from "@/components/ui/button";
-// import {
-//   Sheet,
-//   SheetTrigger,
-//   SheetContent,
-//   SheetHeader,
-//   SheetTitle,
-// } from "@/components/ui/sheet";
-// import { Menu } from "lucide-react";
-import { shareIcons } from "@/data/navbarData";
-import { UnderlineHover } from "../custom/UnderlineHover";
+import { Link, useLocation } from "react-router-dom";
+import { shareIcons, routeList } from "@/data/navbarData";
+import { AsciiGlitchText } from "@/components/ascii";
 
 const Header = () => {
-  // const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const location = useLocation();
-
-  // const handleMenuClick = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
-  // const handleCloseMenu = () => {
-  //   setIsOpen(false);
-  // };
+  const location = useLocation();
 
   return (
-    <header className="fixed w-[-webkit-fill-available] top-0 flex items-center justify-between p-4 z-50 backdrop-blur-sm">
-      <div className="fixed top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-10">
-        <img
-          src="/images/star.png"
-          className="rotate-animation"
-          alt="Decorative rotating star animation"
-        />
-      </div>
-      <div className="flex flex-col gap-2">
-        <Link to={""}>
-          <UnderlineHover text="virajbhartiya.com" />
-        </Link>
-        <div className="flex gap-4">
-          {shareIcons.map((shareIcon, index) => (
-            <Link target="_blank" key={index} to={shareIcon.link}>
-              {shareIcon.icon}
-            </Link>
-          ))}
+    <header className="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+      {/* Main header content */}
+      <div className="flex items-center justify-between px-4 py-4">
+        {/* Logo / Site name */}
+        <div className="flex items-center gap-6">
+          <Link to="/" className="group">
+            <div className="flex items-center gap-2">
+              <span className="text-[var(--accent)] font-mono text-sm">[</span>
+              <AsciiGlitchText
+                text="VIRAJ"
+                className="text-white font-mono text-sm tracking-widest"
+                intensity={0.02}
+              />
+              <span className="text-[var(--accent)] font-mono text-sm">]</span>
+            </div>
+          </Link>
+
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center gap-1 font-mono text-xs">
+            {routeList.map(({ href, label }) => (
+              <Link
+                key={label}
+                to={href}
+                className={`
+                  px-3 py-1.5 transition-all duration-200 underline-grow
+                  hover:text-[var(--accent)] hover:bg-white/5 hover-glitch
+                  ${location.pathname === href ? "text-[var(--accent)] bg-white/5" : "text-white/60"}
+                `}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        {/* Right side - Social links */}
+        <div className="flex items-center gap-2">
+          {/* Social icons */}
+          <div className="flex items-center gap-1">
+            {shareIcons.map((shareIcon, index) => (
+              <Link
+                key={index}
+                to={shareIcon.link}
+                target="_blank"
+                className="
+                  p-2 font-mono text-white/60
+                  hover:text-[var(--accent)] hover:bg-white/5
+                  transition-all duration-200
+                  border border-transparent hover:border-white/10
+                  hover-pop hover-glow-pulse
+                "
+                aria-label={`Social link ${index + 1}`}
+              >
+                {shareIcon.icon}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <button className="md:hidden p-2 font-mono text-[var(--accent)] text-xs">
+            [=]
+          </button>
         </div>
       </div>
-      {/* <nav className="hidden sm:flex gap-4 sm:gap-6 proto">
-        {routeList.map(({ href, label }) => (
-          <Link key={label} to={href}>
-            <Button
-              variant="link"
-              className={location.pathname === href ? "accent" : ""}
-            >
-              {label}
-            </Button>
-          </Link>
-        ))}
-      </nav>
-      <span className="flex px-4 sm:hidden">
-        <Sheet open={isOpen} onOpenChange={handleMenuClick}>
-          <SheetTrigger className="px-2" onClick={handleMenuClick}>
-            <Menu className="flex lg:hidden h-5 w-5">
-              <span className="sr-only">Menu Icon</span>
-            </Menu>
-          </SheetTrigger>
-          <SheetContent side="top">
-            <SheetHeader>
-              <SheetTitle className="text-start accent font-light text-base">
-                virajbhartiya.com
-              </SheetTitle>
-            </SheetHeader>
-            <nav className="flex flex-col gap-2 mt-4 items-start">
-              {routeList.map(({ href, label }) => (
-                <Link
-                  key={label}
-                  to={href}
-                  onClick={handleCloseMenu}
-                  className={buttonVariants({ variant: "ghost" })}
-                >
-                  <Button
-                    variant="link"
-                    className={location.pathname === href ? "accent" : ""}
-                  >
-                    {label}
-                  </Button>
-                </Link>
-              ))}
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </span> */}
     </header>
   );
 };

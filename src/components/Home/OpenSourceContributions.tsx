@@ -1,5 +1,4 @@
-import { cn } from "@/lib/utils";
-import { ExternalLink, Code2, GitFork } from "lucide-react";
+import { AsciiDivider } from "@/components/ascii";
 
 type Organization = {
   name: string;
@@ -99,111 +98,96 @@ const organizations: Organization[] = [
 export function OpenSourceContributions() {
   return (
     <section
-      className="relative min-h-screen w-full py-16"
+      className="mt-24 md:mt-32 px-4"
       aria-label="Open Source Contributions"
     >
-      <div className="absolute -right-4 -top-4 h-32 w-32 rotate-12 bg-[var(--accent)]/10 blur-3xl" />
-      <div className="absolute -left-4 bottom-4 h-32 w-32 -rotate-12 bg-[var(--accent)]/5 blur-3xl" />
-      <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 bg-[var(--accent)]/5 blur-3xl" />
+      {/* Section Header */}
+      <div className="space-y-4 mb-12">
+        <div className="flex items-center gap-4 font-mono">
+          <span className="text-[var(--accent)] text-xs">{">>>"}</span>
+          <h2 className="text-2xl md:text-3xl text-white font-light tracking-wide">
+            OPEN SOURCE
+          </h2>
+          <span className="hidden md:inline text-white/20 text-xs flex-1 overflow-hidden whitespace-nowrap">
+            {"─".repeat(40)}
+          </span>
+        </div>
+        <p className="font-mono text-xs text-white/50 max-w-2xl leading-relaxed">
+          Building the decentralized web, one commit at a time
+        </p>
+      </div>
 
-      <div className="container relative mx-auto px-4">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16">
-            <div className="flex w-full flex-col gap-8">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-8">
-                  <div className="relative">
-                    <Code2 className="h-14 w-14 text-[var(--accent)]" />
-                    <div className="absolute -inset-3 -z-10 animate-pulse rounded-full bg-[var(--accent)]/10 blur-lg" />
-                  </div>
-                  <div className="space-y-2">
-                    <h2 className="text-6xl font-thin tracking-tighter">
-                      <span className="accent bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/70 bg-clip-text text-transparent proto">
-                        OPEN SOURCE
-                      </span>
-                    </h2>
-                    <p className="text-sm font-medium text-muted-foreground/80">
-                      Building the decentralized web, one commit at a time
-                    </p>
-                  </div>
-                </div>
+      <AsciiDivider variant="dashed" className="mb-8" />
+
+      {/* Contributions Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {organizations.map((org, index) => (
+          <a
+            key={org.name}
+            href={org.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative border border-white/10 bg-black/40 backdrop-blur-sm p-4 hover:border-[var(--accent)]/30 transition-all duration-300 card-hover"
+          >
+            {/* Corner decorations */}
+            <span className="absolute -top-[1px] -left-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+            <span className="absolute -top-[1px] -right-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+            <span className="absolute -bottom-[1px] -left-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+            <span className="absolute -bottom-[1px] -right-[1px] font-mono text-[var(--accent)] text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">+</span>
+
+            {/* Index */}
+            <div className="absolute top-2 right-2 font-mono text-[8px] text-white/20">
+              [{(index + 1).toString().padStart(2, "0")}]
+            </div>
+
+            <div className="flex items-start gap-4">
+              {/* Logo */}
+              <div className="relative shrink-0 w-12 h-12 border border-white/10 bg-black/60 overflow-hidden">
+                <img
+                  src={org.logo}
+                  alt={`${org.name} logo`}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 border border-[var(--accent)]/0 group-hover:border-[var(--accent)]/30 transition-colors" />
               </div>
 
-              <div className="relative border-l-2 border-[var(--accent)] pl-6">
-                <div className="absolute -left-[2px] top-0 h-12 w-[2px] animate-pulse bg-[var(--accent)]" />
-                <div className="space-y-4">
-                  <p className="font-mono text-sm tracking-tight text-muted-foreground/90 flex items-center gap-3">
-                    <span className="text-[var(--accent)] font-bold">
-                      {">"}
-                    </span>
-                    Crafting Digital Infrastructure
-                  </p>
-                  <p className="font-mono text-sm tracking-tight text-muted-foreground/80 flex items-center gap-3">
-                    <span className="animate-bounce inline-block text-[var(--accent)]">
-                      ↓
-                    </span>
-                    Building in Public, for the public
-                  </p>
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-mono text-sm text-white group-hover:text-[var(--accent)] transition-colors truncate">
+                    {org.name}
+                  </h3>
+                  <span className="font-mono text-[var(--accent)] text-xs opacity-0 group-hover:opacity-100 transition-opacity arrow-animate">
+                    {"->"}
+                  </span>
                 </div>
+                <p className="font-mono text-[10px] text-white/40 mb-2 line-clamp-1">
+                  {org.description}
+                </p>
+                {org.contributions && (
+                  <span className="font-mono text-[10px] text-[var(--accent)]/70">
+                    {org.contributions}
+                  </span>
+                )}
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {organizations.map((org) => (
-              <div key={org.name} className="group h-full">
-                <a
-                  href={org.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    "relative flex h-full flex-col gap-6 rounded-xl border p-6",
-                    "border-[var(--accent)]/10 bg-background/50 backdrop-blur-sm transition-all duration-300",
-                    "hover:border-[var(--accent)] hover:bg-[var(--accent)]/[0.02]",
-                    "hover:shadow-[0_0_30px_-12px_var(--accent)]",
-                    "hover:scale-[1.02] hover:-translate-y-1",
-                  )}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="relative shrink-0">
-                      <div className="relative z-10 h-16 w-16 overflow-hidden rounded-xl border border-[var(--accent)]/20 bg-black/20">
-                        <img
-                          src={org.logo}
-                          alt={`${org.name} - ${org.description}`}
-                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                        <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
-                      </div>
-                      <div className="absolute -inset-2 -z-10 animate-pulse rounded-full bg-[var(--accent)]/5 blur-xl transition-all duration-300 group-hover:bg-[var(--accent)]/10" />
-                    </div>
+            {/* Hover effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+          </a>
+        ))}
+      </div>
 
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-xl font-bold tracking-tight proto">
-                          {org.name}
-                        </h3>
-                        <ExternalLink className="h-4 w-4 text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
-                      </div>
-                      <p className="text-sm text-muted-foreground/70 transition-colors duration-300 group-hover:text-muted-foreground/90">
-                        {org.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-auto">
-                    <div className="flex items-center gap-3">
-                      <GitFork className="h-4 w-4 text-[var(--accent)]" />
-                      <span className="text-sm font-medium text-[var(--accent)] transition-all duration-300 group-hover:tracking-wide">
-                        {org.contributions}
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            ))}
-          </div>
+      {/* Stats */}
+      <div className="flex flex-wrap justify-center gap-8 mt-12 font-mono text-xs text-white/30">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-[var(--accent)]" />
+          <span>{organizations.length} ORGANIZATIONS</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 border border-[var(--accent)]" />
+          <span>BUILDING IN PUBLIC</span>
         </div>
       </div>
     </section>
