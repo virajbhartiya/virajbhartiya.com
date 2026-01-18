@@ -16,12 +16,22 @@ type LayoutProps = {
   tags?: string[];
 };
 
+const BASE_URL = "https://virajbhartiya.com";
+
+const getAbsoluteImageUrl = (imagePath: string): string => {
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+    return imagePath;
+  }
+  const cleanPath = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
+  return `${BASE_URL}${cleanPath}`;
+};
+
 const Layout = ({
   children,
   title = "Viraj Bhartiya | Blockchain Developer & Full-Stack Engineer",
   description = "Expert Blockchain Developer & Full-Stack Engineer specializing in Web3, DApps, Smart Contracts, and Full-Stack Development. Contributing to major protocols like Filecoin, Ethereum, and Near.",
   keywords = "blockchain developer, smart contract developer, web3 developer, full stack developer, freelance developer, DApp development, ethereum developer, filecoin developer",
-  image = "https://virajbhartiya.com/og-image.png",
+  image = "/og-image.png",
   type = "website",
   publishedTime,
   modifiedTime,
@@ -29,7 +39,8 @@ const Layout = ({
   tags = [],
 }: LayoutProps) => {
   const location = useLocation();
-  const canonicalUrl = `https://virajbhartiya.com${location.pathname}`;
+  const canonicalUrl = `${BASE_URL}${location.pathname}`;
+  const absoluteImageUrl = getAbsoluteImageUrl(image);
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -40,8 +51,8 @@ const Layout = ({
     image: {
       "@type": "ImageObject",
       "@id": "https://virajbhartiya.com/#logo",
-      url: image,
-      contentUrl: image,
+      url: absoluteImageUrl,
+      contentUrl: absoluteImageUrl,
     },
     sameAs: [
       "https://github.com/virajbhartiya",
@@ -118,8 +129,10 @@ const Layout = ({
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={absoluteImageUrl} />
         <meta property="og:image:alt" content={title} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Viraj Bhartiya" />
         <meta property="og:locale" content="en_US" />
         {publishedTime && (
@@ -140,7 +153,7 @@ const Layout = ({
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
+        <meta name="twitter:image" content={absoluteImageUrl} />
         <meta name="twitter:image:alt" content={title} />
 
         {/* Additional SEO */}
