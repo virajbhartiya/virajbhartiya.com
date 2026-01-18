@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" fill="none">
+  <!-- Background -->
+  <rect width="900" height="580" fill="#000"/>
+
+  <!-- Title -->
+  <text x="450" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#888" text-anchor="middle" letter-spacing="0.1em">RAFT CONSENSUS</text>
+
+  <!-- Client -->
+  <rect x="90" y="240" width="100" height="50" rx="4" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="140" y="270" font-family="system-ui, sans-serif" font-size="13" fill="#fff" text-anchor="middle">Client</text>
+
+  <!-- Arrow: Client to Leader -->
+  <line x1="190" y1="265" x2="250" y2="265" stroke="#333" stroke-width="1"/>
+  <polygon points="250,265 244,262 244,268" fill="#333"/>
+
+  <!-- Leader Node -->
+  <rect x="260" y="220" width="140" height="90" rx="4" fill="none" stroke="#fff" stroke-width="1"/>
+  <text x="330" y="250" font-family="system-ui, sans-serif" font-size="13" font-weight="500" fill="#fff" text-anchor="middle">Leader</text>
+
+  <!-- Leader log entries -->
+  <g>
+    <rect x="275" y="265" width="24" height="24" rx="2" fill="#fff"/>
+    <text x="287" y="282" font-family="monospace" font-size="11" fill="#000" text-anchor="middle">1</text>
+    <rect x="303" y="265" width="24" height="24" rx="2" fill="#fff"/>
+    <text x="315" y="282" font-family="monospace" font-size="11" fill="#000" text-anchor="middle">2</text>
+    <rect x="331" y="265" width="24" height="24" rx="2" fill="#fff"/>
+    <text x="343" y="282" font-family="monospace" font-size="11" fill="#000" text-anchor="middle">3</text>
+    <rect x="359" y="265" width="24" height="24" rx="2" fill="none" stroke="#444" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="371" y="282" font-family="monospace" font-size="11" fill="#666" text-anchor="middle">4</text>
+  </g>
+
+  <!-- Follower 1 -->
+  <rect x="550" y="120" width="120" height="80" rx="4" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="610" y="150" font-family="system-ui, sans-serif" font-size="12" fill="#888" text-anchor="middle">Follower</text>
+  <g>
+    <rect x="565" y="165" width="20" height="20" rx="2" fill="#333"/>
+    <text x="575" y="180" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">1</text>
+    <rect x="589" y="165" width="20" height="20" rx="2" fill="#333"/>
+    <text x="599" y="180" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">2</text>
+    <rect x="613" y="165" width="20" height="20" rx="2" fill="#333"/>
+    <text x="623" y="180" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Follower 2 -->
+  <rect x="550" y="240" width="120" height="80" rx="4" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="610" y="270" font-family="system-ui, sans-serif" font-size="12" fill="#888" text-anchor="middle">Follower</text>
+  <g>
+    <rect x="565" y="285" width="20" height="20" rx="2" fill="#333"/>
+    <text x="575" y="300" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">1</text>
+    <rect x="589" y="285" width="20" height="20" rx="2" fill="#333"/>
+    <text x="599" y="300" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">2</text>
+    <rect x="613" y="285" width="20" height="20" rx="2" fill="#333"/>
+    <text x="623" y="300" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Follower 3 -->
+  <rect x="550" y="360" width="120" height="80" rx="4" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="610" y="390" font-family="system-ui, sans-serif" font-size="12" fill="#888" text-anchor="middle">Follower</text>
+  <g>
+    <rect x="565" y="405" width="20" height="20" rx="2" fill="#333"/>
+    <text x="575" y="420" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">1</text>
+    <rect x="589" y="405" width="20" height="20" rx="2" fill="#333"/>
+    <text x="599" y="420" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">2</text>
+  </g>
+
+  <!-- Arrows: Leader to Followers -->
+  <line x1="400" y1="250" x2="548" y2="170" stroke="#333" stroke-width="1"/>
+  <polygon points="548,170 541,168 543,174" fill="#333"/>
+
+  <line x1="400" y1="265" x2="548" y2="280" stroke="#333" stroke-width="1"/>
+  <polygon points="548,280 541,277 542,284" fill="#333"/>
+
+  <line x1="400" y1="290" x2="548" y2="390" stroke="#333" stroke-width="1"/>
+  <polygon points="548,390 541,387 543,394" fill="#333"/>
+
+  <!-- Labels on arrows -->
+  <text x="470" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#555" text-anchor="middle">AppendEntries</text>
+  <text x="480" y="265" font-family="system-ui, sans-serif" font-size="10" fill="#555" text-anchor="middle">AppendEntries</text>
+  <text x="460" y="350" font-family="system-ui, sans-serif" font-size="10" fill="#555" text-anchor="middle">AppendEntries</text>
+
+  <!-- WAL -->
+  <rect x="260" y="350" width="140" height="50" rx="4" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="330" y="380" font-family="system-ui, sans-serif" font-size="12" fill="#666" text-anchor="middle">WAL + fsync</text>
+
+  <!-- Arrow: Leader to WAL -->
+  <line x1="330" y1="310" x2="330" y2="348" stroke="#333" stroke-width="1"/>
+  <polygon points="330,348 327,342 333,342" fill="#333"/>
+
+  <!-- Bottom info -->
+  <line x1="90" y1="480" x2="810" y2="480" stroke="#222" stroke-width="1"/>
+
+  <text x="190" y="510" font-family="monospace" font-size="11" fill="#555" text-anchor="middle">Election: 150-300ms</text>
+  <text x="400" y="510" font-family="monospace" font-size="11" fill="#555" text-anchor="middle">Heartbeat: 50ms</text>
+  <text x="610" y="510" font-family="monospace" font-size="11" fill="#555" text-anchor="middle">Commit: majority ack</text>
+
+  <!-- Commit indicator -->
+  <text x="750" y="270" font-family="system-ui, sans-serif" font-size="11" fill="#555" text-anchor="middle">committed</text>
+  <text x="750" y="288" font-family="monospace" font-size="12" fill="#fff" text-anchor="middle">idx: 3</text>
+</svg>
