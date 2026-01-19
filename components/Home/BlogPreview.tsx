@@ -69,7 +69,9 @@ export const BlogPreview = ({ blogs }: BlogPreviewProps) => {
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock size={14} className="accent" />
-                          <span className="proto">{blog.readTime} MIN READ</span>
+                          <span className="proto">
+                            {blog.readTime} MIN READ
+                          </span>
                         </div>
                       </div>
 
@@ -102,7 +104,11 @@ export const BlogPreview = ({ blogs }: BlogPreviewProps) => {
           ))}
         </div>
 
-        <div data-aos="fade-up" data-aos-duration="1200" className="text-center">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          className="text-center"
+        >
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--accent)] rounded hover:bg-white hover:text-black transition-colors duration-300 font-thin"

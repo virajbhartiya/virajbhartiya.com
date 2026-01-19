@@ -108,13 +108,18 @@ export default async function BlogPostPage({ params }: Props) {
                 >
                   <div className="flex items-center gap-1">
                     <Calendar size={14} />
-                    <span className="proto">{formatDate(post.publishedAt)}</span>
+                    <span className="proto">
+                      {formatDate(post.publishedAt)}
+                    </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock size={14} />
                     <span className="proto">{post.readTime} min read</span>
                   </div>
-                  <ShareButton title={post.title} description={post.description} />
+                  <ShareButton
+                    title={post.title}
+                    description={post.description}
+                  />
                 </div>
 
                 <h1

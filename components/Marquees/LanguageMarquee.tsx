@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Arrow } from "../svg/arrow";
 
@@ -46,13 +47,13 @@ export function LanguageMaqruee() {
           pauseOnHover={true}
         >
           {languages.map((logo, idx) => (
-            <img
+            <Image
               key={idx}
               src={`/languages/${logo}.png`}
-              className="h-10 [margin:var(--gap)] grayscale"
+              width={40}
+              height={40}
+              className="h-10 w-auto [margin:var(--gap)] grayscale"
               alt={`logo-${logo}`}
-              loading="lazy"
-              decoding="async"
             />
           ))}
         </Marquee>

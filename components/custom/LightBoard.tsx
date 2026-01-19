@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export type PatternCell = "0" | "1" | "2" | "3";
 type Pattern = PatternCell[][];
@@ -142,7 +148,10 @@ function LightBoard({
   // We decide how many rows and columns of lights we need
   const containerRef = useRef<HTMLDivElement>(null);
   const [columns, setColumns] = useState(0);
-  const mergedColors = { ...defaultColors, ...colors };
+  const mergedColors = useMemo(
+    () => ({ ...defaultColors, ...colors }),
+    [colors],
+  );
 
   // We choose which font to use for our text
   const selectedFont = font === "default" ? defaultFont : sevenSegmentFont;

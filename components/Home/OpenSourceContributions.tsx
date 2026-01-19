@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Code2, GitFork } from "lucide-react";
 
@@ -167,12 +168,13 @@ export function OpenSourceContributions() {
                   <div className="flex items-start gap-4">
                     <div className="relative shrink-0">
                       <div className="relative z-10 h-16 w-16 overflow-hidden rounded-xl border border-[var(--accent)]/20 bg-black/20">
-                        <img
+                        <Image
                           src={org.logo}
                           alt={`${org.name} - ${org.description}`}
+                          width={64}
+                          height={64}
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                          loading="lazy"
-                          decoding="async"
+                          unoptimized
                         />
                         <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
                       </div>

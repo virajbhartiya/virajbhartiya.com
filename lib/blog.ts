@@ -31,12 +31,13 @@ export function getAllPosts(): BlogPost[] {
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
-      const slug = data.title
-        ?.toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-")
-        .trim() || fileName.replace(/\.md$/, "");
+      const slug =
+        data.title
+          ?.toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, "")
+          .replace(/\s+/g, "-")
+          .replace(/-+/g, "-")
+          .trim() || fileName.replace(/\.md$/, "");
 
       const readTime = Math.ceil(content.split(/\s+/).length / 200);
 
@@ -58,7 +59,7 @@ export function getAllPosts(): BlogPost[] {
   // Sort by published date (newest first)
   return posts.sort(
     (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
 }
 

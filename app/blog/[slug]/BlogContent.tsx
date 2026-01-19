@@ -47,7 +47,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <span key={`text-${currentIndex}`}>
             {text.slice(currentIndex, linkMatch.index)}
-          </span>
+          </span>,
         );
       }
 
@@ -60,7 +60,7 @@ export function MarkdownContent({ content }: { content: string }) {
           className="accent hover:text-white underline transition-colors duration-300"
         >
           {linkMatch[1]}
-        </a>
+        </a>,
       );
 
       currentIndex = linkMatch.index + linkMatch[0].length;
@@ -82,7 +82,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <span key={`bold-text-${boldIndex}`}>
             {processedText.slice(boldIndex, boldMatch.index)}
-          </span>
+          </span>,
         );
       }
 
@@ -92,7 +92,7 @@ export function MarkdownContent({ content }: { content: string }) {
           className="accent font-normal proto"
         >
           {boldMatch[1]}
-        </strong>
+        </strong>,
       );
 
       boldIndex = boldMatch.index + boldMatch[0].length;
@@ -114,14 +114,14 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <span key={`italic-text-${italicIndex}`}>
             {processedText.slice(italicIndex, italicMatch.index)}
-          </span>
+          </span>,
         );
       }
 
       elements.push(
         <em key={`italic-${italicMatch.index}`} className="italic font-thin">
           {italicMatch[2]}
-        </em>
+        </em>,
       );
 
       italicIndex = italicMatch.index + italicMatch[0].length;
@@ -143,7 +143,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <span key={`code-text-${codeIndex}`}>
             {processedText.slice(codeIndex, codeMatch.index)}
-          </span>
+          </span>,
         );
       }
 
@@ -153,7 +153,7 @@ export function MarkdownContent({ content }: { content: string }) {
           className="bg-[#07251c] text-[#00efa6] px-1 py-0.5 rounded text-sm font-mono"
         >
           {codeMatch[1]}
-        </code>
+        </code>,
       );
 
       codeIndex = codeMatch.index + codeMatch[0].length;
@@ -161,7 +161,7 @@ export function MarkdownContent({ content }: { content: string }) {
 
     if (codeIndex < processedText.length) {
       elements.push(
-        <span key="text-end">{processedText.slice(codeIndex)}</span>
+        <span key="text-end">{processedText.slice(codeIndex)}</span>,
       );
     }
 
@@ -188,7 +188,7 @@ export function MarkdownContent({ content }: { content: string }) {
               <pre className="text-sm font-thin proto">
                 <code>{codeBlockContent.join("\n")}</code>
               </pre>
-            </div>
+            </div>,
           );
           codeBlockContent = [];
           inCodeBlock = false;
@@ -208,7 +208,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <h1 key={i} className="text-3xl font-thin accent proto mt-4 mb-2">
             {line.substring(2)}
-          </h1>
+          </h1>,
         );
         continue;
       }
@@ -216,7 +216,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <h2 key={i} className="text-2xl font-thin accent proto mt-3 mb-2">
             {line.substring(3)}
-          </h2>
+          </h2>,
         );
         continue;
       }
@@ -224,7 +224,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <h3 key={i} className="text-xl font-thin accent proto mt-2 mb-1">
             {line.substring(4)}
-          </h3>
+          </h3>,
         );
         continue;
       }
@@ -240,7 +240,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <li key={i} className="font-thin ml-4 mb-1">
             {renderInlineMarkdown(line.substring(2))}
-          </li>
+          </li>,
         );
         continue;
       }
@@ -249,7 +249,7 @@ export function MarkdownContent({ content }: { content: string }) {
       elements.push(
         <p key={i} className="font-thin mb-2">
           {renderInlineMarkdown(line)}
-        </p>
+        </p>,
       );
     }
 

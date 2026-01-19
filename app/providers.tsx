@@ -49,7 +49,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     AOS.init({
       once: true,
