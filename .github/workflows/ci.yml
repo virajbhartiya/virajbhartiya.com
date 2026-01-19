@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
         run: npx prettier --check .
 
       - name: Type check
-        run: npm run build --dry-run || npx tsc --noEmit
+        run: npm run type-check
 
   build:
     runs-on: ubuntu-latest
@@ -43,11 +43,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: Build project
         run: npm run build
@@ -56,4 +65,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-files
-          path: dist/
+          path: .next/

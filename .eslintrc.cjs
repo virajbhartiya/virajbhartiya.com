@@ -1,48 +1,16 @@
 module.exports = {
   root: true,
+  extends: ["next/core-web-vitals"],
   ignorePatterns: [
     "node_modules/",
-    "dist/",
+    ".next/",
+    "out/",
     "*.config.js",
     "*.config.cjs",
     "*.config.mjs",
-    "vite.config.ts",
   ],
-  overrides: [
-    {
-      files: ["**/*.ts", "**/*.tsx"],
-      parser: "@typescript-eslint/parser",
-      parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: "module",
-        ecmaFeatures: { jsx: true },
-        project: "./tsconfig.json",
-      },
-      plugins: ["@typescript-eslint", "react", "react-refresh"],
-      extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended",
-      ],
-      settings: {
-        react: { version: "detect" },
-      },
-      rules: {
-        "react/react-in-jsx-scope": "off",
-        "@typescript-eslint/no-unused-vars": [
-          "error",
-          { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-        ],
-        "no-unused-vars": [
-          "error",
-          { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-        ],
-      },
-    },
-    {
-      files: ["**/*.js"],
-      extends: ["eslint:recommended"],
-      rules: {},
-    },
-  ],
+  rules: {
+    "react/react-in-jsx-scope": "off",
+    "@next/next/no-img-element": "warn",
+  },
 };
