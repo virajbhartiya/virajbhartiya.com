@@ -3,7 +3,7 @@ title: "Raftokay: Building Raft Consensus From Scratch"
 description: "A deep dive into implementing Raft consensus in Go: leader election, log replication, persistence, and chaos testing included."
 publishedAt: "2025-07-28"
 tags: ["Distributed Systems", "Raft", "Consensus", "Go", "Open Source"]
-image: "/images/Blog/raftokay.svg"
+image: "/images/Blog/raftokay.png"
 author: "Viraj Bhartiya"
 ---
 
