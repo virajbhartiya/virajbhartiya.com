@@ -1,32 +1,113 @@
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { FeedRow } from "@/components/ui/FeedRow";
+import { Tag } from "@/components/ui/Tag";
+import { GenerativeCanvas } from "@/components/canvas/GenerativeCanvas";
 import { projectData } from "@/data/projectData";
 
+// Show top 6 projects in Router-style, rest in compact list
+const FEATURED_COUNT = 6;
+
 export function ProjectsFeed() {
+  const featured = projectData.slice(0, FEATURED_COUNT);
+  const rest = projectData.slice(FEATURED_COUNT);
+
   return (
-    <section id="projects" className="mt-24">
-      <SectionLabel label="Projects" count={projectData.length} className="mb-6" />
-      <div className="border-t border-border/50">
-        {/* Column headers */}
-        <div className="grid grid-cols-[100px_1fr_auto] gap-4 py-2 px-2 -mx-2">
-          <span className="font-mono text-[10px] tracking-widest uppercase text-muted/60">
-            Name
-          </span>
-          <span className="font-mono text-[10px] tracking-widest uppercase text-muted/60"></span>
-          <span className="font-mono text-[10px] tracking-widest uppercase text-muted/60">
-            Tags
-          </span>
+    <section id="projects" className="mt-32">
+      <h2 className="font-pixel text-[clamp(2rem,5vw,4rem)] leading-tight">
+        Projects
+        <span className="text-accent ml-3 text-[0.5em] align-top">
+          ({projectData.length})
+        </span>
+      </h2>
+
+      {/* Router-style layout: canvas on left, topics on right */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
+        {/* Left: generative art canvas */}
+        <div className="hidden md:block">
+          <div className="aspect-square border border-border/50 relative">
+            <GenerativeCanvas
+              config={{ variant: "swirl", seed: 42, color: "#00efa6", speed: 0.3 }}
+              className="w-full h-full"
+            />
+            <span className="absolute bottom-2 left-3 font-mono text-[10px] text-muted uppercase">
+              Fig. 1
+            </span>
+          </div>
+          <div className="mt-3 flex gap-2 flex-wrap">
+            <a
+              href="https://github.com/virajbhartiya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] text-accent uppercase tracking-wider hover:text-fg transition-colors"
+            >
+              ■ View all on Github
+            </a>
+          </div>
         </div>
-        {projectData.map((project, i) => (
-          <FeedRow
-            key={i}
-            date={String(i + 1).padStart(2, "0")}
-            name={project.title}
-            tags={project.tags}
-            href={project.link}
-          />
-        ))}
+
+        {/* Right: project topics */}
+        <div>
+          <SectionLabel label="Topics" className="mb-6" />
+          <div className="space-y-8">
+            {featured.map((project, i) => (
+              <div key={i} className="border-b border-border/30 pb-6">
+                <h3 className="font-mono text-base text-fg mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-xs text-muted leading-relaxed mb-3 max-w-lg">
+                  {project.description.length > 150
+                    ? project.description.slice(0, 150) + "..."
+                    : project.description}
+                </p>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs border border-border px-4 py-1.5 text-fg hover:bg-fg hover:text-[var(--bg)] transition-colors"
+                  >
+                    View project
+                  </a>
+                  <div className="flex gap-1.5">
+                    {project.tags.slice(0, 2).map((tag) => (
+                      <Tag key={tag} label={tag} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Remaining projects as compact feed */}
+      {rest.length > 0 && (
+        <div className="mt-12">
+          <SectionLabel label="More Projects" count={rest.length} className="mb-4" />
+          <div className="border-t border-border/50">
+            {rest.map((project, i) => (
+              <a
+                key={i}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-[40px_1fr_auto] items-center gap-4 py-3 px-2 -mx-2 border-b border-border/50 hover:bg-white/[0.02] transition-colors"
+              >
+                <span className="font-mono text-xs text-muted">
+                  {String(FEATURED_COUNT + i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-mono text-sm text-fg group-hover:text-accent transition-colors truncate">
+                  {project.title}
+                </span>
+                <div className="hidden md:flex items-center gap-2">
+                  {project.tags.slice(0, 2).map((tag) => (
+                    <Tag key={tag} label={tag} />
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
