@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import { Arrow } from "../svg/arrow";
 
 export function LanguageMaqruee() {
   const languages = [
@@ -32,13 +31,9 @@ export function LanguageMaqruee() {
 
   return (
     <div className="py-14">
-      <div
-        className="flex-row w-max flex"
-        style={{ transform: "rotate(4deg)" }}
-      >
-        <p className="accent proto">Stuff I&apos;ve Worked with</p>
-        <Arrow />
-      </div>
+      <h2 className="text-3xl font-light accent proto text-center">
+        Technologies
+      </h2>
       <div className="relative mt-6 overflow-hidden">
         <Marquee
           speed={60}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, lazy, Suspense } from "react";
-import { Arrow } from "../svg/arrow";
 
 const GitHubCalendar = lazy(() => import("react-github-calendar"));
 
@@ -57,19 +56,9 @@ export const ContributionGraph = () => {
       <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 bg-[var(--accent)]/5 blur-3xl" />
       <div className="relative w-full max-w-6xl mx-auto">
         <div className="w-full">
-          <div
-            className="w-full flex justify-end pb-12"
-            style={{ transform: "rotate(4deg)" }}
-          >
-            <div
-              style={{
-                transform: "rotateX(0deg) rotateY(180deg) rotateZ(10Deg)",
-              }}
-            >
-              <Arrow />
-            </div>
-            <p className="accent proto ml-3 text-lg">THE GITHUB FLEX</p>
-          </div>
+          <h2 className="text-3xl font-light accent proto text-center pb-12">
+            Contribution Activity
+          </h2>
           <div className="rounded-3xl border border-[var(--accent)]/20 bg-background/50 backdrop-blur-sm shadow-xl w-full p-8">
             <div className="w-full overflow-x-auto">
               <div ref={containerRef}>

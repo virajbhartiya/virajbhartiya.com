@@ -175,7 +175,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <MarkdownContent content={post.content} />
               </div>
 
-              <footer className="mt-12 pt-8 border-t border-[var(--accent)]">
+              <footer className="mt-12 pt-8 border-t border-gray-800">
                 <div className="flex items-center justify-between">
                   <div className="font-thin">
                     <p className="proto">Written by {post.author}</p>
@@ -187,7 +187,7 @@ export default async function BlogPostPage({ params }: Props) {
                   </div>
                   <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-[var(--accent)] rounded hover:bg-white hover:text-black transition-colors duration-300"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-gray-700 rounded hover:bg-white hover:text-black transition-colors duration-300"
                   >
                     <ArrowLeft size={16} />
                     Back to Blog

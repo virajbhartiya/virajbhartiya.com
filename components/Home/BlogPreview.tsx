@@ -32,7 +32,7 @@ export const BlogPreview = ({ blogs }: BlogPreviewProps) => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-thin accent proto mb-4">
-            what I&apos;ve been thinking about
+            Recent Writing
           </h2>
         </div>
 
@@ -111,7 +111,7 @@ export const BlogPreview = ({ blogs }: BlogPreviewProps) => {
         >
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--accent)] rounded hover:bg-white hover:text-black transition-colors duration-300 font-thin"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 rounded hover:bg-white hover:text-black transition-colors duration-300 font-thin"
           >
             View All Posts
           </Link>

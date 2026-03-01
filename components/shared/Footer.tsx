@@ -2,15 +2,33 @@
 
 import Link from "next/link";
 import { UnderlineHover } from "../custom/UnderlineHover";
-import { HeartIcon } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="flex gap-2 sm:flex-row w-full shrink-0 items-center justify-center py-2 px-4 md:px-6">
-      Made with <HeartIcon size={16} color="#00efa6" /> by{" "}
-      <Link href="/">
-        <UnderlineHover text="Viraj Bhartiya" />
-      </Link>
+    <footer className="flex flex-col sm:flex-row gap-2 w-full shrink-0 items-center justify-center py-4 px-4 md:px-6">
+      <span className="text-sm text-gray-400">
+        &copy; {new Date().getFullYear()} Viraj Bhartiya
+      </span>
+      <span className="hidden sm:inline text-gray-600">&middot;</span>
+      <div className="flex gap-4 text-sm">
+        <Link href="/blog">
+          <UnderlineHover text="Blog" />
+        </Link>
+        <a
+          href="https://github.com/virajbhartiya"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <UnderlineHover text="GitHub" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/viraj-bhartiya/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <UnderlineHover text="LinkedIn" />
+        </a>
+      </div>
     </footer>
   );
 }

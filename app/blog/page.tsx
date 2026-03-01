@@ -134,12 +134,12 @@ export default function BlogPage() {
               className="text-center mb-12"
             >
               <h1 className="text-4xl font-thin accent proto mb-4">
-                thoughts & stuff
+                Writing
               </h1>
               <p className="font-thin text-lg">
-                Random thoughts on{" "}
+                On{" "}
                 <span className="accent font-normal proto">
-                  blockchain, Web3, and engineering
+                  blockchain, Web3, and software engineering
                 </span>
               </p>
             </div>

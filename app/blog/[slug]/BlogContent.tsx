@@ -183,7 +183,7 @@ export function MarkdownContent({ content }: { content: string }) {
           elements.push(
             <div
               key={`code-${i}`}
-              className="border border-[var(--accent)] rounded p-4 my-4 overflow-x-auto"
+              className="border border-gray-800 bg-gray-900/50 rounded p-4 my-4 overflow-x-auto"
             >
               <pre className="text-sm font-thin proto">
                 <code>{codeBlockContent.join("\n")}</code>
@@ -250,7 +250,7 @@ export function MarkdownContent({ content }: { content: string }) {
         elements.push(
           <hr
             key={i}
-            className="my-8 border-t border-[var(--accent)] opacity-30"
+            className="my-8 border-t border-gray-800"
           />,
         );
         continue;

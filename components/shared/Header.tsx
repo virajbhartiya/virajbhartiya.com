@@ -22,7 +22,7 @@ const Header = () => {
         <Link href="/">
           <UnderlineHover text="virajbhartiya.com" />
         </Link>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           {shareIcons.map((shareIcon, index) => (
             <a
               target="_blank"
@@ -33,6 +33,9 @@ const Header = () => {
               {shareIcon.icon}
             </a>
           ))}
+          <Link href="/blog" className="text-sm proto hover:accent transition-colors duration-300">
+            Blog
+          </Link>
         </div>
       </div>
     </header>

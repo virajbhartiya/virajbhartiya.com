@@ -6,7 +6,7 @@ import Scrambler from "../custom/Scrambler";
 export function ContactMarquee() {
   const elements = [
     <p key="freelance" className="accent proto text-2xl md:text-6xl m-6">
-      Freelance?
+      Let&apos;s Work Together
     </p>,
     <a key="email1" href="mailto:vlbhartiya@gmail.com">
       <p className="proto bg-[var(--accent)] text-black text-2xl md:text-6xl">
@@ -14,7 +14,7 @@ export function ContactMarquee() {
       </p>
     </a>,
     <p key="collaboration" className="accent proto text-2xl md:text-6xl m-6">
-      Collaboration?
+      Get in Touch
     </p>,
     <a key="email2" href="mailto:vlbhartiya@gmail.com">
       <p className="proto bg-[var(--accent)] text-black text-2xl md:text-6xl">
