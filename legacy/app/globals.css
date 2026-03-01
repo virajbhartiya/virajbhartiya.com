@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+    --gap: 1rem;
+    --accent: #00efa6;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --gap: 1rem;
+    --accent: #00efa6;
+  }
+}
+
+/* geist */
+@font-face {
+  font-family: "geist";
+  src: url("/fonts/GeistVariableVF.woff2") format("woff2");
+}
+
+/* Proto Mono */
+@font-face {
+  font-family: "protoMono";
+  src: url("/fonts/protoMono/ProtoMono-Light.woff2") format("woff");
+}
+
+.proto {
+  font-family: "protoMono";
+}
+
+::-moz-selection {
+  color: black;
+  background: var(--accent);
+}
+
+::selection {
+  color: black;
+  background: var(--accent);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "geist";
+    overflow-x: hidden;
+  }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 100%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #141414;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+.gradient {
+  @apply bg-gradient-to-r from-[#40ffc6] to-[#069268] text-transparent bg-clip-text;
+}
+
+.hue-animation:hover {
+  animation:
+    hue-hover 1s ease-in-out forwards,
+    hue-rotate 1.5s ease-out forwards;
+  transition: box-shadow 1s ease;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+@keyframes hue-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(1turn);
+  }
+}
+
+@keyframes hue-hover {
+  0% {
+    box-shadow: 0 0 0 1px transparent;
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 2px var(--accent),
+      0 0 0 5px hsla(0, 0%, 100%, 0.3),
+      0 0 0 9px hsla(0, 0%, 100%, 0.1),
+      0 0 0 14px hsla(0, 0%, 100%, 0.05),
+      0 0 0 19px hsla(0, 0%, 100%, 0.05),
+      0 0 0 24px hsla(0, 0%, 100%, 0.05);
+  }
+
+  100% {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rotate-animation {
+    animation: rotate 4s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* STEAM ANIMATION */
+
+.steam {
+  position: relative;
+
+  background: black;
+}
+
+.steam:before,
+.steam:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+.steam:after {
+  filter: blur(50px);
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
