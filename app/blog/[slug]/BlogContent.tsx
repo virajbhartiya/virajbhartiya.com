@@ -229,6 +229,30 @@ export function MarkdownContent({ content }: { content: string }) {
         continue;
       }
 
+      // Handle images: ![alt](src)
+      const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imageMatch) {
+        elements.push(
+          <div key={i} className="my-6 rounded overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageMatch[2]}
+              alt={imageMatch[1]}
+              className="w-full rounded"
+            />
+          </div>,
+        );
+        continue;
+      }
+
+      // Handle horizontal rules
+      if (line.trim() === "---" || line.trim() === "***") {
+        elements.push(
+          <hr key={i} className="my-8 border-t border-[var(--accent)] opacity-30" />,
+        );
+        continue;
+      }
+
       // Handle empty lines
       if (line.trim() === "") {
         elements.push(<br key={i} />);
