@@ -248,7 +248,10 @@ export function MarkdownContent({ content }: { content: string }) {
       // Handle horizontal rules
       if (line.trim() === "---" || line.trim() === "***") {
         elements.push(
-          <hr key={i} className="my-8 border-t border-[var(--accent)] opacity-30" />,
+          <hr
+            key={i}
+            className="my-8 border-t border-[var(--accent)] opacity-30"
+          />,
         );
         continue;
       }

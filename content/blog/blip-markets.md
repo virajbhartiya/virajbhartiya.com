@@ -2,14 +2,7 @@
 title: "What if prediction markets were actually simple?"
 description: "I stripped away order books, liquidity pools, and AMM curves. Built a prediction market that fits on a grid. Here's how it works."
 publishedAt: "2026-03-02"
-tags:
-  [
-    "Prediction Markets",
-    "Crypto",
-    "DeFi",
-    "Trading",
-    "Product",
-  ]
+tags: ["Prediction Markets", "Crypto", "DeFi", "Trading", "Product"]
 image: "/images/Blog/blip-markets/banner.png"
 author: "Viraj Bhartiya"
 ---
@@ -32,7 +25,7 @@ And the whole thing fits on a grid.
 
 Imagine a spreadsheet overlaid on a price chart.
 
-Rows are price ranges. Columns are time windows. Each cell is one prediction: *will ETH touch $3,510-$3,515 between 2:05 and 2:06 PM?*
+Rows are price ranges. Columns are time windows. Each cell is one prediction: _will ETH touch $3,510-$3,515 between 2:05 and 2:06 PM?_
 
 That's it. That's the whole interface. No charts to analyze, no indicators to configure, no order types to memorize. You look at the grid, you pick a cell, you place a stake.
 
