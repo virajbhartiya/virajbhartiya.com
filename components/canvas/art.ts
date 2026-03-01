@@ -5,6 +5,8 @@ export type ArtConfig = {
   speed?: number;
 };
 
+const ASCII_CHARS = ".·:;+*#@%&";
+
 // Deterministic PRNG (mulberry32)
 function mulberry32(seed: number) {
   return function () {
@@ -24,49 +26,53 @@ function renderSwirl(
   config: ArtConfig,
 ) {
   const rand = mulberry32(config.seed);
-  const speed = config.speed ?? 0.5;
+  const speed = config.speed ?? 0.4;
   const t = time * 0.001 * speed;
   const cx = w / 2;
   const cy = h / 2;
+  const charSize = 12;
+  const cols = Math.floor(w / charSize);
+  const rows = Math.floor(h / charSize);
   const maxR = Math.min(w, h) * 0.45;
-  const arms = 3 + Math.floor(rand() * 3); // 3-5 arms
-  const twist = 2 + rand() * 4;
-  const points = 200;
+  const arms = 3 + Math.floor(rand() * 2);
+  const twist = 3 + rand() * 3;
 
-  ctx.lineWidth = 1;
+  ctx.font = `${charSize}px monospace`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
 
-  for (let arm = 0; arm < arms; arm++) {
-    const armOffset = (arm / arms) * Math.PI * 2;
-    ctx.beginPath();
+  for (let col = 0; col < cols; col++) {
+    for (let row = 0; row < rows; row++) {
+      const x = col * charSize + charSize / 2;
+      const y = row * charSize + charSize / 2;
 
-    for (let i = 0; i < points; i++) {
-      const frac = i / points;
-      const r = frac * maxR;
-      const angle = armOffset + frac * twist + t;
-      const wobble = Math.sin(frac * 8 + t * 2) * (r * 0.05);
+      const dx = x - cx;
+      const dy = y - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx);
 
-      const x = cx + Math.cos(angle) * (r + wobble);
-      const y = cy + Math.sin(angle) * (r + wobble);
+      // Spiral intensity
+      let intensity = 0;
+      for (let arm = 0; arm < arms; arm++) {
+        const armAngle = (arm / arms) * Math.PI * 2;
+        const spiralAngle = armAngle + (dist / maxR) * twist + t;
+        const diff = Math.abs(
+          ((angle - spiralAngle + Math.PI * 3) % (Math.PI * 2)) - Math.PI,
+        );
+        intensity += Math.max(0, 1 - diff * 2) * Math.max(0, 1 - dist / maxR);
+      }
 
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+      intensity = Math.min(1, intensity);
+      if (intensity < 0.05) continue;
+
+      const charIdx = Math.floor(intensity * (ASCII_CHARS.length - 1));
+      const alpha = Math.floor(intensity * 180 + 40);
+      ctx.fillStyle =
+        config.color +
+        alpha.toString(16).padStart(2, "0");
+      ctx.fillText(ASCII_CHARS[charIdx], x, y);
     }
-
-    const alpha = 0.15 + rand() * 0.2;
-    ctx.strokeStyle =
-      config.color +
-      Math.floor(alpha * 255)
-        .toString(16)
-        .padStart(2, "0");
-    ctx.stroke();
   }
-
-  // Center glow
-  const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 0.3);
-  gradient.addColorStop(0, config.color + "15");
-  gradient.addColorStop(1, "transparent");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, w, h);
 }
 
 function renderGrid(
@@ -79,35 +85,48 @@ function renderGrid(
   const rand = mulberry32(config.seed);
   const speed = config.speed ?? 0.5;
   const t = time * 0.001 * speed;
-  const spacing = 20 + Math.floor(rand() * 10);
-  const cols = Math.ceil(w / spacing);
-  const rows = Math.ceil(h / spacing);
+  const charSize = 14;
+  const cols = Math.floor(w / charSize);
+  const rows = Math.floor(h / charSize);
+  const baseChars = "░▒▓█·.+*";
+
+  ctx.font = `${charSize}px monospace`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  // Pre-generate grid offsets from seed
+  const offsets: number[] = [];
+  for (let i = 0; i < cols * rows; i++) {
+    offsets.push(rand() * Math.PI * 2);
+  }
 
   for (let col = 0; col < cols; col++) {
     for (let row = 0; row < rows; row++) {
-      const x = col * spacing + spacing / 2;
-      const y = row * spacing + spacing / 2;
+      const x = col * charSize + charSize / 2;
+      const y = row * charSize + charSize / 2;
+      const idx = row * cols + col;
 
-      // Wave distortion
-      const distX = Math.sin(y * 0.02 + t) * 5;
-      const distY = Math.cos(x * 0.02 + t * 0.7) * 5;
+      // Wave-based intensity
+      const wave1 = Math.sin(x * 0.03 + t * 1.2 + offsets[idx]) * 0.5 + 0.5;
+      const wave2 = Math.cos(y * 0.025 - t * 0.8) * 0.5 + 0.5;
+      const intensity = wave1 * wave2;
 
-      const dist = Math.sqrt(
-        Math.pow(x - w / 2, 2) + Math.pow(y - h / 2, 2),
-      );
+      // Distance fade from center
+      const dx = x - w / 2;
+      const dy = y - h / 2;
+      const dist = Math.sqrt(dx * dx + dy * dy);
       const maxDist = Math.sqrt(w * w + h * h) / 2;
-      const alpha = Math.max(0.05, 0.4 - (dist / maxDist) * 0.35);
+      const fade = 1 - (dist / maxDist) * 0.6;
 
-      const radius = 1 + Math.sin(dist * 0.01 - t * 2) * 0.8;
+      const finalIntensity = intensity * fade;
+      if (finalIntensity < 0.1) continue;
 
-      ctx.beginPath();
-      ctx.arc(x + distX, y + distY, Math.max(0.5, radius), 0, Math.PI * 2);
+      const charIdx = Math.floor(finalIntensity * (baseChars.length - 1));
+      const alpha = Math.floor(finalIntensity * 150 + 30);
       ctx.fillStyle =
         config.color +
-        Math.floor(alpha * 255)
-          .toString(16)
-          .padStart(2, "0");
-      ctx.fill();
+        alpha.toString(16).padStart(2, "0");
+      ctx.fillText(baseChars[charIdx], x, y);
     }
   }
 }
@@ -122,52 +141,60 @@ function renderParticles(
   const rand = mulberry32(config.seed);
   const speed = config.speed ?? 0.3;
   const t = time * 0.001 * speed;
-  const count = 60;
-  const connectionDist = 100;
+  const count = 80;
+  const connectionDist = 80;
+  const charSize = 10;
 
-  // Generate stable particle positions from seed
-  const particles: Array<{ bx: number; by: number }> = [];
+  ctx.font = `${charSize}px monospace`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  // Generate stable particle positions
+  const particles: Array<{ bx: number; by: number; char: string }> = [];
+  const particleChars = "*+·.@#";
   for (let i = 0; i < count; i++) {
     particles.push({
       bx: rand() * w,
       by: rand() * h,
+      char: particleChars[Math.floor(rand() * particleChars.length)],
     });
   }
 
   // Animate positions
   const positions = particles.map((p, i) => ({
-    x: p.bx + Math.sin(t + i * 0.5) * 30,
-    y: p.by + Math.cos(t * 0.7 + i * 0.3) * 30,
+    x: p.bx + Math.sin(t + i * 0.5) * 25,
+    y: p.by + Math.cos(t * 0.7 + i * 0.3) * 25,
+    char: p.char,
   }));
 
-  // Draw connections
-  ctx.lineWidth = 0.5;
+  // Draw connections as dashes
   for (let i = 0; i < positions.length; i++) {
     for (let j = i + 1; j < positions.length; j++) {
       const dx = positions[i].x - positions[j].x;
       const dy = positions[i].y - positions[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < connectionDist) {
-        const alpha = (1 - dist / connectionDist) * 0.2;
-        ctx.beginPath();
-        ctx.moveTo(positions[i].x, positions[i].y);
-        ctx.lineTo(positions[j].x, positions[j].y);
-        ctx.strokeStyle =
+        const alpha = (1 - dist / connectionDist) * 0.3;
+        const steps = Math.floor(dist / charSize);
+        ctx.fillStyle =
           config.color +
           Math.floor(alpha * 255)
             .toString(16)
             .padStart(2, "0");
-        ctx.stroke();
+        for (let s = 1; s < steps; s++) {
+          const frac = s / steps;
+          const mx = positions[i].x + dx * -frac;
+          const my = positions[i].y + dy * -frac;
+          ctx.fillText("·", mx, my);
+        }
       }
     }
   }
 
   // Draw particles
   positions.forEach((p) => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-    ctx.fillStyle = config.color + "60";
-    ctx.fill();
+    ctx.fillStyle = config.color + "bb";
+    ctx.fillText(p.char, p.x, p.y);
   });
 }
 

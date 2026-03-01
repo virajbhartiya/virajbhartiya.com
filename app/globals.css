@@ -3,13 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0f1a;
+  --bg: #000000;
   --fg: #e2e8f0;
   --accent: #00efa6;
-  --accent-yellow: #facc15;
   --muted: #64748b;
-  --border: #1e293b;
-  --card-bg: rgba(15, 23, 42, 0.6);
+  --border: #1a1a1a;
+  --card-bg: rgba(10, 10, 10, 0.6);
   --radius: 0.5rem;
 }
 
