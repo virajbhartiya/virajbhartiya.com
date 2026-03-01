@@ -1,18 +1,6 @@
-"use client";
-
-import { GenerativeCanvas } from "@/components/canvas/GenerativeCanvas";
-
 export function Hero() {
   return (
-    <section className="min-h-[70vh] flex flex-col justify-center pt-24 pb-16 relative">
-      {/* Background ASCII animation */}
-      <div className="absolute inset-0 -z-10 opacity-30">
-        <GenerativeCanvas
-          config={{ variant: "grid", seed: 99, color: "#00efa6", speed: 0.2 }}
-          className="w-full h-full"
-        />
-      </div>
-
+    <section className="min-h-[70vh] flex flex-col justify-center pt-24 pb-16">
       <h1 className="font-pixel text-[clamp(2.5rem,8vw,7rem)] leading-[1.1] tracking-tight">
         Viraj
         <br />
