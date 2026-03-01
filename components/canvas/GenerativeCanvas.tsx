@@ -23,23 +23,31 @@ export function GenerativeCanvas({ config, className }: GenerativeCanvasProps) {
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-
-    resize();
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(canvas);
 
     const animate = (time: number) => {
       const rect = canvas.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
       ctx.clearRect(0, 0, rect.width, rect.height);
       render(ctx, rect.width, rect.height, time, config);
       animationId = requestAnimationFrame(animate);
     };
 
-    animationId = requestAnimationFrame(animate);
+    // Delay initial setup to ensure layout is complete
+    requestAnimationFrame(() => {
+      resize();
+      animationId = requestAnimationFrame(animate);
+    });
+
+    const resizeObserver = new ResizeObserver(() => resize());
+    resizeObserver.observe(canvas);
 
     return () => {
       cancelAnimationFrame(animationId);
@@ -51,7 +59,7 @@ export function GenerativeCanvas({ config, className }: GenerativeCanvasProps) {
     <canvas
       ref={canvasRef}
       className={className}
-      style={{ width: "100%", height: "100%" }}
+      style={{ width: "100%", height: "100%", display: "block" }}
     />
   );
 }
