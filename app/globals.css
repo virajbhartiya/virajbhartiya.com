@@ -22,6 +22,10 @@
   color: #000;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--bg);
   color: var(--fg);
@@ -130,3 +134,16 @@ body {
 .prose-ascii h3 {
   font-size: 1rem;
 }
+
+/* Contribution grid cell hover */
+.contrib-cell {
+  transition: filter 0.1s ease, outline-offset 0.1s ease;
+}
+.contrib-cell:hover {
+  filter: brightness(1.8);
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+  z-index: 5;
+}
+
+

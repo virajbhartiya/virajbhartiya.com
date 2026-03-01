@@ -30,9 +30,9 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main className="max-w-3xl mx-auto px-6 pt-24 pb-16 min-h-screen">
+    <main className="max-w-3xl mx-auto px-4 pt-20 pb-12 min-h-screen">
       <article>
-        <header className="mb-12">
+        <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <span className="font-mono text-xs text-muted">{formatDate(post.publishedAt)}</span>
             <span className="font-mono text-xs text-muted">&middot;</span>

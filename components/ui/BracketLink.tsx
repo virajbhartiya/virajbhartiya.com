@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { playClick } from "@/lib/audio";
 
 interface BracketLinkProps {
   label: string;
@@ -25,8 +26,8 @@ export function BracketLink({ label, shortcut, href, external, className }: Brac
   );
 
   if (external) {
-    return <a href={href} target="_blank" rel="noopener noreferrer">{content}</a>;
+    return <a href={href} target="_blank" rel="noopener noreferrer" onClick={() => playClick()}>{content}</a>;
   }
 
-  return <Link href={href}>{content}</Link>;
+  return <Link href={href} onClick={() => playClick()}>{content}</Link>;
 }

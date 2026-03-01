@@ -34,10 +34,10 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 backdrop-blur-md bg-[var(--bg)]/80">
-      <nav className="max-w-6xl mx-auto px-6 h-12 flex items-center gap-6">
-        <a href="/" className="text-accent text-lg">■</a>
+      <nav className="max-w-6xl mx-auto px-4 h-12 flex items-center gap-3 sm:gap-6 overflow-x-auto">
+        <a href="/" className="text-accent text-lg shrink-0">■</a>
         {NAV_ITEMS.map((item) => (
-          <BracketLink key={item.shortcut} {...item} />
+          <BracketLink key={item.shortcut} {...item} className="shrink-0" />
         ))}
       </nav>
     </header>
