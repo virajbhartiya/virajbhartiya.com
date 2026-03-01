@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: Props) {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-sm font-normal proto border border-[var(--accent)] rounded"
+                      className="px-3 py-1 text-sm font-normal proto border border-gray-700 rounded text-gray-400"
                     >
                       {tag}
                     </span>
@@ -156,7 +156,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <div
                   data-aos="fade-up"
                   data-aos-duration="1800"
-                  className="aspect-video rounded overflow-hidden mb-4 border border-[var(--accent)]"
+                  className="aspect-video rounded overflow-hidden mb-4"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

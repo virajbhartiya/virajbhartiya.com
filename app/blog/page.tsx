@@ -85,7 +85,7 @@ function BlogCard({ blog, index }: { blog: BlogPost; index: number }) {
                   {blog.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 text-xs font-normal proto border border-[var(--accent)] rounded"
+                      className="px-2 py-0.5 text-xs font-normal proto border border-gray-700 rounded text-gray-400"
                     >
                       {tag}
                     </span>
