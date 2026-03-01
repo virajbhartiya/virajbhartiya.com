@@ -3,17 +3,11 @@ import { Tag } from "@/components/ui/Tag";
 import { GenerativeCanvas } from "@/components/canvas/GenerativeCanvas";
 import { projectData } from "@/data/projectData";
 
-// Show top 6 projects in Router-style, rest in compact list
-const FEATURED_COUNT = 6;
-
 export function ProjectsFeed() {
-  const featured = projectData.slice(0, FEATURED_COUNT);
-  const rest = projectData.slice(FEATURED_COUNT);
-
   return (
     <section id="projects" className="mt-32">
       <h2 className="font-pixel text-[clamp(2rem,5vw,4rem)] leading-tight">
-        Projects
+        Router
         <span className="text-accent ml-3 text-[0.5em] align-top">
           ({projectData.length})
         </span>
@@ -21,7 +15,7 @@ export function ProjectsFeed() {
 
       {/* Router-style layout: canvas on left, topics on right */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
-        {/* Left: generative art canvas */}
+        {/* Left: generative art canvas + links */}
         <div className="hidden md:block">
           <div className="aspect-square border border-border/50 relative">
             <GenerativeCanvas
@@ -44,26 +38,26 @@ export function ProjectsFeed() {
           </div>
         </div>
 
-        {/* Right: project topics */}
+        {/* Right: all project topics */}
         <div>
           <SectionLabel label="Topics" className="mb-6" />
-          <div className="space-y-8">
-            {featured.map((project, i) => (
-              <div key={i} className="border-b border-border/30 pb-6">
-                <h3 className="font-mono text-base text-fg mb-1">
+          <div className="space-y-6">
+            {projectData.map((project, i) => (
+              <div key={i} className="border-b border-border/30 pb-5">
+                <h3 className="font-mono text-sm text-fg mb-1">
                   {project.title}
                 </h3>
                 <p className="text-xs text-muted leading-relaxed mb-3 max-w-lg">
-                  {project.description.length > 150
-                    ? project.description.slice(0, 150) + "..."
+                  {project.description.length > 120
+                    ? project.description.slice(0, 120) + "..."
                     : project.description}
                 </p>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 flex-wrap">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-xs border border-border px-4 py-1.5 text-fg hover:bg-fg hover:text-[var(--bg)] transition-colors"
+                    className="font-mono text-xs border border-border px-3 py-1 text-fg hover:bg-fg hover:text-[var(--bg)] transition-colors"
                   >
                     View project
                   </a>
@@ -78,36 +72,6 @@ export function ProjectsFeed() {
           </div>
         </div>
       </div>
-
-      {/* Remaining projects as compact feed */}
-      {rest.length > 0 && (
-        <div className="mt-12">
-          <SectionLabel label="More Projects" count={rest.length} className="mb-4" />
-          <div className="border-t border-border/50">
-            {rest.map((project, i) => (
-              <a
-                key={i}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group grid grid-cols-[40px_1fr_auto] items-center gap-4 py-3 px-2 -mx-2 border-b border-border/50 hover:bg-white/[0.02] transition-colors"
-              >
-                <span className="font-mono text-xs text-muted">
-                  {String(FEATURED_COUNT + i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-mono text-sm text-fg group-hover:text-accent transition-colors truncate">
-                  {project.title}
-                </span>
-                <div className="hidden md:flex items-center gap-2">
-                  {project.tags.slice(0, 2).map((tag) => (
-                    <Tag key={tag} label={tag} />
-                  ))}
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </section>
   );
 }
