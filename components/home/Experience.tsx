@@ -37,6 +37,9 @@ export function Experience() {
                 {exp.badge}
               </span>
               <p className="font-mono text-xs text-muted leading-relaxed mt-1.5 max-w-xl">
+                <span className="text-accent/40 select-none mr-1.5">
+                  {">_"}
+                </span>
                 {exp.description[0]}
               </p>
             </div>
@@ -44,8 +47,8 @@ export function Experience() {
         ))}
       </div>
 
-      {/* Open Source — separate visual block */}
-      <div className="mt-8 border border-accent/10 p-4 md:p-5">
+      {/* Open Source */}
+      <div className="mt-8">
         <div className="flex items-center justify-between mb-3">
           <span className="font-mono text-xs uppercase tracking-widest text-accent/40">
             Open Source · {opensourceData.length} organizations
