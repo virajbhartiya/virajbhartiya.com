@@ -1,5 +1,13 @@
 const hackathonWins = [
   {
+    title: "ETHGlobal",
+    project: "Blip Markets",
+    award: "Finalist",
+    description:
+      "Built Blip Markets, a prediction market platform. Selected as a finalist at ETHGlobal.",
+    year: "2024",
+  },
+  {
     title: "EthIndia 2024",
     project: "ThreeDrive",
     award: "Winner",
