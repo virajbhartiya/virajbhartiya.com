@@ -1,5 +1,14 @@
 const experiences = [
   {
+    title: "Guild Member",
+    company: "Zed",
+    description: [
+      "Accepted into Zed Guild, contributing directly with the core team on real issues for an editor built in the open.",
+      "Working on features used by developers worldwide, building on a foundation of open source contribution.",
+    ],
+    badge: "2026 - Present",
+  },
+  {
     title: "Software Engineer",
     company: "SatsTerminal",
     description: [
