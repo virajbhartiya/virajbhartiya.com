@@ -33,7 +33,10 @@ const Header = () => {
               {shareIcon.icon}
             </a>
           ))}
-          <Link href="/blog" className="text-sm proto hover:accent transition-colors duration-300">
+          <Link
+            href="/blog"
+            className="text-sm proto hover:accent transition-colors duration-300"
+          >
             Blog
           </Link>
         </div>

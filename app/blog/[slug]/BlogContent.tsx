@@ -247,12 +247,7 @@ export function MarkdownContent({ content }: { content: string }) {
 
       // Handle horizontal rules
       if (line.trim() === "---" || line.trim() === "***") {
-        elements.push(
-          <hr
-            key={i}
-            className="my-8 border-t border-gray-800"
-          />,
-        );
+        elements.push(<hr key={i} className="my-8 border-t border-gray-800" />);
         continue;
       }
 

@@ -133,9 +133,7 @@ export default function BlogPage() {
               data-aos-duration="1000"
               className="text-center mb-12"
             >
-              <h1 className="text-4xl font-thin accent proto mb-4">
-                Writing
-              </h1>
+              <h1 className="text-4xl font-thin accent proto mb-4">Writing</h1>
               <p className="font-thin text-lg">
                 On{" "}
                 <span className="accent font-normal proto">
