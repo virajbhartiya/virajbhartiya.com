@@ -8,6 +8,14 @@ export const projectData = [
     tags: ["PostgreSQL", "pgvector", "Ollama", "ETHGlobal"],
   },
   {
+    title: "BlipMarkets",
+    description:
+      "A deterministic, zero-sum prediction platform where users stake on discrete price-time cells overlaid on live ETH-USD price charts. Built with a Go backend, React + TypeScript frontend, PostgreSQL, Redis, and Solidity smart contracts on Base.",
+    image: "images/Blog/blip-markets/banner.png",
+    link: "https://github.com/virajbhartiya/blitmarkets",
+    tags: ["Go", "React", "PostgreSQL", "Solidity"],
+  },
+  {
     title: "Rail Infrastructure Optimization",
     description:
       "Built a rail infrastructure optimization algorithm focused on maximizing train throughput per track section.",
