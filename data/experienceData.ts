@@ -7,6 +7,15 @@ export interface Experience {
 
 export const experienceData: Experience[] = [
   {
+    title: "Guild Member",
+    company: "Zed",
+    badge: "2026 - Present",
+    description: [
+      "Accepted into Zed Guild, contributing directly with the core team on real issues for an editor built in the open.",
+      "Working on features used by developers worldwide, building on a foundation of open source contribution.",
+    ],
+  },
+  {
     title: "Software Engineer",
     company: "SatsTerminal",
     badge: "2026 - Present",
