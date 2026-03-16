@@ -1,6 +1,4 @@
-import { Tag } from "@/components/ui/Tag";
 import { getAllPosts } from "@/lib/blog";
-import { playClick } from "@/lib/audio";
 
 export function BlogFeed() {
   const posts = getAllPosts();
@@ -8,51 +6,45 @@ export function BlogFeed() {
   if (posts.length === 0) return null;
 
   return (
-    <section id="feed" className="mt-10">
-      <div className="flex items-end justify-between gap-4">
-        <h2 className="font-pixel text-[clamp(2rem,5vw,4rem)] leading-tight">
-          Blogs
+    <section id="feed" className="mt-14">
+      <div className="flex items-baseline justify-between gap-4 mb-5">
+        <h2 className="text-xs text-accent uppercase tracking-widest">
+          writing
         </h2>
         <a
           href="/blog"
-          className="font-mono text-xs text-accent uppercase tracking-wider hover:text-fg transition-colors mb-2"
+          className="text-xs text-muted hover:text-fg transition-colors"
         >
-          View all &rarr;
+          all posts &rarr;
         </a>
       </div>
 
-      {/* Route table */}
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-px bg-border/30">
-        {posts.map((post, i) => (
+      {/* Blog cards — each with left accent border */}
+      <div className="space-y-3">
+        {posts.map((post) => (
           <a
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group bg-[var(--bg)] p-4 hover:bg-white/[0.02] transition-colors block"
+            className="group block border-l-2 border-border hover:border-accent pl-4 py-2 transition-colors"
           >
-            {/* Route path */}
-            <div className="flex items-center gap-2 mb-2">
-              <span className="font-mono text-xs text-accent/40">
-                /{String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="font-mono text-xs text-muted/50">
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="text-sm text-fg group-hover:text-accent transition-colors">
+                {post.title}
+              </h3>
+              <span className="text-[10px] text-accent-blue shrink-0">
                 {post.readTime}m
               </span>
-              <div className="flex gap-1 ml-auto">
-                {post.tags.slice(0, 2).map((tag) => (
-                  <Tag key={tag} label={tag} />
-                ))}
-              </div>
             </div>
-
-            {/* Title */}
-            <h3 className="font-mono text-sm text-fg group-hover:text-accent transition-colors leading-snug">
-              {post.title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-xs text-muted leading-relaxed mt-1.5 line-clamp-2">
+            <p className="text-xs text-muted leading-relaxed mt-1 line-clamp-1">
               {post.description}
             </p>
+            <div className="flex gap-2 mt-1.5">
+              {post.tags.slice(0, 3).map((tag) => (
+                <span key={tag} className="text-[10px] text-muted/25">
+                  #{tag.toLowerCase()}
+                </span>
+              ))}
+            </div>
           </a>
         ))}
       </div>

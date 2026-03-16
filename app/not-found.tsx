@@ -1,23 +1,18 @@
-import { BracketLink } from "@/components/ui/BracketLink";
-
 export default function NotFound() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6">
-      <pre className="font-mono text-accent text-xs leading-tight mb-8 select-none">
-{`
- ██╗  ██╗ ██████╗ ██╗  ██╗
- ██║  ██║██╔═══██╗██║  ██║
- ███████║██║   ██║███████║
- ╚════██║██║   ██║╚════██║
-      ██║╚██████╔╝     ██║
-      ╚═╝ ╚═════╝      ╚═╝
-`}
-      </pre>
-      <h1 className="font-pixel text-2xl mb-4">Page Not Found</h1>
-      <p className="font-mono text-sm text-muted max-w-md text-center mb-8">
-        The page you&apos;re looking for doesn&apos;t exist or has been moved.
-      </p>
-      <BracketLink label="Home" shortcut="H" href="/" />
+      <pre className="text-accent text-xs leading-tight mb-6 select-none">{`
+  _  _    ___  _  _
+ | || |  / _ \\| || |
+ | || |_| | | | || |_
+ |__   _| | | |__   _|
+    | | | |_| |  | |
+    |_|  \\___/   |_|
+`}</pre>
+      <p className="text-sm text-muted mb-6">page not found</p>
+      <a href="/" className="text-xs text-accent hover:text-fg transition-colors">
+        &larr; home
+      </a>
     </main>
   );
 }

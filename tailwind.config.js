@@ -10,19 +10,18 @@ module.exports = {
         bg: "var(--bg)",
         fg: "var(--fg)",
         accent: "var(--accent)",
+        "accent-blue": "var(--accent-blue)",
         muted: "var(--muted)",
         border: "var(--border)",
         "card-bg": "var(--card-bg)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
-        pixel: ["var(--font-geist-pixel-square)", "monospace"],
       },
       borderRadius: {
-        DEFAULT: "var(--radius)",
+        DEFAULT: "0",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };

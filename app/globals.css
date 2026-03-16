@@ -3,18 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --bg: #000000;
-  --fg: #e2e8f0;
+  --bg: #0a0a0a;
+  --fg: #c8c8c8;
   --accent: #00efa6;
-  --muted: #64748b;
-  --border: #1a1a1a;
+  --accent-blue: #5eafff;
+  --muted: #555;
+  --border: #222;
   --card-bg: rgba(10, 10, 10, 0.6);
-  --radius: 0.5rem;
+  --radius: 0;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
+  scrollbar-color: var(--border) transparent;
 }
 
 ::selection {
@@ -29,29 +30,18 @@ html, body {
 body {
   background-color: var(--bg);
   color: var(--fg);
+  font-family: var(--font-geist-mono), monospace;
 }
 
-/* Hover glow for cards */
-.hover-glow {
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-.hover-glow:hover {
-  box-shadow: 0 0 30px -12px var(--accent);
-}
-
-/* Feed row hover */
-.feed-row-hover {
-  transition: background-color 0.15s ease;
-}
-.feed-row-hover:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+a {
+  transition: color 0.15s ease;
 }
 
 /* Blog post markdown styles */
 .prose-ascii h1,
 .prose-ascii h2,
 .prose-ascii h3 {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-geist-mono), monospace;
   color: var(--fg);
   margin-top: 2rem;
   margin-bottom: 0.5rem;
@@ -71,16 +61,15 @@ body {
 }
 
 .prose-ascii code {
-  font-family: var(--font-geist-mono);
-  background: rgba(0, 239, 166, 0.1);
+  font-family: var(--font-geist-mono), monospace;
+  background: rgba(0, 239, 166, 0.08);
   padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
   font-size: 0.8em;
   color: var(--accent);
 }
 
 .prose-ascii pre {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 23, 42, 0.6);
   border: 1px solid var(--border);
   padding: 1rem;
   overflow-x: auto;
@@ -137,7 +126,7 @@ body {
 
 /* Contribution grid cell hover */
 .contrib-cell {
-  transition: filter 0.1s ease, outline-offset 0.1s ease;
+  transition: filter 0.1s ease;
 }
 .contrib-cell:hover {
   filter: brightness(1.8);
@@ -145,5 +134,3 @@ body {
   outline-offset: -1px;
   z-index: 5;
 }
-
-

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllSlugs } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
-import { Tag } from "@/components/ui/Tag";
 import { BlogContent } from "./BlogContent";
 
 interface Props {
@@ -30,30 +29,30 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main className="max-w-3xl mx-auto px-4 pt-20 pb-12 min-h-screen">
+    <main className="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-12 min-h-screen">
       <article>
         <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="font-mono text-xs text-muted">{formatDate(post.publishedAt)}</span>
-            <span className="font-mono text-xs text-muted">&middot;</span>
-            <span className="font-mono text-xs text-muted">{post.readTime} min read</span>
+          <div className="flex items-center gap-3 mb-3 text-xs text-muted">
+            <span>{formatDate(post.publishedAt)}</span>
+            <span>&middot;</span>
+            <span>{post.readTime} min read</span>
           </div>
-          <h1 className="font-pixel text-[clamp(1.5rem,4vw,3rem)] leading-tight mb-4">
+          <h1 className="text-xl sm:text-2xl text-fg leading-tight mb-3">
             {post.title}
           </h1>
-          <p className="text-sm text-muted mb-4">{post.description}</p>
-          <div className="flex gap-2 flex-wrap">
+          <p className="text-sm text-muted">{post.description}</p>
+          <div className="flex gap-2 flex-wrap mt-3">
             {post.tags.map((tag) => (
-              <Tag key={tag} label={tag} />
+              <span key={tag} className="text-xs text-muted/50">#{tag}</span>
             ))}
           </div>
         </header>
         <BlogContent content={post.content} />
       </article>
 
-      <div className="mt-16 pt-8 border-t border-border/50">
-        <a href="/blog" className="font-mono text-xs text-muted hover:text-accent transition-colors">
-          &larr; Back to feed
+      <div className="mt-16 pt-6 border-t border-border">
+        <a href="/blog" className="text-xs text-muted hover:text-accent transition-colors">
+          &larr; back
         </a>
       </div>
     </main>

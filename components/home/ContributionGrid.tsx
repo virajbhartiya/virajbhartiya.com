@@ -194,7 +194,7 @@ export function ContributionGrid({ weeks, total }: ContributionGridProps) {
 
         {total > 0 && (
           <span className="font-mono text-xs text-muted/50">
-            {total.toLocaleString()} contributions in the last year
+            <span className="text-accent-blue">{total.toLocaleString()}</span> contributions in the last year
           </span>
         )}
       </div>

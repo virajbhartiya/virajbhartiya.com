@@ -2,42 +2,46 @@ import { winsData } from "@/data/winsData";
 
 export function Wins() {
   return (
-    <section id="wins" className="mt-10">
-      <h2 className="font-pixel text-[clamp(2rem,5vw,4rem)] leading-tight mb-6">
-        Wins
-        <span className="text-accent ml-3 text-[0.5em] align-top">
-          ({winsData.length})
-        </span>
+    <section id="wins" className="mt-14">
+      <h2 className="text-xs text-accent uppercase tracking-widest mb-5">
+        wins
       </h2>
 
-      <div>
-        {winsData.map((win) => (
-          <div
-            key={win.title}
-            className="group border-t border-border/50 last:border-b py-3 sm:py-4"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
-              <div className="flex items-baseline gap-3 min-w-0">
-                <span className="font-pixel text-[clamp(0.85rem,2.5vw,1.5rem)] text-fg leading-none shrink-0">
-                  {win.title}
-                </span>
-                {win.project && (
-                  <span className="font-mono text-xs text-muted truncate hidden sm:inline">
-                    {win.project}
+      {/* ASCII table */}
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs border-collapse">
+          <thead>
+            <tr className="border-b border-border text-muted/40 uppercase tracking-wider">
+              <th className="text-left py-2 pr-4 font-normal">event</th>
+              <th className="text-left py-2 pr-4 font-normal hidden sm:table-cell">project</th>
+              <th className="text-left py-2 pr-4 font-normal">award</th>
+              <th className="text-right py-2 font-normal">year</th>
+            </tr>
+          </thead>
+          <tbody>
+            {winsData.map((win, i) => (
+              <tr
+                key={i}
+                className="border-b border-border/50 group"
+              >
+                <td className="py-2.5 pr-4 text-sm text-fg">{win.title}</td>
+                <td className="py-2.5 pr-4 text-muted hidden sm:table-cell">{win.project}</td>
+                <td className="py-2.5 pr-4">
+                  <span className={`${
+                    win.award.toLowerCase().includes("winner")
+                      ? "text-accent"
+                      : win.award.toLowerCase().includes("finalist") || win.award.toLowerCase().includes("showcase")
+                        ? "text-accent-blue"
+                        : "text-muted"
+                  }`}>
+                    {win.award}
                   </span>
-                )}
-              </div>
-              <span className="font-mono text-xs text-accent shrink-0 uppercase tracking-widest">
-                {win.award}
-              </span>
-            </div>
-            {win.project && (
-              <span className="font-mono text-xs text-muted sm:hidden block mt-1">
-                {win.project}
-              </span>
-            )}
-          </div>
-        ))}
+                </td>
+                <td className="py-2.5 text-right text-accent-blue">{win.year}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );

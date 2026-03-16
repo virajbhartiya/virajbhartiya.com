@@ -10,7 +10,7 @@ export const winsData: Win[] = [
     title: "ETHGlobal",
     award: "Finalist",
     project: "Blip Markets",
-    year: "2024",
+    year: "2026",
   },
   {
     title: "Smart India Hackathon 2025",
