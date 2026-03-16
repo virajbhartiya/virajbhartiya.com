@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { BlinkingCursor } from "@/components/ui/BlinkingCursor";
 
 const NAV_ITEMS = [
   { label: "blog", shortcut: "b", href: "/blog" },
@@ -33,11 +34,13 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-[var(--bg)]">
-      <nav className="max-w-5xl mx-auto px-4 sm:px-6 h-10 flex items-center gap-4 sm:gap-6 text-xs overflow-x-auto">
-        <a href="/" className="text-accent shrink-0">~</a>
-        <span className="text-border select-none">/</span>
-        {NAV_ITEMS.map((item) => {
-          return (
+      <nav className="max-w-5xl mx-auto px-4 sm:px-6 h-10 flex items-center text-xs overflow-x-auto">
+        <a href="/" className="text-accent shrink-0 flex items-center">
+          ~<BlinkingCursor />
+        </a>
+        <span className="text-border select-none mx-3">/</span>
+        <div className="flex items-center gap-4 sm:gap-6">
+          {NAV_ITEMS.map((item) => (
             <a
               key={item.shortcut}
               href={item.href}
@@ -46,8 +49,14 @@ export function Header() {
             >
               {item.label}
             </a>
-          );
-        })}
+          ))}
+        </div>
+        <div className="ml-auto hidden sm:flex items-center gap-2 text-[10px] text-border shrink-0">
+          <span>press</span>
+          {NAV_ITEMS.map((item) => (
+            <kbd key={item.shortcut} className="border border-border px-1 text-muted/40">{item.shortcut}</kbd>
+          ))}
+        </div>
       </nav>
     </header>
   );

@@ -12,32 +12,61 @@ export default function BlogPage() {
 
   return (
     <main className="max-w-5xl mx-auto px-4 sm:px-6 pt-20 min-h-screen">
-      <h1 className="text-xs text-accent uppercase tracking-widest mb-1">
-        writing
-      </h1>
-      <p className="text-xs text-muted mb-8">
-        Blockchain, distributed systems, and software engineering.
-      </p>
+      <div className="mb-10">
+        <h1 className="section-heading text-xs text-accent uppercase tracking-widest mb-3">
+          writing
+        </h1>
+        <p className="text-sm text-muted max-w-lg">
+          Thoughts on blockchain, distributed systems, and software engineering.
+        </p>
+      </div>
 
-      <div>
-        {posts.map((post) => (
+      <div className="space-y-1">
+        {posts.map((post, i) => (
           <a
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group border-t border-border last:border-b py-2.5 flex items-baseline justify-between gap-4 block"
+            className="blog-card group block border-l-2 border-border pl-4 py-4 relative"
           >
-            <span className="text-sm text-fg group-hover:text-accent transition-colors truncate">
-              {post.title}
+            {/* Index */}
+            <span className="absolute -left-[1px] top-2 -translate-x-full pr-2 text-[10px] text-muted/10 group-hover:text-muted/25 transition-colors select-none hidden sm:inline" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
             </span>
-            <span className="text-xs text-muted/40 shrink-0">
-              {formatDate(post.publishedAt)}
-            </span>
+
+            <div className="flex items-start justify-between gap-6">
+              <div className="min-w-0">
+                <h2 className="text-base text-fg group-hover:text-accent transition-colors leading-snug">
+                  {post.title}
+                </h2>
+                <p className="text-xs text-muted leading-relaxed mt-1.5 line-clamp-2 group-hover:text-muted/80 transition-colors max-w-xl">
+                  {post.description}
+                </p>
+                <div className="flex items-center gap-3 mt-2">
+                  <div className="flex gap-2">
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="text-[10px] text-accent-blue/40 group-hover:text-accent-blue/60 transition-colors">
+                        #{tag.toLowerCase()}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="shrink-0 text-right hidden sm:block">
+                <span className="text-xs text-muted/30 block">{formatDate(post.publishedAt)}</span>
+                <span className="text-[10px] text-accent-blue mt-1 block">{post.readTime}m read</span>
+              </div>
+            </div>
           </a>
         ))}
       </div>
 
       {posts.length === 0 && (
-        <p className="text-xs text-muted py-12 text-center">No posts yet.</p>
+        <div className="py-20 text-center">
+          <pre className="text-muted/15 text-[10px] mb-3 select-none" aria-hidden="true">{`
+  ¯\\_(ツ)_/¯
+`}</pre>
+          <p className="text-xs text-muted">No posts yet.</p>
+        </div>
       )}
     </main>
   );

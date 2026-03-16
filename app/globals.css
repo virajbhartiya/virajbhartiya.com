@@ -15,7 +15,7 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-color: var(--accent) transparent;
 }
 
 ::selection {
@@ -35,6 +35,88 @@ body {
 
 a {
   transition: color 0.15s ease;
+}
+
+/* ── Project card hover glow ── */
+.project-card {
+  transition: border-color 0.2s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.project-card:hover {
+  border-color: rgba(0, 239, 166, 0.25);
+  box-shadow:
+    0 0 20px -8px rgba(0, 239, 166, 0.15),
+    inset 0 0 30px -15px rgba(0, 239, 166, 0.05);
+  transform: translateY(-1px);
+}
+
+/* ── Blog card hover ── */
+.blog-card {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.blog-card:hover {
+  border-color: var(--accent);
+  background-color: rgba(0, 239, 166, 0.02);
+}
+
+/* ── Timeline node pulse ── */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.timeline-node-active {
+  animation: node-pulse 2s ease-in-out infinite;
+}
+
+/* ── Table row hover ── */
+.table-row-hover {
+  transition: background-color 0.15s ease;
+}
+.table-row-hover:hover {
+  background-color: rgba(0, 239, 166, 0.03);
+}
+.table-row-hover:hover td {
+  color: var(--fg);
+}
+
+/* ── Accent link underline animation ── */
+.link-glow {
+  position: relative;
+}
+.link-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.link-glow:hover::after {
+  width: 100%;
+}
+
+/* ── Badge hover ── */
+.badge-hover {
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.badge-hover:hover {
+  background-color: rgba(94, 175, 255, 0.08);
+}
+
+/* ── Section heading line ── */
+.section-heading {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--border);
 }
 
 /* Blog post markdown styles */
