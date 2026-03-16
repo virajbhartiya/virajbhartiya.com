@@ -5,7 +5,7 @@ const hackathonWins = [
     award: "Finalist",
     description:
       "Built Blip Markets, a prediction market platform. Selected as a finalist at ETHGlobal.",
-    year: "2024",
+    year: "2026",
   },
   {
     title: "EthIndia 2024",
