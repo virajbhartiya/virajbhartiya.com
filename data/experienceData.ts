@@ -54,7 +54,8 @@ export const experienceData: Experience[] = [
     title: "Core Team Member",
     company: "GDSC KJSCE",
     description: [
-      "Organizing technical events and workshops as part of the Google Developer Student Club.",
+      "Hosted a Flutter and Firebase workshop, teaching students how to build cross-platform mobile apps with realtime backends from scratch.",
+      "Organized technical events and workshops as part of the Google Developer Student Club.",
     ],
   },
   {
