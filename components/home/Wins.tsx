@@ -4,61 +4,73 @@ import { winsData } from "@/data/winsData";
 import { AsciiCycle } from "@/components/ui/AsciiAnimate";
 
 export function Wins() {
-  const winnerCount = winsData.filter(w => w.award.toLowerCase().includes("winner")).length;
-
   return (
-    <section id="wins" className="mt-20">
-      <h2 className="section-heading text-xs text-accent uppercase tracking-widest mb-5">
-        wins
-      </h2>
-
-      <div className="flex items-start gap-4 mb-5">
-        <div className="hidden sm:block shrink-0 relative">
-          <pre className="text-accent/15 text-[9px] leading-tight select-none" aria-hidden="true">{`
-  ___
- |   |
- |___|
-  )|(
- /___\\`}</pre>
+    <section id="wins" className="mt-16 sm:mt-20">
+      <div className="flex items-baseline justify-between gap-4 mb-5">
+        <h2 className="section-heading text-xs text-accent uppercase tracking-widest">
+          wins
+        </h2>
+        <div className="flex items-center gap-2 text-xs text-muted">
           <AsciiCycle
             chars={["★", "☆", "✦", "✧"]}
-            interval={800}
-            className="absolute -top-1 left-1/2 -translate-x-1/2 text-accent/30 text-[10px]"
+            interval={900}
+            className="text-accent text-sm"
           />
+          <span className="tabular-nums">
+            <span className="text-accent">{winsData.length}</span> entries
+          </span>
         </div>
-        <div className="overflow-x-auto flex-1">
-          <table className="w-full text-xs border-collapse">
-            <thead>
-              <tr className="border-b border-border text-muted/40 uppercase tracking-wider">
-                <th className="text-left py-2 pr-4 font-normal">event</th>
-                <th className="text-left py-2 pr-4 font-normal hidden sm:table-cell">project</th>
-                <th className="text-left py-2 pr-4 font-normal">award</th>
-                <th className="text-right py-2 font-normal">year</th>
-              </tr>
-            </thead>
-            <tbody>
-              {winsData.map((win, i) => (
-                <tr key={i} className="border-b border-border/50 table-row-hover">
-                  <td className="py-2.5 pr-4 text-sm text-fg">{win.title}</td>
-                  <td className="py-2.5 pr-4 text-muted hidden sm:table-cell">{win.project}</td>
-                  <td className="py-2.5 pr-4">
-                    <span className={`${
-                      win.award.toLowerCase().includes("winner")
-                        ? "text-accent"
-                        : win.award.toLowerCase().includes("finalist") || win.award.toLowerCase().includes("showcase")
-                          ? "text-accent-blue"
-                          : "text-muted"
-                    }`}>
-                      {win.award.toLowerCase().includes("winner") && <span className="mr-1" aria-hidden="true">*</span>}
-                      {win.award}
-                    </span>
-                  </td>
-                  <td className="py-2.5 text-right text-accent-blue">{win.year}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      </div>
+
+      <div className="border-t border-border">
+        {winsData.map((win, i) => {
+          const awardLower = win.award.toLowerCase();
+          const isWinner = awardLower.includes("winner");
+          const isNotable =
+            awardLower.includes("finalist") || awardLower.includes("showcase");
+          const awardColor = isWinner
+            ? "text-accent"
+            : isNotable
+              ? "text-accent"
+              : "text-fg/75";
+
+          return (
+            <div
+              key={i}
+              className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] items-baseline gap-x-4 sm:gap-x-6 gap-y-1 py-4 sm:py-5 border-b border-border transition-colors hover:bg-accent/[0.02]"
+            >
+              {/* Year + month */}
+              <div className="self-start pt-0.5 leading-none">
+                <span className="text-lg sm:text-xl text-accent-blue tabular-nums">
+                  {win.year}
+                </span>
+                {win.month && (
+                  <span className="block text-[10px] text-muted uppercase tracking-wider mt-1 tabular-nums">
+                    {win.month}
+                  </span>
+                )}
+              </div>
+
+              {/* Event + project */}
+              <div className="min-w-0">
+                <h3 className="text-[15px] sm:text-base text-fg group-hover:text-accent transition-colors leading-snug">
+                  {win.title}
+                </h3>
+                <p className="text-[13px] text-fg/75 mt-1">{win.project}</p>
+              </div>
+
+              {/* Award — wraps below on mobile */}
+              <div className="col-span-2 sm:col-span-1 col-start-2 sm:col-start-3 flex items-center gap-2 sm:justify-end">
+                <span className="text-accent/50 select-none text-xs shrink-0" aria-hidden="true">
+                  {isWinner ? "★" : "◆"}
+                </span>
+                <span className={`text-[12px] sm:text-[13px] uppercase tracking-wider whitespace-nowrap ${awardColor}`}>
+                  {win.award}
+                </span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

@@ -1,5 +1,37 @@
 export const projectData = [
   {
+    title: "fusion-xbtc: Cross-Chain Atomic Swaps",
+    description:
+      "Built trustless atomic swaps across Ethereum and Bitcoin-family chains using HTLCs, with 1inch Fusion+ integration, relayer infrastructure, smart contracts, CLI tooling, and a UI for cross-chain execution.",
+    image: "images/Projects/fusion-xbtc.png",
+    link: "https://github.com/virajbhartiya/fusion-xbtc",
+    tags: ["Blockchain", "Bitcoin", "Ethereum", "HTLC"],
+  },
+  {
+    title: "RaftOkay: Distributed Consensus in Go",
+    description:
+      "Built a Go implementation of Raft with leader election, log replication, WAL-backed durability, snapshots, pluggable transports, and a chaos simulator for failure testing.",
+    image: "images/Projects/raftokay.png",
+    link: "https://github.com/virajbhartiya/raftokay",
+    tags: ["Distributed Systems", "Consensus", "Go"],
+  },
+  {
+    title: "MapReduce: Distributed Execution Runtime",
+    description:
+      "Re-implemented MapReduce across multiple languages, including Rust and Go, to explore coordinator-worker execution, task scheduling, fault tolerance, and distributed job processing.",
+    image: "images/Projects/map-reduce.png",
+    link: "https://github.com/virajbhartiya/map-reduce",
+    tags: ["Distributed Systems", "Rust", "Go"],
+  },
+  {
+    title: "Summer of Bitcoin 2025",
+    description:
+      "Built low-level Bitcoin protocol tooling around node RPCs, descriptor wallets, multisig transaction construction, and mining workflows as part of serious systems and protocol engineering work.",
+    image: "images/Projects/summer-of-bitcoin.png",
+    link: "https://github.com/virajbhartiya/Summer-Of-Bitcoin-2025",
+    tags: ["Blockchain", "Bitcoin", "Go"],
+  },
+  {
     title: "Cognia: Personal Memory Infrastructure",
     description:
       "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy. Built with PostgreSQL, pgvector, and full Ollama support for local AI processing. Features browser extension, semantic search, 3D visualization, and MCP server integration.",
@@ -18,7 +50,7 @@ export const projectData = [
   {
     title: "Cachly: The Cache Manager",
     description:
-      "Cachly is a type-safe, production-ready in-memory cache system for Node.js and TypeScript. It features advanced dependency tracking, intelligent invalidation, TTL, stale-while-revalidate, async operations, event system, statistics, advanced eviction, partitioning, compression, circuit breaker, distributed support, tags, groups, bulk operations, decorators, middleware, CLI tools, and cache hit/miss hooks. Perfect for high-performance applications requiring sophisticated caching strategies.",
+      "Built a type-safe caching system for Node.js and TypeScript with dependency tracking, intelligent invalidation, TTL, stale-while-revalidate, compression, circuit breaking, distributed support, and advanced eviction strategies.",
     image: "images/Projects/cachly.png",
     link: "https://www.npmjs.com/package/cachly",
     tags: ["TypeScript", "Node.js", "NPM Package"],
@@ -75,7 +107,7 @@ export const projectData = [
   {
     title: "Atari Breakout Game with Reinforcement Learning",
     description:
-      'The project "Deep-Q-Network-AtariBreakoutGame" utilizes Deep Q Learning with Python, Numpy, OpenCV, PyGame, and PyTorch for playing Atari Breakout. The GitHub repository provides commands for training and testing. The neural network processes preprocessed Atari frames using a specific architecture outlined in the project.',
+      "Built a Deep Q-Network agent for Atari Breakout using Python, NumPy, OpenCV, PyGame, and PyTorch, covering frame preprocessing, policy learning, and training and evaluation loops.",
     image: "images/Projects/Atari Breakout.gif",
     link: "https://github.com/virajbhartiya/Atari-Breakout-DeepQ",
     tags: ["PyTorch", "OpenCV", "PyGame"],
@@ -91,7 +123,7 @@ export const projectData = [
   {
     title: "Alien: The WiFi Wizard",
     description:
-      "Alien is a desktop app that turns any device with a web browser into a secondary screen for your computer over WiFi. Alien can be used to mirror entire computer display onto any device screen that has a web browser.",
+      "Built a desktop app that turns any browser-enabled device into a secondary display over Wi-Fi, combining networking, real-time rendering, and cross-device UX.",
     image: "images/Projects/alien.png",
     link: "https://github.com/virajbhartiya/Alien",
     tags: ["Electron", "React", "WebRTC"],
@@ -115,7 +147,7 @@ export const projectData = [
   {
     title: "Lucid: Dreamlike Image Generation",
     description:
-      "A collection of text-to-image generation tools built using OpenAI's CLIP model. Generate images from text/images, Generate videos from text, Generate music video from lyrics",
+      "Built text-to-image and multimodal generation tooling around CLIP-style models, spanning image generation, text-to-video experiments, and broader research-hacker workflows.",
     image: "images/Projects/Lucid.jpg",
     link: "https://github.com/virajbhartiya/Lucid",
     tags: ["Python", "OpenAI", "Stable Diffusion"],

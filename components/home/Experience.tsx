@@ -1,71 +1,125 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { experienceData } from "@/data/experienceData";
-import { opensourceData } from "@/data/opensourceData";
-import { AsciiScramble } from "@/components/ui/AsciiAnimate";
 
 export function Experience() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const baseId = useId();
 
   return (
-    <section id="experience" className="mt-20">
-      <h2 className="section-heading text-xs text-accent uppercase tracking-widest mb-5">
-        experience
-      </h2>
+    <section
+      id="experience"
+      className="mt-16 sm:mt-20"
+      aria-labelledby={`${baseId}-heading`}
+    >
+      <div className="flex items-baseline justify-between gap-4 mb-5">
+        <h2
+          id={`${baseId}-heading`}
+          className="section-heading text-xs text-accent uppercase tracking-widest"
+        >
+          experience
+        </h2>
+        <span className="text-xs text-muted tabular-nums">
+          <span className="text-accent">{experienceData.length}</span>
+          <span className="text-border mx-1.5" aria-hidden="true">·</span>
+          roles
+        </span>
+      </div>
 
       {/* Timeline */}
-      <div className="relative pl-6">
-        <div className="absolute left-[7px] top-1 bottom-1 w-px bg-border" />
+      <div className="relative pl-6 sm:pl-7">
+        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border" />
 
         {experienceData.map((exp, i) => {
           const isOpen = openIndex === i;
-          const isLast = i === experienceData.length - 1;
+          const panelId = `${baseId}-panel-${i}`;
+          const buttonId = `${baseId}-button-${i}`;
 
           return (
-            <div key={i} className={`relative ${isLast ? "" : "pb-4"}`}>
+            <div key={i} className="relative pb-5 last:pb-0">
               {/* Node dot */}
               <div
-                className={`absolute -left-6 top-[6px] w-[15px] h-[15px] flex items-center justify-center text-[8px] leading-none transition-all duration-300 ${
-                  isOpen ? "text-accent timeline-node-active" : "text-muted/40"
+                className={`absolute -left-6 sm:-left-7 top-[6px] w-[15px] h-[15px] flex items-center justify-center text-[10px] leading-none bg-[var(--bg)] transition-colors duration-300 ${
+                  isOpen ? "text-accent timeline-node-active" : "text-muted"
                 }`}
+                aria-hidden="true"
               >
                 {isOpen ? "◆" : "◇"}
               </div>
 
               <button
+                id={buttonId}
+                type="button"
                 onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="w-full text-left group"
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                className="w-full text-left group block py-1.5"
               >
-                <div className="flex items-baseline justify-between gap-4">
-                  <div className="flex items-baseline gap-2 min-w-0">
-                    <span className="text-sm text-fg group-hover:text-accent transition-colors shrink-0">
-                      {exp.company}
+                {/* Top row: company + role */}
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <span className="text-[15px] sm:text-base text-fg group-hover:text-accent transition-colors min-w-0 break-words">
+                    {exp.company}
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] text-accent-blue uppercase tracking-[0.18em] shrink-0">
+                    {exp.title}
+                  </span>
+                </div>
+
+                {/* Bottom row: collapsed preview / expand affordance */}
+                <div className="flex items-baseline gap-3 mt-1.5 text-[13px] text-muted">
+                  {!isOpen && (
+                    <p className="leading-relaxed line-clamp-1 min-w-0 flex-1">
+                      <span
+                        className="text-accent/60 mr-1.5"
+                        aria-hidden="true"
+                      >
+                        ›
+                      </span>
+                      {exp.description[0]}
+                    </p>
+                  )}
+                  <span
+                    className={`shrink-0 ml-auto text-[11px] uppercase tracking-widest flex items-center gap-1.5 transition-colors ${
+                      isOpen ? "text-accent" : "text-muted/80 group-hover:text-fg"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {isOpen ? "less" : "more"}
+                    <span
+                      className={`text-[12px] transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      ⌄
                     </span>
-                    <span className="text-xs text-muted/50 truncate hidden sm:inline">
-                      {exp.title}
-                    </span>
-                  </div>
-                  <span className="text-xs text-accent-blue shrink-0 hidden sm:inline">
-                    {exp.badge}
                   </span>
                 </div>
               </button>
 
-              <div className="sm:hidden text-xs text-muted/50 mt-0.5">
-                {exp.title}
-              </div>
-
               <div
+                id={panelId}
+                role="region"
+                aria-labelledby={buttonId}
+                aria-hidden={!isOpen}
+                {...(!isOpen ? { inert: true } : {})}
                 className="grid transition-[grid-template-rows] duration-300 ease-out"
                 style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
               >
                 <div className="overflow-hidden">
-                  <div className="mt-2 space-y-1">
+                  <div className="mt-3 pt-3 border-t border-border/60 space-y-2.5">
                     {exp.description.map((line, j) => (
-                      <p key={j} className="text-xs text-muted leading-relaxed">
-                        <span className="text-accent/30 select-none mr-2">›</span>
-                        {line}
+                      <p
+                        key={j}
+                        className="text-[13px] sm:text-[14px] text-fg/85 leading-relaxed flex gap-2"
+                      >
+                        <span
+                          className="text-accent/70 select-none shrink-0"
+                          aria-hidden="true"
+                        >
+                          ›
+                        </span>
+                        <span>{line}</span>
                       </p>
                     ))}
                   </div>
@@ -74,40 +128,6 @@ export function Experience() {
             </div>
           );
         })}
-      </div>
-
-      {/* Open Source */}
-      <div className="mt-10 border border-border p-4 relative hover:border-accent-blue/15 transition-colors">
-        <span className="absolute -top-px -left-px text-border/30 text-xs select-none" aria-hidden="true">+</span>
-        <span className="absolute -top-px -right-px text-border/30 text-xs select-none" aria-hidden="true">+</span>
-        <span className="absolute -bottom-px -left-px text-border/30 text-xs select-none" aria-hidden="true">+</span>
-        <span className="absolute -bottom-px -right-px text-border/30 text-xs select-none" aria-hidden="true">+</span>
-
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs text-accent-blue">&#9632;</span>
-          <AsciiScramble
-            text="OPEN SOURCE"
-            className="text-xs text-muted uppercase tracking-widest"
-            speed={50}
-            delay={200}
-          />
-          <span className="text-xs text-muted/30">
-            {opensourceData.length} organizations
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {opensourceData.map((org) => (
-            <a
-              key={org.name}
-              href={org.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="badge-hover text-xs text-muted border border-border px-2 py-0.5 hover:text-accent-blue hover:border-accent-blue/30"
-            >
-              {org.name}
-            </a>
-          ))}
-        </div>
       </div>
     </section>
   );

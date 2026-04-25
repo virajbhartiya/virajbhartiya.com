@@ -1,20 +1,28 @@
 "use client";
 
-import { AsciiCycle } from "@/components/ui/AsciiAnimate";
+import { formatDate } from "@/lib/utils";
 
 interface BlogPostPreview {
   slug: string;
   title: string;
   description: string;
+  publishedAt: string;
   readTime: number;
   tags: string[];
 }
 
 export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
   return (
-    <section id="feed" className="mt-20">
-      <div className="flex items-center justify-between gap-4 mb-5">
-        <h2 className="section-heading text-xs text-accent uppercase tracking-widest">
+    <section
+      id="feed"
+      className="mt-16 sm:mt-20"
+      aria-labelledby="writing-heading"
+    >
+      <div className="flex items-baseline justify-between gap-4 mb-5">
+        <h2
+          id="writing-heading"
+          className="section-heading text-xs text-accent uppercase tracking-widest"
+        >
           writing
         </h2>
         <a
@@ -25,45 +33,59 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
         </a>
       </div>
 
-      <div className="space-y-2">
-        {posts.map((post, i) => (
-          <a
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="blog-card group block border-l-2 border-border pl-4 py-3 relative"
-          >
-            <span className="absolute -left-[1px] top-0 -translate-x-full pr-2 text-[10px] text-muted/10 group-hover:text-muted/25 transition-colors select-none hidden sm:inline" aria-hidden="true">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+      <ul className="space-y-5 sm:space-y-6 list-none m-0 p-0">
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <a
+              href={`/blog/${post.slug}`}
+              className="group block relative"
+            >
+              <div className="sm:grid sm:grid-cols-[5.5rem_1fr] sm:gap-x-4">
+                <div className="hidden sm:block pt-1">
+                  <span className="text-[11px] sm:text-xs text-muted tabular-nums">
+                    {formatDate(post.publishedAt)}
+                  </span>
+                </div>
 
-            <div className="flex items-baseline justify-between gap-4">
-              <h3 className="text-sm text-fg group-hover:text-accent transition-colors">
-                {post.title}
-              </h3>
-              <div className="flex items-center gap-1.5 shrink-0">
-                <AsciiCycle
-                  chars={["◦", "●", "◦", "○"]}
-                  interval={1200 + i * 300}
-                  className="text-[6px] text-accent-blue/40"
-                />
-                <span className="text-[10px] text-accent-blue">
-                  {post.readTime}m
-                </span>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 mb-1 sm:hidden">
+                    <span className="text-[10px] uppercase tracking-wider text-muted tabular-nums">
+                      {formatDate(post.publishedAt)}
+                    </span>
+                    <span className="text-border select-none" aria-hidden="true">·</span>
+                    <span className="text-[10px] uppercase tracking-wider text-accent-blue tabular-nums">
+                      {post.readTime} min read
+                    </span>
+                  </div>
+
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <h3 className="text-[15px] sm:text-[17px] font-medium tracking-tight text-fg group-hover:text-accent transition-colors flex-1 min-w-0 leading-snug">
+                      {post.title}
+                    </h3>
+                    <span className="hidden sm:inline text-[11px] sm:text-xs text-accent-blue shrink-0 tabular-nums pt-0.5">
+                      {post.readTime} min
+                    </span>
+                  </div>
+
+                  <p className="text-[12px] sm:text-[13px] text-fg/62 leading-relaxed mt-2 max-w-2xl line-clamp-2">
+                    {post.description}
+                  </p>
+
+                  {post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="text-[11px] sm:text-xs text-muted">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-            <p className="text-xs text-muted leading-relaxed mt-1 line-clamp-1 group-hover:text-muted/80 transition-colors">
-              {post.description}
-            </p>
-            <div className="flex gap-2 mt-1.5">
-              {post.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="text-[10px] text-muted/20 group-hover:text-muted/35 transition-colors">
-                  #{tag.toLowerCase()}
-                </span>
-              ))}
-            </div>
-          </a>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

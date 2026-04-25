@@ -10,6 +10,7 @@ export function BlogFeed() {
     slug: p.slug,
     title: p.title,
     description: p.description,
+    publishedAt: p.publishedAt,
     readTime: p.readTime,
     tags: p.tags,
   }));

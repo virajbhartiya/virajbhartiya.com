@@ -1,5 +1,7 @@
 "use client";
 
+import { slugify } from "@/lib/utils";
+
 interface BlogContentProps {
   content: string;
 }
@@ -24,26 +26,28 @@ export function BlogContent({ content }: BlogContentProps) {
       }
 
       if (match[1] !== undefined && match[2] !== undefined) {
+        const isExternal = /^https?:\/\//i.test(match[2]);
         elements.push(
           <a
             key={`a-${keyIndex++}`}
             href={match[2]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent underline underline-offset-2 decoration-accent/30 hover:decoration-accent hover:text-fg transition-colors"
+            {...(isExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="text-accent decoration-accent/40 underline underline-offset-[3px] hover:decoration-accent hover:text-fg transition-colors"
           >
             {match[1]}
           </a>,
         );
       } else if (match[3] !== undefined) {
         elements.push(
-          <strong key={`b-${keyIndex++}`} className="font-semibold text-fg">
+          <strong key={`b-${keyIndex++}`} className="text-fg font-medium">
             {match[3]}
           </strong>,
         );
       } else if (match[4] !== undefined) {
         elements.push(
-          <em key={`i-${keyIndex++}`} className="italic text-fg/80">
+          <em key={`i-${keyIndex++}`} className="italic text-fg/95">
             {match[4]}
           </em>,
         );
@@ -51,7 +55,7 @@ export function BlogContent({ content }: BlogContentProps) {
         elements.push(
           <code
             key={`c-${keyIndex++}`}
-            className="bg-accent/8 border border-accent/10 px-1.5 py-0.5 text-[0.8em] text-accent"
+            className="bg-accent/[0.08] text-accent px-1.5 py-0.5 text-[0.85em] rounded-sm"
           >
             {match[5]}
           </code>,
@@ -76,6 +80,35 @@ export function BlogContent({ content }: BlogContentProps) {
     let inCodeBlock = false;
     let codeBlockContent: string[] = [];
     let codeBlockLang = "";
+    let currentList: { type: "ul" | "ol"; items: JSX.Element[] } | null = null;
+    let paragraphIndex = 0;
+    const slugCounts = new Map<string, number>();
+
+    const uniqueSlug = (text: string) => {
+      const base = slugify(text) || `section-${elements.length + 1}`;
+      const count = slugCounts.get(base) ?? 0;
+      slugCounts.set(base, count + 1);
+      return count === 0 ? base : `${base}-${count}`;
+    };
+
+    const flushList = () => {
+      if (!currentList) return;
+      const { type, items } = currentList;
+      if (type === "ul") {
+        elements.push(
+          <ul key={`list-${elements.length}`} className="my-6 space-y-2.5 pl-1">
+            {items}
+          </ul>,
+        );
+      } else {
+        elements.push(
+          <ol key={`list-${elements.length}`} className="my-6 space-y-2.5 pl-1">
+            {items}
+          </ol>,
+        );
+      }
+      currentList = null;
+    };
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
@@ -83,15 +116,23 @@ export function BlogContent({ content }: BlogContentProps) {
       // Code blocks
       if (line.startsWith("```")) {
         if (inCodeBlock) {
+          flushList();
           elements.push(
-            <div key={`code-${i}`} className="my-6 relative group">
-              {codeBlockLang && (
-                <span className="absolute top-2 right-3 text-[10px] text-muted/20 uppercase tracking-wider">
-                  {codeBlockLang}
+            <div key={`code-${i}`} className="my-8 relative group">
+              <div className="flex items-center justify-between border border-border border-b-0 bg-[rgba(0,239,166,0.03)] px-4 py-1.5">
+                <span className="text-[10px] text-muted uppercase tracking-widest">
+                  {codeBlockLang || "code"}
                 </span>
-              )}
-              <pre className="bg-[rgba(10,10,10,0.8)] border border-border p-4 overflow-x-auto text-[0.8rem] leading-relaxed">
-                <code className="text-fg/90">{codeBlockContent.join("\n")}</code>
+                <div className="flex items-center gap-1" aria-hidden="true">
+                  <span className="w-2 h-2 rounded-full bg-border" />
+                  <span className="w-2 h-2 rounded-full bg-border" />
+                  <span className="w-2 h-2 rounded-full bg-border" />
+                </div>
+              </div>
+              <pre className="bg-[rgba(10,10,10,0.6)] border border-border p-4 overflow-x-auto text-[13px] leading-relaxed">
+                <code className="text-fg/95 font-mono">
+                  {codeBlockContent.join("\n")}
+                </code>
               </pre>
             </div>,
           );
@@ -99,6 +140,7 @@ export function BlogContent({ content }: BlogContentProps) {
           codeBlockLang = "";
           inCodeBlock = false;
         } else {
+          flushList();
           codeBlockLang = line.slice(3).trim();
           inCodeBlock = true;
         }
@@ -110,27 +152,51 @@ export function BlogContent({ content }: BlogContentProps) {
         continue;
       }
 
-      // Headers with ASCII prefix
+      // Headers
       if (line.startsWith("### ")) {
+        flushList();
+        const text = line.substring(4);
+        const id = uniqueSlug(text);
         elements.push(
-          <h3 key={i} className="text-fg text-base mt-10 mb-3">
-            {line.substring(4)}
+          <h3
+            key={i}
+            id={id}
+            className="text-[15px] text-accent uppercase tracking-widest mt-12 mb-4"
+          >
+            {text}
           </h3>,
         );
         continue;
       }
       if (line.startsWith("## ")) {
+        flushList();
+        const text = line.substring(3);
+        const id = uniqueSlug(text);
         elements.push(
-          <h2 key={i} className="text-fg text-lg mt-12 mb-3">
-            {line.substring(3)}
+          <h2
+            key={i}
+            id={id}
+            className="text-[22px] sm:text-2xl text-fg leading-tight mt-16 mb-5 flex items-baseline gap-3"
+          >
+            <span className="text-accent text-base shrink-0" aria-hidden="true">
+              ##
+            </span>
+            <span>{text}</span>
           </h2>,
         );
         continue;
       }
       if (line.startsWith("# ")) {
+        flushList();
+        const text = line.substring(2);
+        const id = uniqueSlug(text);
         elements.push(
-          <h1 key={i} className="text-fg text-xl mt-12 mb-3">
-            {line.substring(2)}
+          <h1
+            key={i}
+            id={id}
+            className="text-2xl sm:text-3xl text-fg leading-tight mt-16 mb-6"
+          >
+            {text}
           </h1>,
         );
         continue;
@@ -139,17 +205,23 @@ export function BlogContent({ content }: BlogContentProps) {
       // Images
       const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
       if (imageMatch) {
+        flushList();
         elements.push(
-          <figure key={i} className="my-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageMatch[2]}
-              alt={imageMatch[1]}
-              className="max-w-full border border-border"
-            />
+          <figure key={i} className="my-10 -mx-4 sm:mx-0">
+            <div className="border border-border overflow-hidden relative aspect-[16/9] bg-[var(--bg)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageMatch[2]}
+                alt={imageMatch[1]}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-contain block"
+              />
+            </div>
             {imageMatch[1] && (
-              <figcaption className="text-[10px] text-muted/30 mt-2 uppercase tracking-wider">
-                {imageMatch[1]}
+              <figcaption className="text-[11px] text-muted mt-3 uppercase tracking-widest flex items-center gap-2 px-4 sm:px-0">
+                <span className="text-accent/40 select-none" aria-hidden="true">└&gt;</span>
+                <span>{imageMatch[1]}</span>
               </figcaption>
             )}
           </figure>,
@@ -159,11 +231,18 @@ export function BlogContent({ content }: BlogContentProps) {
 
       // Blockquotes
       if (line.startsWith("> ")) {
+        flushList();
         elements.push(
           <blockquote
             key={i}
-            className="border-l-2 border-accent pl-4 text-muted italic my-6 text-sm"
+            className="relative my-8 pl-6 pr-4 py-2 text-[16px] sm:text-[17px] text-fg/90 leading-relaxed italic border-l-2 border-accent"
           >
+            <span
+              className="absolute -top-1 -left-1 text-accent/30 text-3xl select-none font-serif leading-none"
+              aria-hidden="true"
+            >
+              &ldquo;
+            </span>
             {renderInlineMarkdown(line.substring(2))}
           </blockquote>,
         );
@@ -172,53 +251,97 @@ export function BlogContent({ content }: BlogContentProps) {
 
       // Horizontal rules
       if (line.trim() === "---" || line.trim() === "***") {
+        flushList();
         elements.push(
-          <div key={i} className="my-10 flex items-center gap-3" aria-hidden="true">
-            <span className="text-border text-[10px]">*</span>
+          <div
+            key={i}
+            className="my-12 flex items-center gap-3 text-muted"
+            aria-hidden="true"
+          >
             <div className="flex-1 h-px bg-border" />
-            <span className="text-border text-[10px]">*</span>
+            <span className="text-[10px] tracking-widest">§</span>
             <div className="flex-1 h-px bg-border" />
-            <span className="text-border text-[10px]">*</span>
           </div>,
         );
         continue;
       }
 
       // Empty lines
-      if (line.trim() === "") continue;
+      if (line.trim() === "") {
+        flushList();
+        continue;
+      }
 
-      // Unordered lists
+      // Unordered list items
       if (line.match(/^[-*] /)) {
-        elements.push(
-          <li key={i} className="text-sm text-fg/90 leading-7 mb-1 ml-4 pl-2 relative before:content-['›'] before:absolute before:-left-0 before:text-accent/40">
+        if (!currentList || currentList.type !== "ul") {
+          flushList();
+          currentList = { type: "ul", items: [] };
+        }
+        currentList.items.push(
+          <li
+            key={i}
+            className="text-[16px] text-fg/90 leading-[1.75] pl-6 relative"
+          >
+            <span
+              className="absolute left-0 top-0 text-accent/70 select-none"
+              aria-hidden="true"
+            >
+              ›
+            </span>
             {renderInlineMarkdown(line.replace(/^[-*] /, ""))}
           </li>,
         );
         continue;
       }
 
-      // Ordered lists
+      // Ordered list items
       const olMatch = line.match(/^(\d+)\. /);
       if (olMatch) {
-        elements.push(
-          <li key={i} className="text-sm text-fg/90 leading-7 mb-1 ml-4 pl-2 relative">
-            <span className="absolute -left-1 text-accent-blue/40 text-xs">{olMatch[1]}.</span>
+        if (!currentList || currentList.type !== "ol") {
+          flushList();
+          currentList = { type: "ol", items: [] };
+        }
+        currentList.items.push(
+          <li
+            key={i}
+            className="text-[16px] text-fg/90 leading-[1.75] pl-8 relative"
+          >
+            <span
+              className="absolute left-0 top-0 text-accent-blue tabular-nums text-[14px]"
+              aria-hidden="true"
+            >
+              {olMatch[1].padStart(2, "0")}.
+            </span>
             {renderInlineMarkdown(line.replace(/^\d+\. /, ""))}
           </li>,
         );
         continue;
       }
 
-      // Paragraphs
+      // Paragraphs — first paragraph gets lede treatment
+      flushList();
+      const isLede = paragraphIndex === 0;
       elements.push(
-        <p key={i} className="text-sm text-fg/85 leading-7 mb-5">
+        <p
+          key={i}
+          className={
+            isLede
+              ? "text-[17px] sm:text-[18px] text-fg/95 leading-[1.7] mb-6"
+              : "text-[16px] text-fg/90 leading-[1.8] mb-6"
+          }
+        >
           {renderInlineMarkdown(line)}
         </p>,
       );
+      paragraphIndex++;
     }
+
+    // Flush any trailing list
+    flushList();
 
     return elements;
   };
 
-  return <div className="prose-ascii">{renderMarkdown(content)}</div>;
+  return <div>{renderMarkdown(content)}</div>;
 }
