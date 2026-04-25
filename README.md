@@ -22,17 +22,17 @@ It's a website. About me. Built because recruiters kept asking for one and I got
 
 ## Tech Stack (The Stuff That Actually Matters)
 
-| Thing               | What I Used                | Why                                                |
-| ------------------- | -------------------------- | -------------------------------------------------- |
-| **Framework**       | Next.js 16 (App Router)    | Because RSC + ISR + dynamic OG is a free lunch     |
-| **Language**        | TypeScript                 | Because runtime errors are for amateurs            |
-| **Styling**         | Tailwind CSS               | Because writing CSS is boring                      |
-| **Font**            | Geist Mono                 | Monospace or it doesn't count                      |
-| **3D**              | Spline                     | Because static is boring                           |
-| **Blog**            | Markdown + custom renderer | Because MDX would have been overkill               |
-| **OG Images**       | next/og (satori)           | Per-post cards generated at build time             |
-| **Analytics**       | Vercel Analytics           | Because curiosity                                  |
-| **Hosting**         | Vercel                     | Because it just works                              |
+| Thing         | What I Used                | Why                                            |
+| ------------- | -------------------------- | ---------------------------------------------- |
+| **Framework** | Next.js 16 (App Router)    | Because RSC + ISR + dynamic OG is a free lunch |
+| **Language**  | TypeScript                 | Because runtime errors are for amateurs        |
+| **Styling**   | Tailwind CSS               | Because writing CSS is boring                  |
+| **Font**      | Geist Mono                 | Monospace or it doesn't count                  |
+| **3D**        | Spline                     | Because static is boring                       |
+| **Blog**      | Markdown + custom renderer | Because MDX would have been overkill           |
+| **OG Images** | next/og (satori)           | Per-post cards generated at build time         |
+| **Analytics** | Vercel Analytics           | Because curiosity                              |
+| **Hosting**   | Vercel                     | Because it just works                          |
 
 ---
 
@@ -149,30 +149,15 @@ It's on **Vercel** because:
 - It works
 - I don't have to think about it
 
-CI runs prettier and type-check on every PR. Vercel previews every push.
+CI runs prettier and type-check on every push. Vercel previews every push.
 
 **Live at**: [virajbhartiya.com](https://virajbhartiya.com)
 
 ---
 
-## Contributing (If You Must)
+## Contributions
 
-Want to contribute? Sure, why not.
-
-1. Fork it
-2. Make your changes
-3. Run `npm run format` and `npm run type-check`
-4. Don't break anything
-5. Submit a PR
-6. Hope I'm in a good mood
-
-### Rules (Because There Have To Be Some)
-
-- Don't make it worse
-- Use TypeScript (seriously)
-- Test your shit
-- Don't add unnecessary complexity
-- Conventional commit messages (`feat:`, `fix:`, `chore:`, …)
+Not accepting any. This is my personal site — code is here for reading, not for PRs. If you spot something genuinely broken, ping me; otherwise please don't open issues or pull requests.
 
 ---
 
