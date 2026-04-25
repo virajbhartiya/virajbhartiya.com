@@ -1,7 +1,7 @@
 ---
 title: "Things I Care About That Don't Fit on a Resume"
 description: "Resumes compress years into bullet points. Here's everything that actually matters that never makes it onto one."
-publishedAt: "2026-04-22"
+publishedAt: "2026-04-25"
 tags: ["Personal", "Growth", "Values"]
 image: "/images/Blog/things-i-care-about/banner.png"
 author: "Viraj Bhartiya"
