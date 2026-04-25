@@ -1,7 +1,7 @@
 ---
 title: "Things I Care About That Don't Fit on a Resume"
 description: "Resumes compress years into bullet points. Here's everything that actually matters that never makes it onto one."
-publishedAt: "2026-03-03"
+publishedAt: "2026-04-22"
 tags: ["Personal", "Growth", "Values"]
 image: "/images/Blog/things-i-care-about/banner.png"
 author: "Viraj Bhartiya"
@@ -71,7 +71,7 @@ And I still hate it.
 
 The naming feels lazy. The structure feels rushed. The edges feel sharp in a way nobody notices but me.
 
-I've shipped things that technically worked but felt careless. Something about the spacing, the flow, the way one function talks to another — off by a little. Not broken. Just not *right*.
+I've shipped things that technically worked but felt careless. Something about the spacing, the flow, the way one function talks to another, off by a little. Not broken. Just not *right*.
 
 Most people wouldn't notice. But I'd know. And it would bug me for weeks.
 
@@ -85,11 +85,11 @@ Future-me is ruthless.
 
 He will judge every shortcut. Every lazy decision. Every "we'll fix it later" that never got fixed.
 
-Half the projects trending on Twitter this week will be dead in six months. That's not a criticism — it's just how things work. Most things are temporary.
+Half the projects trending on Twitter this week will be dead in six months. That's not a criticism. It's just how things work. Most things are temporary.
 
 But some things stick. Some codebases are still clean three years later. Some APIs still make sense after twelve versions. Some decisions age well because someone sat with them for more than five minutes before committing.
 
-I've killed enough of my own projects to know the difference. The ones I rushed are the ones I'm embarrassed by. The ones where I took an extra day to think about the architecture — those still feel solid.
+I've killed enough of my own projects to know the difference. The ones I rushed are the ones I'm embarrassed by. The ones where I took an extra day to think about the architecture, those still feel solid.
 
 I care more about durability than applause.
 
@@ -101,7 +101,7 @@ When things break, the room changes.
 
 Energy spikes. People rush. Messages pile up. Someone suggests rewriting everything from scratch.
 
-I've been in enough of these moments — hackathons where the demo breaks twenty minutes before judging, production issues at 2 AM, code that worked yesterday and doesn't today — to know that panic makes it worse. Every time.
+I've been in enough of these moments (hackathons where the demo breaks twenty minutes before judging, production issues at 2 AM, code that worked yesterday and doesn't today) to know that panic makes it worse. Every time.
 
 Not because I'm calm by nature. I'm not. My brain runs fast. Too fast, sometimes.
 
@@ -119,7 +119,7 @@ I got into distributed systems before I had any reason to. Nobody was asking me 
 
 I built a [personal memory infrastructure](https://github.com/cogniahq/cognia) because I wanted to understand how vector search and semantic recall actually worked. Not for a class. Not for a job. Because the idea stuck in my head and wouldn't leave.
 
-That kind of curiosity — the kind that doesn't have a goal yet — is the most valuable kind I've found. It's how I went from building Flutter apps in my bedroom to contributing to Filecoin's core protocol. None of that path was planned. I just kept following whatever felt interesting.
+That kind of curiosity, the kind that doesn't have a goal yet, is the most valuable kind I've found. It's how I went from building Flutter apps in my bedroom to contributing to Filecoin's core protocol. None of that path was planned. I just kept following whatever felt interesting.
 
 The best things I've built came from that restlessness. Not from strategy.
 
@@ -131,7 +131,7 @@ This one matters more than all the others combined.
 
 I've been on teams where everyone was talented and nothing good came out of it. Egos clashing, people protecting territory, nobody willing to say "your approach is better, let's go with that."
 
-And I've been on teams — usually at 3 AM during a hackathon, or deep in an open source thread, or in some group chat that started as a joke — where the vibe was just *right*. People who take ownership without being asked. People who disagree without making it personal. People who stay late not because they have to, but because they genuinely care about the thing.
+And I've been on teams (usually at 3 AM during a hackathon, or deep in an open source thread, or in some group chat that started as a joke) where the vibe was just *right*. People who take ownership without being asked. People who disagree without making it personal. People who stay late not because they have to, but because they genuinely care about the thing.
 
 Those people changed how I think. Not the famous engineers on Twitter. The random person who reviewed my first real PR. The teammate who told me my code was bad and then showed me why. The friend who said "you should try Go" and accidentally changed the trajectory of my entire career.
 
