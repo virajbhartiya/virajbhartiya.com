@@ -11,8 +11,15 @@ export function BlogContent({ content }: BlogContentProps) {
     const elements: JSX.Element[] = [];
     let keyIndex = 0;
 
+    // Inline tokens, in order of priority:
+    //   1. [text](url)    — link
+    //   2. **bold**       — bold (asterisk)
+    //   3. __bold__       — bold (underscore)
+    //   4. *italic*       — italic (asterisk, not part of **)
+    //   5. _italic_       — italic (underscore, not part of __ or inside a word)
+    //   6. `code`         — inline code
     const inlineRegex =
-      /\[([^\]]+)\]\(([^)]+)\)|\*\*(.+?)\*\*|(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)|`([^`]+)`/g;
+      /\[([^\]]+)\]\(([^)]+)\)|\*\*(.+?)\*\*|__(.+?)__|(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)|(?<![A-Za-z0-9_])_(?!_)(.+?)(?<!_)_(?![A-Za-z0-9_])|`([^`]+)`/g;
     let match;
     let lastIndex = 0;
 
@@ -39,25 +46,25 @@ export function BlogContent({ content }: BlogContentProps) {
             {match[1]}
           </a>,
         );
-      } else if (match[3] !== undefined) {
+      } else if (match[3] !== undefined || match[4] !== undefined) {
         elements.push(
           <strong key={`b-${keyIndex++}`} className="text-fg font-medium">
-            {match[3]}
+            {match[3] ?? match[4]}
           </strong>,
         );
-      } else if (match[4] !== undefined) {
+      } else if (match[5] !== undefined || match[6] !== undefined) {
         elements.push(
           <em key={`i-${keyIndex++}`} className="italic text-fg/95">
-            {match[4]}
+            {match[5] ?? match[6]}
           </em>,
         );
-      } else if (match[5] !== undefined) {
+      } else if (match[7] !== undefined) {
         elements.push(
           <code
             key={`c-${keyIndex++}`}
             className="bg-accent/[0.08] text-accent px-1.5 py-0.5 text-[0.85em] rounded-sm"
           >
-            {match[5]}
+            {match[7]}
           </code>,
         );
       }
