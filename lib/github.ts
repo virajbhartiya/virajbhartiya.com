@@ -31,9 +31,7 @@ export async function fetchContributions(
     const totalMatch = html.match(
       /(\d[\d,]*)\s+contributions?\s+in\s+the\s+last\s+year/i,
     );
-    const total = totalMatch
-      ? parseInt(totalMatch[1].replace(/,/g, ""))
-      : 0;
+    const total = totalMatch ? parseInt(totalMatch[1].replace(/,/g, "")) : 0;
 
     // Parse contribution cells — match full td elements with content
     const cells: ContributionDay[] = [];

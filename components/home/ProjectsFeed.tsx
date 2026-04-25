@@ -3,26 +3,64 @@
 import { useState } from "react";
 import { projectData } from "@/data/projectData";
 
-const TYPES = ["all", "systems", "web", "mobile", "cli", "ai/ml", "blockchain", "package", "desktop", "extension"] as const;
+const TYPES = [
+  "all",
+  "systems",
+  "web",
+  "mobile",
+  "cli",
+  "ai/ml",
+  "blockchain",
+  "package",
+  "desktop",
+  "extension",
+] as const;
 
 function getProjectType(tags: string[]): string {
-  if (tags.some((t) => ["Blockchain", "Filecoin", "ETHGlobal", "Bitcoin", "Ethereum", "HTLC"].includes(t))) return "blockchain";
-  if (tags.some((t) => ["Machine Learning", "NLP", "Reinforcement Learning", "PyTorch", "OpenCV", "OpenAI", "Stable Diffusion"].includes(t))) return "ai/ml";
+  if (
+    tags.some((t) =>
+      [
+        "Blockchain",
+        "Filecoin",
+        "ETHGlobal",
+        "Bitcoin",
+        "Ethereum",
+        "HTLC",
+      ].includes(t),
+    )
+  )
+    return "blockchain";
+  if (
+    tags.some((t) =>
+      [
+        "Machine Learning",
+        "NLP",
+        "Reinforcement Learning",
+        "PyTorch",
+        "OpenCV",
+        "OpenAI",
+        "Stable Diffusion",
+      ].includes(t),
+    )
+  )
+    return "ai/ml";
   if (tags.some((t) => ["Flutter", "Kotlin"].includes(t))) return "mobile";
   if (tags.includes("CLI")) return "cli";
   if (tags.includes("NPM Package")) return "package";
   if (tags.includes("Electron")) return "desktop";
   if (tags.includes("Chrome Extension")) return "extension";
-  if (tags.some((t) => ["Distributed Systems", "Consensus"].includes(t))) return "systems";
+  if (tags.some((t) => ["Distributed Systems", "Consensus"].includes(t)))
+    return "systems";
   return "web";
 }
 
 export function ProjectsFeed() {
   const [filter, setFilter] = useState("all");
 
-  const filtered = filter === "all"
-    ? projectData
-    : projectData.filter((p) => getProjectType(p.tags) === filter);
+  const filtered =
+    filter === "all"
+      ? projectData
+      : projectData.filter((p) => getProjectType(p.tags) === filter);
 
   return (
     <section
@@ -39,7 +77,9 @@ export function ProjectsFeed() {
         </h2>
         <span className="text-xs text-muted tabular-nums" aria-live="polite">
           <span className="text-accent">{filtered.length}</span>
-          <span className="text-border mx-1" aria-hidden="true">/</span>
+          <span className="text-border mx-1" aria-hidden="true">
+            /
+          </span>
           {projectData.length}
         </span>
       </div>
@@ -119,7 +159,10 @@ export function ProjectsFeed() {
 
       {filtered.length === 0 && (
         <div className="border border-border p-8 text-center">
-          <pre className="text-muted text-xs mb-3 select-none" aria-hidden="true">{`
+          <pre
+            className="text-muted text-xs mb-3 select-none"
+            aria-hidden="true"
+          >{`
   ¯\\_(ツ)_/¯
 `}</pre>
           <p className="text-sm text-fg/85">

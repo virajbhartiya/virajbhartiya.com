@@ -24,7 +24,10 @@ export function BackLink({
       const ref = document.referrer;
       if (!ref) return;
       const refOrigin = new URL(ref).origin;
-      if (refOrigin === window.location.origin && ref !== window.location.href) {
+      if (
+        refOrigin === window.location.origin &&
+        ref !== window.location.href
+      ) {
         setCanGoBack(true);
       }
     } catch {

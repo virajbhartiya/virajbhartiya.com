@@ -12,22 +12,42 @@ interface BracketLinkProps {
   className?: string;
 }
 
-export function BracketLink({ label, shortcut, href, external, className }: BracketLinkProps) {
+export function BracketLink({
+  label,
+  shortcut,
+  href,
+  external,
+  className,
+}: BracketLinkProps) {
   const content = (
-    <span className={cn(
-      "font-mono text-xs tracking-wider uppercase text-muted hover:text-fg transition-colors",
-      className
-    )}>
+    <span
+      className={cn(
+        "font-mono text-xs tracking-wider uppercase text-muted hover:text-fg transition-colors",
+        className,
+      )}
+    >
       <span className="text-accent">[</span>
       <span className="text-accent">{shortcut}</span>
-      <span className="text-accent">]</span>
-      {" "}{label}
+      <span className="text-accent">]</span> {label}
     </span>
   );
 
   if (external) {
-    return <a href={href} target="_blank" rel="noopener noreferrer" onClick={() => playClick()}>{content}</a>;
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => playClick()}
+      >
+        {content}
+      </a>
+    );
   }
 
-  return <Link href={href} onClick={() => playClick()}>{content}</Link>;
+  return (
+    <Link href={href} onClick={() => playClick()}>
+      {content}
+    </Link>
+  );
 }

@@ -11,7 +11,11 @@ export function OpenSource() {
           open source
         </h2>
         <div className="flex items-center gap-2 text-xs text-muted">
-          <AsciiCycle chars={["◆", "◇", "◈"]} interval={700} className="text-accent-blue text-sm" />
+          <AsciiCycle
+            chars={["◆", "◇", "◈"]}
+            interval={700}
+            className="text-accent-blue text-sm"
+          />
           <span className="tabular-nums">
             <span className="text-accent-blue">{opensourceData.length}</span>
             <span className="text-border mx-1.5">·</span>
@@ -23,10 +27,18 @@ export function OpenSource() {
       {/* Banner strip — categorical tags from the actual contribution data */}
       <div className="relative border border-accent-blue/25 p-4 sm:p-6 mb-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/[0.04] via-transparent to-accent/[0.02] pointer-events-none" />
-        <span className="absolute top-1 left-1.5 text-accent-blue/50 text-[10px] select-none">╔</span>
-        <span className="absolute top-1 right-1.5 text-accent-blue/50 text-[10px] select-none">╗</span>
-        <span className="absolute bottom-1 left-1.5 text-accent-blue/50 text-[10px] select-none">╚</span>
-        <span className="absolute bottom-1 right-1.5 text-accent-blue/50 text-[10px] select-none">╝</span>
+        <span className="absolute top-1 left-1.5 text-accent-blue/50 text-[10px] select-none">
+          ╔
+        </span>
+        <span className="absolute top-1 right-1.5 text-accent-blue/50 text-[10px] select-none">
+          ╗
+        </span>
+        <span className="absolute bottom-1 left-1.5 text-accent-blue/50 text-[10px] select-none">
+          ╚
+        </span>
+        <span className="absolute bottom-1 right-1.5 text-accent-blue/50 text-[10px] select-none">
+          ╝
+        </span>
 
         <div className="relative flex items-center justify-between gap-4 sm:gap-6">
           <div className="min-w-0 flex-1">
@@ -48,7 +60,10 @@ export function OpenSource() {
               <span>dev tooling</span>
             </div>
           </div>
-          <pre className="hidden md:block text-accent-blue/25 text-[9px] leading-[1.1] select-none shrink-0" aria-hidden="true">{`   /\\
+          <pre
+            className="hidden md:block text-accent-blue/25 text-[9px] leading-[1.1] select-none shrink-0"
+            aria-hidden="true"
+          >{`   /\\
   /  \\
  /----\\
 /      \\
@@ -81,11 +96,15 @@ export function OpenSource() {
               {org.contribution}
             </p>
             <div className="mt-3 flex items-center gap-2 text-[11px] text-muted min-w-0">
-              <span className="text-accent-blue/40 select-none shrink-0">└&gt;</span>
+              <span className="text-accent-blue/40 select-none shrink-0">
+                └&gt;
+              </span>
               <span className="truncate">
                 {org.url.replace("https://github.com/", "github.com/")}
               </span>
-              <span className="ml-auto text-muted group-hover:text-accent-blue transition-colors select-none">↗</span>
+              <span className="ml-auto text-muted group-hover:text-accent-blue transition-colors select-none">
+                ↗
+              </span>
             </div>
           </a>
         ))}

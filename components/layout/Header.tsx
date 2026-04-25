@@ -7,8 +7,18 @@ import { BlinkingCursor } from "@/components/ui/BlinkingCursor";
 const NAV_ITEMS = [
   { label: "blog", shortcut: "b", href: "/blog" },
   { label: "projects", shortcut: "p", href: "/#projects" },
-  { label: "github", shortcut: "g", href: "https://github.com/virajbhartiya", external: true },
-  { label: "resume", shortcut: "r", href: "/Viraj_Bhartiya.pdf", external: true },
+  {
+    label: "github",
+    shortcut: "g",
+    href: "https://github.com/virajbhartiya",
+    external: true,
+  },
+  {
+    label: "resume",
+    shortcut: "r",
+    href: "/Viraj_Bhartiya.pdf",
+    external: true,
+  },
 ] as const;
 
 function isActive(pathname: string, href: string) {
@@ -26,7 +36,11 @@ export function Header() {
     if (window.matchMedia("(hover: none)").matches) return;
 
     const handleKeydown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      )
+        return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
 
       const item = NAV_ITEMS.find((n) => n.shortcut === e.key.toLowerCase());
@@ -57,7 +71,9 @@ export function Header() {
         >
           ~<BlinkingCursor />
         </a>
-        <span className="text-border select-none mx-3" aria-hidden="true">/</span>
+        <span className="text-border select-none mx-3" aria-hidden="true">
+          /
+        </span>
         <ul className="flex items-center gap-4 sm:gap-6 list-none m-0 p-0">
           {NAV_ITEMS.map((item) => {
             const active = isActive(pathname, item.href);

@@ -84,7 +84,9 @@ export function Hero() {
             >
               github
             </a>
-            <span className="text-border" aria-hidden="true">·</span>
+            <span className="text-border" aria-hidden="true">
+              ·
+            </span>
             <a
               href="https://www.linkedin.com/in/viraj-bhartiya/"
               target="_blank"
@@ -93,7 +95,9 @@ export function Hero() {
             >
               linkedin
             </a>
-            <span className="text-border" aria-hidden="true">·</span>
+            <span className="text-border" aria-hidden="true">
+              ·
+            </span>
             <a
               href="https://twitter.com/heyxviraj"
               target="_blank"
@@ -102,7 +106,9 @@ export function Hero() {
             >
               twitter
             </a>
-            <span className="text-border" aria-hidden="true">·</span>
+            <span className="text-border" aria-hidden="true">
+              ·
+            </span>
             <a
               href="/Viraj_Bhartiya.pdf"
               target="_blank"

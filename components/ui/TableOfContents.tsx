@@ -10,7 +10,11 @@ interface Props {
   showHeader?: boolean;
 }
 
-export function TableOfContents({ items, className, showHeader = true }: Props) {
+export function TableOfContents({
+  items,
+  className,
+  showHeader = true,
+}: Props) {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   useEffect(() => {

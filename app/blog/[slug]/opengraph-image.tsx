@@ -61,9 +61,7 @@ export default async function OgImage({ params }: Props) {
     post?.description ??
     "Writing about blockchain, distributed systems, and software engineering.";
   const author = post?.author ?? "Viraj Bhartiya";
-  const publishedAt = post?.publishedAt
-    ? formatDate(post.publishedAt)
-    : "";
+  const publishedAt = post?.publishedAt ? formatDate(post.publishedAt) : "";
   const readTime = post?.readTime ?? 0;
   const tags = post?.tags ?? [];
 
@@ -74,10 +72,24 @@ export default async function OgImage({ params }: Props) {
 
   const fonts = [
     ...(regular
-      ? [{ name: "GeistMono", data: regular, style: "normal" as const, weight: 400 as const }]
+      ? [
+          {
+            name: "GeistMono",
+            data: regular,
+            style: "normal" as const,
+            weight: 400 as const,
+          },
+        ]
       : []),
     ...(medium
-      ? [{ name: "GeistMono", data: medium, style: "normal" as const, weight: 500 as const }]
+      ? [
+          {
+            name: "GeistMono",
+            data: medium,
+            style: "normal" as const,
+            weight: 500 as const,
+          },
+        ]
       : []),
   ];
 

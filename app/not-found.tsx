@@ -10,7 +10,10 @@ export default function NotFound() {
     |_|  \\___/   |_|
 `}</pre>
       <p className="text-sm text-muted mb-6">page not found</p>
-      <a href="/" className="text-xs text-accent hover:text-fg transition-colors">
+      <a
+        href="/"
+        className="text-xs text-accent hover:text-fg transition-colors"
+      >
         &larr; home
       </a>
     </main>

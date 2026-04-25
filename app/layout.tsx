@@ -5,7 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://virajbhartiya.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://virajbhartiya.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -74,13 +75,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={GeistMono.variable}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={GeistMono.variable} suppressHydrationWarning>
       <body className="bg-[var(--bg)] text-[var(--fg)] font-mono antialiased pt-12">
-        <a href="#main" className="skip-link">Skip to content</a>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <Header />
         {children}
         <Footer />

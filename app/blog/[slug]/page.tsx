@@ -74,7 +74,8 @@ export default async function BlogPostPage({ params }: Props) {
   // Get adjacent posts for navigation
   const allPosts = getAllPosts();
   const currentIdx = allPosts.findIndex((p) => p.slug === slug);
-  const prevPost = currentIdx < allPosts.length - 1 ? allPosts[currentIdx + 1] : null;
+  const prevPost =
+    currentIdx < allPosts.length - 1 ? allPosts[currentIdx + 1] : null;
   const nextPost = currentIdx > 0 ? allPosts[currentIdx - 1] : null;
 
   const articleJsonLd = {
@@ -127,14 +128,21 @@ export default async function BlogPostPage({ params }: Props) {
               <span className="text-accent-blue tabular-nums">
                 {formatDate(post.publishedAt)}
               </span>
-              <span className="text-border select-none" aria-hidden="true">·</span>
+              <span className="text-border select-none" aria-hidden="true">
+                ·
+              </span>
               <span className="tabular-nums">{post.readTime} min read</span>
               {post.tags.length > 0 && (
                 <>
-                  <span className="text-border select-none" aria-hidden="true">·</span>
+                  <span className="text-border select-none" aria-hidden="true">
+                    ·
+                  </span>
                   <div className="flex flex-wrap gap-x-2 gap-y-1">
                     {post.tags.map((tag) => (
-                      <span key={tag} className="text-accent-blue/80 normal-case tracking-normal">
+                      <span
+                        key={tag}
+                        className="text-accent-blue/80 normal-case tracking-normal"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -155,7 +163,9 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Author line */}
             <div className="mt-6 flex items-center gap-2 text-[11px] text-muted uppercase tracking-widest">
-              <span className="text-accent" aria-hidden="true">$</span>
+              <span className="text-accent" aria-hidden="true">
+                $
+              </span>
               <span>by</span>
               <span className="text-fg/90 normal-case tracking-normal">
                 {post.author}
@@ -184,7 +194,12 @@ export default async function BlogPostPage({ params }: Props) {
             <details className="lg:hidden mb-10 max-w-[68ch] group">
               <summary className="list-none cursor-pointer min-h-[44px] flex items-center justify-between border-y border-border py-3 text-[11px] uppercase tracking-widest text-muted hover:text-fg transition-colors">
                 <span className="flex items-center gap-2">
-                  <span aria-hidden="true" className="text-accent transition-transform group-open:rotate-90">›</span>
+                  <span
+                    aria-hidden="true"
+                    className="text-accent transition-transform group-open:rotate-90"
+                  >
+                    ›
+                  </span>
                   on this page
                 </span>
                 <span className="text-muted/70 tabular-nums">{toc.length}</span>
@@ -212,7 +227,9 @@ export default async function BlogPostPage({ params }: Props) {
                 aria-hidden="true"
               >
                 <div className="flex-1 h-px bg-border" />
-                <span className="text-[10px] uppercase tracking-widest">end of file</span>
+                <span className="text-[10px] uppercase tracking-widest">
+                  end of file
+                </span>
                 <div className="flex-1 h-px bg-border" />
               </div>
             </div>
@@ -229,7 +246,10 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Post navigation */}
         {(prevPost || nextPost) && (
-          <nav aria-label="Adjacent posts" className="mt-12 pt-8 border-t border-border">
+          <nav
+            aria-label="Adjacent posts"
+            className="mt-12 pt-8 border-t border-border"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {prevPost ? (
                 <a
@@ -237,7 +257,9 @@ export default async function BlogPostPage({ params }: Props) {
                   className="group block border border-border p-4 sm:p-5 hover:border-accent/30 hover:bg-accent/[0.02] transition-colors"
                 >
                   <span className="text-[10px] text-muted uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
-                    <span className="text-accent-blue" aria-hidden="true">&larr;</span>
+                    <span className="text-accent-blue" aria-hidden="true">
+                      &larr;
+                    </span>
                     <span>older post</span>
                   </span>
                   <span className="text-[15px] text-fg group-hover:text-accent transition-colors leading-snug">
@@ -254,7 +276,9 @@ export default async function BlogPostPage({ params }: Props) {
                 >
                   <span className="text-[10px] text-muted uppercase tracking-widest mb-1.5 flex items-center gap-1.5 sm:justify-end">
                     <span>newer post</span>
-                    <span className="text-accent-blue" aria-hidden="true">&rarr;</span>
+                    <span className="text-accent-blue" aria-hidden="true">
+                      &rarr;
+                    </span>
                   </span>
                   <span className="text-[15px] text-fg group-hover:text-accent transition-colors leading-snug">
                     {nextPost.title}

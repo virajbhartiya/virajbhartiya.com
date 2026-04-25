@@ -53,9 +53,9 @@ I've learned that confidence without correction is just ego with better lighting
 
 I'd rather say "I don't know" and look stupid for ten seconds than stay quiet and write bad code for a week. I'd rather have someone tear apart my approach in a meeting than discover it was flawed in production.
 
-I've been in rooms where no one wants to admit they're lost. Everyone nods along. The meeting ends. Nothing was actually decided. Nobody understood the problem. But everyone *looked* like they did.
+I've been in rooms where no one wants to admit they're lost. Everyone nods along. The meeting ends. Nothing was actually decided. Nobody understood the problem. But everyone _looked_ like they did.
 
-The people I respect most don't defend their ideas like territory. They treat them like drafts. They'll say "actually, I was wrong about that" like it's nothing. Because to them, being right matters more than being *seen as* right.
+The people I respect most don't defend their ideas like territory. They treat them like drafts. They'll say "actually, I was wrong about that" like it's nothing. Because to them, being right matters more than being _seen as_ right.
 
 I try to do the same. I don't always manage it. But I try.
 
@@ -71,7 +71,7 @@ And I still hate it.
 
 The naming feels lazy. The structure feels rushed. The edges feel sharp in a way nobody notices but me.
 
-I've shipped things that technically worked but felt careless. Something about the spacing, the flow, the way one function talks to another, off by a little. Not broken. Just not *right*.
+I've shipped things that technically worked but felt careless. Something about the spacing, the flow, the way one function talks to another, off by a little. Not broken. Just not _right_.
 
 Most people wouldn't notice. But I'd know. And it would bug me for weeks.
 
@@ -131,7 +131,7 @@ This one matters more than all the others combined.
 
 I've been on teams where everyone was talented and nothing good came out of it. Egos clashing, people protecting territory, nobody willing to say "your approach is better, let's go with that."
 
-And I've been on teams (usually at 3 AM during a hackathon, or deep in an open source thread, or in some group chat that started as a joke) where the vibe was just *right*. People who take ownership without being asked. People who disagree without making it personal. People who stay late not because they have to, but because they genuinely care about the thing.
+And I've been on teams (usually at 3 AM during a hackathon, or deep in an open source thread, or in some group chat that started as a joke) where the vibe was just _right_. People who take ownership without being asked. People who disagree without making it personal. People who stay late not because they have to, but because they genuinely care about the thing.
 
 Those people changed how I think. Not the famous engineers on Twitter. The random person who reviewed my first real PR. The teammate who told me my code was bad and then showed me why. The friend who said "you should try Go" and accidentally changed the trajectory of my entire career.
 

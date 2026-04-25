@@ -220,7 +220,9 @@ export function BlogContent({ content }: BlogContentProps) {
             </div>
             {imageMatch[1] && (
               <figcaption className="text-[11px] text-muted mt-3 uppercase tracking-widest flex items-center gap-2 px-4 sm:px-0">
-                <span className="text-accent/40 select-none" aria-hidden="true">└&gt;</span>
+                <span className="text-accent/40 select-none" aria-hidden="true">
+                  └&gt;
+                </span>
                 <span>{imageMatch[1]}</span>
               </figcaption>
             )}

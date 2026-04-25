@@ -12,13 +12,21 @@ interface AsciiCardProps {
   children?: React.ReactNode;
 }
 
-export function AsciiCard({ figure, title, description, tags, href, className, children }: AsciiCardProps) {
+export function AsciiCard({
+  figure,
+  title,
+  description,
+  tags,
+  href,
+  className,
+  children,
+}: AsciiCardProps) {
   return (
     <Link
       href={href}
       className={cn(
         "group block border border-border hover:border-accent/40 transition-colors",
-        className
+        className,
       )}
     >
       <div className="aspect-[4/3] bg-bg relative overflow-hidden">

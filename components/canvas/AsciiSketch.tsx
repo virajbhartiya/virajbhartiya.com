@@ -48,7 +48,8 @@ export function AsciiSketch({ className }: { className?: string }) {
     }
 
     return () => {
-      if (idleId !== undefined && w.cancelIdleCallback) w.cancelIdleCallback(idleId);
+      if (idleId !== undefined && w.cancelIdleCallback)
+        w.cancelIdleCallback(idleId);
       if (timeoutId !== undefined) clearTimeout(timeoutId);
     };
   }, [reducedMotion]);
@@ -127,7 +128,12 @@ export function AsciiSketch({ className }: { className?: string }) {
           const newMy = p.mouseY;
 
           // Check if mouse is inside canvas
-          if (newMx >= 0 && newMx <= p.width && newMy >= 0 && newMy <= p.height) {
+          if (
+            newMx >= 0 &&
+            newMx <= p.width &&
+            newMy >= 0 &&
+            newMy <= p.height
+          ) {
             prevMx = mx;
             prevMy = my;
             mx = newMx;
@@ -171,7 +177,8 @@ export function AsciiSketch({ className }: { className?: string }) {
 
           const t = p.frameCount * 0.01;
           const mouseInfluenceRadius = 160;
-          const mouseInfluenceRadiusSq = mouseInfluenceRadius * mouseInfluenceRadius;
+          const mouseInfluenceRadiusSq =
+            mouseInfluenceRadius * mouseInfluenceRadius;
 
           // Update ripples
           for (let i = ripples.length - 1; i >= 0; i--) {
@@ -238,12 +245,11 @@ export function AsciiSketch({ className }: { className?: string }) {
               // Base: subtle noise-based breathing
               const baseNoise =
                 Math.sin(t * 1.2 + phase + col * 0.15) * 0.5 + 0.5;
-              const breathe =
-                0.08 + baseNoise * 0.12; // base alpha range 0.08-0.20
+              const breathe = 0.08 + baseNoise * 0.12; // base alpha range 0.08-0.20
 
               const intensity = Math.min(
                 breathe + mouseProximity * 0.85 + rippleValue * 0.7,
-                1
+                1,
               );
 
               // --- Character selection ---
@@ -257,13 +263,13 @@ export function AsciiSketch({ className }: { className?: string }) {
                 }
               } else if (intensity > 0.35) {
                 const mi = Math.floor(
-                  (intensity - 0.35) / 0.35 * (MEDIUM.length - 0.01)
+                  ((intensity - 0.35) / 0.35) * (MEDIUM.length - 0.01),
                 );
                 ch = MEDIUM[mi];
               } else {
                 // Sparse background
                 const si = Math.floor(
-                  intensity / 0.35 * (SPARSE.length - 0.01)
+                  (intensity / 0.35) * (SPARSE.length - 0.01),
                 );
                 ch = SPARSE[Math.max(0, si)];
               }
@@ -302,11 +308,9 @@ export function AsciiSketch({ className }: { className?: string }) {
           for (let i = 0; i < particleCount; i++) {
             const seed = i * 137.5;
             const fx =
-              ((Math.sin(t * 0.4 + seed) * 0.5 + 0.5) * (cols - 2) + 1) *
-              CELL;
+              ((Math.sin(t * 0.4 + seed) * 0.5 + 0.5) * (cols - 2) + 1) * CELL;
             const fy =
-              ((Math.cos(t * 0.3 + seed * 1.3) * 0.5 + 0.5) * (rows - 2) +
-                1) *
+              ((Math.cos(t * 0.3 + seed * 1.3) * 0.5 + 0.5) * (rows - 2) + 1) *
               CELL;
             const flicker = Math.sin(t * 3 + seed * 2.7) * 0.5 + 0.5;
             const pAlpha = flicker * 180 + 40;

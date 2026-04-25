@@ -70,11 +70,15 @@ export default function BlogPage() {
                       <span className="text-[11px] text-accent-blue tabular-nums sm:hidden">
                         {post.readTime} min read
                       </span>
-                      {post.tags.length > 0 && post.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-xs text-accent-blue/80">
-                          {tag}
-                        </span>
-                      ))}
+                      {post.tags.length > 0 &&
+                        post.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs text-accent-blue/80"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -84,7 +88,10 @@ export default function BlogPage() {
         </ul>
       ) : (
         <div className="py-20 text-center">
-          <pre className="text-muted text-[10px] mb-3 select-none" aria-hidden="true">{`
+          <pre
+            className="text-muted text-[10px] mb-3 select-none"
+            aria-hidden="true"
+          >{`
   ¯\\_(ツ)_/¯
 `}</pre>
           <p className="text-xs text-fg/80">No posts yet.</p>

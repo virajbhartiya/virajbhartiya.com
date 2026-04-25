@@ -20,8 +20,18 @@ const LEVEL_FG = [
 ];
 const LEVEL_LABELS = ["0", "1-3", "4-7", "8-12", "13+"];
 const MONTHS = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 interface ContributionGridProps {
@@ -113,9 +123,7 @@ export function ContributionGrid({ weeks, total }: ContributionGridProps) {
     if (tip) tip.style.opacity = "0";
   }, []);
 
-  const periodLabel = isMobile
-    ? "the last 16 weeks"
-    : "the last year";
+  const periodLabel = isMobile ? "the last 16 weeks" : "the last year";
 
   return (
     <div
@@ -126,7 +134,10 @@ export function ContributionGrid({ weeks, total }: ContributionGridProps) {
     >
       <div aria-hidden="true">
         {/* Month labels */}
-        <div className="relative h-4 mb-0.5 hidden sm:block" style={{ marginLeft: "24px" }}>
+        <div
+          className="relative h-4 mb-0.5 hidden sm:block"
+          style={{ marginLeft: "24px" }}
+        >
           {monthLabels.map((m, i) => (
             <span
               key={i}
@@ -161,8 +172,7 @@ export function ContributionGrid({ weeks, total }: ContributionGridProps) {
 
               {visibleWeeks.map((week, weekIdx) => {
                 const day = week.find(
-                  (d) =>
-                    new Date(d.date + "T00:00:00").getDay() === dayIdx,
+                  (d) => new Date(d.date + "T00:00:00").getDay() === dayIdx,
                 );
 
                 if (!day) {
@@ -217,7 +227,9 @@ export function ContributionGrid({ weeks, total }: ContributionGridProps) {
 
         {total > 0 && (
           <span className="font-mono text-xs text-fg/75">
-            <span className="text-accent-blue tabular-nums">{total.toLocaleString()}</span>{" "}
+            <span className="text-accent-blue tabular-nums">
+              {total.toLocaleString()}
+            </span>{" "}
             <span className="text-muted">contributions in {periodLabel}</span>
           </span>
         )}

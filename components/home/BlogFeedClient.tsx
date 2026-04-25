@@ -36,10 +36,7 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
       <ul className="space-y-5 sm:space-y-6 list-none m-0 p-0">
         {posts.map((post) => (
           <li key={post.slug}>
-            <a
-              href={`/blog/${post.slug}`}
-              className="group block relative"
-            >
+            <a href={`/blog/${post.slug}`} className="group block relative">
               <div className="sm:grid sm:grid-cols-[5.5rem_1fr] sm:gap-x-4">
                 <div className="hidden sm:block pt-1">
                   <span className="text-[11px] sm:text-xs text-muted tabular-nums">
@@ -52,7 +49,12 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
                     <span className="text-[10px] uppercase tracking-wider text-muted tabular-nums">
                       {formatDate(post.publishedAt)}
                     </span>
-                    <span className="text-border select-none" aria-hidden="true">·</span>
+                    <span
+                      className="text-border select-none"
+                      aria-hidden="true"
+                    >
+                      ·
+                    </span>
                     <span className="text-[10px] uppercase tracking-wider text-accent-blue tabular-nums">
                       {post.readTime} min read
                     </span>
@@ -74,7 +76,10 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
                   {post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-[11px] sm:text-xs text-muted">
+                        <span
+                          key={tag}
+                          className="text-[11px] sm:text-xs text-muted"
+                        >
                           {tag}
                         </span>
                       ))}

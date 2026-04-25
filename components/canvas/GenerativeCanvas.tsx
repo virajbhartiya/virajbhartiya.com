@@ -96,7 +96,12 @@ export function GenerativeCanvas({ config, className }: GenerativeCanvasProps) {
     <canvas
       ref={canvasRef}
       className={className}
-      style={{ width: "100%", height: "100%", display: "block", cursor: "pointer" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "block",
+        cursor: "pointer",
+      }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     />

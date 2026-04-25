@@ -22,7 +22,9 @@ export function Experience() {
         </h2>
         <span className="text-xs text-muted tabular-nums">
           <span className="text-accent">{experienceData.length}</span>
-          <span className="text-border mx-1.5" aria-hidden="true">·</span>
+          <span className="text-border mx-1.5" aria-hidden="true">
+            ·
+          </span>
           roles
         </span>
       </div>
@@ -81,7 +83,9 @@ export function Experience() {
                   )}
                   <span
                     className={`shrink-0 ml-auto text-[11px] uppercase tracking-widest flex items-center gap-1.5 transition-colors ${
-                      isOpen ? "text-accent" : "text-muted/80 group-hover:text-fg"
+                      isOpen
+                        ? "text-accent"
+                        : "text-muted/80 group-hover:text-fg"
                     }`}
                     aria-hidden="true"
                   >

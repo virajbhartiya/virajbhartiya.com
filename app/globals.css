@@ -24,7 +24,8 @@
   color: #000;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -74,7 +75,10 @@ a {
 
 /* ── Project card hover glow ── */
 .project-card {
-  transition: border-color 0.2s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
 }
 .project-card:hover {
   border-color: rgba(0, 239, 166, 0.25);
@@ -86,7 +90,9 @@ a {
 
 /* ── Blog card hover ── */
 .blog-card {
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 .blog-card:hover {
   border-color: var(--accent);
@@ -95,8 +101,13 @@ a {
 
 /* ── Timeline node pulse ── */
 @keyframes node-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 .timeline-node-active {
   animation: node-pulse 2s ease-in-out infinite;
@@ -118,7 +129,7 @@ a {
   position: relative;
 }
 .link-glow::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -133,7 +144,10 @@ a {
 
 /* ── Badge hover ── */
 .badge-hover {
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 .badge-hover:hover {
   background-color: rgba(94, 175, 255, 0.08);
@@ -147,7 +161,7 @@ a {
   gap: 0.75rem;
 }
 .section-heading::after {
-  content: '';
+  content: "";
   display: block;
   width: 40px;
   height: 1px;

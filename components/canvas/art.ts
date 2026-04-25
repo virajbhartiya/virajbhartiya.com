@@ -75,8 +75,7 @@ function renderSwirl(
 
       const charIdx = Math.floor(intensity * (ASCII_CHARS.length - 1));
       const alpha = Math.floor(intensity * 180 + 40);
-      ctx.fillStyle =
-        config.color + alpha.toString(16).padStart(2, "0");
+      ctx.fillStyle = config.color + alpha.toString(16).padStart(2, "0");
       ctx.fillText(ASCII_CHARS[charIdx], x, y);
     }
   }
@@ -127,8 +126,7 @@ function renderGrid(
 
       const charIdx = Math.floor(finalIntensity * (baseChars.length - 1));
       const alpha = Math.floor(finalIntensity * 150 + 30);
-      ctx.fillStyle =
-        config.color + alpha.toString(16).padStart(2, "0");
+      ctx.fillStyle = config.color + alpha.toString(16).padStart(2, "0");
       ctx.fillText(baseChars[charIdx], x, y);
     }
   }
@@ -243,8 +241,7 @@ function renderRing(
     for (let p = 0; p < pts; p++) {
       const baseAngle = (p / pts) * segAngle;
 
-      const twirl =
-        twirlAmt * (ringR / maxR) * Math.sin(t * 0.6 + ring * 0.8);
+      const twirl = twirlAmt * (ringR / maxR) * Math.sin(t * 0.6 + ring * 0.8);
 
       for (let k = 0; k < numK; k++) {
         const kAngle = k * segAngle;
@@ -265,8 +262,7 @@ function renderRing(
           0.2 +
           0.8 *
             (0.5 +
-              0.5 *
-                Math.sin(baseAngle * kaleids * 3 + t * 1.2 + ring * 0.5));
+              0.5 * Math.sin(baseAngle * kaleids * 3 + t * 1.2 + ring * 0.5));
 
         const kaleidFade = k < Math.floor(kaleids) ? 1 : fractionalK;
         const ringFade = 0.5 + 0.5 * (ring / numRings);
@@ -409,8 +405,7 @@ function renderScope(
     for (let col = 0; col < cols; col++) {
       const x = col / cols;
       const waveY =
-        Math.sin(x * wave.freq * Math.PI * 2 + t * 2 + wave.phase) *
-          wave.amp +
+        Math.sin(x * wave.freq * Math.PI * 2 + t * 2 + wave.phase) * wave.amp +
         Math.sin(x * wave.freq * 0.5 * Math.PI * 2 + t * 1.3 + wave.phase) *
           wave.amp *
           0.3;

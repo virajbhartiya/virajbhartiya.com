@@ -1,22 +1,34 @@
 /** Small ASCII decorative elements used throughout the site */
 
-export function AsciiDivider({ variant = "dots" }: { variant?: "dots" | "wave" | "line" | "arrows" | "blocks" }) {
+export function AsciiDivider({
+  variant = "dots",
+}: {
+  variant?: "dots" | "wave" | "line" | "arrows" | "blocks";
+}) {
   const patterns: Record<string, string> = {
     dots: "· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·",
     wave: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~",
     line: "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─",
-    arrows: "› › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › ›",
-    blocks: "░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░",
+    arrows:
+      "› › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › › ›",
+    blocks:
+      "░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░",
   };
 
   return (
     <div className="overflow-hidden select-none my-10" aria-hidden="true">
-      <p className="text-[10px] text-border whitespace-nowrap">{patterns[variant]}</p>
+      <p className="text-[10px] text-border whitespace-nowrap">
+        {patterns[variant]}
+      </p>
     </div>
   );
 }
 
-export function AsciiCorner({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
+export function AsciiCorner({
+  position,
+}: {
+  position: "tl" | "tr" | "bl" | "br";
+}) {
   const chars: Record<string, string> = {
     tl: "┌",
     tr: "┐",
@@ -41,10 +53,24 @@ export function AsciiCorner({ position }: { position: "tl" | "tr" | "bl" | "br" 
   );
 }
 
-export function AsciiLabel({ text, color = "muted" }: { text: string; color?: "muted" | "accent" | "blue" }) {
-  const colorClass = color === "accent" ? "text-accent" : color === "blue" ? "text-accent-blue" : "text-muted/30";
+export function AsciiLabel({
+  text,
+  color = "muted",
+}: {
+  text: string;
+  color?: "muted" | "accent" | "blue";
+}) {
+  const colorClass =
+    color === "accent"
+      ? "text-accent"
+      : color === "blue"
+        ? "text-accent-blue"
+        : "text-muted/30";
   return (
-    <span className={`text-[10px] ${colorClass} select-none`} aria-hidden="true">
+    <span
+      className={`text-[10px] ${colorClass} select-none`}
+      aria-hidden="true"
+    >
       [{text}]
     </span>
   );

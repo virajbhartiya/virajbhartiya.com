@@ -47,7 +47,9 @@ export function AsciiScramble({
             resolved[i] = true;
             return ch;
           }
-          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          return SCRAMBLE_CHARS[
+            Math.floor(Math.random() * SCRAMBLE_CHARS.length)
+          ];
         });
 
         setDisplay(next.join(""));
@@ -89,7 +91,11 @@ export function AsciiCycle({
     return () => clearInterval(id);
   }, [chars.length, interval]);
 
-  return <span className={className} aria-hidden="true">{chars[idx]}</span>;
+  return (
+    <span className={className} aria-hidden="true">
+      {chars[idx]}
+    </span>
+  );
 }
 
 /** Smooth wave animation — characters pulse opacity in sequence */
@@ -116,7 +122,9 @@ export function AsciiWave({
         const wave = Math.sin((tick + i) * 0.4) * 0.5 + 0.5;
         const opacity = 0.15 + wave * 0.35;
         return (
-          <span key={i} style={{ opacity }}>{ch}</span>
+          <span key={i} style={{ opacity }}>
+            {ch}
+          </span>
         );
       })}
     </span>
@@ -150,5 +158,9 @@ export function AsciiBar({
     return "·";
   }).join("");
 
-  return <span className={className} aria-hidden="true">[{bar}]</span>;
+  return (
+    <span className={className} aria-hidden="true">
+      [{bar}]
+    </span>
+  );
 }

@@ -61,10 +61,15 @@ export function Wins() {
 
               {/* Award — wraps below on mobile */}
               <div className="col-span-2 sm:col-span-1 col-start-2 sm:col-start-3 flex items-center gap-2 sm:justify-end">
-                <span className="text-accent/50 select-none text-xs shrink-0" aria-hidden="true">
+                <span
+                  className="text-accent/50 select-none text-xs shrink-0"
+                  aria-hidden="true"
+                >
                   {isWinner ? "★" : "◆"}
                 </span>
-                <span className={`text-[12px] sm:text-[13px] uppercase tracking-wider whitespace-nowrap ${awardColor}`}>
+                <span
+                  className={`text-[12px] sm:text-[13px] uppercase tracking-wider whitespace-nowrap ${awardColor}`}
+                >
                   {win.award}
                 </span>
               </div>
