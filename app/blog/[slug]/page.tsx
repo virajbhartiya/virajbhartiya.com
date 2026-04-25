@@ -83,7 +83,9 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "Article",
     headline: post.title,
     description: post.description,
-    image: banner ? `${SITE_URL}${banner}` : `${SITE_URL}/og-image.png`,
+    image: banner
+      ? `${SITE_URL}${banner}`
+      : `${SITE_URL}/blog/${post.slug}/opengraph-image`,
     datePublished: post.publishedAt || undefined,
     dateModified: post.updatedAt || post.publishedAt || undefined,
     author: {

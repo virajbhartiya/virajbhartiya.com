@@ -21,19 +21,10 @@ export const metadata: Metadata = {
     siteName: "Viraj Bhartiya",
     url: SITE_URL,
     locale: "en_US",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Viraj Bhartiya — software engineer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@heyxviraj",
-    images: ["/og-image.png"],
   },
   icons: {
     icon: [

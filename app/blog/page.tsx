@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     description:
       "Writing about blockchain, distributed systems, and software engineering.",
     url: "/blog",
-    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
     description:
       "Writing about blockchain, distributed systems, and software engineering.",
     creator: "@heyxviraj",
-    images: ["/og-image.png"],
   },
 };
 
