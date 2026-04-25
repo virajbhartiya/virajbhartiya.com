@@ -47,7 +47,7 @@ It’s dumb-simple by design. Complexity invites exploits. We don’t have room 
 
 You can’t use randomness, system clocks, or hidden state. We catch that instantly via hash mismatches.
 
-If you run a task twice and the outputs don’t match, congratulations—you’ve disqualified yourself. This includes:
+If you run a task twice and the outputs don’t match, congratulations, you’ve disqualified yourself. This includes:
 
 - Using `Math.random()` without a seed
 - Accessing current time

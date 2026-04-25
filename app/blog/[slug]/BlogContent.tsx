@@ -1,167 +1,73 @@
 "use client";
 
-import { Share2 } from "lucide-react";
+import { slugify } from "@/lib/utils";
 
-export function ShareButton({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  const handleShare = async () => {
-    if (typeof navigator !== "undefined" && navigator.share) {
-      await navigator.share({
-        title,
-        text: description,
-        url: window.location.href,
-      });
-    } else if (typeof navigator !== "undefined") {
-      await navigator.clipboard.writeText(window.location.href);
-    }
-  };
-
-  return (
-    <button
-      onClick={handleShare}
-      className="flex items-center gap-1 hover:accent transition-colors duration-300"
-    >
-      <Share2 size={14} />
-      <span className="proto">Share</span>
-    </button>
-  );
+interface BlogContentProps {
+  content: string;
 }
 
-export function MarkdownContent({ content }: { content: string }) {
+export function BlogContent({ content }: BlogContentProps) {
   const renderInlineMarkdown = (text: string): JSX.Element[] => {
     const elements: JSX.Element[] = [];
-    let currentIndex = 0;
+    let keyIndex = 0;
 
-    // Handle links first
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    let linkMatch;
-    let processedText = text;
+    const inlineRegex =
+      /\[([^\]]+)\]\(([^)]+)\)|\*\*(.+?)\*\*|(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)|`([^`]+)`/g;
+    let match;
+    let lastIndex = 0;
 
-    while ((linkMatch = linkRegex.exec(text)) !== null) {
-      if (linkMatch.index > currentIndex) {
+    while ((match = inlineRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
         elements.push(
-          <span key={`text-${currentIndex}`}>
-            {text.slice(currentIndex, linkMatch.index)}
+          <span key={`t-${keyIndex++}`}>
+            {text.slice(lastIndex, match.index)}
           </span>,
         );
       }
 
-      elements.push(
-        <a
-          key={`link-${linkMatch.index}`}
-          href={linkMatch[2]}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="accent hover:text-white underline transition-colors duration-300"
-        >
-          {linkMatch[1]}
-        </a>,
-      );
-
-      currentIndex = linkMatch.index + linkMatch[0].length;
-    }
-
-    if (currentIndex < text.length) {
-      processedText = text.slice(currentIndex);
-    } else {
-      processedText = "";
-    }
-
-    // Handle bold text
-    const boldRegex = /\*\*(.*?)\*\*/g;
-    let boldMatch;
-    let boldIndex = 0;
-
-    while ((boldMatch = boldRegex.exec(processedText)) !== null) {
-      if (boldMatch.index > boldIndex) {
+      if (match[1] !== undefined && match[2] !== undefined) {
+        const isExternal = /^https?:\/\//i.test(match[2]);
         elements.push(
-          <span key={`bold-text-${boldIndex}`}>
-            {processedText.slice(boldIndex, boldMatch.index)}
-          </span>,
+          <a
+            key={`a-${keyIndex++}`}
+            href={match[2]}
+            {...(isExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="text-accent decoration-accent/40 underline underline-offset-[3px] hover:decoration-accent hover:text-fg transition-colors"
+          >
+            {match[1]}
+          </a>,
+        );
+      } else if (match[3] !== undefined) {
+        elements.push(
+          <strong key={`b-${keyIndex++}`} className="text-fg font-medium">
+            {match[3]}
+          </strong>,
+        );
+      } else if (match[4] !== undefined) {
+        elements.push(
+          <em key={`i-${keyIndex++}`} className="italic text-fg/95">
+            {match[4]}
+          </em>,
+        );
+      } else if (match[5] !== undefined) {
+        elements.push(
+          <code
+            key={`c-${keyIndex++}`}
+            className="bg-accent/[0.08] text-accent px-1.5 py-0.5 text-[0.85em] rounded-sm"
+          >
+            {match[5]}
+          </code>,
         );
       }
 
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < text.length) {
       elements.push(
-        <strong
-          key={`bold-${boldMatch.index}`}
-          className="accent font-normal proto"
-        >
-          {boldMatch[1]}
-        </strong>,
-      );
-
-      boldIndex = boldMatch.index + boldMatch[0].length;
-    }
-
-    if (boldIndex < processedText.length) {
-      processedText = processedText.slice(boldIndex);
-    } else {
-      processedText = "";
-    }
-
-    // Handle italics
-    const italicRegex = /(\*|_)(.*?)\1/g;
-    let italicMatch;
-    let italicIndex = 0;
-
-    while ((italicMatch = italicRegex.exec(processedText)) !== null) {
-      if (italicMatch.index > italicIndex) {
-        elements.push(
-          <span key={`italic-text-${italicIndex}`}>
-            {processedText.slice(italicIndex, italicMatch.index)}
-          </span>,
-        );
-      }
-
-      elements.push(
-        <em key={`italic-${italicMatch.index}`} className="italic font-thin">
-          {italicMatch[2]}
-        </em>,
-      );
-
-      italicIndex = italicMatch.index + italicMatch[0].length;
-    }
-
-    if (italicIndex < processedText.length) {
-      processedText = processedText.slice(italicIndex);
-    } else {
-      processedText = "";
-    }
-
-    // Handle inline code
-    const codeRegex = /`([^`]+)`/g;
-    let codeMatch;
-    let codeIndex = 0;
-
-    while ((codeMatch = codeRegex.exec(processedText)) !== null) {
-      if (codeMatch.index > codeIndex) {
-        elements.push(
-          <span key={`code-text-${codeIndex}`}>
-            {processedText.slice(codeIndex, codeMatch.index)}
-          </span>,
-        );
-      }
-
-      elements.push(
-        <code
-          key={`code-${codeMatch.index}`}
-          className="bg-[#07251c] text-[#00efa6] px-1 py-0.5 rounded text-sm font-mono"
-        >
-          {codeMatch[1]}
-        </code>,
-      );
-
-      codeIndex = codeMatch.index + codeMatch[0].length;
-    }
-
-    if (codeIndex < processedText.length) {
-      elements.push(
-        <span key="text-end">{processedText.slice(codeIndex)}</span>,
+        <span key={`t-${keyIndex++}`}>{text.slice(lastIndex)}</span>,
       );
     }
 
@@ -173,26 +79,69 @@ export function MarkdownContent({ content }: { content: string }) {
     const elements: JSX.Element[] = [];
     let inCodeBlock = false;
     let codeBlockContent: string[] = [];
+    let codeBlockLang = "";
+    let currentList: { type: "ul" | "ol"; items: JSX.Element[] } | null = null;
+    let paragraphIndex = 0;
+    const slugCounts = new Map<string, number>();
+
+    const uniqueSlug = (text: string) => {
+      const base = slugify(text) || `section-${elements.length + 1}`;
+      const count = slugCounts.get(base) ?? 0;
+      slugCounts.set(base, count + 1);
+      return count === 0 ? base : `${base}-${count}`;
+    };
+
+    const flushList = () => {
+      if (!currentList) return;
+      const { type, items } = currentList;
+      if (type === "ul") {
+        elements.push(
+          <ul key={`list-${elements.length}`} className="my-6 space-y-2.5 pl-1">
+            {items}
+          </ul>,
+        );
+      } else {
+        elements.push(
+          <ol key={`list-${elements.length}`} className="my-6 space-y-2.5 pl-1">
+            {items}
+          </ol>,
+        );
+      }
+      currentList = null;
+    };
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
 
-      // Handle code blocks
+      // Code blocks
       if (line.startsWith("```")) {
         if (inCodeBlock) {
+          flushList();
           elements.push(
-            <div
-              key={`code-${i}`}
-              className="border border-gray-800 bg-gray-900/50 rounded p-4 my-4 overflow-x-auto"
-            >
-              <pre className="text-sm font-thin proto">
-                <code>{codeBlockContent.join("\n")}</code>
+            <div key={`code-${i}`} className="my-8 relative group">
+              <div className="flex items-center justify-between border border-border border-b-0 bg-[rgba(0,239,166,0.03)] px-4 py-1.5">
+                <span className="text-[10px] text-muted uppercase tracking-widest">
+                  {codeBlockLang || "code"}
+                </span>
+                <div className="flex items-center gap-1" aria-hidden="true">
+                  <span className="w-2 h-2 rounded-full bg-border" />
+                  <span className="w-2 h-2 rounded-full bg-border" />
+                  <span className="w-2 h-2 rounded-full bg-border" />
+                </div>
+              </div>
+              <pre className="bg-[rgba(10,10,10,0.6)] border border-border p-4 overflow-x-auto text-[13px] leading-relaxed">
+                <code className="text-fg/95 font-mono">
+                  {codeBlockContent.join("\n")}
+                </code>
               </pre>
             </div>,
           );
           codeBlockContent = [];
+          codeBlockLang = "";
           inCodeBlock = false;
         } else {
+          flushList();
+          codeBlockLang = line.slice(3).trim();
           inCodeBlock = true;
         }
         continue;
@@ -203,80 +152,198 @@ export function MarkdownContent({ content }: { content: string }) {
         continue;
       }
 
-      // Handle headers
-      if (line.startsWith("# ")) {
-        elements.push(
-          <h1 key={i} className="text-3xl font-thin accent proto mt-4 mb-2">
-            {line.substring(2)}
-          </h1>,
-        );
-        continue;
-      }
-      if (line.startsWith("## ")) {
-        elements.push(
-          <h2 key={i} className="text-2xl font-thin accent proto mt-3 mb-2">
-            {line.substring(3)}
-          </h2>,
-        );
-        continue;
-      }
+      // Headers
       if (line.startsWith("### ")) {
+        flushList();
+        const text = line.substring(4);
+        const id = uniqueSlug(text);
         elements.push(
-          <h3 key={i} className="text-xl font-thin accent proto mt-2 mb-1">
-            {line.substring(4)}
+          <h3
+            key={i}
+            id={id}
+            className="text-[15px] text-accent uppercase tracking-widest mt-12 mb-4"
+          >
+            {text}
           </h3>,
         );
         continue;
       }
+      if (line.startsWith("## ")) {
+        flushList();
+        const text = line.substring(3);
+        const id = uniqueSlug(text);
+        elements.push(
+          <h2
+            key={i}
+            id={id}
+            className="text-[22px] sm:text-2xl text-fg leading-tight mt-16 mb-5 flex items-baseline gap-3"
+          >
+            <span className="text-accent text-base shrink-0" aria-hidden="true">
+              ##
+            </span>
+            <span>{text}</span>
+          </h2>,
+        );
+        continue;
+      }
+      if (line.startsWith("# ")) {
+        flushList();
+        const text = line.substring(2);
+        const id = uniqueSlug(text);
+        elements.push(
+          <h1
+            key={i}
+            id={id}
+            className="text-2xl sm:text-3xl text-fg leading-tight mt-16 mb-6"
+          >
+            {text}
+          </h1>,
+        );
+        continue;
+      }
 
-      // Handle images: ![alt](src)
+      // Images
       const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
       if (imageMatch) {
+        flushList();
         elements.push(
-          <div key={i} className="my-6 rounded overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageMatch[2]}
-              alt={imageMatch[1]}
-              className="w-full rounded"
-            />
+          <figure key={i} className="my-10 -mx-4 sm:mx-0">
+            <div className="border border-border overflow-hidden relative aspect-[16/9] bg-[var(--bg)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageMatch[2]}
+                alt={imageMatch[1]}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-contain block"
+              />
+            </div>
+            {imageMatch[1] && (
+              <figcaption className="text-[11px] text-muted mt-3 uppercase tracking-widest flex items-center gap-2 px-4 sm:px-0">
+                <span className="text-accent/40 select-none" aria-hidden="true">
+                  └&gt;
+                </span>
+                <span>{imageMatch[1]}</span>
+              </figcaption>
+            )}
+          </figure>,
+        );
+        continue;
+      }
+
+      // Blockquotes
+      if (line.startsWith("> ")) {
+        flushList();
+        elements.push(
+          <blockquote
+            key={i}
+            className="relative my-8 pl-6 pr-4 py-2 text-[16px] sm:text-[17px] text-fg/90 leading-relaxed italic border-l-2 border-accent"
+          >
+            <span
+              className="absolute -top-1 -left-1 text-accent/30 text-3xl select-none font-serif leading-none"
+              aria-hidden="true"
+            >
+              &ldquo;
+            </span>
+            {renderInlineMarkdown(line.substring(2))}
+          </blockquote>,
+        );
+        continue;
+      }
+
+      // Horizontal rules
+      if (line.trim() === "---" || line.trim() === "***") {
+        flushList();
+        elements.push(
+          <div
+            key={i}
+            className="my-12 flex items-center gap-3 text-muted"
+            aria-hidden="true"
+          >
+            <div className="flex-1 h-px bg-border" />
+            <span className="text-[10px] tracking-widest">§</span>
+            <div className="flex-1 h-px bg-border" />
           </div>,
         );
         continue;
       }
 
-      // Handle horizontal rules
-      if (line.trim() === "---" || line.trim() === "***") {
-        elements.push(<hr key={i} className="my-8 border-t border-gray-800" />);
-        continue;
-      }
-
-      // Handle empty lines
+      // Empty lines
       if (line.trim() === "") {
-        elements.push(<br key={i} />);
+        flushList();
         continue;
       }
 
-      // Handle lists
-      if (line.startsWith("- ")) {
-        elements.push(
-          <li key={i} className="font-thin ml-4 mb-1">
-            {renderInlineMarkdown(line.substring(2))}
+      // Unordered list items
+      if (line.match(/^[-*] /)) {
+        if (!currentList || currentList.type !== "ul") {
+          flushList();
+          currentList = { type: "ul", items: [] };
+        }
+        currentList.items.push(
+          <li
+            key={i}
+            className="text-[16px] text-fg/90 leading-[1.75] pl-6 relative"
+          >
+            <span
+              className="absolute left-0 top-0 text-accent/70 select-none"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+            {renderInlineMarkdown(line.replace(/^[-*] /, ""))}
           </li>,
         );
         continue;
       }
 
-      // Handle regular paragraphs
+      // Ordered list items
+      const olMatch = line.match(/^(\d+)\. /);
+      if (olMatch) {
+        if (!currentList || currentList.type !== "ol") {
+          flushList();
+          currentList = { type: "ol", items: [] };
+        }
+        currentList.items.push(
+          <li
+            key={i}
+            className="text-[16px] text-fg/90 leading-[1.75] pl-8 relative"
+          >
+            <span
+              className="absolute left-0 top-0 text-accent-blue tabular-nums text-[14px]"
+              aria-hidden="true"
+            >
+              {olMatch[1].padStart(2, "0")}.
+            </span>
+            {renderInlineMarkdown(line.replace(/^\d+\. /, ""))}
+          </li>,
+        );
+        continue;
+      }
+
+      // Paragraphs — first paragraph gets lede treatment
+      flushList();
+      const isLede = paragraphIndex === 0;
       elements.push(
-        <p key={i} className="font-thin mb-2">
+        <p
+          key={i}
+          className={
+            isLede
+              ? "text-[17px] sm:text-[18px] text-fg/95 leading-[1.7] mb-6"
+              : "text-[16px] text-fg/90 leading-[1.8] mb-6"
+          }
+        >
           {renderInlineMarkdown(line)}
         </p>,
       );
+      paragraphIndex++;
     }
+
+    // Flush any trailing list
+    flushList();
 
     return elements;
   };
 
-  return <>{renderMarkdown(content)}</>;
+  return <div>{renderMarkdown(content)}</div>;
 }
