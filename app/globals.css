@@ -7,10 +7,11 @@
   --fg: #c8c8c8;
   --accent: #00efa6;
   --accent-blue: #5eafff;
-  --muted: #555;
-  --border: #222;
+  --muted: #7a7a7a;
+  --border: #2a2a2a;
   --card-bg: rgba(10, 10, 10, 0.6);
   --radius: 0;
+  --header-h: 40px;
 }
 
 * {
@@ -27,6 +28,10 @@ html, body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg);
   color: var(--fg);
@@ -35,6 +40,36 @@ body {
 
 a {
   transition: color 0.15s ease;
+}
+
+/* ── Focus styles ── */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Skip link ── */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 /* ── Project card hover glow ── */
@@ -133,7 +168,7 @@ a {
   color: var(--fg);
   line-height: 1.75;
   margin-bottom: 1rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .prose-ascii a {
@@ -178,7 +213,7 @@ a {
 }
 
 .prose-ascii li {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--fg);
   line-height: 1.75;
   margin-bottom: 0.25rem;
@@ -210,9 +245,36 @@ a {
 .contrib-cell {
   transition: filter 0.1s ease;
 }
-.contrib-cell:hover {
+.contrib-cell:hover,
+.contrib-cell:focus-visible {
   filter: brightness(1.8);
   outline: 1px solid var(--accent);
   outline-offset: -1px;
   z-index: 5;
+}
+
+/* Anchor offset for fixed header so #section links don't hide under nav */
+:where(h1, h2, h3, h4, h5, h6)[id] {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .timeline-node-active {
+    animation: none;
+    opacity: 1;
+  }
 }

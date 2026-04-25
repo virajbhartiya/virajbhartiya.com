@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import type p5Type from "p5";
 
 // Character sets ordered by visual density (sparse to dense)
@@ -13,11 +13,48 @@ const GREEN: [number, number, number] = [0, 239, 166];
 const BLUE: [number, number, number] = [94, 175, 255];
 const BG = 10; // #0a0a0a
 
+type IdleHandle = number;
+type RequestIdle = (cb: () => void, opts?: { timeout: number }) => IdleHandle;
+type CancelIdle = (id: IdleHandle) => void;
+
 export function AsciiSketch({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sketchRef = useRef<p5Type | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const update = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Defer p5 mount until the browser is idle so it doesn't block the LCP.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const w = window as unknown as {
+      requestIdleCallback?: RequestIdle;
+      cancelIdleCallback?: CancelIdle;
+    };
+    let idleId: IdleHandle | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    if (w.requestIdleCallback) {
+      idleId = w.requestIdleCallback(() => setReady(true), { timeout: 1500 });
+    } else {
+      timeoutId = setTimeout(() => setReady(true), 600);
+    }
+
+    return () => {
+      if (idleId !== undefined && w.cancelIdleCallback) w.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    if (!ready || reducedMotion) return;
     if (!containerRef.current) return;
 
     let cancelled = false;
@@ -301,7 +338,15 @@ export function AsciiSketch({ className }: { className?: string }) {
       cancelled = true;
       sketchRef.current?.remove();
     };
-  }, []);
+  }, [ready, reducedMotion]);
 
-  return <div ref={containerRef} className={className} />;
+  return (
+    <div ref={containerRef} className={className} aria-hidden="true">
+      {reducedMotion && (
+        <div className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-widest text-muted">
+          [sketch paused — reduced motion]
+        </div>
+      )}
+    </div>
+  );
 }

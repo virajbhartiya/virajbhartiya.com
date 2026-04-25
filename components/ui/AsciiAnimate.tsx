@@ -4,6 +4,11 @@ import { useState, useEffect, useRef } from "react";
 
 const SCRAMBLE_CHARS = "░▒▓█■□●◆◇".split("");
 
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 /** Cycles through random ASCII characters before settling on final text (one-time on mount) */
 export function AsciiScramble({
   text,
@@ -20,6 +25,11 @@ export function AsciiScramble({
   const mounted = useRef(true);
 
   useEffect(() => {
+    if (prefersReducedMotion()) {
+      setDisplay(text);
+      return;
+    }
+
     mounted.current = true;
     const chars = text.split("");
     const resolved = new Array(chars.length).fill(false);
@@ -72,6 +82,7 @@ export function AsciiCycle({
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
+    if (prefersReducedMotion()) return;
     const id = setInterval(() => {
       setIdx((i) => (i + 1) % chars.length);
     }, interval);
@@ -94,6 +105,7 @@ export function AsciiWave({
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
+    if (prefersReducedMotion()) return;
     const id = setInterval(() => setTick((t) => t + 1), speed);
     return () => clearInterval(id);
   }, [speed]);
@@ -122,6 +134,7 @@ export function AsciiBar({
   const [pos, setPos] = useState(0);
 
   useEffect(() => {
+    if (prefersReducedMotion()) return;
     const id = setInterval(() => {
       setPos((p) => (p + 1) % (width + 4));
     }, 100);

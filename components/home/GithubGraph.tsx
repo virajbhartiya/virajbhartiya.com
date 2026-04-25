@@ -1,31 +1,18 @@
-"use client";
-
 import { AsciiCycle } from "@/components/ui/AsciiAnimate";
 import { ContributionGrid } from "./ContributionGrid";
+import { fetchContributions } from "@/lib/github";
 
-import { useEffect, useState } from "react";
-
-interface ContributionData {
-  weeks: any[];
-  total: number;
-}
-
-export function GithubGraph() {
-  const [data, setData] = useState<ContributionData | null>(null);
-
-  useEffect(() => {
-    fetch("/api/contributions")
-      .then((r) => r.json())
-      .then(setData)
-      .catch(() => {});
-  }, []);
-
+export async function GithubGraph() {
+  const data = await fetchContributions("virajbhartiya");
   if (!data || data.weeks.length === 0) return null;
 
   return (
-    <section className="mt-20">
+    <section className="mt-16 sm:mt-20" aria-labelledby="contributions-heading">
       <div className="flex items-center justify-between gap-4 mb-5">
-        <h2 className="section-heading text-xs text-accent uppercase tracking-widest">
+        <h2
+          id="contributions-heading"
+          className="section-heading text-xs text-accent uppercase tracking-widest"
+        >
           contributions
         </h2>
         <a
@@ -40,13 +27,13 @@ export function GithubGraph() {
 
       <ContributionGrid weeks={data.weeks} total={data.total} />
 
-      <div className="mt-3 flex items-center gap-3 text-[10px] text-muted/15">
+      <div className="mt-3 flex items-center gap-2 text-[11px] text-muted">
         <AsciiCycle
           chars={["·", "░", "▒", "▓", "█", "▓", "▒", "░"]}
           interval={200}
-          className="text-accent/20"
+          className="text-accent"
         />
-        <span className="text-muted/15" aria-hidden="true">src: github.com/virajbhartiya | cache: 1h | render: ·░▒▓█</span>
+        <span aria-hidden="true">src: github · cache: 1h · scale: ·░▒▓█</span>
       </div>
     </section>
   );
