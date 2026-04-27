@@ -14,7 +14,7 @@ export const winsData: Win[] = [
     award: "Finalist",
     project: "Blip Markets",
     year: "2026",
-    month: "Mar",
+    month: "Feb",
     featured: true,
   },
   {
@@ -22,14 +22,14 @@ export const winsData: Win[] = [
     award: "Winner",
     project: "Rail Infrastructure Optimization",
     year: "2025",
-    month: "Oct",
+    month: "Dec",
   },
   {
     title: "Filecoin Dev Summit Toronto 2025",
     award: "Demo Showcase",
     project: "HotVault",
     year: "2025",
-    month: "Oct",
+    month: "Apr",
   },
   {
     title: "Prakalpa 2025",
@@ -50,6 +50,6 @@ export const winsData: Win[] = [
     award: "Winner",
     project: "OpenFund",
     year: "2024",
-    month: "Nov",
+    month: "Dec",
   },
 ];
