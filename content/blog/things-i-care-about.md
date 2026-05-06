@@ -7,8 +7,6 @@ image: "/images/Blog/things-i-care-about/banner.png"
 author: "Viraj Bhartiya"
 ---
 
-# Things I Care About That Don't Fit on a Resume
-
 My resume is one page.
 
 It lists the projects, the roles, the things that worked. It makes my life look linear. Efficient. Intentional.

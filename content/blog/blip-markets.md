@@ -7,8 +7,6 @@ image: "/images/Blog/blip-markets/banner.png"
 author: "Viraj Bhartiya"
 ---
 
-# What if prediction markets were actually simple?
-
 Every prediction market I've tried made me feel stupid.
 
 Order books. Liquidity pools. AMM curves. Slippage. Impermanent loss. You need a finance degree just to place a bet on whether ETH goes up or down in the next 5 minutes.

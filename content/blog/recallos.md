@@ -7,8 +7,6 @@ image: "/images/Blog/recallos.png"
 author: "Viraj Bhartiya"
 ---
 
-# Cognia: Enterprise Memory Infrastructure
-
 A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy.
 
 ## Architecture
