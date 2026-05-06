@@ -1,6 +1,6 @@
 export const projectData = [
   {
-    title: "fusion-xbtc: Cross-Chain Atomic Swaps",
+    title: "fusion-xbtc: Cross-Chain Atomic Swaps for Bitcoin",
     description:
       "Built trustless atomic swaps across Ethereum and Bitcoin-family chains using HTLCs, with 1inch Fusion+ integration, relayer infrastructure, smart contracts, CLI tooling, and a UI for cross-chain execution.",
     image: "images/Projects/fusion-xbtc.png",
@@ -8,7 +8,7 @@ export const projectData = [
     tags: ["Blockchain", "Bitcoin", "Ethereum", "HTLC"],
   },
   {
-    title: "RaftOkay: Distributed Consensus in Go",
+    title: "RaftOkay: A Raft Implementation in Go",
     description:
       "Built a Go implementation of Raft with leader election, log replication, WAL-backed durability, snapshots, pluggable transports, and a chaos simulator for failure testing.",
     image: "images/Projects/raftokay.png",
@@ -16,7 +16,7 @@ export const projectData = [
     tags: ["Distributed Systems", "Consensus", "Go"],
   },
   {
-    title: "MapReduce: Distributed Execution Runtime",
+    title: "MapReduce in Rust and Go",
     description:
       "Re-implemented MapReduce across multiple languages, including Rust and Go, to explore coordinator-worker execution, task scheduling, fault tolerance, and distributed job processing.",
     image: "images/Projects/map-reduce.png",
@@ -32,7 +32,7 @@ export const projectData = [
     tags: ["Blockchain", "Bitcoin", "Go"],
   },
   {
-    title: "Cognia: Personal Memory Infrastructure",
+    title: "Cognia: Enterprise Memory Infrastructure",
     description:
       "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy. Built with PostgreSQL, pgvector, and full Ollama support for local AI processing. Features browser extension, semantic search, 3D visualization, and MCP server integration.",
     image: "images/Projects/recallos.png",
@@ -40,7 +40,7 @@ export const projectData = [
     tags: ["PostgreSQL", "pgvector", "Ollama", "ETHGlobal"],
   },
   {
-    title: "Rail Infrastructure Optimization",
+    title: "Rail Throughput Optimization (SIH 2025)",
     description:
       "Built a rail infrastructure optimization algorithm focused on maximizing train throughput per track section.",
     image: "images/Projects/iris.png",
@@ -48,7 +48,7 @@ export const projectData = [
     tags: ["Optimization", "Operations Research"],
   },
   {
-    title: "Cachly: The Cache Manager",
+    title: "Cachly: A Type-Safe Cache for Node.js",
     description:
       "Built a type-safe caching system for Node.js and TypeScript with dependency tracking, intelligent invalidation, TTL, stale-while-revalidate, compression, circuit breaking, distributed support, and advanced eviction strategies.",
     image: "images/Projects/cachly.png",
@@ -56,7 +56,7 @@ export const projectData = [
     tags: ["TypeScript", "Node.js", "NPM Package"],
   },
   {
-    title: "HotVault: Filecoin Hot Storage Solution",
+    title: "HotVault: Hot Storage on Filecoin",
     description:
       "Prototype for a data storage drive application that leverages Filecoin's verifiable storage, powered by Proof of Data Possession (PDP), payable with FIL-backed Stablecoin.",
     image: "images/Projects/hotvault.png",
@@ -64,7 +64,7 @@ export const projectData = [
     tags: ["Filecoin", "Blockchain", "Storage"],
   },
   {
-    title: "Structurize: Opensource JSON to structured data",
+    title: "Structurize: JSON to Typed Models",
     description:
       "Structurize simplifies the conversion of JSON data from APIs into structured formats. This open-source tool supports TypeScript, JavaScript, Dart, and more, allowing users to effortlessly transform complex JSON into manageable tabular data. Perfect for developers looking to streamline their data processing workflows.",
     image: "images/Projects/structurize.png",
@@ -72,7 +72,7 @@ export const projectData = [
     tags: ["React", "TailwindCSS"],
   },
   {
-    title: "Inter IIT Competitive Programming Conaclave",
+    title: "Inter IIT Competitive Programming Conclave",
     description:
       "Designed and developed the official website for the Inter IIT Competitive Programming Conclave, India's largest competitive programming camp according to statistics involving 30+ colleges including IITs, NITs, and BITS",
     image: "images/Projects/IICPC.png",
@@ -80,7 +80,7 @@ export const projectData = [
     tags: ["React", "TailwindCSS"],
   },
   {
-    title: "Rusty License Generator",
+    title: "Rusty: A License File Generator",
     description:
       '"LICENSE GENERATOR" is a versatile software tool designed to simplify the process of generating license files for your projects. With an easy installation process, it allows users to quickly create license files by specifying the license type, year, full name, project name, and file extension.',
     image: "images/Projects/license.png",
@@ -89,7 +89,7 @@ export const projectData = [
   },
 
   {
-    title: "DevOpia: The Tech Fest Extravaganza",
+    title: "DevOpia: KJSCE Hackathon Site",
     description:
       "KJSCE DevOpia is an exciting event that promises to bring together the brightest minds in the country. it's a national-level offline hackathon where you can showcase your skills in both hardware and software domains.",
     image: "images/Projects/devopia.png",
@@ -97,7 +97,7 @@ export const projectData = [
     tags: ["React", "Sass"],
   },
   {
-    title: "SciOps: A superfast scientific Calculator ",
+    title: "SciOps: A Scientific Calculator CLI",
     description:
       "With an interactive prompt for seamless computations and a wide range of functions, SciOps simplifies calculations Perform basic arithmetic, advanced functions, and more with ease. Developed with 64-bit binary floating-point arithmetic, accuracy is ensured, though be aware of potential rounding errors.",
     image: "images/Projects/sciops.png",
@@ -105,7 +105,7 @@ export const projectData = [
     tags: ["Rust", "CLI"],
   },
   {
-    title: "Atari Breakout Game with Reinforcement Learning",
+    title: "Atari Breakout with Deep Q-Learning",
     description:
       "Built a Deep Q-Network agent for Atari Breakout using Python, NumPy, OpenCV, PyGame, and PyTorch, covering frame preprocessing, policy learning, and training and evaluation loops.",
     image: "images/Projects/Atari Breakout.gif",
@@ -113,7 +113,7 @@ export const projectData = [
     tags: ["PyTorch", "OpenCV", "PyGame"],
   },
   {
-    title: "NLP Guardian: Spam Email Detection",
+    title: "Spam Email Classifier with Naive Bayes",
     description:
       "Email spam detection is a crucial task in ensuring the security and efficiency of email communication. By leveraging machine learning techniques, such as Natural Language Processing and the Multinomial Naive Bayes algorithm, we can develop effective solutions for detecting spam emails",
     image: "images/Projects/spam email.jpg",
@@ -121,7 +121,7 @@ export const projectData = [
     tags: ["NLP", "Machine Learning"],
   },
   {
-    title: "Alien: The WiFi Wizard",
+    title: "Alien: Browser as a Secondary Display",
     description:
       "Built a desktop app that turns any browser-enabled device into a secondary display over Wi-Fi, combining networking, real-time rendering, and cross-device UX.",
     image: "images/Projects/alien.png",
@@ -129,7 +129,7 @@ export const projectData = [
     tags: ["Electron", "React", "WebRTC"],
   },
   {
-    title: "Feather: Light as a Note",
+    title: "Feather: A Notes App",
     description:
       "Take notes on the go. Feather is lightweight Google keep clone. Syncs notes on the cloud instantly so you never lose them.",
     image: "images/Projects/Feather.jpg",
@@ -137,7 +137,7 @@ export const projectData = [
     tags: ["Flutter", "Firebase"],
   },
   {
-    title: "Pyxis: The Stealthy Spyware Suite",
+    title: "Pyxis: An Android Monitoring Suite",
     description:
       "A collection of Spyware tools for monitoring another device stealthily. Text Message, Live picture from front and back camera, Keylogger, Notifications",
     image: "images/Projects/spyware.webp",
@@ -145,7 +145,7 @@ export const projectData = [
     tags: ["Kotlin", "Firebase"],
   },
   {
-    title: "Lucid: Dreamlike Image Generation",
+    title: "Lucid: Text-to-Image with CLIP",
     description:
       "Built text-to-image and multimodal generation tooling around CLIP-style models, spanning image generation, text-to-video experiments, and broader research-hacker workflows.",
     image: "images/Projects/Lucid.jpg",
@@ -153,7 +153,7 @@ export const projectData = [
     tags: ["Python", "OpenAI", "Stable Diffusion"],
   },
   {
-    title: "ChatGPT Google Extension: The Search Companion",
+    title: "ChatGPT for Google: A Browser Extension",
     description:
       "With all the talk about ChatGPT being the Google Search killer, I built a simple browser extension that shows ChatGPT results along with Google Search results.",
     image: "images/Projects/ChatGPT.jpg",
@@ -161,7 +161,7 @@ export const projectData = [
     tags: ["Typescript", "Chrome Extension"],
   },
   {
-    title: "Riverto: Streaming Rhythms",
+    title: "Riverto: A Music Streaming App",
     description:
       "Riverto is a free music streaming and download app built using Flutter. It was launched on Google Playstore on September 21, 2020. Due to some legal issues, the app had to be taken down from the play store",
     image: "images/Projects/Riverto.jpg",
@@ -169,7 +169,7 @@ export const projectData = [
     tags: ["Flutter", "API Extraction"],
   },
   {
-    title: "Medco: Your Medicine Mate",
+    title: "Medco: A Medicine Reminder App",
     description:
       "Medco is a medicine reminder app using SQL as the database built using flutter. Timely notifications are sent to the user's mobile to remind them to take their medications.",
     image: "images/Projects/Medco.png",
@@ -177,7 +177,7 @@ export const projectData = [
     tags: ["Flutter", "SQL"],
   },
   {
-    title: "Maple: The Ebook Wonderland",
+    title: "Maple: An Ebook Reader",
     description:
       "Choose from millions of best-selling ebooks. It's all free. When finished, find the next one from the genre of your choice. No Ads. No subscription. Take Notes in the Ebook itself. Bookmarks? We got you covered. Dark Mode. Save Books Offline",
     image: "images/Projects/Maple.webp",
@@ -185,7 +185,7 @@ export const projectData = [
     tags: ["Flutter", "Firebase", "EPub"],
   },
   {
-    title: "Informal Eats: Recipes Galore",
+    title: "Informal Eats: A Recipe Discovery App",
     description:
       "Informal eats provide recipes from over 10,000+ blogs for free. Enter the ingredients available with you and we'll show the related recipes.",
     image: "images/Projects/Informal Eats.png",
@@ -193,7 +193,7 @@ export const projectData = [
     tags: ["Flutter", "API Integration"],
   },
   {
-    title: "Flappy Bird AI: The Autonomous Avian",
+    title: "Flappy Bird AI with Reinforcement Learning",
     description:
       "A Flappy Bird AI that learns to play by itself. Built by implementing reinforcement Learning",
     image: "images/Projects/falppy bird.gif",
@@ -201,7 +201,7 @@ export const projectData = [
     tags: ["JavaScript", "Reinforcement Learning", "P5.js"],
   },
   {
-    title: "Face Recognition Attendance System: The Facial Gatekeeper",
+    title: "Face Recognition Attendance System",
     description:
       "It is a Face recognition system which can be used at an organization of any level for logging the attendance of their employees at a glance.",
     image: "images/Projects/face recognition.jpg",

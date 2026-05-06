@@ -92,7 +92,7 @@ export default async function OgImage() {
                 fontSize: 22,
                 color: OG_COLORS.muted,
                 letterSpacing: 2,
-                textTransform: "uppercase",
+                textTransform: "lowercase",
               }}
             >
               <span style={{ color: OG_COLORS.accent }}>▸</span>
@@ -124,7 +124,7 @@ export default async function OgImage() {
                 fontSize: 28,
                 color: OG_COLORS.accent,
                 letterSpacing: 4,
-                textTransform: "uppercase",
+                textTransform: "lowercase",
                 marginTop: 12,
               }}
             >

@@ -41,7 +41,7 @@ That's why I wrote a [compute protocol](https://github.com/theblitlabs/parity-pr
 
 Surface-level knowledge feels fragile to me. When something breaks at 3 AM, the person who only knows the documentation is googling. The person who knows the internals is already thinking about what went wrong.
 
-I want to be the second person. That's non-negotiable.
+I want to be the second person.
 
 ---
 
@@ -49,7 +49,7 @@ I want to be the second person. That's non-negotiable.
 
 There's a weird social pressure to sound confident. To never hesitate. To have an opinion on everything and never update it.
 
-I've learned that confidence without correction is just ego with better lighting.
+I've learned that confidence without correction is just ego.
 
 I'd rather say "I don't know" and look stupid for ten seconds than stay quiet and write bad code for a week. I'd rather have someone tear apart my approach in a meeting than discover it was flawed in production.
 
@@ -103,7 +103,7 @@ Energy spikes. People rush. Messages pile up. Someone suggests rewriting everyth
 
 I've been in enough of these moments (hackathons where the demo breaks twenty minutes before judging, production issues at 2 AM, code that worked yesterday and doesn't today) to know that panic makes it worse. Every time.
 
-Not because I'm calm by nature. I'm not. My brain runs fast. Too fast, sometimes.
+It's not that I'm wired for calm. I'm really not. My head runs ahead of me more often than I'd like, and most days I'm working to catch up to it.
 
 But someone has to slow the moment down. Read the logs. Trace the flow. Separate signal from noise.
 
@@ -117,7 +117,7 @@ Some of the most important things I've learned weren't tied to a deadline. No pr
 
 I got into distributed systems before I had any reason to. Nobody was asking me to implement consensus algorithms. I just thought the problem of getting five machines to agree on something was fascinating.
 
-I built a [personal memory infrastructure](https://github.com/cogniahq/cognia) because I wanted to understand how vector search and semantic recall actually worked. Not for a class. Not for a job. Because the idea stuck in my head and wouldn't leave.
+I built an [enterprise memory infrastructure](https://github.com/cogniahq/cognia) because I wanted to understand how vector search and semantic recall actually worked. Not for a class. Not for a job. Because the idea stuck in my head and wouldn't leave.
 
 That kind of curiosity, the kind that doesn't have a goal yet, is the most valuable kind I've found. It's how I went from building Flutter apps in my bedroom to contributing to Filecoin's core protocol. None of that path was planned. I just kept following whatever felt interesting.
 

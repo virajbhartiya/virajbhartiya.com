@@ -95,7 +95,7 @@ export default async function OgImage() {
                 fontSize: 22,
                 color: OG_COLORS.muted,
                 letterSpacing: 2,
-                textTransform: "uppercase",
+                textTransform: "lowercase",
               }}
             >
               <span style={{ color: OG_COLORS.accent }}>▸</span>

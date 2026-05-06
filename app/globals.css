@@ -39,6 +39,13 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-geist-mono), monospace;
+  text-transform: lowercase;
+}
+
+/* Force all text on the site to render lowercase, including Tailwind's
+   `uppercase` utility used for section labels and tags. */
+.uppercase {
+  text-transform: lowercase !important;
 }
 
 a {
@@ -65,7 +72,7 @@ a {
   border: 1px solid var(--accent);
   color: var(--accent);
   font-size: 0.75rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.1em;
   transform: translateY(-200%);
   transition: transform 0.15s ease;

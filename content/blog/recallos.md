@@ -1,5 +1,5 @@
 ---
-title: "Cognia: Personal Memory Infrastructure"
+title: "Cognia: Enterprise Memory Infrastructure"
 description: "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
 publishedAt: "2025-10-27"
 tags: ["AI Memory", "Vector Search"]
@@ -7,7 +7,7 @@ image: "/images/Blog/recallos.png"
 author: "Viraj Bhartiya"
 ---
 
-# Cognia: Personal Memory Infrastructure
+# Cognia: Enterprise Memory Infrastructure
 
 A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy.
 

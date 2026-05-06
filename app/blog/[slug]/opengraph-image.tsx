@@ -122,7 +122,7 @@ export default async function OgImage({ params }: Props) {
                 fontSize: 22,
                 color: OG_COLORS.muted,
                 letterSpacing: 2,
-                textTransform: "uppercase",
+                textTransform: "lowercase",
               }}
             >
               {publishedAt && (
