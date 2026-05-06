@@ -39,12 +39,13 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-geist-mono), monospace;
-  text-transform: lowercase;
 }
 
-/* Force all text on the site to render lowercase, including Tailwind's
-   `uppercase` utility used for section labels and tags. */
-.uppercase {
+/* Force all text on the site to render lowercase, overriding Tailwind's
+   `uppercase`/`capitalize`/`normal-case` utilities and any inline styles. */
+*,
+*::before,
+*::after {
   text-transform: lowercase !important;
 }
 
