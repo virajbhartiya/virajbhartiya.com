@@ -3,7 +3,7 @@ title: "Your AI tools don't know anything about your company"
 description: "Every team is rolling out Claude, Cursor, and Copilot. None of them know what your company has decided, written, or argued about. So I built the memory layer that does."
 publishedAt: "2026-05-08"
 tags: ["AI Memory", "Knowledge Graph", "MCP", "Enterprise AI"]
-image: "/images/Blog/recallos.png"
+image: "/images/Blog/cognia/dashboard.png"
 author: "Viraj Bhartiya"
 ---
 
@@ -16,8 +16,6 @@ The model doesn't know anything about your company.
 It doesn't know which database you picked and why. It doesn't know that Bob spiked Y.js six months ago and ruled out Automerge for a specific reason. It doesn't know that Project Polaris was renamed twice and is now scoped to ship in a week. It will happily make up an answer instead.
 
 That's the gap I'm closing with Cognia.
-
-![The Blit Labs workspace home in Cognia](/images/Blog/cognia/dashboard.png)
 
 ---
 
