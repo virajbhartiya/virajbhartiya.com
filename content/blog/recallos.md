@@ -88,7 +88,7 @@ Under the hood, the retrieval stack is doing more than a vector lookup:
 - AI answer generation grounded in the retrieved memories, with inline `[1]`, `[2]` citations
 - streaming responses so you don't sit there watching a spinner
 
-Try this query in the live demo: *"I just joined and need to ship Project Polaris in 1 week — what do I need to know?"*
+Try this query in the live demo: _"I just joined and need to ship Project Polaris in 1 week — what do I need to know?"_
 
 It comes back with the project status, the open blockers, the decisions that have already been made, and the people who made them. Cited. Eight seconds. Without Cognia, that's a week of catch-up calls.
 
