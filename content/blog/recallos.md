@@ -1,135 +1,143 @@
 ---
-title: "Cognia: Enterprise Memory Infrastructure"
-description: "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy."
-publishedAt: "2025-10-27"
-tags: ["AI Memory", "Vector Search"]
+title: "Your AI tools don't know anything about your company"
+description: "Every team is rolling out Claude, Cursor, and Copilot. None of them know what your company has decided, written, or argued about. So I built the memory layer that does."
+publishedAt: "2026-05-08"
+tags: ["AI Memory", "Knowledge Graph", "MCP", "Enterprise AI"]
 image: "/images/Blog/recallos.png"
 author: "Viraj Bhartiya"
 ---
 
-A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy.
+Every company on earth is rolling out AI tools right now.
 
-## Architecture
+Claude. Cursor. Copilot. ChatGPT Enterprise. The procurement budget is real. The Slack channels are full of people sharing prompts. And yet, the moment you actually try to use these tools for work that matters, you hit the same wall.
 
-1. **Browser Extension** captures web content automatically
-2. Each page becomes a **Memory Object** hashed, summarized, and vectorized using Google's text-embedding-004 model
-3. Objects are stored in PostgreSQL with pgvector embeddings
-4. Semantic search engine maps queries to content via cosine similarity
-5. Any device or agent can request recall by wallet address
+The model doesn't know anything about your company.
 
-## Memory Enforcement
+It doesn't know which database you picked and why. It doesn't know that Bob spiked Y.js six months ago and ruled out Automerge for a specific reason. It doesn't know that Project Polaris was renamed twice and is now scoped to ship in a week. It will happily make up an answer instead.
 
-- Data cannot mutate
-- No "edit memory" endpoint
-- Updates spawn new hashes, old ones remain
-- Memory is verifiable, not curated
+That's the gap I'm closing with Cognia.
 
-## Search System
+---
 
-- Query hits vector database
-- Similarity scores calculated via pgvector cosine distance
-- Results ranked by blended keyword + semantic scores (60% semantic, 40% keyword)
-- AI answers generated with inline citations
+## How it started
 
-## Similarity Score Calculation
+Cognia started as something selfish.
 
-### 1. Cosine Similarity (Primary)
+I read a lot. Articles, papers, GitHub issues, half-finished blog posts at 1 AM. I'd find something useful, lose it, and re-google it three weeks later. I built a browser extension that quietly captured what I read, summarized it, and made it searchable. Then I started visualizing it as a graph because lists felt wrong for the way knowledge actually connects.
 
-```typescript
-cosineSimilarity(vecA: number[], vecB: number[]): number {
-  let dotProduct = 0;
-  let normA = 0;
-  let normB = 0;
+That worked. Then I tried using it with my friends, and it broke.
 
-  for (let i = 0; i < vecA.length; i++) {
-    dotProduct += vecA[i] * vecB[i];
-    normA += vecA[i] * vecA[i];
-    normB += vecB[i] * vecB[i];
-  }
+A team's memory isn't just web pages. It's Slack threads. It's a Notion doc someone wrote and forgot. It's a draft PR that's 60% done. It's a benchmark file in a folder no one opens. It's a decision Sarah made before she left, that the new engineer is about to relitigate from scratch.
 
-  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
-}
-```
+So Cognia grew up. It's now an org-scoped memory layer that captures all of it, connects it, and serves it back when someone needs it.
 
-### 2. Domain-Aware Adjustments
+---
 
-- **Penalty**: Meet ↔ GitHub cross-links get -0.4 similarity unless very high (>0.7)
-- **Boost**: GitHub ↔ GitHub Filecoin-related items get +0.2 similarity
-- **URL Matching**: Same domain gets +0.1 similarity boost
+## What "memory" actually means here
 
-### 3. Keyword Matching (Secondary)
+A memory in Cognia is not a raw blob of text. That's the part most people get wrong when they say "RAG."
 
-```typescript
-// Token-based matching with word boundaries
-for (const token of queryTokens) {
-  const tokenRegex = new RegExp(`\\b${token}\\b`, "gi");
+When something gets captured (a page, a doc, a Slack message, a PDF), the system runs it through a pipeline:
 
-  if (tokenRegex.test(title)) keywordScore += 0.5; // Title weight
-  if (tokenRegex.test(summary)) keywordScore += 0.3; // Summary weight
-  if (tokenRegex.test(content)) keywordScore += 0.2; // Content weight
-}
+- canonicalize and hash it so duplicates collapse
+- extract topics, entities, categories, and a structured summary
+- score importance and confidence
+- embed it for semantic retrieval
+- link it to related memories through shared topics, time, and meaning
 
-// Normalize by query token count
-keywordScore = keywordScore / queryTokens.length;
-```
+By the time it's stored, it's not text — it's a retrieval-grade object that knows what it's about and what it relates to. That's the difference between a search engine that returns "documents that contain the word sharding" and one that can answer "catch me up on the sharding work" with the right four sources, in order, with citations.
 
-### 4. Final Hybrid Score
+---
 
-```typescript
-const hybridScore = semanticScore * 0.6 + keywordScore * 0.4;
-const boostedScore = hybridScore * (1 + coverageRatio * 0.3);
-```
+## Capture, without making capture a chore
 
-### 5. Topical Relations (Metadata-Based)
+If memory only works when humans remember to write things down, it doesn't work.
 
-- **Topic Overlap**: 40% weight using Jaccard similarity
-- **Category Overlap**: 30% weight
-- **Key Points Overlap**: 20% weight
-- **Searchable Terms**: 10% weight
+Cognia captures from the surfaces people already use:
 
-### 6. Temporal Relations (Time-Based)
+- a browser extension that quietly stores meaningful pages as you browse (no, it doesn't capture localhost or your bank tabs)
+- a web app for typing things in directly
+- document upload, chunked at the section level so citations point to the exact paragraph
+- integrations with Drive, Notion, Slack, and Box, with encrypted token storage and webhook-driven sync
 
-- **Same Hour**: 0.9 + exponential decay
-- **Same Day**: 0.7 + exponential decay
-- **Same Week**: 0.4 + exponential decay
-- **Same Month**: 0.1 + exponential decay
+The point is that you don't have to think about it. You read, you write, you work — and your team's memory keeps growing in the background.
 
-## What It Can Store
+---
 
-- Web pages (via browser extension)
-- Manual content (via web client)
-- SDK integrations
-- MCP server connections
+## The Memory Mesh
 
-Requirements:
+I cannot stand knowledge bases that show you a list of folders.
 
-- Runs through the API
-- Doesn't rely on external state or timing
-- Can be vectorized and searched
+Knowledge isn't a folder. It's a network. The Notion doc about Y.js connects to the Slack thread that started the debate, which connects to the benchmark file Bob ran, which connects to the patch that's still living in your fork.
 
-## Local Control with Ollama
+The Memory Mesh is Cognia's 3D visualization of all of that. Nodes are memories. Edges are relationships — semantic, topical, temporal. You can spin it, cluster it, click into a node and trace why it was connected to its neighbors.
 
-- **Local AI Processing**: All AI operations can run through Ollama models
-- **Zero External Dependencies**: No cloud APIs required
-- **Privacy by Design**: Data stays on your machine
-- **Offline Capable**: Full functionality without internet
-- **Model Flexibility**: Use any Ollama-compatible model
+It's not a UI flourish. It's the product saying out loud: this is how your team's knowledge actually fits together. The flat list was always a lie.
 
-## Technical Stack
+---
 
-- **Storage**: PostgreSQL with pgvector
-- **AI**: Google Gemini API with Ollama local support
-- **Embeddings**: text-embedding-004 (768-dimensional vectors)
-- **Frontend**: React with Three.js for 3D visualization
-- **Extension**: Chrome extension with content script injection
-- **Visualization**: UMAP for latent space projection
+## Search that gives you an answer, not ten blue links
 
-## Tooling
+Type a question. Get an answer with citations.
 
-- **Browser Extension**: Captures web content automatically
-- **Web Client**: React app with 3D memory mesh visualization
-- **API Server**: Express.js with PostgreSQL + pgvector
-- **SDK**: TypeScript client for programmatic access
-- **MCP Server**: Model Context Protocol integration for AI agents
+Under the hood, the retrieval stack is doing more than a vector lookup:
+
+- hybrid search blending semantic similarity (Qdrant) with keyword matching
+- query classification to pick the right policy
+- a reranker that pushes the actually-relevant stuff to the top
+- AI answer generation grounded in the retrieved memories, with inline `[1]`, `[2]` citations
+- streaming responses so you don't sit there watching a spinner
+
+Try this query in the live demo: *"I just joined and need to ship Project Polaris in 1 week — what do I need to know?"*
+
+It comes back with the project status, the open blockers, the decisions that have already been made, and the people who made them. Cited. Eight seconds. Without Cognia, that's a week of catch-up calls.
+
+---
+
+## The same memory, inside the AI tools you already use
+
+This is the part I'm most excited about.
+
+Cognia exposes its memory through an MCP server. That means Claude Code, Cursor, and any other MCP-aware tool can call into your team's memory directly. You stay in the editor. You ask "brief me on POLARIS-23 before I start writing code" and the model answers grounded in real Slack threads, real PRs, real decisions.
+
+The whole pitch of "your AI tools don't know your company" collapses the second the model can actually reach into your company's memory at tool-call time.
+
+The browser extension does a softer version of the same trick — it can inject relevant Cognia context into ChatGPT or Claude.ai prompts as you type, and draft email replies in Gmail and Outlook from the surrounding thread. Same memory. Different surface.
+
+---
+
+## Built like a workspace, not a toy
+
+I didn't want to build a cute demo that falls apart the moment a real team uses it. So the boring stuff is in there too:
+
+- email/password auth with JWT, plus session cookies and rate-limited login
+- per-user 2FA, with org-level enforcement if you want it
+- session timeout policies and IP allowlists at the org level
+- audit logs
+- encrypted integration tokens
+- BYOK for LLM providers
+- a platform API with matter-aware search modes (`matterId`, `clientId`, `privileged`, `securityTags`) for legal and regulated workflows
+
+None of this is glamorous. But "we'd love to use you, except for the SSO question" is how good products die at the procurement stage.
+
+---
+
+## Why I built this
+
+Every team I've talked to has a 2026 mandate to ship AI internally. They've all hit the same wall: their data isn't ready. The AI is fine. The retrieval layer is missing.
+
+Notion AI searches Notion. Glean searches your SaaS. Neither of them touches the open web your team actually reads. None of them flow back into the editor where engineers actually work. None of them treat personal context and team context as one thing.
+
+That's the gap. Cognia fills it.
+
+I'm a solo founder building this because I want to use it. The fact that other teams want to use it too is the part I'm still adjusting to.
+
+---
+
+## Try it
+
+Cognia is live at **[cogniahq.tech](https://cogniahq.tech)**.
+
+There's a seeded "Blit Labs" workspace with ~370 memories spanning a realistic team narrative — handover docs, customer threads, hiring decisions, engineering debates. Sign in as one of the demo accounts and ask it something hard. Watch the citations populate. Click through to the source. See if it actually knows what your AI tools should have known all along.
 
 [View the repository →](https://github.com/cogniahq/cognia)
