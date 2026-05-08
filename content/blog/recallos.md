@@ -17,6 +17,8 @@ It doesn't know which database you picked and why. It doesn't know that Bob spik
 
 That's the gap I'm closing with Cognia.
 
+![The Blit Labs workspace home in Cognia](/images/Blog/cognia/dashboard.png)
+
 ---
 
 ## How it started
