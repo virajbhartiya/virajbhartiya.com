@@ -136,7 +136,7 @@ I'm a solo founder building this because I want to use it. The fact that other t
 
 ## Try it
 
-Cognia is live at **[cogniahq.tech](https://cogniahq.tech)**.
+Cognia is live at [cogniahq.tech](https://cogniahq.tech).
 
 There's a seeded "Blit Labs" workspace with ~370 memories spanning a realistic team narrative — handover docs, customer threads, hiring decisions, engineering debates. Sign in as one of the demo accounts and ask it something hard. Watch the citations populate. Click through to the source. See if it actually knows what your AI tools should have known all along.
 
