@@ -17,7 +17,7 @@ I started building apps in my summer vacations because I had nothing better to d
 
 Now I work on distributed systems, blockchain protocols, and open source infrastructure. If you told fifteen-year-old me that he'd be writing Raft consensus from scratch or contributing to Blender's 3D engine, he'd think you were lying.
 
-The resume makes it look like a progression. It was actually chaos. Each version of me had to die for the next one to exist.
+The resume makes it look like a progression. It was actually chaos.
 
 Most of what actually shapes how I work doesn't have a metric. Doesn't have a GitHub contribution graph. Doesn't fit in a bullet point.
 
