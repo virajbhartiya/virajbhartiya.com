@@ -61,7 +61,7 @@ export function Hero() {
               </span>
             </a>
             <a
-              href="mailto:vlbhartiya@gmail.com"
+              href="mailto:hello@virajbhartiya.com"
               className="group inline-flex items-center gap-1.5 text-muted hover:text-fg transition-colors py-2"
             >
               say hi

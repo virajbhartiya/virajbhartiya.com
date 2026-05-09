@@ -20,10 +20,10 @@ export function Footer() {
         </p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-xs text-muted">
           <a
-            href="mailto:vlbhartiya@gmail.com"
+            href="mailto:hello@virajbhartiya.com"
             className="link-glow hover:text-fg transition-colors"
           >
-            vlbhartiya@gmail.com
+            hello@virajbhartiya.com
           </a>
           <span className="text-border select-none">·</span>
           <a
