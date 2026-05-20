@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="1600" height="900" fill="#0a0a0a"/>
+
+  <!-- window chrome -->
+  <g stroke="#2a2a2a" stroke-width="1.5">
+    <rect x="60" y="60" width="1480" height="780" fill="#0a0a0a"/>
+    <rect x="60" y="60" width="1480" height="36" fill="#1a1a1a"/>
+    <!-- traffic lights -->
+    <circle cx="84" cy="78" r="6" fill="#7a7a7a"/>
+    <circle cx="106" cy="78" r="6" fill="#7a7a7a"/>
+    <circle cx="128" cy="78" r="6" fill="#7a7a7a"/>
+    <text x="160" y="83" font-family="monospace" font-size="13" fill="#7a7a7a">wireshark — wlan0 — capturing</text>
+  </g>
+
+  <!-- filter bar -->
+  <g>
+    <rect x="80" y="115" width="1440" height="32" fill="#1a1a1a" stroke="#2a2a2a"/>
+    <text x="95" y="136" font-family="monospace" font-size="13" fill="#00efa6">filter: </text>
+    <text x="160" y="136" font-family="monospace" font-size="13" fill="#c8c8c8">ip.addr == 192.168.1.42 &amp;&amp; (http || ssdp || soap)</text>
+  </g>
+
+  <!-- table header -->
+  <g>
+    <rect x="80" y="160" width="1440" height="30" fill="#1a1a1a" stroke="#2a2a2a"/>
+    <g font-family="monospace" font-size="12" fill="#c8c8c8">
+      <text x="95" y="180">no.</text>
+      <text x="160" y="180">time</text>
+      <text x="280" y="180">source</text>
+      <text x="500" y="180">destination</text>
+      <text x="720" y="180">protocol</text>
+      <text x="830" y="180">len</text>
+      <text x="900" y="180">info</text>
+    </g>
+  </g>
+
+  <!-- packet rows -->
+  <g font-family="monospace" font-size="12">
+    <!-- row 1 -->
+    <rect x="80" y="190" width="1440" height="26" fill="#0a0a0a"/>
+    <g fill="#c8c8c8">
+      <text x="95" y="208">001</text>
+      <text x="160" y="208">0.000</text>
+      <text x="280" y="208">192.168.1.42</text>
+      <text x="500" y="208">239.255.255.250</text>
+      <text x="720" y="208" fill="#5eafff">SSDP</text>
+      <text x="830" y="208">175</text>
+      <text x="900" y="208">M-SEARCH * HTTP/1.1   ST: urn:Belkin:device:**</text>
+    </g>
+    <!-- row 2 -->
+    <rect x="80" y="216" width="1440" height="26" fill="#0d0d0d"/>
+    <g fill="#c8c8c8">
+      <text x="95" y="234">002</text>
+      <text x="160" y="234">0.013</text>
+      <text x="280" y="234">192.168.1.78</text>
+      <text x="500" y="234">192.168.1.42</text>
+      <text x="720" y="234" fill="#5eafff">SSDP</text>
+      <text x="830" y="234">412</text>
+      <text x="900" y="234">HTTP/1.1 200 OK   LOCATION: http://192.168.1.78:49153/setup.xml</text>
+    </g>
+    <!-- row 3 - highlighted -->
+    <rect x="80" y="242" width="1440" height="26" fill="#00efa6" opacity="0.1"/>
+    <rect x="80" y="242" width="1440" height="26" fill="none" stroke="#00efa6" stroke-width="1"/>
+    <g fill="#00efa6">
+      <text x="95" y="260">003</text>
+      <text x="160" y="260">0.041</text>
+      <text x="280" y="260">192.168.1.42</text>
+      <text x="500" y="260">192.168.1.78</text>
+      <text x="720" y="260">HTTP</text>
+      <text x="830" y="260">298</text>
+      <text x="900" y="260">GET /setup.xml HTTP/1.1   → fetching device descriptor</text>
+    </g>
+    <!-- row 4 -->
+    <rect x="80" y="268" width="1440" height="26" fill="#0d0d0d"/>
+    <g fill="#c8c8c8">
+      <text x="95" y="286">004</text>
+      <text x="160" y="286">0.058</text>
+      <text x="280" y="286">192.168.1.78</text>
+      <text x="500" y="286">192.168.1.42</text>
+      <text x="720" y="286">HTTP/XML</text>
+      <text x="830" y="286">1481</text>
+      <text x="900" y="286">200 OK   &lt;deviceType&gt;urn:Belkin:device:controllee:1&lt;/&gt;</text>
+    </g>
+    <!-- row 5 -->
+    <rect x="80" y="294" width="1440" height="26" fill="#0a0a0a"/>
+    <g fill="#c8c8c8">
+      <text x="95" y="312">005</text>
+      <text x="160" y="312">0.082</text>
+      <text x="280" y="312">192.168.1.42</text>
+      <text x="500" y="312">192.168.1.78</text>
+      <text x="720" y="312">HTTP/SOAP</text>
+      <text x="830" y="312">510</text>
+      <text x="900" y="312">POST /upnp/control/basicevent1  SetBinaryState</text>
+    </g>
+    <!-- row 6 -->
+    <rect x="80" y="320" width="1440" height="26" fill="#0d0d0d"/>
+    <g fill="#c8c8c8">
+      <text x="95" y="338">006</text>
+      <text x="160" y="338">0.094</text>
+      <text x="280" y="338">192.168.1.78</text>
+      <text x="500" y="338">192.168.1.42</text>
+      <text x="720" y="338">HTTP/SOAP</text>
+      <text x="830" y="338">389</text>
+      <text x="900" y="338">200 OK   &lt;BinaryState&gt;1&lt;/BinaryState&gt;</text>
+    </g>
+    <!-- row 7 -->
+    <rect x="80" y="346" width="1440" height="26" fill="#0a0a0a"/>
+    <g fill="#7a7a7a">
+      <text x="95" y="364">007</text>
+      <text x="160" y="364">1.214</text>
+      <text x="280" y="364">192.168.1.78</text>
+      <text x="500" y="364">192.168.1.42</text>
+      <text x="720" y="364">HTTP/SOAP</text>
+      <text x="830" y="364">412</text>
+      <text x="900" y="364">NOTIFY  &lt;BinaryState&gt;1|0|0|0|...&lt;/BinaryState&gt;</text>
+    </g>
+  </g>
+
+  <!-- divider -->
+  <line x1="80" y1="400" x2="1520" y2="400" stroke="#2a2a2a"/>
+
+  <!-- packet detail (bottom pane) -->
+  <g font-family="monospace" font-size="13">
+    <text x="95" y="430" fill="#c8c8c8">▾ frame 005: 510 bytes on wire</text>
+    <text x="95" y="455" fill="#c8c8c8">▾ ethernet ii, src: raspberrypi (b8:27:eb:..), dst: belkin (94:10:3e:..)</text>
+    <text x="95" y="480" fill="#c8c8c8">▾ internet protocol v4, src: 192.168.1.42, dst: 192.168.1.78</text>
+    <text x="95" y="505" fill="#c8c8c8">▾ transmission control protocol, src port: 56423, dst port: 49153</text>
+    <text x="95" y="530" fill="#00efa6">▾ hypertext transfer protocol</text>
+    <text x="120" y="552" fill="#c8c8c8">POST /upnp/control/basicevent1 HTTP/1.1</text>
+    <text x="120" y="572" fill="#c8c8c8">HOST: 192.168.1.78:49153</text>
+    <text x="120" y="592" fill="#c8c8c8">CONTENT-TYPE: text/xml; charset="utf-8"</text>
+    <text x="120" y="612" fill="#c8c8c8">SOAPACTION: "urn:Belkin:service:basicevent:1#SetBinaryState"</text>
+    <text x="95" y="640" fill="#00efa6">▾ simple object access protocol</text>
+    <text x="120" y="662" fill="#5eafff">&lt;s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"&gt;</text>
+    <text x="140" y="682" fill="#5eafff">&lt;s:Body&gt;</text>
+    <text x="160" y="702" fill="#5eafff">&lt;u:SetBinaryState xmlns:u="urn:Belkin:service:basicevent:1"&gt;</text>
+    <text x="180" y="722" fill="#00efa6">&lt;BinaryState&gt;1&lt;/BinaryState&gt;</text>
+    <text x="160" y="742" fill="#5eafff">&lt;/u:SetBinaryState&gt;</text>
+    <text x="140" y="762" fill="#5eafff">&lt;/s:Body&gt;</text>
+    <text x="120" y="782" fill="#5eafff">&lt;/s:Envelope&gt;</text>
+  </g>
+
+  <!-- annotation arrow -->
+  <g stroke="#00efa6" stroke-width="1.5" fill="#00efa6">
+    <path d="M 1100 712 L 1280 712" fill="none"/>
+    <path d="M 1100 712 L 1110 706 L 1110 718 Z"/>
+    <text x="1290" y="717" font-family="monospace" font-size="13">this is the part i needed</text>
+  </g>
+
+  <!-- corner crosshair marks -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 60 60 L 100 60 M 60 60 L 60 100"/>
+    <path d="M 1540 60 L 1500 60 M 1540 60 L 1540 100"/>
+    <path d="M 60 840 L 100 840 M 60 840 L 60 800"/>
+    <path d="M 1540 840 L 1500 840 M 1540 840 L 1540 800"/>
+  </g>
+</svg>

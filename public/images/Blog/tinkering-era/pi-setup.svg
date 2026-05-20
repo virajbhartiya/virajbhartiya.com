@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#0a0a0a"/>
+  <rect width="1600" height="900" fill="url(#grid3)"/>
+
+  <!-- title -->
+  <g font-family="monospace" fill="#7a7a7a">
+    <text x="80" y="80" font-size="20" fill="#c8c8c8">// fig.2 — bedroom automation rig, covid-era</text>
+    <text x="80" y="105" font-size="13">switchboard too far. brain too restless. result: this.</text>
+  </g>
+
+  <!-- Raspberry Pi (top-down) -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <rect x="240" y="280" width="480" height="320" fill="#0a0a0a"/>
+    <!-- mounting holes -->
+    <circle cx="265" cy="305" r="6" fill="#0a0a0a"/>
+    <circle cx="695" cy="305" r="6" fill="#0a0a0a"/>
+    <circle cx="265" cy="575" r="6" fill="#0a0a0a"/>
+    <circle cx="695" cy="575" r="6" fill="#0a0a0a"/>
+  </g>
+
+  <!-- GPIO header (40 pins) along top -->
+  <g fill="#00efa6">
+    <g>
+      <!-- 20 columns x 2 rows of pins -->
+      <g>
+        <rect x="295" y="310" width="10" height="10"/><rect x="315" y="310" width="10" height="10"/>
+        <rect x="335" y="310" width="10" height="10"/><rect x="355" y="310" width="10" height="10"/>
+        <rect x="375" y="310" width="10" height="10"/><rect x="395" y="310" width="10" height="10"/>
+        <rect x="415" y="310" width="10" height="10"/><rect x="435" y="310" width="10" height="10"/>
+        <rect x="455" y="310" width="10" height="10"/><rect x="475" y="310" width="10" height="10"/>
+        <rect x="495" y="310" width="10" height="10"/><rect x="515" y="310" width="10" height="10"/>
+        <rect x="535" y="310" width="10" height="10"/><rect x="555" y="310" width="10" height="10"/>
+        <rect x="575" y="310" width="10" height="10"/><rect x="595" y="310" width="10" height="10"/>
+        <rect x="615" y="310" width="10" height="10"/><rect x="635" y="310" width="10" height="10"/>
+        <rect x="655" y="310" width="10" height="10"/><rect x="675" y="310" width="10" height="10"/>
+      </g>
+      <g>
+        <rect x="295" y="325" width="10" height="10"/><rect x="315" y="325" width="10" height="10"/>
+        <rect x="335" y="325" width="10" height="10"/><rect x="355" y="325" width="10" height="10"/>
+        <rect x="375" y="325" width="10" height="10"/><rect x="395" y="325" width="10" height="10"/>
+        <rect x="415" y="325" width="10" height="10"/><rect x="435" y="325" width="10" height="10"/>
+        <rect x="455" y="325" width="10" height="10"/><rect x="475" y="325" width="10" height="10"/>
+        <rect x="495" y="325" width="10" height="10"/><rect x="515" y="325" width="10" height="10"/>
+        <rect x="535" y="325" width="10" height="10"/><rect x="555" y="325" width="10" height="10"/>
+        <rect x="575" y="325" width="10" height="10"/><rect x="595" y="325" width="10" height="10"/>
+        <rect x="615" y="325" width="10" height="10"/><rect x="635" y="325" width="10" height="10"/>
+        <rect x="655" y="325" width="10" height="10"/><rect x="675" y="325" width="10" height="10"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- SoC chip in middle -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="380" y="400" width="120" height="120" fill="#0a0a0a"/>
+    <text x="395" y="465" font-family="monospace" font-size="13" fill="#c8c8c8">BCM2837</text>
+    <text x="395" y="485" font-family="monospace" font-size="11" fill="#7a7a7a">arm cortex</text>
+  </g>
+
+  <!-- USB ports right side -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="720" y="380" width="40" height="50" fill="#0a0a0a"/>
+    <rect x="720" y="440" width="40" height="50" fill="#0a0a0a"/>
+    <rect x="720" y="500" width="40" height="50" fill="#0a0a0a"/>
+  </g>
+
+  <!-- Pi label -->
+  <text x="540" y="555" font-family="monospace" font-size="13" fill="#7a7a7a">raspberry pi 3 b+</text>
+
+  <!-- relay module on the right -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <rect x="950" y="350" width="420" height="250" fill="#0a0a0a"/>
+    <!-- two relay blocks -->
+    <rect x="990" y="380" width="160" height="190" fill="#0a0a0a" stroke="#5eafff" stroke-width="2"/>
+    <rect x="1180" y="380" width="160" height="190" fill="#0a0a0a" stroke="#5eafff" stroke-width="2"/>
+    <!-- coil hint -->
+    <circle cx="1070" cy="475" r="35" stroke="#5eafff" stroke-width="1.5"/>
+    <circle cx="1260" cy="475" r="35" stroke="#5eafff" stroke-width="1.5"/>
+    <text x="1050" y="480" font-family="monospace" font-size="10" fill="#5eafff">ch1</text>
+    <text x="1240" y="480" font-family="monospace" font-size="10" fill="#5eafff">ch2</text>
+    <!-- screw terminals for mains -->
+    <g fill="#7a7a7a">
+      <circle cx="1010" cy="595" r="5"/>
+      <circle cx="1040" cy="595" r="5"/>
+      <circle cx="1070" cy="595" r="5"/>
+      <circle cx="1100" cy="595" r="5"/>
+      <circle cx="1130" cy="595" r="5"/>
+      <circle cx="1200" cy="595" r="5"/>
+      <circle cx="1230" cy="595" r="5"/>
+      <circle cx="1260" cy="595" r="5"/>
+      <circle cx="1290" cy="595" r="5"/>
+      <circle cx="1320" cy="595" r="5"/>
+    </g>
+  </g>
+  <text x="1080" y="375" font-family="monospace" font-size="13" fill="#7a7a7a">2-ch relay module</text>
+
+  <!-- jumper wires from GPIO to relay (curvy) -->
+  <g fill="none" stroke-width="2.5">
+    <path d="M 555 335 C 700 380, 800 320, 990 410" stroke="#00efa6"/>
+    <path d="M 575 335 C 720 400, 820 340, 990 430" stroke="#5eafff"/>
+    <path d="M 595 335 C 740 420, 840 360, 990 450" stroke="#c8c8c8"/>
+    <path d="M 615 335 C 760 440, 860 380, 990 470" stroke="#7a7a7a"/>
+  </g>
+
+  <!-- mains wires going off-frame to wall -->
+  <g stroke-width="3" fill="none">
+    <path d="M 1130 600 C 1140 700, 1300 760, 1500 780" stroke="#c8c8c8"/>
+    <path d="M 1320 600 C 1330 720, 1420 780, 1530 810" stroke="#c8c8c8"/>
+  </g>
+  <text x="1380" y="760" font-family="monospace" font-size="11" fill="#7a7a7a">→ 240v mains</text>
+  <text x="1380" y="778" font-family="monospace" font-size="11" fill="#00efa6">  (do not die)</text>
+
+  <!-- micro-usb power on bottom-left -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="220" y="420" width="20" height="35" fill="#0a0a0a"/>
+    <path d="M 220 437 C 150 460, 110 600, 80 680" stroke="#7a7a7a" stroke-width="2.5" fill="none"/>
+  </g>
+
+  <!-- annotation -->
+  <g font-family="monospace" font-size="13" fill="#7a7a7a">
+    <text x="80" y="720">$ sudo python3 alexa_bridge.py</text>
+    <text x="80" y="745" fill="#00efa6">&gt; discovering as belkin wemo... ok</text>
+    <text x="80" y="770" fill="#00efa6">&gt; registered with alexa: light_room, fan_room</text>
+    <text x="80" y="795">&gt; "alexa, turn off the light" → relay ch1: LOW</text>
+  </g>
+
+  <!-- corner crosshair marks -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 60 60 L 100 60 M 60 60 L 60 100"/>
+    <path d="M 1540 60 L 1500 60 M 1540 60 L 1540 100"/>
+    <path d="M 60 840 L 100 840 M 60 840 L 60 800"/>
+    <path d="M 1540 840 L 1500 840 M 1540 840 L 1540 800"/>
+  </g>
+</svg>

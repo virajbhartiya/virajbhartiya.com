@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <pattern id="scanlines" width="2" height="4" patternUnits="userSpaceOnUse">
+      <rect width="2" height="2" fill="#00efa6" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#0a0a0a"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- CRT body (3/4 view, bulky) -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <!-- back of CRT (depth) -->
+    <path d="M 1080 230 L 1230 280 L 1230 700 L 1080 660 Z" stroke="#7a7a7a"/>
+    <line x1="1080" y1="230" x2="430" y2="230" stroke="#7a7a7a"/>
+    <line x1="1080" y1="660" x2="430" y2="660" stroke="#7a7a7a"/>
+    <!-- front panel -->
+    <rect x="430" y="230" width="650" height="430" fill="#0a0a0a"/>
+    <!-- screen bezel -->
+    <rect x="470" y="260" width="570" height="370" rx="40" ry="40" fill="#0a0a0a"/>
+  </g>
+
+  <!-- screen interior (faintly glowing) -->
+  <rect x="490" y="280" width="530" height="330" rx="30" ry="30" fill="#00efa6" opacity="0.04"/>
+  <rect x="490" y="280" width="530" height="330" rx="30" ry="30" fill="url(#scanlines)"/>
+
+  <!-- screen content: ghost terminal text -->
+  <g font-family="monospace" font-size="20" fill="#00efa6" opacity="0.55">
+    <text x="520" y="330">$ tinker --layer=hardware</text>
+    <text x="520" y="365">&gt; removing rear panel...</text>
+    <text x="520" y="400">&gt; capacitor: charged</text>
+    <text x="520" y="435">&gt; ignore warnings: y/n_</text>
+  </g>
+
+  <!-- panel screws -->
+  <g fill="#7a7a7a">
+    <circle cx="455" cy="255" r="5"/>
+    <circle cx="1055" cy="255" r="5"/>
+    <circle cx="455" cy="635" r="5"/>
+    <circle cx="1055" cy="635" r="5"/>
+  </g>
+
+  <!-- exposed corner: panel cut away revealing internals -->
+  <g stroke="#00efa6" stroke-width="2">
+    <path d="M 1080 660 L 1230 700 L 1230 800 L 1080 760 Z" fill="#0a0a0a"/>
+    <!-- flyback transformer (block with coil) -->
+    <rect x="1110" y="700" width="50" height="55" fill="#0a0a0a"/>
+    <line x1="1115" y1="710" x2="1155" y2="710"/>
+    <line x1="1115" y1="720" x2="1155" y2="720"/>
+    <line x1="1115" y1="730" x2="1155" y2="730"/>
+    <line x1="1115" y1="740" x2="1155" y2="740"/>
+    <!-- capacitor -->
+    <circle cx="1190" cy="730" r="18" fill="#0a0a0a"/>
+    <line x1="1190" y1="715" x2="1190" y2="745"/>
+    <line x1="1180" y1="725" x2="1200" y2="725"/>
+    <!-- warning -->
+    <text x="1095" y="785" font-family="monospace" font-size="13" fill="#00efa6">! 25kv residual</text>
+  </g>
+
+  <!-- screwdriver leaning against base -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="245" y="640" width="120" height="14" fill="#0a0a0a" transform="rotate(-18 305 647)"/>
+    <line x1="362" y1="617" x2="430" y2="595" stroke-width="3"/>
+    <line x1="425" y1="588" x2="438" y2="600" stroke="#00efa6" stroke-width="3"/>
+  </g>
+
+  <!-- monitor base/stand -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <rect x="600" y="660" width="310" height="40" fill="#0a0a0a"/>
+    <rect x="540" y="700" width="430" height="20" fill="#0a0a0a"/>
+  </g>
+
+  <!-- caption text bottom -->
+  <g font-family="monospace" fill="#7a7a7a">
+    <text x="120" y="100" font-size="22" fill="#c8c8c8">// the era of tinkering</text>
+    <text x="120" y="128" font-size="14">things that opened. things that didn't ship sealed.</text>
+  </g>
+
+  <!-- corner crosshair marks -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 60 60 L 100 60 M 60 60 L 60 100"/>
+    <path d="M 1540 60 L 1500 60 M 1540 60 L 1540 100"/>
+    <path d="M 60 840 L 100 840 M 60 840 L 60 800"/>
+    <path d="M 1540 840 L 1500 840 M 1540 840 L 1540 800"/>
+  </g>
+</svg>

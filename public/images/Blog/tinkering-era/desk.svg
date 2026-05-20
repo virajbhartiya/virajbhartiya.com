@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid5" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#0a0a0a"/>
+  <rect width="1600" height="900" fill="url(#grid5)"/>
+
+  <!-- title -->
+  <g font-family="monospace" fill="#7a7a7a">
+    <text x="80" y="80" font-size="20" fill="#c8c8c8">// fig.3 — desk, present day</text>
+    <text x="80" y="105" font-size="13">different hardware. same impulse.</text>
+  </g>
+
+  <!-- desk surface -->
+  <g stroke="#7a7a7a" stroke-width="2">
+    <rect x="100" y="180" width="1400" height="640" fill="#0a0a0a"/>
+  </g>
+
+  <!-- laptop (open, top-down) -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <!-- screen -->
+    <rect x="520" y="240" width="560" height="320" fill="#0a0a0a"/>
+    <!-- inner screen content area -->
+    <rect x="540" y="260" width="520" height="280" fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
+    <!-- terminal lines on screen -->
+    <g font-family="monospace" font-size="11" fill="#00efa6">
+      <text x="555" y="285">$ git log --oneline -5</text>
+      <text x="555" y="305" fill="#7a7a7a">a3f9c1d  raftokay: snapshot install rpc</text>
+      <text x="555" y="325" fill="#7a7a7a">b8e2740  parity: docker exec determinism</text>
+      <text x="555" y="345" fill="#7a7a7a">2c1aa83  cognia: memory graph edges</text>
+      <text x="555" y="365" fill="#7a7a7a">e5f110a  tinkering-era: first draft</text>
+      <text x="555" y="385" fill="#7a7a7a">8d92f4b  blog: things i care about</text>
+      <text x="555" y="415">$ _</text>
+      <!-- blinking cursor block -->
+      <rect x="569" y="404" width="9" height="14" fill="#00efa6" opacity="0.8"/>
+    </g>
+    <!-- hinge / bottom edge of screen -->
+    <line x1="520" y1="560" x2="1080" y2="560" stroke-width="1"/>
+  </g>
+
+  <!-- keyboard deck below screen -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <rect x="500" y="565" width="600" height="240" fill="#0a0a0a"/>
+    <!-- key grid (sparse hint) -->
+    <g stroke="#2a2a2a" stroke-width="1">
+      <g>
+        <line x1="520" y1="600" x2="1080" y2="600"/>
+        <line x1="520" y1="635" x2="1080" y2="635"/>
+        <line x1="520" y1="670" x2="1080" y2="670"/>
+        <line x1="520" y1="705" x2="1080" y2="705"/>
+        <line x1="520" y1="740" x2="1080" y2="740"/>
+      </g>
+    </g>
+    <!-- trackpad -->
+    <rect x="700" y="755" width="200" height="40" stroke="#2a2a2a"/>
+  </g>
+
+  <!-- coffee mug (top-left of desk) -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <ellipse cx="240" cy="320" rx="65" ry="22" fill="#0a0a0a"/>
+    <path d="M 175 320 L 178 405 Q 240 425 302 405 L 305 320"/>
+    <!-- handle -->
+    <path d="M 305 340 Q 350 350 350 380 Q 350 405 305 395" fill="none"/>
+    <!-- coffee surface (mint) -->
+    <ellipse cx="240" cy="320" rx="55" ry="16" fill="#00efa6" opacity="0.2"/>
+    <ellipse cx="240" cy="320" rx="55" ry="16" stroke="#00efa6" stroke-width="1" fill="none"/>
+    <!-- steam -->
+    <path d="M 210 290 q 8 -10 0 -25 q -8 -10 0 -25" stroke="#7a7a7a" stroke-width="1.5" fill="none"/>
+    <path d="M 240 290 q 8 -10 0 -25 q -8 -10 0 -25" stroke="#7a7a7a" stroke-width="1.5" fill="none"/>
+    <path d="M 270 290 q 8 -10 0 -25 q -8 -10 0 -25" stroke="#7a7a7a" stroke-width="1.5" fill="none"/>
+  </g>
+
+  <!-- notebook + pen (bottom-left of desk) -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="160" y="540" width="300" height="220" fill="#0a0a0a" transform="rotate(-6 310 650)"/>
+    <!-- spiral binding -->
+    <g stroke="#7a7a7a" stroke-width="1.5" transform="rotate(-6 310 650)">
+      <circle cx="180" cy="565" r="4"/>
+      <circle cx="180" cy="595" r="4"/>
+      <circle cx="180" cy="625" r="4"/>
+      <circle cx="180" cy="655" r="4"/>
+      <circle cx="180" cy="685" r="4"/>
+      <circle cx="180" cy="715" r="4"/>
+      <circle cx="180" cy="745" r="4"/>
+    </g>
+    <!-- handwritten lines hint -->
+    <g stroke="#7a7a7a" stroke-width="1.5" transform="rotate(-6 310 650)">
+      <path d="M 210 585 q 30 5 60 0 t 60 -3 t 60 0"/>
+      <path d="M 210 620 q 25 -3 50 0 t 80 5 t 50 -2"/>
+      <path d="M 210 655 q 40 4 80 -2 t 100 3"/>
+      <path d="M 210 690 q 30 -2 60 1 t 60 -1"/>
+    </g>
+    <!-- pen -->
+    <g stroke="#00efa6" stroke-width="2.5" transform="rotate(20 470 540)">
+      <line x1="420" y1="540" x2="540" y2="540"/>
+      <line x1="540" y1="540" x2="555" y2="540" stroke="#c8c8c8" stroke-width="2.5"/>
+    </g>
+  </g>
+
+  <!-- headphones (right side) -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <!-- headband arc -->
+    <path d="M 1230 290 q 80 -60 160 0" fill="none"/>
+    <!-- left cup -->
+    <ellipse cx="1230" cy="350" rx="40" ry="50" fill="#0a0a0a"/>
+    <circle cx="1230" cy="350" r="22" fill="none" stroke="#7a7a7a"/>
+    <!-- right cup -->
+    <ellipse cx="1390" cy="350" rx="40" ry="50" fill="#0a0a0a"/>
+    <circle cx="1390" cy="350" r="22" fill="none" stroke="#7a7a7a"/>
+    <!-- cable -->
+    <path d="M 1390 395 q 30 80 0 160 q -30 60 20 120" stroke="#7a7a7a" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- external SSD / small device on right -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="1230" y="580" width="180" height="100" fill="#0a0a0a" transform="rotate(8 1320 630)"/>
+    <text x="1265" y="635" font-family="monospace" font-size="12" fill="#7a7a7a" transform="rotate(8 1320 630)">portable ssd</text>
+    <circle cx="1260" cy="660" r="3" fill="#00efa6" transform="rotate(8 1320 630)"/>
+  </g>
+
+  <!-- cable spaghetti (subtle, lower edge) -->
+  <g stroke="#7a7a7a" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 200 820 q 100 -40 200 -10 t 200 -5 t 200 15 t 200 -20 t 200 10"/>
+    <path d="M 150 800 q 150 -30 280 -15 t 240 5 t 280 -10 t 200 20"/>
+  </g>
+
+  <!-- stack of stickers / sticky notes -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <rect x="1140" y="710" width="100" height="80" fill="#0a0a0a" transform="rotate(-10 1190 750)"/>
+    <text x="1155" y="745" font-family="monospace" font-size="10" fill="#00efa6" transform="rotate(-10 1190 750)">TODO:</text>
+    <text x="1155" y="762" font-family="monospace" font-size="9" fill="#7a7a7a" transform="rotate(-10 1190 750)">fix log truncate</text>
+    <text x="1155" y="775" font-family="monospace" font-size="9" fill="#7a7a7a" transform="rotate(-10 1190 750)">write blog</text>
+  </g>
+
+  <!-- corner crosshair marks -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 60 60 L 100 60 M 60 60 L 60 100"/>
+    <path d="M 1540 60 L 1500 60 M 1540 60 L 1540 100"/>
+    <path d="M 60 840 L 100 840 M 60 840 L 60 800"/>
+    <path d="M 1540 840 L 1500 840 M 1540 840 L 1540 800"/>
+  </g>
+</svg>
