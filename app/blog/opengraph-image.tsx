@@ -46,22 +46,6 @@ export default async function OgImage() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 44,
-                height: 44,
-                background: OG_COLORS.accent,
-                color: OG_COLORS.bg,
-                fontSize: 22,
-                fontWeight: 500,
-                letterSpacing: -1,
-              }}
-            >
-              VB
-            </div>
             <span style={{ color: OG_COLORS.muted }}>~/viraj/blog</span>
           </div>
           <div
@@ -98,7 +82,7 @@ export default async function OgImage() {
                 textTransform: "lowercase",
               }}
             >
-              <span style={{ color: OG_COLORS.accent }}>▸</span>
+              <span style={{ color: OG_COLORS.accent }}>{">"}</span>
               <span>writing</span>
               {postCount > 0 && (
                 <>
@@ -158,7 +142,7 @@ export default async function OgImage() {
               <span style={{ color: OG_COLORS.fgBright }}>Viraj Bhartiya</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <span style={{ color: OG_COLORS.accent }}>▸</span>
+              <span style={{ color: OG_COLORS.accent }}>{">"}</span>
               <span style={{ color: OG_COLORS.fg }}>
                 virajbhartiya.com/blog
               </span>

@@ -69,24 +69,7 @@ export default async function OgImage({ params }: Props) {
             fontSize: 22,
           }}
         >
-          {/* VB monogram + breadcrumb */}
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 44,
-                height: 44,
-                background: OG_COLORS.accent,
-                color: OG_COLORS.bg,
-                fontSize: 22,
-                fontWeight: 500,
-                letterSpacing: -1,
-              }}
-            >
-              VB
-            </div>
             <span style={{ color: OG_COLORS.muted }}>
               ~/viraj/blog · {slug}.md
             </span>
@@ -183,7 +166,7 @@ export default async function OgImage({ params }: Props) {
               <span style={{ color: OG_COLORS.fgBright }}>{author}</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <span style={{ color: OG_COLORS.accent }}>▸</span>
+              <span style={{ color: OG_COLORS.accent }}>{">"}</span>
               <span style={{ color: OG_COLORS.fg }}>virajbhartiya.com</span>
             </div>
           </div>

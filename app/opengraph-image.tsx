@@ -43,22 +43,6 @@ export default async function OgImage() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 44,
-                height: 44,
-                background: OG_COLORS.accent,
-                color: OG_COLORS.bg,
-                fontSize: 22,
-                fontWeight: 500,
-                letterSpacing: -1,
-              }}
-            >
-              VB
-            </div>
             <span style={{ color: OG_COLORS.muted }}>~/viraj · whoami</span>
           </div>
           <div
@@ -95,7 +79,7 @@ export default async function OgImage() {
                 textTransform: "lowercase",
               }}
             >
-              <span style={{ color: OG_COLORS.accent }}>▸</span>
+              <span style={{ color: OG_COLORS.accent }}>{">"}</span>
               <span>portfolio</span>
             </div>
 
@@ -128,7 +112,7 @@ export default async function OgImage() {
                 marginTop: 12,
               }}
             >
-              <span>›</span>
+              <span>{">"}</span>
               <span>software engineer</span>
             </div>
 
@@ -165,7 +149,7 @@ export default async function OgImage() {
               <span>github · linkedin · twitter · resume</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <span style={{ color: OG_COLORS.accent }}>▸</span>
+              <span style={{ color: OG_COLORS.accent }}>{">"}</span>
               <span style={{ color: OG_COLORS.fg }}>virajbhartiya.com</span>
             </div>
           </div>
