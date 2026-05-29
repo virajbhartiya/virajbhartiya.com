@@ -1,5 +1,5 @@
 ---
-title: "On Being the Youngest in the Room"
+title: "Nineteen, in a Room of Fifty-Year-Olds"
 description: "I've been the youngest engineer in every room I've worked in, from a fantasy football startup to Protocol Labs to building DEX infrastructure now. Here's what that actually teaches you."
 publishedAt: "2026-05-29"
 tags: ["Personal", "Career", "Engineering"]
