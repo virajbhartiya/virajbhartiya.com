@@ -10,7 +10,7 @@ There's a specific kind of silence that follows disagreeing with someone more se
 
 I got to know that silence early. The story of the last few years, if I'm honest, is mostly the story of learning it couldn't actually hurt me.
 
-## The second engineer
+## The easiest person to talk over
 
 I was a few months into my first year of college when I joined a fantasy football startup as its second engineer. Small team, nowhere to hide, and I was the youngest person in it, though not by much.
 
@@ -18,7 +18,7 @@ In the early meetings a decision would come up, I'd have an actual opinion about
 
 What changed wasn't some sudden burst of confidence. It was noticing, days later, how many times I'd given in on things I turned out to be right about. That stung more than losing the argument ever did. So I started staying in them. Holding the point one beat longer. Asking the next question instead of nodding through it.
 
-A team that small doesn't let you stay in your lane, either. I was there to write code, but I ended up in rooms I had no business being in at that age. On calls negotiating a deal, trying to sound like someone who had closed one before. Across the table from people whose buy-in I had to win and whose real intentions I had to guess at. The hardest problems at a startup, it turned out, were rarely the technical ones. They were the people. What they want versus what they'll say out loud. When to push, when to give, how to get to a yes without handing away the things that mattered.
+A team that small doesn't let you stay in your lane, either. I was there to write code, but I ended up in rooms I had no business being in at that age. Negotiating my own salary for the first time, trying to sound like someone who had done this before, across the table from someone whose read on me I had to guess at. The hardest problems at a startup, it turned out, were rarely the technical ones. They were the people. What they want versus what they'll say out loud. When to push, when to give, how to ask for what you're worth without flinching.
 
 Nobody handed me a seat at that table. I negotiated for it, one sentence at a time, in a room where I was the easiest person in it to talk over. By the time I left I could stand in a room, read the people in it, and hold a point without my voice doing the thing it used to do.
 
@@ -40,6 +40,10 @@ Jet-lagged and the youngest person there by decades, in a room where some of the
 
 The best part of that whole trip wasn't the city, or the summit on paper. It was the work. Standing at a whiteboard with people whose code I'd studied, drawing up a solution to a problem none of us had cracked yet, finding the way out, figuring out how the thing would actually get built. I'd float an approach and watch someone twice my age take it seriously, push on it, lay something better on top. I don't think I'd had that much fun in a long time.
 
+The work ended at dinner, long tables and louder talk, and that taught me as much as the whiteboard did. I was nineteen, sitting with people who had spent three of my lifetimes in this industry, learning how to actually hold a conversation with them. Not perform. Not wait for my turn to say the clever thing. Listen. Ask the question under the question. Let a story land without rushing to put one of my own on top of it. They talked about systems they'd watched fall over, bets that never paid off, the parts of a career that don't make it into the talks. I mostly shut up and took it in.
+
+I came back from that trip quieter, in the way I needed to be. There's a specific humility that sets in when you spend a week around people who are genuinely, deeply better than you at the thing you love, and not one of them makes you feel it. It knocked the edges off me. I went to Bangkok with something to prove. I left realizing the work, and the people doing it, were a lot bigger than my need to prove anything, and that being around them had quietly made me better. Not just as an engineer. As a person.
+
 ## Two weekends
 
 It wasn't only at work that I was the youngest. Around that same stretch, still nineteen, I was spending my weekends in a different kind of room entirely.
@@ -50,7 +54,7 @@ I won both.
 
 Two weekends in a row, the youngest in the room. I'd be lying if I said that didn't change how I carried myself into the next one. You can be told you belong a hundred times and have it bounce off. It lands differently when the result says it for you.
 
-## What happens when I talk now
+## When the room turns to me
 
 I'm still the youngest engineer in the room. That part hasn't changed, and I've stopped waiting for it to.
 
@@ -67,6 +71,8 @@ None of this arrived in a single moment. It got built across every one of those 
 I used to think the goal was to close the gap. To get old enough, scarred enough, experienced enough that I'd finally belong.
 
 I don't think that anymore. I belonged in all of those rooms the whole time. The work doesn't check your age before it decides whether it's any good, and the people worth working with don't either.
+
+And none of it stayed contained to the work. Being the youngest in every room I walked into, for years on end, changed me more than anything I built in those years. It made me patient with people and slower to assume. It taught me to listen before I argue, to respect experience without being paralyzed by it, to carry a strong opinion and still hold it loosely. I'm a steadier, more honest, less defensive person than the kid who swallowed his point in those first meetings, and I didn't notice most of it happening while it happened. The rooms made me a better engineer. They made me a better person first.
 
 One day I won't be the youngest. Someone will walk in half the age of everyone there, certain they don't belong, sitting through that same silence, swallowing a point they're actually right about. When that happens, I want to be the one who turns to them and asks what they were about to say.
 
