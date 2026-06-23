@@ -29,7 +29,7 @@
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
-    "@types/node": "^25.0.2",
+    "@types/node": "^26.0.0",
     "@types/p5": "^1.7.7",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
