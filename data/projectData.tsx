@@ -1,5 +1,13 @@
 export const projectData = [
   {
+    title: "Turing Pool: Identity-Priced Liquidity",
+    description:
+      "An AMM that prices order-flow risk using proof of unique human backing. A custom 1inch Aqua app reads World's AgentBook on-chain at quote time, so human-backed agents get a tight fee within a per-human daily quota while anonymous bots pay the compensating surcharge. Deployed on World Chain mainnet with a revenue-neutral controller that reprices after every fill.",
+    image: "images/Projects/turing-pool.png",
+    link: "https://github.com/virajbhartiya/turing-pool",
+    tags: ["Blockchain", "1inch Aqua", "World ID", "The Graph"],
+  },
+  {
     title: "fusion-xbtc: Cross-Chain Atomic Swaps for Bitcoin",
     description:
       "Built trustless atomic swaps across Ethereum and Bitcoin-family chains using HTLCs, with 1inch Fusion+ integration, relayer infrastructure, smart contracts, CLI tooling, and a UI for cross-chain execution.",
