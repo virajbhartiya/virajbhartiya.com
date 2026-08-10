@@ -6,10 +6,20 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
+
+// IntersectionObserver support never changes for the lifetime of the page, so
+// there is nothing to subscribe to. This just defers the check until after
+// hydration — assuming support on the server keeps the markup identical.
+const subscribeNever = () => () => {};
+const hasIntersectionObserver = () =>
+  typeof IntersectionObserver !== "undefined";
+const assumeSupported = () => true;
 
 interface LazySplineSceneProps {
   scene: string;
@@ -23,32 +33,24 @@ export function LazySplineScene({
   fallback,
 }: LazySplineSceneProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [intersected, setIntersected] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const supportsObserver = useSyncExternalStore(
+    subscribeNever,
+    hasIntersectionObserver,
+    assumeSupported,
+  );
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const update = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion || !supportsObserver) return;
     const el = wrapperRef.current;
     if (!el) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setShouldLoad(true);
-      return;
-    }
 
     const obs = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setShouldLoad(true);
+            setIntersected(true);
             obs.disconnect();
             break;
           }
@@ -58,7 +60,11 @@ export function LazySplineScene({
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [reducedMotion]);
+  }, [reducedMotion, supportsObserver]);
+
+  // Without IntersectionObserver there is no way to detect the wrapper
+  // scrolling into view, so load eagerly rather than never.
+  const shouldLoad = intersected || !supportsObserver;
 
   const fallbackElement = fallback ?? (
     <div className="flex h-full w-full items-center justify-center text-[11px] uppercase tracking-widest text-muted">

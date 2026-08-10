@@ -1,13 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 const SCRAMBLE_CHARS = "░▒▓█■□●◆◇".split("");
-
-function prefersReducedMotion(): boolean {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
 
 /** Cycles through random ASCII characters before settling on final text (one-time on mount) */
 export function AsciiScramble({
@@ -23,12 +19,10 @@ export function AsciiScramble({
 }) {
   const [display, setDisplay] = useState(text);
   const mounted = useRef(true);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      setDisplay(text);
-      return;
-    }
+    if (reduced) return;
 
     mounted.current = true;
     const chars = text.split("");
@@ -66,9 +60,11 @@ export function AsciiScramble({
       mounted.current = false;
       clearTimeout(timeout);
     };
-  }, [text, speed, delay]);
+  }, [text, speed, delay, reduced]);
 
-  return <span className={className}>{display}</span>;
+  // With reduced motion the scramble never runs, so render the final text
+  // directly rather than whatever `display` was seeded with.
+  return <span className={className}>{reduced ? text : display}</span>;
 }
 
 /** Continuously cycles a set of ASCII characters in place */
@@ -82,14 +78,15 @@ export function AsciiCycle({
   className?: string;
 }) {
   const [idx, setIdx] = useState(0);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (reduced) return;
     const id = setInterval(() => {
       setIdx((i) => (i + 1) % chars.length);
     }, interval);
     return () => clearInterval(id);
-  }, [chars.length, interval]);
+  }, [chars.length, interval, reduced]);
 
   return (
     <span className={className} aria-hidden="true">
@@ -109,12 +106,13 @@ export function AsciiWave({
   speed?: number;
 }) {
   const [tick, setTick] = useState(0);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (reduced) return;
     const id = setInterval(() => setTick((t) => t + 1), speed);
     return () => clearInterval(id);
-  }, [speed]);
+  }, [speed, reduced]);
 
   return (
     <span className={className} aria-hidden="true">
@@ -140,14 +138,15 @@ export function AsciiBar({
   className?: string;
 }) {
   const [pos, setPos] = useState(0);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (reduced) return;
     const id = setInterval(() => {
       setPos((p) => (p + 1) % (width + 4));
     }, 100);
     return () => clearInterval(id);
-  }, [width]);
+  }, [width, reduced]);
 
   const bar = Array.from({ length: width }, (_, i) => {
     const dist = Math.abs(i - pos);

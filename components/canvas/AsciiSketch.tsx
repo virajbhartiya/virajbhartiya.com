@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import type p5Type from "p5";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 // Character sets ordered by visual density (sparse to dense)
 const SPARSE = ["·", ".", ":", "+", "×"];
@@ -20,16 +21,8 @@ type CancelIdle = (id: IdleHandle) => void;
 export function AsciiSketch({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sketchRef = useRef<p5Type | null>(null);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const reducedMotion = useReducedMotion();
   const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const update = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
 
   // Defer p5 mount until the browser is idle so it doesn't block the LCP.
   useEffect(() => {
