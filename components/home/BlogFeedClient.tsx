@@ -37,7 +37,7 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
       <ul className="space-y-5 sm:space-y-6 list-none m-0 p-0">
         {posts.map((post) => (
           <li key={post.slug}>
-            <a href={`/blog/${post.slug}`} className="group block relative">
+            <Link href={`/blog/${post.slug}`} className="group block relative">
               <div className="sm:grid sm:grid-cols-[5.5rem_1fr] sm:gap-x-4">
                 <div className="hidden sm:block pt-1">
                   <span className="text-[11px] sm:text-xs text-muted tabular-nums">
@@ -88,7 +88,7 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
                   )}
                 </div>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
