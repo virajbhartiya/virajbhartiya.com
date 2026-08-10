@@ -1,7 +1,30 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+// document.referrer is fixed for the lifetime of the page, so there is nothing
+// to subscribe to. Reading it through useSyncExternalStore defers the check
+// until after hydration without syncing it into state from an effect.
+const subscribeNever = () => () => {};
+
+function getCanGoBack(): boolean {
+  try {
+    const ref = document.referrer;
+    if (!ref) return false;
+    return (
+      new URL(ref).origin === window.location.origin &&
+      ref !== window.location.href
+    );
+  } catch {
+    // Invalid referrer URL — stick with fallback
+    return false;
+  }
+}
+
+function assumeCannotGoBack(): boolean {
+  return false;
+}
 
 interface BackLinkProps {
   fallback: string;
@@ -17,23 +40,11 @@ export function BackLink({
   className,
 }: BackLinkProps) {
   const router = useRouter();
-  const [canGoBack, setCanGoBack] = useState(false);
-
-  useEffect(() => {
-    try {
-      const ref = document.referrer;
-      if (!ref) return;
-      const refOrigin = new URL(ref).origin;
-      if (
-        refOrigin === window.location.origin &&
-        ref !== window.location.href
-      ) {
-        setCanGoBack(true);
-      }
-    } catch {
-      // Invalid referrer URL — stick with fallback
-    }
-  }, []);
+  const canGoBack = useSyncExternalStore(
+    subscribeNever,
+    getCanGoBack,
+    assumeCannotGoBack,
+  );
 
   const handleClick = (e: React.MouseEvent) => {
     if (canGoBack) {
