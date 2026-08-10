@@ -2,7 +2,20 @@ import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 
 export default [
   {
-    ignores: ["node_modules/", ".next/", "out/", "legacy/", "**/*.config.*"],
+    // Keep in sync with .gitignore. Build output is not committed, so linting
+    // it passes in CI on a fresh clone but fails locally for anyone who has
+    // run a build.
+    ignores: [
+      "node_modules/",
+      ".next/",
+      "out/",
+      "dist/",
+      "build/",
+      "coverage/",
+      ".vercel/",
+      "legacy/",
+      "**/*.config.*",
+    ],
   },
   ...nextCoreWebVitals,
   {
