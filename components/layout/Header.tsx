@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { BlinkingCursor } from "@/components/ui/BlinkingCursor";
 
@@ -63,14 +64,14 @@ export function Header() {
         aria-label="Primary"
         className="max-w-5xl mx-auto px-4 sm:px-6 h-10 flex items-center text-xs overflow-x-auto"
       >
-        <a
+        <Link
           href="/"
           aria-label="Home"
           aria-current={pathname === "/" ? "page" : undefined}
           className="text-accent shrink-0 flex items-center"
         >
           ~<BlinkingCursor />
-        </a>
+        </Link>
         <span className="text-border select-none mx-3" aria-hidden="true">
           /
         </span>
