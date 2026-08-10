@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
@@ -293,12 +294,12 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Back to top / all posts */}
             <div className="mt-6 flex items-center justify-between text-xs text-muted">
-              <a
+              <Link
                 href="/blog"
                 className="link-glow hover:text-accent transition-colors min-h-[44px] inline-flex items-center"
               >
                 <span aria-hidden="true">&larr;</span>&nbsp;all posts
-              </a>
+              </Link>
               <a
                 href="#top"
                 className="link-glow hover:text-accent transition-colors min-h-[44px] inline-flex items-center"

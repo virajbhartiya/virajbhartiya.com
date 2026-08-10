@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 
 interface BlogPostPreview {
@@ -25,12 +26,12 @@ export function BlogFeedClient({ posts }: { posts: BlogPostPreview[] }) {
         >
           writing
         </h2>
-        <a
+        <Link
           href="/blog"
           className="link-glow text-xs text-muted hover:text-fg transition-colors"
         >
           all posts &rarr;
-        </a>
+        </Link>
       </div>
 
       <ul className="space-y-5 sm:space-y-6 list-none m-0 p-0">
