@@ -76,8 +76,8 @@
   <text x="1010" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">jev</text>
   <text x="1120" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">74</text>
   <text x="60" y="546" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">counts from the latest assisted match: two 90 s rounds, seed 7, same course</text>
-  <text x="60" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#00efa6">--unassisted</text>
-  <text x="222" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">turns all three off.</text>
+  <text x="60" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#00efa6">unassisted mode</text>
+  <text x="258" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">turns all three off.</text>
   <text x="60" y="618" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">with shields on, a score is model + shields. never model skill alone.</text>
   <g stroke="#2a2a2a" stroke-width="1">
     <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>

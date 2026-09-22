@@ -13,13 +13,11 @@
   <rect width="1200" height="675" fill="#0a0a0a"/>
   <rect width="1200" height="675" fill="url(#grid-safety)"/>
   <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
-    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.4 — safe means every landing time has a way out</text>
-    <text x="60" y="102" font-size="18" fill="#7a7a7a">the planner lets the model's own latency play the adversary. landing times illustrative.</text>
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.4 — safe means every arrival time has a way out</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">the model's own latency plays the adversary. +N = frames from now, illustrative.</text>
   </g>
-  <text x="330" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">∃ action</text>
-  <text x="470" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">(player)</text>
-  <text x="574" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">∀ landing frame</text>
-  <text x="760" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">(latency)</text>
+  <text x="330" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">pick a move</text>
+  <text x="574" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">every arrival time</text>
   <text x="976" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">then</text>
   <rect x="60" y="292" width="200" height="104" fill="#111111" stroke="#7a7a7a" stroke-width="2"/>
   <text x="78" y="326" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#c8c8c8">frame t</text>
@@ -46,8 +44,8 @@
   <text x="913" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8" text-anchor="middle">+28</text>
   <text x="913" y="232" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#00efa6" text-anchor="middle">✓</text>
   <line x1="956" y1="212" x2="972" y2="212" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-safety)"/>
-  <text x="978" y="209" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">∃ next move</text>
-  <text x="978" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">for every ✓</text>
+  <text x="978" y="209" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">a next move</text>
+  <text x="978" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">exists each time</text>
   <path d="M 262 344 C 296 344, 296 344, 328 344" stroke="#7a7a7a" stroke-width="2"/>
   <rect x="330" y="314" width="208" height="60" fill="#111111" stroke="#ff5c5c" stroke-width="2"/>
   <text x="348" y="352" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#c8c8c8">run</text>
@@ -95,8 +93,8 @@
   <text x="978" y="473" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#ff5c5c">collision</text>
   <text x="978" y="499" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">every time</text>
   <line x1="60" y1="540" x2="1140" y2="540" stroke="#2a2a2a" stroke-width="1.5"/>
-  <text x="60" y="582" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="21" fill="#c8c8c8">wins(t, s) = ∃ action : ∀ g ∈ [lo, hi] : wins(t + g, s′)</text>
-  <text x="60" y="614" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">past the look-ahead horizon counts as won · memoised on (frame, dino state, held keys)</text>
+  <text x="60" y="582" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="21" fill="#c8c8c8">safe = survives every arrival time, and still leaves a safe next move</text>
+  <text x="60" y="614" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">anything beyond the look-ahead horizon counts as survived · repeated positions are cached</text>
   <g stroke="#2a2a2a" stroke-width="1">
     <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
     <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
