@@ -1,34 +1,27 @@
+import { readFile } from "fs/promises";
+import path from "path";
+
+const GEIST_MONO_DIR = path.join(
+  process.cwd(),
+  "node_modules/geist/dist/fonts/geist-mono",
+);
+
 /**
- * Load a Google-hosted font for use in next/og ImageResponse.
+ * Load a Geist Mono TTF from the `geist` package for next/og ImageResponse.
  *
- * Forces TTF over WOFF2 (via a legacy UA) and skips the text-subset
- * endpoint because that path returns GSUB tables satori's opentype
- * parser cannot read ("lookupType: 6 - substFormat: 1 is not yet
- * supported"). Returns null on failure so the caller can fall back to
+ * Reads the complete font from disk rather than Google Fonts: the Google
+ * CSS is split into unicode-range subsets, and taking the first one gave
+ * satori a Cyrillic-only face, so Latin text silently fell back to the
+ * default sans. Returns null on failure so the caller can fall back to
  * the system monospace.
  */
-export async function loadGoogleFont(
-  family: string,
-  weight: number,
-): Promise<ArrayBuffer | null> {
+async function loadGeistMonoFile(file: string): Promise<ArrayBuffer | null> {
   try {
-    const url = `https://fonts.googleapis.com/css2?family=${family.replace(
-      / /g,
-      "+",
-    )}:wght@${weight}`;
-    const css = await (
-      await fetch(url, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
-        },
-      })
-    ).text();
-    const match = css.match(/src:\s*url\((.+?)\)\s*format/);
-    if (!match) return null;
-    const fontRes = await fetch(match[1]);
-    if (!fontRes.ok) return null;
-    return await fontRes.arrayBuffer();
+    const data = await readFile(path.join(GEIST_MONO_DIR, file));
+    return data.buffer.slice(
+      data.byteOffset,
+      data.byteOffset + data.byteLength,
+    ) as ArrayBuffer;
   } catch {
     return null;
   }
@@ -36,8 +29,8 @@ export async function loadGoogleFont(
 
 export async function loadGeistMonoFonts() {
   const [regular, medium] = await Promise.all([
-    loadGoogleFont("Geist Mono", 400),
-    loadGoogleFont("Geist Mono", 500),
+    loadGeistMonoFile("GeistMono-Regular.ttf"),
+    loadGeistMonoFile("GeistMono-Medium.ttf"),
   ]);
   const fonts = [
     ...(regular

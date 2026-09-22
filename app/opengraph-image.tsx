@@ -63,10 +63,10 @@ export default async function OgImage() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "72px 72px 56px",
+            padding: "44px 72px 44px",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
             {/* Prompt prefix */}
             <div
               style={{
@@ -88,7 +88,7 @@ export default async function OgImage() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                fontSize: 132,
+                fontSize: 84,
                 lineHeight: 0.95,
                 color: OG_COLORS.fgBright,
                 letterSpacing: -3,

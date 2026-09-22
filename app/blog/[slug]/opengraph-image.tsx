@@ -29,11 +29,27 @@ export default async function OgImage({ params }: Props) {
 
   const { fonts, fontFamily } = await loadGeistMonoFonts();
 
-  const truncate = (s: string, n: number) =>
-    s.length > n ? s.slice(0, n - 1).trimEnd() + "…" : s;
+  // Cut at a word boundary so the card never ends mid-word.
+  const truncate = (s: string, n: number) => {
+    if (s.length <= n) return s;
+    const cut = s.slice(0, n - 1);
+    const space = cut.lastIndexOf(" ");
+    return (
+      (space > n * 0.6 ? cut.slice(0, space) : cut).replace(
+        /[\s,.;:—-]+$/,
+        "",
+      ) + "…"
+    );
+  };
 
   const safeTitle = truncate(title, 85);
-  const safeDescription = truncate(description, 160);
+  // Two lines at 26px; a third collides with the footer.
+  const safeDescription = truncate(description, 118);
+  // Geist Mono glyphs are 0.6em wide: size the title to fit in two lines.
+  const titleSize = Math.max(
+    52,
+    Math.min(82, Math.floor(1700 / (safeTitle.length * 0.6))),
+  );
 
   return new ImageResponse(
     (
@@ -123,7 +139,7 @@ export default async function OgImage({ params }: Props) {
             <div
               style={{
                 display: "flex",
-                fontSize: safeTitle.length > 50 ? 68 : 82,
+                fontSize: titleSize,
                 lineHeight: 1.05,
                 color: OG_COLORS.fgBright,
                 letterSpacing: -1,
