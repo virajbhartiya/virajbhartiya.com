@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid-timing" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-timing" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/>
+    </marker>
+    <marker id="arrow-green-timing" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="#0a0a0a"/>
+  <rect width="1200" height="675" fill="url(#grid-timing)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.3 — a third of a second is 22 frames</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">the tick marks are turns: moments a fresh answer lands and can change the keys.</text>
+  </g>
+  <rect x="609.2" y="168" width="318.3" height="302" fill="#00efa6" opacity="0.07"/>
+  <line x1="609.2" y1="168" x2="609.2" y2="470" stroke="#00efa6" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <line x1="927.5" y1="168" x2="927.5" y2="470" stroke="#00efa6" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <text x="621.2" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">jump window</text>
+  <text x="621.2" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">18–28 frames wide</text>
+  <rect x="60" y="226" width="12" height="12" fill="#3b95e0"/>
+  <text x="82" y="237" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#c8c8c8">laya</text>
+  <text x="60" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">1 in flight</text>
+  <text x="60" y="286" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">~2 frames</text>
+  <line x1="262" y1="256" x2="1130" y2="256" stroke="#2a2a2a" stroke-width="2"/>
+  <rect x="60" y="320" width="12" height="12" fill="#e0692e"/>
+  <text x="82" y="331" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#c8c8c8">jev</text>
+  <text x="60" y="358" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">1 in flight</text>
+  <text x="60" y="380" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">~22 frames</text>
+  <line x1="262" y1="350" x2="1130" y2="350" stroke="#2a2a2a" stroke-width="2"/>
+  <rect x="60" y="414" width="12" height="12" fill="#e0692e"/>
+  <text x="82" y="425" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#c8c8c8">jev</text>
+  <text x="60" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">6 in flight</text>
+  <text x="60" y="474" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">staggered</text>
+  <line x1="262" y1="444" x2="1130" y2="444" stroke="#2a2a2a" stroke-width="2"/>
+  <line x1="262.0" y1="244" x2="262.0" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="290.9" y1="244" x2="290.9" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="319.9" y1="244" x2="319.9" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="348.8" y1="244" x2="348.8" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="377.7" y1="244" x2="377.7" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="406.7" y1="244" x2="406.7" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="435.6" y1="244" x2="435.6" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="464.5" y1="244" x2="464.5" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="493.5" y1="244" x2="493.5" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="522.4" y1="244" x2="522.4" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="551.3" y1="244" x2="551.3" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="580.3" y1="244" x2="580.3" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="609.2" y1="244" x2="609.2" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="638.1" y1="244" x2="638.1" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="667.1" y1="244" x2="667.1" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="696.0" y1="244" x2="696.0" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="724.9" y1="244" x2="724.9" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="753.9" y1="244" x2="753.9" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="782.8" y1="244" x2="782.8" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="811.7" y1="244" x2="811.7" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="840.7" y1="244" x2="840.7" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="869.6" y1="244" x2="869.6" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="898.5" y1="244" x2="898.5" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="927.5" y1="244" x2="927.5" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="956.4" y1="244" x2="956.4" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="985.3" y1="244" x2="985.3" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="1014.3" y1="244" x2="1014.3" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="1043.2" y1="244" x2="1043.2" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="1072.1" y1="244" x2="1072.1" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="1101.1" y1="244" x2="1101.1" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="1130.0" y1="244" x2="1130.0" y2="268" stroke="#3b95e0" stroke-width="2.5"/>
+  <line x1="262.0" y1="334" x2="262.0" y2="366" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="580.3" y1="334" x2="580.3" y2="366" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="898.5" y1="334" x2="898.5" y2="366" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="270.0" y1="350" x2="572.3" y2="350" stroke="#e0692e" stroke-width="2" stroke-dasharray="3 7" opacity="0.7"/>
+  <line x1="588.3" y1="350" x2="890.5" y2="350" stroke="#e0692e" stroke-width="2" stroke-dasharray="3 7" opacity="0.7"/>
+  <line x1="906.5" y1="350" x2="1122.0" y2="350" stroke="#e0692e" stroke-width="2" stroke-dasharray="3 7" opacity="0.7"/>
+  <text x="283.7" y="336" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">waiting on the round trip</text>
+  <line x1="262.0" y1="428" x2="262.0" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="341.6" y1="428" x2="341.6" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="421.1" y1="428" x2="421.1" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="500.7" y1="428" x2="500.7" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="580.3" y1="428" x2="580.3" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="659.8" y1="428" x2="659.8" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="739.4" y1="428" x2="739.4" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="819.0" y1="428" x2="819.0" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="898.5" y1="428" x2="898.5" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="978.1" y1="428" x2="978.1" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="1057.7" y1="428" x2="1057.7" y2="460" stroke="#e0692e" stroke-width="3.5"/>
+  <line x1="341.6" y1="418" x2="659.8" y2="418" stroke="#e0692e" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="341.6" cy="418" r="3" fill="#e0692e" opacity="0.8"/>
+  <line x1="421.1" y1="409" x2="739.4" y2="409" stroke="#e0692e" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="421.1" cy="409" r="3" fill="#e0692e" opacity="0.8"/>
+  <line x1="500.7" y1="400" x2="819.0" y2="400" stroke="#e0692e" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="500.7" cy="400" r="3" fill="#e0692e" opacity="0.8"/>
+  <text x="276.46666666666664" y="482" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">each answer still 22 frames old</text>
+  <line x1="262" y1="500" x2="1130" y2="500" stroke="#7a7a7a" stroke-width="1.5"/>
+  <line x1="262.0" y1="500" x2="262.0" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="262.0" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">0</text>
+  <line x1="406.7" y1="500" x2="406.7" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="406.66666666666663" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">10</text>
+  <line x1="551.3" y1="500" x2="551.3" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="551.3333333333333" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">20</text>
+  <line x1="696.0" y1="500" x2="696.0" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="696.0" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">30</text>
+  <line x1="840.7" y1="500" x2="840.7" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="840.6666666666666" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">40</text>
+  <line x1="985.3" y1="500" x2="985.3" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="985.3333333333334" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">50</text>
+  <line x1="1130.0" y1="500" x2="1130.0" y2="508" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="1130.0" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">60</text>
+  <text x="60" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">frame</text>
+  <text x="1130" y="562" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="end">60 frames = 1 second</text>
+  <text x="60" y="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">turns inside this window:</text>
+  <text x="360" y="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#3b95e0">laya 12</text>
+  <text x="480" y="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#e0692e">jev 1</text>
+  <text x="570" y="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#e0692e">jev staggered 4</text>
+  <text x="1130" y="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="end">illustrative timing</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
+    <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
+    <path d="M 30 645 L 60 645 M 30 645 L 30 615"/>
+    <path d="M 1170 645 L 1140 645 M 1170 645 L 1170 615"/>
+  </g>
+</svg>

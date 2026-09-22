@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid-typed" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-typed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/>
+    </marker>
+    <marker id="arrow-green-typed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="#0a0a0a"/>
+  <rect width="1200" height="675" fill="url(#grid-typed)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.2 — a choice in one forward pass</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">laya scores the options. it never writes a token.</text>
+  </g>
+  <rect x="60" y="140" width="63" height="28" rx="3" fill="#111111" stroke="#7a7a7a" stroke-width="1.5"/><text x="66" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">[CLS]</text>
+  <text x="131.0" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#c8c8c8">choice question: Choose the best…</text>
+  <rect x="475.59999999999997" y="140" width="63" height="28" rx="3" fill="#111111" stroke="#7a7a7a" stroke-width="1.5"/><text x="481.59999999999997" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">[SEP]</text>
+  <rect x="60" y="192" width="73" height="28" rx="3" fill="#111111" stroke="#3b95e0" stroke-width="1.5"/><text x="66" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#3b95e0">[MASK]</text>
+  <text x="141.2" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#c8c8c8">jump:</text>
+  <text x="200.2" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#00efa6">Safe.</text>
+  <text x="259.2" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">Clears it. Best.</text>
+  <rect x="60" y="244" width="73" height="28" rx="3" fill="#111111" stroke="#3b95e0" stroke-width="1.5"/><text x="66" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#3b95e0">[MASK]</text>
+  <text x="141.2" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#c8c8c8">duck:</text>
+  <text x="200.2" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#ff5c5c">Unsafe.</text>
+  <text x="279.59999999999997" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">Hits the cacti.</text>
+  <rect x="60" y="296" width="73" height="28" rx="3" fill="#111111" stroke="#3b95e0" stroke-width="1.5"/><text x="66" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#3b95e0">[MASK]</text>
+  <text x="141.2" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#c8c8c8">run:</text>
+  <text x="190.0" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#ff5c5c">Unsafe.</text>
+  <text x="269.4" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">Hits the cacti.</text>
+  <rect x="60" y="348" width="63" height="28" rx="3" fill="#111111" stroke="#7a7a7a" stroke-width="1.5"/><text x="66" y="368" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">[SEP]</text>
+  <text x="131.0" y="368" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#c8c8c8">2 large cacti ahead, 96 px.</text>
+  <rect x="414.4" y="348" width="63" height="28" rx="3" fill="#111111" stroke="#7a7a7a" stroke-width="1.5"/><text x="420.4" y="368" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">[SEP]</text>
+  <text x="60" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">one sequence: question, options, state</text>
+  <path d="M 548 138 h 12 v 240 h -12" stroke="#7a7a7a" stroke-width="2"/>
+  <line x1="562" y1="190" x2="594" y2="190" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-typed)"/>
+  <rect x="600" y="150" width="292" height="78" fill="#111111" stroke="#7a7a7a" stroke-width="2"/><text x="616" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">bidirectional encoder</text><text x="616" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">mmBERT · 322M params</text>
+  <line x1="746" y1="232" x2="746" y2="262" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-typed)"/>
+  <rect x="600" y="266" width="292" height="78" fill="#111111" stroke="#7a7a7a" stroke-width="2"/><text x="616" y="298" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">decision head</text><text x="616" y="326" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">2 layers + question type</text>
+  <line x1="746" y1="348" x2="746" y2="378" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-typed)"/>
+  <rect x="600" y="382" width="292" height="78" fill="#111111" stroke="#3b95e0" stroke-width="2"/><text x="616" y="414" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">scorer, per</text><rect x="758" y="394" width="73" height="28" rx="3" fill="#111111" stroke="#3b95e0" stroke-width="1.5"/><text x="764" y="414" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#3b95e0">[MASK]</text><text x="616" y="442" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">→ 1 logit per option</text>
+  <line x1="896" y1="421" x2="912" y2="421" stroke="#7a7a7a" stroke-width="2"/>
+  <line x1="912" y1="421" x2="912" y2="190" stroke="#7a7a7a" stroke-width="2"/>
+  <line x1="912" y1="190" x2="926" y2="190" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-typed)"/>
+  <text x="936" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">softmax, calibrated</text>
+  <text x="936" y="228" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">jump</text>
+  <rect x="1000" y="217" width="84" height="10" rx="2" fill="#1a1a1a"/>
+  <rect x="1000" y="217" width="79" height="10" rx="2" fill="#3b95e0"/>
+  <text x="1140" y="228" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8" text-anchor="end">0.94</text>
+  <text x="936" y="276" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#7a7a7a">duck</text>
+  <rect x="1000" y="265" width="84" height="10" rx="2" fill="#1a1a1a"/>
+  <rect x="1000" y="265" width="4" height="10" rx="2" fill="#4a4a4a"/>
+  <text x="1140" y="276" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8" text-anchor="end">0.03</text>
+  <text x="936" y="324" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#7a7a7a">run</text>
+  <rect x="1000" y="313" width="84" height="10" rx="2" fill="#1a1a1a"/>
+  <rect x="1000" y="313" width="4" height="10" rx="2" fill="#4a4a4a"/>
+  <text x="1140" y="324" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8" text-anchor="end">0.03</text>
+  <text x="936" y="380" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">illustrative</text>
+  <text x="936" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">one forward pass</text>
+  <text x="936" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">no decoding loop</text>
+  <line x1="60" y1="492" x2="1140" y2="492" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="60" y="536" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#00efa6">0 output tokens</text>
+  <text x="60" y="568" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">no text to generate, no JSON to parse</text>
+  <text x="600" y="536" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#e0692e">jev: POST /v1/systemone</text>
+  <text x="600" y="568" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">same {state, questions} in, same answers out</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
+    <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
+    <path d="M 30 645 L 60 645 M 30 645 L 30 615"/>
+    <path d="M 1170 645 L 1140 645 M 1170 645 L 1170 615"/>
+  </g>
+</svg>

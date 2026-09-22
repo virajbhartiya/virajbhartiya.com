@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid-course" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-course" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/>
+    </marker>
+    <marker id="arrow-green-course" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="#0a0a0a"/>
+  <rect width="1200" height="675" fill="url(#grid-course)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.7 — who designs a harder course?</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">each model picks the next obstacle (a choice) and the gap after it (a score).</text>
+  </g>
+  <rect x="960" y="134" width="12" height="12" fill="#e0692e"/><text x="980" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">jev</text><rect x="1050" y="134" width="12" height="12" fill="#3b95e0"/><text x="1070" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">laya</text>
+  <text x="60" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">difficulty vs speed</text>
+  <text x="60" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">+ means harder obstacles as it speeds up</text>
+  <line x1="173.3" y1="228" x2="173.3" y2="392" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="173.33333333333331" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">−0.5</text>
+  <line x1="340.0" y1="228" x2="340.0" y2="392" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="340.0" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">0</text>
+  <line x1="506.7" y1="228" x2="506.7" y2="392" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="506.6666666666667" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">+0.5</text>
+  <text x="60" y="279" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">jev</text>
+  <rect x="340.0" y="260" width="156.7" height="24" rx="3" fill="#e0692e"/>
+  <text x="506.6666666666667" y="279" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">+0.47</text>
+  <text x="60" y="343" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">laya</text>
+  <rect x="340.0" y="324" width="63.3" height="24" rx="3" fill="#3b95e0"/>
+  <text x="413.33333333333337" y="343" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">+0.19</text>
+  <text x="640" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">gap vs speed</text>
+  <text x="640" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">− means tighter gaps as it speeds up</text>
+  <line x1="753.3" y1="228" x2="753.3" y2="392" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="753.3333333333333" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">−0.5</text>
+  <line x1="920.0" y1="228" x2="920.0" y2="392" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="920.0" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">0</text>
+  <line x1="1086.7" y1="228" x2="1086.7" y2="392" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1086.6666666666667" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">+0.5</text>
+  <text x="640" y="279" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">jev</text>
+  <rect x="733.3" y="260" width="186.7" height="24" rx="3" fill="#e0692e"/>
+  <text x="930.0" y="279" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">−0.56</text>
+  <text x="640" y="343" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">laya</text>
+  <rect x="916.0" y="324" width="4.0" height="24" rx="3" fill="#3b95e0"/>
+  <text x="930.0" y="343" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">−0.01</text>
+  <line x1="913.3" y1="222" x2="913.3" y2="392" stroke="#c8c8c8" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <text x="921.3333333333334" y="384" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">random rule −0.02</text>
+  <line x1="60" y1="470" x2="1140" y2="470" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="60" y="510" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">jev designs like a level designer: harder and tighter as the game speeds up.</text>
+  <text x="60" y="540" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">laya's course is close to the original random rule.</text>
+  <text x="60" y="586" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">rank correlation with game speed · 40 obstacles · one seed</text>
+  <text x="60" y="612" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">design time per obstacle: laya ≈ 50 ms, jev ≈ 370 ms. the look-ahead hides both.</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
+    <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
+    <path d="M 30 645 L 60 645 M 30 645 L 30 615"/>
+    <path d="M 1170 645 L 1140 645 M 1170 645 L 1170 615"/>
+  </g>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid-shields" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-shields" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/>
+    </marker>
+    <marker id="arrow-green-shields" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="#0a0a0a"/>
+  <rect width="1200" height="675" fill="url(#grid-shields)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.6 — three shields, three counters</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">every intervention is visible live and reported separately from the model.</text>
+  </g>
+  <line x1="60" y1="150" x2="1140" y2="150" stroke="#2a2a2a" stroke-width="2"/>
+  <circle cx="230" cy="150" r="6" fill="#00efa6"/>
+  <circle cx="600" cy="150" r="6" fill="#00efa6"/>
+  <circle cx="970" cy="150" r="6" fill="#00efa6"/>
+  <line x1="244" y1="150" x2="586" y2="150" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-shields)"/>
+  <text x="415" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">in flight</text>
+  <line x1="614" y1="150" x2="956" y2="150" stroke="#7a7a7a" stroke-width="2" marker-end="url(#arrow-shields)"/>
+  <text x="785" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">then, every frame</text>
+  <rect x="60" y="184" width="340" height="316" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+  <text x="80" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">01</text>
+  <text x="118" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#00efa6">plan shield</text>
+  <text x="80" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">when</text>
+  <text x="156" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">answer is formed</text>
+  <text x="80" y="302" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">checks</text>
+  <text x="156" y="302" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">top pick is safe?</text>
+  <text x="80" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">else</text>
+  <text x="156" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">likeliest safe move</text>
+  <line x1="80" y1="380" x2="380" y2="380" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="80" y="412" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">counter: model vetoes</text>
+  <rect x="80" y="438" width="12" height="12" fill="#3b95e0"/>
+  <text x="100" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">laya</text>
+  <text x="220" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">142</text>
+  <rect x="250" y="438" width="12" height="12" fill="#e0692e"/>
+  <text x="270" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">jev</text>
+  <text x="380" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">0</text>
+  <rect x="430" y="184" width="340" height="316" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+  <text x="450" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">02</text>
+  <text x="488" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#00efa6">arrival shield</text>
+  <text x="450" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">when</text>
+  <text x="526" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">the answer lands</text>
+  <text x="450" y="302" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">checks</text>
+  <text x="526" y="302" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">live physics,</text>
+  <text x="450" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a"></text>
+  <text x="526" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">12–42 frames ahead</text>
+  <line x1="450" y1="380" x2="750" y2="380" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="450" y="412" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">counter: arrival saves</text>
+  <rect x="450" y="438" width="12" height="12" fill="#3b95e0"/>
+  <text x="470" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">laya</text>
+  <text x="590" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">705</text>
+  <rect x="620" y="438" width="12" height="12" fill="#e0692e"/>
+  <text x="640" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">jev</text>
+  <text x="750" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">18</text>
+  <rect x="800" y="184" width="340" height="316" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+  <text x="820" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">03</text>
+  <text x="858" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#00efa6">emergency shield</text>
+  <text x="820" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">when</text>
+  <text x="896" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">before every step</text>
+  <text x="820" y="302" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">checks</text>
+  <text x="896" y="302" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">imminent collision</text>
+  <text x="820" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a"></text>
+  <text x="896" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">even with no answer</text>
+  <line x1="820" y1="380" x2="1120" y2="380" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="820" y="412" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">counter: emergency saves</text>
+  <rect x="820" y="438" width="12" height="12" fill="#3b95e0"/>
+  <text x="840" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">laya</text>
+  <text x="960" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">69</text>
+  <rect x="990" y="438" width="12" height="12" fill="#e0692e"/>
+  <text x="1010" y="450" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">jev</text>
+  <text x="1120" y="452" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#c8c8c8" text-anchor="end">74</text>
+  <text x="60" y="546" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">counts from the latest assisted match: two 90 s rounds, seed 7, same course</text>
+  <text x="60" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#00efa6">--unassisted</text>
+  <text x="222" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">turns all three off.</text>
+  <text x="60" y="618" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">with shields on, a score is model + shields. never model skill alone.</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
+    <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
+    <path d="M 30 645 L 60 645 M 30 645 L 30 615"/>
+    <path d="M 1170 645 L 1140 645 M 1170 645 L 1170 615"/>
+  </g>
+</svg>

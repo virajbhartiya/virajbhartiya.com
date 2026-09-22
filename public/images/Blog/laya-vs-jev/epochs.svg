@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid-epochs" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-epochs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/>
+    </marker>
+    <marker id="arrow-green-epochs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="#0a0a0a"/>
+  <rect width="1200" height="675" fill="url(#grid-epochs)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.5 — answers in flight, and why some get thrown away</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">jev-style schedule: a question every 6 frames, each answer 22 frames later. illustrative.</text>
+  </g>
+  <rect x="580" y="150" width="320" height="328" fill="#00efa6" opacity="0.05"/>
+  <line x1="580" y1="150" x2="580" y2="478" stroke="#00efa6" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="590" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">epoch 1</text>
+  <text x="570" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#7a7a7a" text-anchor="end">epoch 0</text>
+  <text x="60" y="203" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">q1</text>
+  <text x="110" y="203" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked in epoch 0</text>
+  <line x1="300" y1="196" x2="520" y2="196" stroke="#e0692e" stroke-width="3"/>
+  <circle cx="300" cy="196" r="5" fill="#e0692e"/>
+  <line x1="520" y1="183" x2="520" y2="209" stroke="#00efa6" stroke-width="3.5"/>
+  <text x="930" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">✓ applied</text>
+  <text x="930" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">keys unchanged</text>
+  <text x="60" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">q2</text>
+  <text x="110" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked in epoch 0</text>
+  <line x1="360" y1="248" x2="580" y2="248" stroke="#e0692e" stroke-width="3"/>
+  <circle cx="360" cy="248" r="5" fill="#e0692e"/>
+  <line x1="580" y1="235" x2="580" y2="261" stroke="#00efa6" stroke-width="3.5"/>
+  <text x="930" y="248" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">✓ applied</text>
+  <text x="930" y="270" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">jump: keys change</text>
+  <text x="60" y="307" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">q3</text>
+  <text x="110" y="307" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked in epoch 0</text>
+  <line x1="420" y1="300" x2="640" y2="300" stroke="#e0692e" stroke-width="3" stroke-dasharray="6 6" opacity="0.55"/>
+  <circle cx="420" cy="300" r="5" fill="#e0692e"/>
+  <line x1="640" y1="287" x2="640" y2="313" stroke="#ff5c5c" stroke-width="3.5"/>
+  <text x="930" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#ff5c5c">✗ discarded</text>
+  <text x="930" y="322" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">premise gone</text>
+  <text x="60" y="359" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">q4</text>
+  <text x="110" y="359" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked in epoch 0</text>
+  <line x1="480" y1="352" x2="700" y2="352" stroke="#e0692e" stroke-width="3" stroke-dasharray="6 6" opacity="0.55"/>
+  <circle cx="480" cy="352" r="5" fill="#e0692e"/>
+  <line x1="700" y1="339" x2="700" y2="365" stroke="#ff5c5c" stroke-width="3.5"/>
+  <text x="930" y="352" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#ff5c5c">✗ discarded</text>
+  <text x="930" y="374" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">premise gone</text>
+  <text x="60" y="411" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">q5</text>
+  <text x="110" y="411" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked in epoch 1</text>
+  <line x1="600" y1="404" x2="820" y2="404" stroke="#e0692e" stroke-width="3"/>
+  <circle cx="600" cy="404" r="5" fill="#e0692e"/>
+  <line x1="820" y1="391" x2="820" y2="417" stroke="#00efa6" stroke-width="3.5"/>
+  <text x="930" y="404" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">✓ applied</text>
+  <text x="930" y="426" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">fresh premise</text>
+  <text x="60" y="463" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">q6</text>
+  <text x="110" y="463" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked in epoch 1</text>
+  <line x1="660" y1="456" x2="880" y2="456" stroke="#e0692e" stroke-width="3"/>
+  <circle cx="660" cy="456" r="5" fill="#e0692e"/>
+  <line x1="880" y1="443" x2="880" y2="469" stroke="#00efa6" stroke-width="3.5"/>
+  <text x="930" y="456" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#00efa6">✓ applied</text>
+  <text x="930" y="478" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">fresh premise</text>
+  <line x1="300" y1="494" x2="900" y2="494" stroke="#7a7a7a" stroke-width="1.5"/>
+  <line x1="300" y1="494" x2="300" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="300" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">0</text>
+  <line x1="400" y1="494" x2="400" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="400" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">10</text>
+  <line x1="500" y1="494" x2="500" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="500" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">20</text>
+  <line x1="600" y1="494" x2="600" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="600" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">30</text>
+  <line x1="700" y1="494" x2="700" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="700" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">40</text>
+  <line x1="800" y1="494" x2="800" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="800" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">50</text>
+  <line x1="900" y1="494" x2="900" y2="502" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="900" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a" text-anchor="middle">60</text>
+  <text x="60" y="526" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">frame</text>
+  <circle cx="740" cy="550" r="5" fill="#e0692e"/>
+  <text x="754" y="556" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">asked</text>
+  <line x1="820" y1="540" x2="820" y2="560" stroke="#7a7a7a" stroke-width="3"/>
+  <text x="832" y="556" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">lands</text>
+  <text x="60" y="590" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">every question assumes the keys stay put until it lands.</text>
+  <text x="60" y="616" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">one that changes them makes the rest stale. every discard is counted.</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
+    <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
+    <path d="M 30 645 L 60 645 M 30 645 L 30 615"/>
+    <path d="M 1170 645 L 1140 645 M 1170 645 L 1170 615"/>
+  </g>
+</svg>

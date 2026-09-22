@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid-numbers" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-numbers" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/>
+    </marker>
+    <marker id="arrow-green-numbers" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="#0a0a0a"/>
+  <rect width="1200" height="675" fill="url(#grid-numbers)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.8 — the single-request run, 90 s each</text>
+    <text x="60" y="102" font-size="18" fill="#7a7a7a">before the fairness changes. faster vs more accurate, in one picture.</text>
+  </g>
+  <rect x="960" y="134" width="12" height="12" fill="#3b95e0"/><text x="980" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">laya</text><rect x="1050" y="134" width="12" height="12" fill="#e0692e"/><text x="1070" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7a7a7a">jev</text>
+  <text x="60" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">median answer time</text>
+  <text x="60" y="206" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">lower is better</text>
+  <line x1="136" y1="224" x2="136" y2="320" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="60" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">laya</text>
+  <rect x="136" y="236" width="30.4" height="24" rx="3" fill="#3b95e0"/>
+  <text x="176.40650406504065" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">33 ms</text>
+  <text x="60" y="303" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">jev</text>
+  <rect x="136" y="284" width="340.0" height="24" rx="3" fill="#e0692e"/>
+  <text x="486.0" y="303" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">369 ms</text>
+  <text x="640" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">decisions in 90 s</text>
+  <text x="640" y="206" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">more turns to act</text>
+  <line x1="716" y1="224" x2="716" y2="320" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="640" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">laya</text>
+  <rect x="716" y="236" width="340.0" height="24" rx="3" fill="#3b95e0"/>
+  <text x="1066.0" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">2,753</text>
+  <text x="640" y="303" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">jev</text>
+  <rect x="716" y="284" width="24.3" height="24" rx="3" fill="#e0692e"/>
+  <text x="750.3298220123502" y="303" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">197</text>
+  <text x="60" y="364" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">picked the planner's best move</text>
+  <text x="60" y="390" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">higher is better</text>
+  <line x1="136" y1="408" x2="136" y2="504" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="60" y="439" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">laya</text>
+  <rect x="136" y="420" width="255.0" height="24" rx="3" fill="#3b95e0"/>
+  <text x="401.0" y="439" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">75%</text>
+  <text x="60" y="487" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">jev</text>
+  <rect x="136" y="468" width="340.0" height="24" rx="3" fill="#e0692e"/>
+  <text x="486.0" y="487" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">100%</text>
+  <text x="640" y="364" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">deaths</text>
+  <text x="640" y="390" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">lower is better</text>
+  <line x1="716" y1="408" x2="716" y2="504" stroke="#7a7a7a" stroke-width="1.5"/>
+  <text x="640" y="439" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">laya</text>
+  <rect x="716" y="420" width="123.6" height="24" rx="3" fill="#3b95e0"/>
+  <text x="849.6363636363636" y="439" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">4</text>
+  <text x="640" y="487" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#c8c8c8">jev</text>
+  <rect x="716" y="468" width="340.0" height="24" rx="3" fill="#e0692e"/>
+  <text x="1066.0" y="487" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#c8c8c8">11</text>
+  <line x1="60" y1="546" x2="1140" y2="546" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="60" y="582" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#c8c8c8">lockstep, latency removed: 0 deaths each · best move laya 74%, jev 100%</text>
+  <text x="60" y="612" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#7a7a7a">one request at a time · M3, 16 GB, deep in swap · seed 7 · jev course · shield on</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 30 30 L 60 30 M 30 30 L 30 60"/>
+    <path d="M 1170 30 L 1140 30 M 1170 30 L 1170 60"/>
+    <path d="M 30 645 L 60 645 M 30 645 L 30 615"/>
+    <path d="M 1170 645 L 1140 645 M 1170 645 L 1170 615"/>
+  </g>
+</svg>
