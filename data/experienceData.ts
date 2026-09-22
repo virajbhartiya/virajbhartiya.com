@@ -6,12 +6,14 @@ export interface Experience {
 
 export const experienceData: Experience[] = [
   {
-    title: "Software Engineer",
+    title: "Founding Engineer",
     company: "SatsTerminal",
     description: [
-      "Built an SDK-driven BTC-backed borrow flow into EVM DeFi using deterministic ZeroDev Kernel smart accounts, time-bound session keys, and Temporal orchestration to bridge collateral, execute protocol-specific deposit and borrow steps, and disburse stablecoins without repeated user signatures.",
-      "Built OneSwap, a Canton-native non-custodial exchange platform spanning the public web app, wallet-authenticated APIs, TypeScript SDK, admin and recovery tooling, ledger-ingest workers, and Temporal-based settlement orchestration.",
-      "Engineered safety-critical AMM infrastructure for swaps and LP actions, including slippage-aware quoting, ledger deposit attribution, reserve reconciliation, exact-holding refunds, liability accounting, and per-pool serialized settlement.",
+      "Built OneSwap's trading and settlement infrastructure on Canton, from AMM smart contracts to swap execution and liquidity management. Designed atomic delivery-versus-payment settlement so both assets change hands in one ledger transaction, with slippage limits enforced on-chain.",
+      "Benchmarked atomic settlement at 89 transactions per minute with sub-18-second p90 latency on Canton DevNet.",
+      "Built the token launch lifecycle: CIP-0056 issuance, bonding-curve trading, graduation into liquidity pools, and holder claims. Made settlement and claims recoverable across retries through durable jobs, idempotent operations, and ledger reconciliation.",
+      "Engineered the accounting and recovery systems behind swaps and liquidity provision, including deposit attribution, reserve reconciliation, exact-holding refunds, and per-pool serialized settlement.",
+      "Built a BTC-backed borrowing flow that bridges collateral into EVM lending protocols and delivers stablecoins without repeated user signatures, using deterministic smart accounts, scoped session keys, and durable orchestration across chains.",
     ],
   },
   {
@@ -56,15 +58,6 @@ export const experienceData: Experience[] = [
     description: [
       "Hosted a Flutter and Firebase workshop, teaching students how to build cross-platform mobile apps with realtime backends from scratch.",
       "Organized technical events and workshops as part of the Google Developer Student Club.",
-    ],
-  },
-  {
-    title: "Software Developer",
-    company: "MGPEL",
-    description: [
-      "Built Saarvik, a multi-tenant inventory and production management platform using Next.js, TypeScript, MongoDB, Mongoose, and NextAuth, with tenant isolation, RBAC, template-driven inventory, audit trails, barcode workflows, subscription controls, and client portals.",
-      "Built a full-stack apparel e-commerce platform with variant-aware product models, cart and checkout flows, inventory validation, shipping calculation, order lifecycle management, and admin publishing operations.",
-      "Built the broader operational stack for apparel brands from consultation and sourcing through manufacturing, printing, packaging, photography, shipping, and launch-ready storefronts.",
     ],
   },
   {
