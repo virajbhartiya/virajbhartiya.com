@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#0a0a0a"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- caption -->
+  <g font-family="monospace" fill="#7a7a7a">
+    <text x="120" y="100" font-size="22" fill="#c8c8c8">// my parents know i write code</text>
+    <text x="120" y="128" font-size="14">two ledgers. one phone call.</text>
+  </g>
+
+  <!-- left: their ledger -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <rect x="180" y="250" width="500" height="460" fill="#0a0a0a"/>
+    <line x1="180" y1="310" x2="680" y2="310"/>
+    <line x1="430" y1="250" x2="430" y2="610" stroke="#7a7a7a"/>
+    <line x1="180" y1="610" x2="680" y2="610" stroke="#7a7a7a"/>
+  </g>
+  <g font-family="monospace" font-size="18" fill="#c8c8c8">
+    <text x="205" y="288">debit</text>
+    <text x="455" y="288">credit</text>
+  </g>
+  <!-- ledger entries -->
+  <g stroke="#7a7a7a" stroke-width="2">
+    <line x1="205" y1="350" x2="330" y2="350"/><line x1="360" y1="350" x2="405" y2="350"/>
+    <line x1="205" y1="390" x2="300" y2="390"/><line x1="350" y1="390" x2="405" y2="390"/>
+    <line x1="205" y1="430" x2="345" y2="430"/><line x1="370" y1="430" x2="405" y2="430"/>
+    <line x1="205" y1="470" x2="280" y2="470"/><line x1="355" y1="470" x2="405" y2="470"/>
+    <line x1="455" y1="350" x2="560" y2="350"/><line x1="610" y1="350" x2="655" y2="350"/>
+    <line x1="455" y1="390" x2="590" y2="390"/><line x1="620" y1="390" x2="655" y2="390"/>
+    <line x1="455" y1="430" x2="540" y2="430"/><line x1="600" y1="430" x2="655" y2="430"/>
+    <line x1="455" y1="470" x2="575" y2="470"/><line x1="605" y1="470" x2="655" y2="470"/>
+  </g>
+  <!-- totals, double underlined: both sides agree -->
+  <g stroke="#c8c8c8" stroke-width="2">
+    <line x1="340" y1="550" x2="405" y2="550"/>
+    <line x1="340" y1="572" x2="405" y2="572"/><line x1="340" y1="578" x2="405" y2="578"/>
+    <line x1="590" y1="550" x2="655" y2="550"/>
+    <line x1="590" y1="572" x2="655" y2="572"/><line x1="590" y1="578" x2="655" y2="578"/>
+  </g>
+  <!-- signature -->
+  <path d="M 440 672 C 455 640, 470 640, 468 668 C 466 690, 490 640, 505 660 C 515 674, 525 645, 540 662 C 552 676, 570 650, 600 664 L 650 660" stroke="#00efa6" stroke-width="2.5"/>
+  <line x1="430" y1="686" x2="655" y2="686" stroke="#7a7a7a" stroke-width="1.5" stroke-dasharray="4 6"/>
+  <text x="205" y="672" font-family="monospace" font-size="14" fill="#7a7a7a">verified and signed</text>
+  <text x="180" y="745" font-family="monospace" font-size="14" fill="#7a7a7a">theirs: numbers that have to agree</text>
+
+  <!-- right: my ledger -->
+  <g stroke="#c8c8c8" stroke-width="2.5">
+    <rect x="920" y="250" width="500" height="460" fill="#0a0a0a"/>
+    <line x1="980" y1="300" x2="980" y2="640"/>
+    <line x1="980" y1="640" x2="1380" y2="640"/>
+  </g>
+  <polyline points="1020,340 1025,373 1030,400 1040,440 1050,469 1060,490 1080,520 1100,540 1120,554 1140,565 1180,580 1220,590 1280,600 1360,608" stroke="#00efa6" stroke-width="3"/>
+  <!-- current price point on the curve -->
+  <g stroke="#7a7a7a" stroke-width="1.5" stroke-dasharray="4 6">
+    <line x1="1100" y1="540" x2="1100" y2="640"/>
+    <line x1="980" y1="540" x2="1100" y2="540"/>
+  </g>
+  <circle cx="1100" cy="540" r="7" fill="#0a0a0a" stroke="#00efa6" stroke-width="2.5"/>
+  <g font-family="monospace" fill="#c8c8c8">
+    <text x="1180" y="400" font-size="26" fill="#00efa6">x * y = k</text>
+    <text x="1180" y="430" font-size="14" fill="#7a7a7a">nobody on the other side</text>
+    <text x="940" y="296" font-size="14" fill="#7a7a7a">token y</text>
+    <text x="1320" y="672" font-size="14" fill="#7a7a7a">token x</text>
+  </g>
+  <text x="920" y="745" font-family="monospace" font-size="14" fill="#7a7a7a">mine: balances that have to reconcile</text>
+
+  <!-- the call between them -->
+  <line x1="700" y1="480" x2="900" y2="480" stroke="#7a7a7a" stroke-width="2" stroke-dasharray="6 10"/>
+  <circle cx="700" cy="480" r="5" fill="#c8c8c8"/>
+  <circle cx="900" cy="480" r="5" fill="#c8c8c8"/>
+  <g font-family="monospace" text-anchor="middle">
+    <text x="800" y="455" font-size="16" fill="#c8c8c8">"how's work going?"</text>
+    <text x="800" y="515" font-size="16" fill="#00efa6">"good."</text>
+  </g>
+
+  <!-- corner crosshair marks -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <path d="M 60 60 L 100 60 M 60 60 L 60 100"/>
+    <path d="M 1540 60 L 1500 60 M 1540 60 L 1540 100"/>
+    <path d="M 60 840 L 100 840 M 60 840 L 60 800"/>
+    <path d="M 1540 840 L 1500 840 M 1540 840 L 1540 800"/>
+  </g>
+</svg>
