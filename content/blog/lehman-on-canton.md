@@ -17,7 +17,7 @@ So this post takes the four things that broke that week, models each one in Daml
 
 First, what this isn't. Canton would not have saved Lehman. A firm levered 30-to-1 on mortgage paper goes bust on any ledger. That's a judgment problem, not a plumbing problem.
 
-What changes is *how* it goes bust.
+What changes is _how_ it goes bust.
 
 ---
 
@@ -38,9 +38,9 @@ Four failures sit inside that week: a hidden obligation, missing collateral, tra
 
 **Contracts have stakeholders.** Every Daml contract declares `signatory` parties (who must authorize its creation and are bound by it) and `observer` parties (who can see it). Signatories plus observers are the contract's stakeholders.
 
-**Authority flows through choices.** When a party exercises a choice on a contract, everything that happens inside that choice runs with the authority of the contract's signatories *plus* the choice's controller. That's the only way authority moves. You can't sign for someone else. You can only act inside a contract they already signed.
+**Authority flows through choices.** When a party exercises a choice on a contract, everything that happens inside that choice runs with the authority of the contract's signatories _plus_ the choice's controller. That's the only way authority moves. You can't sign for someone else. You can only act inside a contract they already signed.
 
-**Transactions are trees, and each party sees only its branch.** A transaction is a tree of actions: creates, exercises, fetches. The protocol splits it into *views*, one per subtree, and each view goes only to participants hosting the parties that have to see it (its informees). This is sub-transaction privacy. A bank in a three-leg trade sees its leg, not yours.
+**Transactions are trees, and each party sees only its branch.** A transaction is a tree of actions: creates, exercises, fetches. The protocol splits it into _views_, one per subtree, and each view goes only to participants hosting the parties that have to see it (its informees). This is sub-transaction privacy. A bank in a three-leg trade sees its leg, not yours.
 
 **Commit is two-phase and atomic.** The submitting participant encrypts each view for its recipients and hands it to the synchronizer. The sequencer orders and delivers ciphertext. It sees who receives what, never what's inside. The confirming participants (the ones hosting signatories) validate their views and vote. The mediator aggregates the votes and issues one verdict for the whole tree: commit or reject. No partial outcomes.
 
@@ -54,7 +54,7 @@ Keep those four rules in mind. Each failure below comes down to one of them.
 
 Lehman funded itself with repo: sell securities today, buy them back tomorrow. Economically, it's a loan.
 
-Repo 105 dressed the loan up as a sale. By handing over about $105 of securities for every $100 of cash, Lehman got the trade booked as a *sale* under its accounting treatment. Cash came in. The liability vanished. Right before quarter-end. The court examiner, Anton Valukas, found Lehman moved about $50B off its balance sheet this way, and concluded it gave the appearance of lower leverage when there wasn't any.
+Repo 105 dressed the loan up as a sale. By handing over about $105 of securities for every $100 of cash, Lehman got the trade booked as a _sale_ under its accounting treatment. Cash came in. The liability vanished. Right before quarter-end. The court examiner, Anton Valukas, found Lehman moved about $50B off its balance sheet this way, and concluded it gave the appearance of lower leverage when there wasn't any.
 
 The repurchase obligation never stopped existing. It just lived in Lehman's internal systems, where nobody outside was looking.
 
@@ -86,13 +86,13 @@ template Repo
 
 Three things to look at.
 
-**`signatory borrower, lender`.** The obligation exists only because both sides authorized it. Neither side can delete it alone. Archiving it takes a choice on the contract, and the only choice offered is `Repurchase`. The debt doesn't go away until it's paid.
+`signatory borrower, lender`. The obligation exists only because both sides authorized it. Neither side can delete it alone. Archiving it takes a choice on the contract, and the only choice offered is `Repurchase`. The debt doesn't go away until it's paid.
 
-**`observer supervisor`.** The supervisor is a stakeholder, so its participant receives the `create` view. It sees this repo, with its terms, the moment it commits. It sees nothing else Lehman does that it isn't a stakeholder on.
+`observer supervisor`. The supervisor is a stakeholder, so its participant receives the `create` view. It sees this repo, with its terms, the moment it commits. It sees nothing else Lehman does that it isn't a stakeholder on.
 
-**A visibility catch.** The collateral `Holding` belongs to the lender during the term, so the borrower isn't a stakeholder on it and can't see it. If Lehman submits `Repurchase` as written, its own participant rejects the submission: the contract isn't visible. The lender has to disclose the collateral contract to the borrower at repurchase time (explicit disclosure). The same catch shows up again in DvP below. Canton's privacy is strict enough that you have to plan for who can even *reference* a contract.
+**A visibility catch.** The collateral `Holding` belongs to the lender during the term, so the borrower isn't a stakeholder on it and can't see it. If Lehman submits `Repurchase` as written, its own participant rejects the submission: the contract isn't visible. The lender has to disclose the collateral contract to the borrower at repurchase time (explicit disclosure). The same catch shows up again in DvP below. Canton's privacy is strict enough that you have to plan for who can even _reference_ a contract.
 
-**What Canton can't do.** It doesn't do accounting. Lehman could still *call* this a sale on its balance sheet. But the obligation can't be invisible to anyone listed on the contract, because the protocol physically delivers the view to them. The only way to hide it is to leave the supervisor off. So the real question isn't technical. It's whether market rules require regulators as observers on certain templates. That's a governance decision.
+**What Canton can't do.** It doesn't do accounting. Lehman could still _call_ this a sale on its balance sheet. But the obligation can't be invisible to anyone listed on the contract, because the protocol physically delivers the view to them. The only way to hide it is to leave the supervisor off. So the real question isn't technical. It's whether market rules require regulators as observers on certain templates. That's a governance decision.
 
 ![fig.2 — Repo 105 at quarter-end: Lehman's 10-Q vs the supervisor's ACS](/images/Blog/lehman-on-canton/fig2-repo105.svg)
 
@@ -203,7 +203,7 @@ Inside `Accept`, the authority is `seller` (signatory) plus `buyer` (controller)
 
 There is no "cash moved, bonds didn't" state. The failure that defined October 2008 has nowhere to exist.
 
-One practical detail. The buyer's participant has to see the seller's `bond` contract to submit this. In practice you either pass it in via explicit disclosure, or do what Canton's token standard (CIP-56) does: both sides lock their legs into *allocations* up front, and a settlement party executes them together. That's how we settle swaps. Same atomicity, cleaner visibility.
+One practical detail. The buyer's participant has to see the seller's `bond` contract to submit this. In practice you either pass it in via explicit disclosure, or do what Canton's token standard (CIP-56) does: both sides lock their legs into _allocations_ up front, and a settlement party executes them together. That's how we settle swaps. Same atomicity, cleaner visibility.
 
 ![fig.4 — settlement states: T+3 bilateral (agreed → failed → claim) vs atomic DvP (commit | reject)](/images/Blog/lehman-on-canton/fig4-settlement.svg)
 
@@ -211,7 +211,7 @@ One practical detail. The buyer's participant has to see the seller's `bond` con
 
 ## 4. The unwind: years vs one query
 
-The part of Lehman that *worked* is instructive.
+The part of Lehman that _worked_ is instructive.
 
 DTCC closed out over $500B of Lehman positions, at one point processing 209 million open trades in a day. Central plumbing, central visibility, done in weeks.
 
@@ -223,7 +223,7 @@ On Canton, the book is the set of active contracts the estate's parties are stak
 
 Two properties make this different from 2008.
 
-**No reconciliation.** Each counterparty holds the *same* contract, same contract ID, same payload, confirmed in the same transaction. There's no "our records show X, theirs show Y." Disputes move from "what is the trade" to "what does the law say about the trade."
+**No reconciliation.** Each counterparty holds the _same_ contract, same contract ID, same payload, confirmed in the same transaction. There's no "our records show X, theirs show Y." Disputes move from "what is the trade" to "what does the law say about the trade."
 
 **A consistent cut.** The query is pinned to a ledger offset. You get the book as it stood at one exact point in the order of transactions, not a patchwork of end-of-day files from 200 entities.
 
@@ -237,7 +237,7 @@ Courts still decide netting and priority. Canton doesn't replace bankruptcy law.
 
 I'd be lying if I stopped there. The same mechanics cut the other way.
 
-**Atomic means prefunded.** Today's markets run on netting and intraday credit, which is a polite way of saying "I'll pay you later." Atomic DvP needs both legs to exist at commit time. Allocations lock holdings until settlement. For a firm in a liquidity squeeze, being forced to lock everything up front is brutal. A Lehman on Canton might run out of usable cash *faster*.
+**Atomic means prefunded.** Today's markets run on netting and intraday credit, which is a polite way of saying "I'll pay you later." Atomic DvP needs both legs to exist at commit time. Allocations lock holdings until settlement. For a firm in a liquidity squeeze, being forced to lock everything up front is brutal. A Lehman on Canton might run out of usable cash _faster_.
 
 **No weekends.** The NY Fed used Saturday and Sunday to try to save Lehman. On a ledger that commits 24/7, collateral calls and runs don't wait for Monday.
 
@@ -272,7 +272,7 @@ It might be `observer`.
 
 ---
 
-*Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton Network. Nobody paid for this piece. The code is illustrative, not production, but it compiles on Daml SDK 3.4.8, and every claim above about what succeeds or fails has a Daml Script test. Historical figures are from the public sources below.*
+_Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton Network. Nobody paid for this piece. The code is illustrative, not production, but it compiles on Daml SDK 3.4.8, and every claim above about what succeeds or fails has a Daml Script test. Historical figures are from the public sources below._
 
 ---
 
