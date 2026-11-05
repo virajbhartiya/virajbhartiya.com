@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440"><defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#161b22"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6e7681"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7ee787"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff7b72"/></marker></defs><style>text{font-family:"JetBrains Mono","SF Mono",Menlo,monospace;fill:#c9d1d9;font-size:13px}.d{fill:#6e7681;font-size:12px}.h{fill:#8b949e;font-size:12px;letter-spacing:1px}.t{fill:#6e7681;font-size:14px}.b{fill:#79c0ff}.g{fill:#7ee787}.y{fill:#e3b341}.r{fill:#ff7b72}.box{fill:#0d1117;stroke:#30363d}</style><rect width="100%" height="100%" fill="#0d1117"/><rect width="100%" height="100%" fill="url(#g)"/>
+<text x="32" y="40" class="t">// fig.5 — "what do we have?": 2008 vs one ACS read</text>
+<text x="32" y="84" class="h">2008</text>
+<g style="font-size:12px">
+<rect x="32" y="100" width="150" height="36" rx="4" class="box"/><text x="44" y="123">LBHI (US)</text>
+<rect x="192" y="100" width="150" height="36" rx="4" class="box"/><text x="204" y="123">LBIE (UK)</text>
+<rect x="32" y="146" width="150" height="36" rx="4" class="box"/><text x="44" y="169">Lehman Japan</text>
+<rect x="192" y="146" width="150" height="36" rx="4" class="box"/><text x="204" y="169">…200+ entities</text>
+<rect x="32" y="192" width="150" height="36" rx="4" class="box"/><text x="44" y="215">bilateral OTC</text>
+<rect x="192" y="192" width="150" height="36" rx="4" class="box"/><text x="204" y="215">paper confirms</text>
+<rect x="32" y="238" width="310" height="36" rx="4" class="box"/><text x="44" y="261">80+ insolvency regimes · 21 countries</text>
+</g>
+<path d="M187 274V306" stroke="#ff7b72" marker-end="url(#ar)"/>
+<rect x="32" y="310" width="310" height="56" rx="4" class="box" style="stroke:#ff7b72"/><text x="46" y="334">reconcile ↔ dispute</text><text x="46" y="354" class="r" style="font-size:12px">"our records show X, yours show Y"</text>
+<text x="32" y="396" class="r">→ over a decade to wind down</text>
+<line x1="400" y1="72" x2="400" y2="400" stroke="#30363d"/>
+<text x="440" y="84" class="h">CANTON</text>
+<rect x="440" y="100" width="200" height="72" rx="4" class="box" style="stroke:#79c0ff"/><text x="454" y="124">estate participant</text><text x="454" y="146" class="b" style="font-size:12px">active contract set</text><text x="454" y="162" class="d">already stored</text>
+<path d="M540 172V214" stroke="#7ee787" marker-end="url(#ag)"/><text x="552" y="198" class="g" style="font-size:12px">GetActiveContracts @ offset N</text>
+<rect x="440" y="218" width="488" height="132" rx="4" class="box" style="stroke:#7ee787"/>
+<text x="454" y="244"><tspan class="b">Repo</tspan><tspan class="d" x="530">× n · cpty, cash, maturity</tspan></text>
+<text x="454" y="268"><tspan class="b">OtcSwap</tspan><tspan class="d" x="530">× n · cpty, notional, terms</tspan></text>
+<text x="454" y="292"><tspan class="b">LentOut</tspan><tspan class="d" x="530">× n · whose asset, lent to whom</tspan></text>
+<text x="454" y="316"><tspan class="b">Holding</tspan><tspan class="d" x="530">× n · custody positions</tspan></text>
+<text x="454" y="340" class="d">one stream, one consistent cut</text>
+<text x="440" y="380" style="font-size:12px">every counterparty holds the <tspan class="g">same contract IDs</tspan>.</text>
+<text x="440" y="398" style="font-size:12px">nothing to reconcile. courts still decide priority.</text>
+</svg>
