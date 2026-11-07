@@ -1,0 +1,36 @@
+1/6 What if Lehman Brothers had run on Canton?
+
+Not a claim that a blockchain could save it. I modeled authorization, collateral reuse and settlement in Daml, with 10 reproducible tests.
+
+https://virajbhartiya.com/blog/what-if-lehman-brothers-had-run-on-canton
+
+---
+
+2/6 A repo with two signatories cannot be erased by either one alone. But BOTH can archive it without repayment.
+
+Adding a supervisor as observer makes the contract visible to them. It doesn't enforce accounting treatment or guarantee a view of the whole firm.
+
+---
+
+3/6 The revealing test: cash transfer runs first, then the bond transfer fails authorization. Neither asset moves.
+
+But the toy contract also accepts the WRONG payment asset if its quantity is sufficient. Atomicity enforces your rules, including incomplete ones.
+
+---
+
+4/6 Privacy needs deliberate design. A buyer can have enough cash and still fail to settle because the seller's bond wasn't disclosed.
+
+The tests cover local Daml behavior. They don't prove network privacy or a global view across validators. Those claims need separate evidence.
+
+---
+
+5/6 The limits matter: custody, valuation, legal priority and liquidity risk remain. Locking collateral in advance can worsen a squeeze.
+
+Disclosure: I work at SatsTerminal, building OneSwap on Canton. This article was not paid for. The toy-model tests are not a OneSwap audit.
+
+---
+
+6/6 Code, tests, counterexamples and reproduction steps:
+https://github.com/virajbhartiya/virajbhartiya.com/tree/main/research/lehman-on-canton
+
+Sharing for consideration by @CantonFdn #CantonResearchNov26. No grant award claimed. Corrections and attempts to break the model welcome.

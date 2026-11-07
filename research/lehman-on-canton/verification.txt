@@ -1,0 +1,77 @@
+All 3 article Daml excerpts match the tested source.
+WARNING: Daml Assistant has been deprecated and replaced with the Digital Asset Package Manager (DPM)
+See installation here: https://docs.digitalasset.com/build/3.4/dpm/dpm.html
+Daml Assistant will be removed in 3.5
+You can disable this warning with --no-legacy-assistant-warning
+
+Running single package build of lehman-snippets as no multi-package.yaml was found.
+
+2026-11-07 10:01:41.39 [INFO]  [build] 
+Compiling lehman-snippets to a DAR.
+File:     daml
+Hidden:   no
+Range:    1:1-2:1
+Source:   Daml-LF typechecker
+Severity: DsWarning
+Message: 
+warning while type checking package:
+  This package defines templates or interfaces, and depends on daml-script.
+  Uploading this package to a ledger will also upload daml-script, which will bloat the package store on your participant.
+  It is recommended that scripts/tests are defined in a separate package to your templates, and that
+  you remove `de25462f788d70944f6dcfbe23a0eb78289b44915d6319d7c298e65e74cb5edb (daml-script, 3.4.8)` from the dependencies in your daml.yaml
+  Upgrade this warning to an error -Werror=template-interface-depends-on-daml-script
+  Disable this warning entirely with -Wno-template-interface-depends-on-daml-script
+
+2026-11-07 10:01:42.99 [INFO]  [build] 
+Created .daml/dist/lehman-snippets-0.0.1.dar
+WARNING: Daml Assistant has been deprecated and replaced with the Digital Asset Package Manager (DPM)
+See installation here: https://docs.digitalasset.com/build/3.4/dpm/dpm.html
+Daml Assistant will be removed in 3.5
+You can disable this warning with --no-legacy-assistant-warning
+
+
+Test Summary
+
+daml/Test.daml:activeBook: ok, 3 active contracts, 4 transactions.
+daml/Test.daml:custodianCanArchive: ok, 0 active contracts, 2 transactions.
+daml/Test.daml:dvp: ok, 3 active contracts, 4 transactions.
+daml/Test.daml:dvpDisclosed: ok, 2 active contracts, 4 transactions.
+daml/Test.daml:dvpRollback: ok, 3 active contracts, 4 transactions.
+daml/Test.daml:dvpVisibility: ok, 3 active contracts, 4 transactions.
+daml/Test.daml:wrongAssetAccepted: ok, 2 active contracts, 4 transactions.
+daml/Test.daml:repo: ok, 3 active contracts, 9 transactions.
+daml/Test.daml:repoJointArchive: ok, 1 active contracts, 6 transactions.
+daml/Test.daml:rehypo: ok, 4 active contracts, 6 transactions.
+Modules internal to this package:
+- Internal templates
+  5 defined
+  5 (100.0%) created
+- Internal template choices
+  9 defined
+  6 ( 66.7%) exercised
+- Internal interface implementations
+  0 defined
+    0 internal interfaces
+    0 external interfaces
+- Internal interface choices
+  0 defined
+  0 (100.0%) exercised
+Modules external to this package:
+- External templates
+  0 defined
+  0 (100.0%) created in any tests
+  0 (100.0%) created in internal tests
+  0 (100.0%) created in external tests
+- External template choices
+  0 defined
+  0 (100.0%) exercised in any tests
+  0 (100.0%) exercised in internal tests
+  0 (100.0%) exercised in external tests
+- External interface implementations
+  0 defined
+- External interface choices
+  0 defined
+  0 (100.0%) exercised in any tests
+  0 (100.0%) exercised in internal tests
+  0 (100.0%) exercised in external tests
+

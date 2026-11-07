@@ -1,0 +1,95 @@
+module Lehman where
+
+-- §2 snippets (verbatim from article)
+template Holding
+  with
+    custodian : Party
+    owner     : Party
+    asset     : Text
+    amount    : Decimal
+  where
+    signatory custodian
+    observer owner
+
+    choice Transfer : ContractId Holding
+      with newOwner : Party
+      controller owner
+      do create this with owner = newOwner
+
+template RehypoRight
+  with
+    client : Party
+    broker : Party
+    cap    : Decimal   -- e.g. 140% of the client's debit balance
+    used   : Decimal
+  where
+    signatory client
+    observer broker
+
+    choice Rehypothecate : (ContractId RehypoRight, ContractId LentOut)
+      with
+        holding : ContractId Holding
+        to      : Party
+      controller broker
+      do
+        h <- fetch holding
+        assertMsg "cap exceeded" (used + h.amount <= cap)
+        _ <- exercise holding Transfer with newOwner = to
+        lent  <- create LentOut with broker; client; to; asset = h.asset; amount = h.amount
+        right <- create this with used = used + h.amount
+        pure (right, lent)
+
+template LentOut
+  with
+    broker : Party
+    client : Party
+    to     : Party
+    asset  : Text
+    amount : Decimal
+  where
+    signatory broker
+    observer client
+
+-- §1 snippet
+template Repo
+  with
+    borrower   : Party
+    lender     : Party
+    supervisor : Party
+    cashLent   : Decimal
+    collateral : ContractId Holding   -- held by lender for the term
+    maturity   : Time
+  where
+    signatory borrower, lender
+    observer supervisor
+    ensure cashLent > 0.0
+
+    choice Repurchase : ContractId Holding
+      with cashIn : ContractId Holding
+      controller borrower
+      do
+        c <- fetch cashIn
+        assertMsg "must repay full cash leg" (c.amount >= cashLent)
+        _ <- exercise cashIn Transfer with newOwner = lender
+        exercise collateral Transfer with newOwner = borrower
+
+-- §3 snippet
+template DvPOffer
+  with
+    seller : Party
+    buyer  : Party
+    bond   : ContractId Holding   -- seller's
+    price  : Decimal
+  where
+    signatory seller
+    observer buyer
+
+    choice Accept : (ContractId Holding, ContractId Holding)
+      with cash : ContractId Holding   -- buyer's
+      controller buyer
+      do
+        c <- fetch cash
+        assertMsg "short payment" (c.amount >= price)
+        cashOut <- exercise cash Transfer with newOwner = seller
+        bondOut <- exercise bond Transfer with newOwner = buyer
+        pure (cashOut, bondOut)

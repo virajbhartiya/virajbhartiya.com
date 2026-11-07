@@ -1,19 +1,19 @@
 ---
 title: "What if Lehman Brothers had run on Canton?"
-description: "Lehman didn't die because of one bad bet. It died because nobody could see anything. I modelled the four failures of its last week in Daml and traced what the Canton protocol does with each."
+description: "Lehman's leverage and liquidity crisis brought it down. Fragmented records and hidden obligations made the fallout harder to contain. I modelled the four failures of its last week in Daml and traced what the Canton protocol does with each."
 publishedAt: "2026-11-07"
 tags: ["Canton", "Daml", "Finance", "Settlement", "Research"]
 image: "/images/Blog/lehman-on-canton/banner.png"
 author: "Viraj Bhartiya"
 ---
 
-Lehman didn't die because of one bad bet. It died because nobody could see anything.
+Lehman's leverage and liquidity crisis brought it down. Fragmented records and hidden obligations made the fallout harder to contain.
 
-Not the regulators. Not the hedge funds whose collateral it held. Not the banks lending it money overnight. When it filed at 1:45am on September 15, 2008, it took the industry years to work out who owed what to whom.
+Regulators, hedge funds and lending banks each had a partial picture. When Lehman filed on September 15, 2008, reconstructing obligations and recovering assets across its entities became a years-long process.
 
 I work on [OneSwap](https://www.oneswap.cc/), a DEX on Canton, at SatsTerminal. Canton's whole pitch is a ledger where trades settle atomically, stay private, and still show the right people the right things. That's exactly the plumbing Lehman didn't have.
 
-So this post takes the four things that broke that week, models each one in Daml, and walks through what the Canton protocol actually does with it. Not marketing. Authorization rules, transaction views, who receives which bytes.
+So this post takes the four things that broke that week, models each one in Daml, and walks through what the Canton protocol actually does with it. The focus is authorization, visibility and settlement. A [reproducible companion](https://github.com/virajbhartiya/virajbhartiya.com/tree/main/research/lehman-on-canton) contains the exact snippets and ten Daml Script tests; protocol-level claims are sourced separately.
 
 First, what this isn't. Canton would not have saved Lehman. A firm levered roughly 30-to-1 on mortgage and real-estate paper goes bust on any ledger. That's a judgment problem, not a plumbing problem.
 
@@ -88,7 +88,7 @@ Three things to look at.
 
 `signatory borrower, lender`. The obligation exists only because both sides authorized it. Neither side can delete it alone. The explicit settlement choice is `Repurchase`. Daml also provides an implicit `Archive` choice controlled by all signatories, so borrower and lender could jointly archive it without repayment. The guarantee is that neither can erase the contract alone, and the supervisor can see its archival.
 
-`observer supervisor`. The supervisor is a stakeholder, so its participant receives the `create` view. It sees this repo, with its terms, the moment it commits. It sees nothing else Lehman does that it isn't a stakeholder on.
+`observer supervisor`. The supervisor is a stakeholder, so its participant receives the `create` view. It sees this repo, with its terms, the moment it commits. That observer declaration grants visibility into this contract, not Lehman's entire book. Other contracts can become visible through separately configured disclosure or transaction structure.
 
 **A visibility catch.** The collateral `Holding` belongs to the lender during the term, so the borrower isn't a stakeholder on it and can't see it. If Lehman submits `Repurchase` as written, its own participant rejects the submission: the contract isn't visible. The lender has to disclose the collateral contract to the borrower at repurchase time ([explicit disclosure](https://docs.canton.network/appdev/deep-dives/explicit-contract-disclosure)). The same catch shows up again in DvP below. Canton's privacy is strict enough that you have to plan for who can even _reference_ a contract.
 
@@ -106,7 +106,7 @@ When LBIE collapsed, those funds learned their securities weren't "held." They w
 
 The core problem: the client's picture of its own assets was a statement Lehman sent them. Not the actual state.
 
-On Canton, reuse needs the client's authority. Authority only flows through a contract the client signed. So the permission itself becomes a contract.
+In this model, transferring a client's holding through `Transfer` needs the client's authority. A signed permission contract lets the broker exercise that authority within a defined limit.
 
 ```daml
 template Holding
@@ -159,11 +159,11 @@ template LentOut
     observer client
 ```
 
-Walk the authority. `Transfer` is controlled by `owner`, the client. The broker can't call it directly. But inside `Rehypothecate`, the broker acts with `client`'s authority (signatory of `RehypoRight`) plus its own (controller). That's enough to exercise `Transfer` on the client's behalf. That's the only path, and it's bounded by `cap`.
+Walk the authority. `Transfer` is controlled by `owner`, the client. The broker can't call it directly. But inside `Rehypothecate`, the broker acts with `client`'s authority (signatory of `RehypoRight`) plus its own (controller). That's enough to exercise `Transfer` on the client's behalf. That delegated path is bounded by `cap`. It is not a guarantee against every action a custodian could take.
 
 Now walk the visibility. `Transfer` is a consuming exercise on a `Holding` where the client is a stakeholder, so the client's participant gets that view and sees its holding archived. The client is also an observer on `LentOut`, so it sees exactly who received the asset and how much. And the cap is enforced in the transaction itself. Go over it and `assertMsg` fails while the broker's own participant is interpreting the transaction, so it's never even submitted. And a broker running a modified participant that skipped the check still couldn't get it through: the client is a signatory of `RehypoRight`, so the client's participant confirms that view, re-runs the check, and rejects.
 
-Canton doesn't ban rehypothecation. That's a business decision. It just makes quiet rehypothecation impossible, and an over-cap one fails at commit time.
+Canton doesn't ban rehypothecation. In this workflow, it enforces the cap and makes the transfer and loan record visible to the client. The toy `Holding` still trusts its custodian: as sole signatory, the custodian can archive it without the owner's consent. The companion includes a passing counterexample for exactly that limitation.
 
 ![fig.3 — the authority chain: client signs RehypoRight → broker exercises → Transfer runs with client's authority](/images/Blog/lehman-on-canton/fig3-authority.svg)
 
@@ -173,7 +173,7 @@ Canton doesn't ban rehypothecation. That's a business decision. It just makes qu
 
 After Lehman, the US Treasury market, the deepest market on earth, started failing to settle. Trades agreed but never delivered. By the New York Fed's count, cumulative fails peaked in October 2008 in the trillions of dollars for the month. With rates near zero there was no cost to failing, so people just didn't deliver. The fix, a "fails charge," arrived in May 2009.
 
-Each fail is a hanging exposure. I've sent cash, you haven't sent bonds. Now multiply that across every counterparty of a dying bank.
+A settlement fail leaves an obligation unfulfilled and can create replacement-cost and liquidity exposure. It does not necessarily mean cash has already moved: conventional DvP also protects against paying without delivery. The narrower question here is how to compose two on-ledger transfers atomically.
 
 On Canton, delivery-versus-payment is one transaction tree.
 
@@ -209,7 +209,7 @@ One practical detail. The buyer's participant has to see the seller's `bond` con
 
 At [OneSwap](https://www.oneswap.cc/), we build around that same settlement rule. Our settlement batch contract composes the token standard's allocation and transfer choices: for supported synchronous registries, both legs are allocated and executed inside one Daml choice. If a registry cannot complete the allocation synchronously, that transaction aborts. Canton Coin pools use a separate asynchronous reservation-and-settlement workflow, so the whole user journey is not always one transaction.
 
-That's the part I think we're getting right: making the exchange of the two assets an all-or-nothing ledger operation, and treating availability and recovery as separate engineering work. The [OneSwap SDK](https://docs.oneswap.cc/introduction) also lets other apps integrate quotes, swaps and market data. Its deposit-based flow is custodial: a user sends funds, OneSwap performs the atomic swap, then returns the output. The deposit and return are separate steps around that swap. Atomic settlement is a specific guarantee, not a claim that custody or operational risk disappears.
+The practical lesson is to separate atomic execution from custody and recovery. The [OneSwap SDK's deposit-based flow](https://docs.oneswap.cc/introduction) is custodial: a user deposits funds, OneSwap performs the atomic swap, then returns the output. Those surrounding steps have their own operational risks. This article's toy contracts and local tests do not audit OneSwap's implementation.
 
 ![fig.4 — settlement states: T+3 bilateral (agreed → failed → claim) vs atomic DvP (commit | reject)](/images/Blog/lehman-on-canton/fig4-settlement.svg)
 
@@ -249,7 +249,7 @@ Courts still decide netting and priority. Canton doesn't replace bankruptcy law.
 
 I'd be lying if I stopped there. The same mechanics cut the other way.
 
-**Atomic means prefunded.** Today's markets run on netting and intraday credit, which is a polite way of saying "I'll pay you later." Atomic DvP needs both legs to exist at commit time. Allocations lock holdings until settlement. For a firm in a liquidity squeeze, being forced to lock everything up front is brutal. A Lehman on Canton might run out of usable cash _faster_.
+**Locking collateral can increase liquidity pressure.** Today's markets run on netting and intraday credit, which is a polite way of saying "I'll pay you later." Both assets must be available when the atomic exchange executes. Prefunding and advance allocation are workflow choices, not universal requirements of atomicity; the allocation workflow discussed here locks holdings until settlement or release. For a firm in a liquidity squeeze, being forced to lock everything up front is brutal. A Lehman on Canton might run out of usable cash _faster_.
 
 **No weekends.** The NY Fed used Saturday and Sunday to try to save Lehman. On a ledger that commits 24/7, collateral calls and runs don't wait for Monday.
 
@@ -261,8 +261,8 @@ I'd be lying if I stopped there. The same mechanics cut the other way.
 
 ## Scorecard
 
-- **Repo 105 hid ~$50B of obligations** → Signatory-bound contract + supervisor observer. **Fixed, if supervisors are on the template**
-- **Funds didn't know where collateral was** → Authority only via client-signed contract; client is stakeholder on every move. **Fixed**
+- **Repo 105 hid ~$50B of obligations** → Shared repo contract + supervisor observer. **Visible within the model; accounting and reporting rules still matter**
+- **Funds didn't know where collateral was** → Client-authorized reuse + a visible loan record. **Improved for the modeled path; custodian trust remains**
 - **Principal risk between settlement legs** → One transaction tree, one mediator verdict. **Removed within the atomic transaction; trades can still fail to settle**
 - **Years to discover the book** → ACS at a participant-local offset, shared contract IDs. **Simpler for visible on-ledger contracts; courts still decide**
 - **Leverage on bad mortgage bets** → nothing. **Not fixed. No ledger fixes this.**
@@ -270,13 +270,25 @@ I'd be lying if I stopped there. The same mechanics cut the other way.
 
 ---
 
+## Reproduce it, including the counterexamples
+
+The [public companion project](https://github.com/virajbhartiya/virajbhartiya.com/tree/main/research/lehman-on-canton) includes the exact three Daml excerpts, ten scripts, a one-command verification runner and the recorded results from Daml SDK 3.4.8. The runner also checks that the article's snippets match the tested source.
+
+The tests cover authorized and unauthorized actions, disclosure, short payment, rollback when the second transfer fails, and queries of visible active contracts. Two deliberately successful counterexamples show where the toy model is insufficient: it accepts payment in the wrong asset if the amount is large enough, and it lets a holding's custodian archive that holding without the owner's signature. Atomicity does not repair missing business rules.
+
+These are local Daml Script tests, not an experiment across independent validators. They do not measure encrypted network traffic, test a malicious participant, or prove a global historical ACS snapshot. Those protocol and API statements rely on the linked documentation. The diagrams are conceptual illustrations; in particular, the settlement figure contrasts outcomes rather than historical Treasury settlement conventions, and the discovery figure applies to a participant's visible on-ledger contracts.
+
+The examples also omit production requirements such as instrument validation, valuation, maturity enforcement and custody safeguards. The companion README maps each test to its claim and lists those limits explicitly.
+
+---
+
 ## So what?
 
 Lehman was a bank that took too much risk. That part's on the people.
 
-But the damage didn't come from the risk alone. It came from the fog. Nobody could see what was owed, where collateral sat, which trades had actually settled, or what the book contained. That fog turned one bank's failure into a global freeze.
+But the damage didn't come from the risk alone. It came from the fog. Fragmented records made it harder to establish what was owed, where collateral sat and what had settled. That uncertainty amplified an already systemic crisis.
 
-Canton doesn't remove risk. It removes fog. For the parties written onto the contract.
+Canton doesn't remove risk. It can make the modeled obligations and settlement state directly visible to authorized parties. The coverage depends on the contracts, their disclosure rules and what actually makes it onto the ledger.
 
 Which means the most important line in a financial Daml template might not be a choice at all.
 
@@ -284,7 +296,7 @@ It might be `observer`.
 
 ---
 
-_Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton Network. Nobody paid for this piece. The code is illustrative, not production, but it compiles on Daml SDK 3.4.8, and I wrote a Daml Script test for every claim above about what succeeds or fails. Historical figures are from the public sources below._
+_Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton Network. Nobody paid for this piece. The code is illustrative, not production. The companion records ten passing local Daml Script tests on SDK 3.4.8 and states exactly what they establish. I am sharing this article for consideration under the Canton Community Research Grants program; no grant award is claimed. Historical figures are from the public sources below._
 
 ---
 

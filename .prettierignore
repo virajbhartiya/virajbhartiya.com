@@ -9,4 +9,5 @@ pnpm-lock.yaml
 .DS_Store
 *.min.js
 *.min.css
-public/ 
+public/
+research/**/.daml/

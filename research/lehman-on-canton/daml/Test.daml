@@ -1,0 +1,201 @@
+module Test where
+
+import Daml.Script
+import DA.Time (days, addRelTime)
+import Lehman
+
+rehypo : Script ()
+rehypo = do
+  client <- allocateParty "HedgeFund"
+  broker <- allocateParty "LBIE"
+  lender <- allocateParty "RepoLender"
+  h1 <- submit broker do createCmd Holding with custodian = broker; owner = client; asset = "UST"; amount = 100.0
+  h2 <- submit broker do createCmd Holding with custodian = broker; owner = client; asset = "UST"; amount = 100.0
+  -- broker cannot move client's holding on its own
+  submitMustFail broker do exerciseCmd h1 Transfer with newOwner = lender
+  right <- submit client do createCmd RehypoRight with client; broker; cap = 140.0; used = 0.0
+  (right', lent) <- submit broker do exerciseCmd right Rehypothecate with holding = h1; to = lender
+  None <- queryContractId client h1
+  -- client sees where it went
+  Some l <- queryContractId client lent
+  assert (l.to == lender && l.amount == 100.0)
+  -- over-cap reuse is rejected by the script engine
+  submitMustFail broker do exerciseCmd right' Rehypothecate with holding = h2; to = lender
+  Some _ <- queryContractId client h2
+  Some remaining <- queryContractId client right'
+  assert (remaining.used == 100.0)
+  loans <- query @LentOut client
+  assert (length loans == 1)
+  pure ()
+
+dvp : Script ()
+dvp = do
+  bank   <- allocateParty "Custodian"
+  seller <- allocateParty "Seller"
+  buyer  <- allocateParty "Buyer"
+  bond <- submit bank do createCmd Holding with custodian = bank; owner = seller; asset = "UST"; amount = 1.0
+  cash <- submit bank do createCmd Holding with custodian = bank; owner = buyer; asset = "USD"; amount = 99.0
+  offer <- submit seller do createCmd DvPOffer with seller; buyer; bond; price = 100.0
+  -- Disclose the bond so missing visibility cannot mask the short-payment check.
+  Some d <- queryDisclosure seller bond
+  (actAs buyer <> disclose d) `submitMustFail` exerciseCmd offer Accept with cash
+  Some _ <- queryContractId buyer cash
+  Some _ <- queryContractId seller bond
+  Some _ <- queryContractId buyer offer
+  pure ()
+
+dvpVisibility : Script ()
+dvpVisibility = do
+  bank   <- allocateParty "Custodian"
+  seller <- allocateParty "Seller"
+  buyer  <- allocateParty "Buyer"
+  bond <- submit bank do createCmd Holding with custodian = bank; owner = seller; asset = "UST"; amount = 1.0
+  cash <- submit bank do createCmd Holding with custodian = bank; owner = buyer; asset = "USD"; amount = 100.0
+  offer <- submit seller do createCmd DvPOffer with seller; buyer; bond; price = 100.0
+  -- buyer can't see seller's bond without disclosure
+  submitMustFail buyer do exerciseCmd offer Accept with cash
+  Some _ <- queryContractId buyer cash
+  Some _ <- queryContractId seller bond
+  Some _ <- queryContractId buyer offer
+  pure ()
+
+dvpDisclosed : Script ()
+dvpDisclosed = do
+  bank   <- allocateParty "Custodian"
+  seller <- allocateParty "Seller"
+  buyer  <- allocateParty "Buyer"
+  bond <- submit bank do createCmd Holding with custodian = bank; owner = seller; asset = "UST"; amount = 1.0
+  cash <- submit bank do createCmd Holding with custodian = bank; owner = buyer; asset = "USD"; amount = 100.0
+  offer <- submit seller do createCmd DvPOffer with seller; buyer; bond; price = 100.0
+  Some d <- queryDisclosure seller bond
+  (cashOut, bondOut) <- (actAs buyer <> disclose d) `submit` exerciseCmd offer Accept with cash
+  Some b <- queryContractId buyer bondOut
+  Some c <- queryContractId seller cashOut
+  assert (b.owner == buyer && c.owner == seller)
+  assert (b.asset == "UST" && b.amount == 1.0)
+  assert (c.asset == "USD" && c.amount == 100.0)
+  None <- queryContractId buyer cash
+  None <- queryContractId seller bond
+  None <- queryContractId buyer offer
+  pure ()
+
+repo : Script ()
+repo = do
+  bank       <- allocateParty "Custodian"
+  lehman     <- allocateParty "Lehman"
+  lender     <- allocateParty "RepoLender"
+  supervisor <- allocateParty "Supervisor"
+  now <- getTime
+  coll <- submit bank do createCmd Holding with custodian = bank; owner = lender; asset = "MBS"; amount = 105.0
+  -- one side can't create the obligation alone
+  submitMustFail lehman do createCmd Repo with borrower = lehman; lender; supervisor; cashLent = 100.0; collateral = coll; maturity = addRelTime now (days 1)
+  r <- (actAs lehman <> actAs lender) `submit` createCmd Repo with borrower = lehman; lender; supervisor; cashLent = 100.0; collateral = coll; maturity = addRelTime now (days 1)
+  -- supervisor sees it
+  Some _ <- queryContractId supervisor r
+  -- borrower can't make it disappear
+  submitMustFail lehman do archiveCmd r
+  cash <- submit bank do createCmd Holding with custodian = bank; owner = lehman; asset = "USD"; amount = 100.0
+  -- short repayment rejected
+  cashShort <- submit bank do createCmd Holding with custodian = bank; owner = lehman; asset = "USD"; amount = 50.0
+  Some dc <- queryDisclosure lender coll
+  (actAs lehman <> disclose dc) `submitMustFail` exerciseCmd r Repurchase with cashIn = cashShort
+  Some _ <- queryContractId lehman cashShort
+  Some _ <- queryContractId supervisor r
+  -- Full payment still fails without disclosure, without consuming either leg.
+  submitMustFail lehman do exerciseCmd r Repurchase with cashIn = cash
+  Some _ <- queryContractId lehman cash
+  Some _ <- queryContractId lender coll
+  -- borrower needs the lender-held collateral disclosed to it
+  back <- (actAs lehman <> disclose dc) `submit` exerciseCmd r Repurchase with cashIn = cash
+  Some b <- queryContractId lehman back
+  assert (b.owner == lehman)
+  None <- queryContractId supervisor r
+  pure ()
+
+-- A failure on the SECOND transfer must roll back the earlier cash transfer.
+-- The seller discloses a bond owned by somebody else: visibility is not authority.
+dvpRollback : Script ()
+dvpRollback = do
+  bank <- allocateParty "Custodian"
+  seller <- allocateParty "Seller"
+  buyer <- allocateParty "Buyer"
+  actualOwner <- allocateParty "ActualOwner"
+  bond <- submit bank do createCmd Holding with custodian = bank; owner = actualOwner; asset = "UST"; amount = 1.0
+  cash <- submit bank do createCmd Holding with custodian = bank; owner = buyer; asset = "USD"; amount = 100.0
+  offer <- submit seller do createCmd DvPOffer with seller; buyer; bond; price = 100.0
+  Some d <- queryDisclosure actualOwner bond
+  (actAs buyer <> disclose d) `submitMustFail` exerciseCmd offer Accept with cash
+  Some originalCash <- queryContractId buyer cash
+  Some originalBond <- queryContractId actualOwner bond
+  Some _ <- queryContractId buyer offer
+  assert (originalCash.owner == buyer && originalBond.owner == actualOwner)
+  sellerHoldings <- query @Holding seller
+  assert (null sellerHoldings)
+
+-- Joint signatories can archive a repo without exercising Repurchase.
+repoJointArchive : Script ()
+repoJointArchive = do
+  bank <- allocateParty "Custodian"
+  borrower <- allocateParty "Borrower"
+  lender <- allocateParty "Lender"
+  supervisor <- allocateParty "Supervisor"
+  outsider <- allocateParty "Outsider"
+  now <- getTime
+  collateral <- submit bank do createCmd Holding with custodian = bank; owner = lender; asset = "UST"; amount = 105.0
+  r <- (actAs borrower <> actAs lender) `submit` createCmd Repo with borrower; lender; supervisor; collateral; cashLent = 100.0; maturity = addRelTime now (days 1)
+  Some _ <- queryContractId supervisor r
+  None <- queryContractId outsider r
+  submitMustFail borrower do archiveCmd r
+  submitMustFail lender do archiveCmd r
+  submitMustFail supervisor do archiveCmd r
+  (actAs borrower <> actAs lender) `submit` archiveCmd r
+  None <- queryContractId supervisor r
+  Some _ <- queryContractId lender collateral
+  pure ()
+
+-- Queries enumerate only active contracts visible to the requesting party.
+-- This is NOT a test of Ledger API offsets across participant nodes.
+activeBook : Script ()
+activeBook = do
+  bank <- allocateParty "Custodian"
+  estate <- allocateParty "Estate"
+  outsider <- allocateParty "Outsider"
+  first <- submit bank do createCmd Holding with custodian = bank; owner = estate; asset = "USD"; amount = 100.0
+  second <- submit bank do createCmd Holding with custodian = bank; owner = estate; asset = "UST"; amount = 1.0
+  _ <- submit bank do createCmd Holding with custodian = bank; owner = outsider; asset = "USD"; amount = 200.0
+  before <- query @Holding estate
+  assert (length before == 2)
+  None <- queryContractId outsider first
+  moved <- submit estate do exerciseCmd first Transfer with newOwner = outsider
+  after <- query @Holding estate
+  assert (map fst after == [second])
+  None <- queryContractId estate first
+  None <- queryContractId estate moved
+  Some _ <- queryContractId outsider moved
+  pure ()
+
+-- Counterexample: the illustrative payment check compares amounts, not currencies.
+-- Passing this test documents an omitted business rule; it does not endorse it.
+wrongAssetAccepted : Script ()
+wrongAssetAccepted = do
+  bank <- allocateParty "Custodian"
+  seller <- allocateParty "Seller"
+  buyer <- allocateParty "Buyer"
+  bond <- submit bank do createCmd Holding with custodian = bank; owner = seller; asset = "UST"; amount = 1.0
+  cash <- submit bank do createCmd Holding with custodian = bank; owner = buyer; asset = "WRONG-ASSET"; amount = 100.0
+  offer <- submit seller do createCmd DvPOffer with seller; buyer; bond; price = 100.0
+  Some d <- queryDisclosure seller bond
+  (cashOut, _) <- (actAs buyer <> disclose d) `submit` exerciseCmd offer Accept with cash
+  Some payment <- queryContractId seller cashOut
+  assert (payment.asset == "WRONG-ASSET")
+
+-- Counterexample: this Holding trusts its sole signatory, the custodian.
+custodianCanArchive : Script ()
+custodianCanArchive = do
+  bank <- allocateParty "Custodian"
+  owner <- allocateParty "Owner"
+  holding <- submit bank do createCmd Holding with custodian = bank; owner; asset = "UST"; amount = 1.0
+  Some _ <- queryContractId owner holding
+  submit bank do archiveCmd holding
+  None <- queryContractId owner holding
+  pure ()
