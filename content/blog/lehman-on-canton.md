@@ -11,7 +11,7 @@ Lehman didn't die because of one bad bet. It died because nobody could see anyth
 
 Not the regulators. Not the hedge funds whose collateral it held. Not the banks lending it money overnight. When it filed at 1:45am on September 15, 2008, it took the industry years to work out who owed what to whom.
 
-I work on DEX infrastructure on Canton. Canton's whole pitch is a ledger where trades settle atomically, stay private, and still show the right people the right things. That's exactly the plumbing Lehman didn't have.
+I work on [OneSwap](https://www.oneswap.cc/), a DEX on Canton, at SatsTerminal. Canton's whole pitch is a ledger where trades settle atomically, stay private, and still show the right people the right things. That's exactly the plumbing Lehman didn't have.
 
 So this post takes the four things that broke that week, models each one in Daml, and walks through what the Canton protocol actually does with it. Not marketing. Authorization rules, transaction views, who receives which bytes.
 
@@ -36,13 +36,13 @@ Four failures sit inside that week: a hidden obligation, missing collateral, tra
 
 ## Canton in two minutes
 
-**Contracts have stakeholders.** Every Daml contract declares `signatory` parties (who must authorize its creation and are bound by it) and `observer` parties (who can see it). Signatories plus observers are the contract's stakeholders.
+**Contracts have stakeholders.** Every [Daml contract](https://docs.canton.network/appdev/modules/m3-authorization) declares `signatory` parties (who must authorize its creation and are bound by it) and `observer` parties (who can see it). Signatories plus observers are the contract's stakeholders.
 
-**Authority flows through choices.** When a party exercises a choice on a contract, everything that happens inside that choice runs with the authority of the contract's signatories _plus_ the choice's controller. That's the only way authority moves. You can't sign for someone else. You can only act inside a contract they already signed.
+**Authority flows through choices.** When a party [exercises a choice](https://docs.canton.network/appdev/modules/m3-authorization#damls-authorization-model) on a contract, everything that happens inside that choice runs with the authority of the contract's signatories _plus_ the choice's controller. That's the only way authority moves. You can't sign for someone else. You can only act inside a contract they already signed.
 
-**Transactions are trees, and each party sees only its branch.** A transaction is a tree of actions: creates, exercises, fetches. The protocol splits it into _views_, one per subtree, and each view goes only to participants hosting the parties that have to see it (its informees). This is sub-transaction privacy. A bank in a three-leg trade sees its leg, not yours.
+**Transactions are trees, and each party sees only its branch.** A transaction is a tree of actions: creates, exercises, fetches. The protocol splits it into _views_, one per subtree, and each view goes only to participants hosting the parties that have to see it (its informees). This is [sub-transaction privacy](https://docs.canton.network/appdev/deep-dives/privacy-model). A bank in a three-leg trade sees its leg, not yours.
 
-**Commit is two-phase and atomic.** The submitting participant encrypts each view for its recipients and hands it to the synchronizer. The sequencer orders and delivers ciphertext. It sees who receives what, never what's inside. The confirming participants (the ones hosting the signatories, plus the controllers of any exercised choice) re-run their views and vote. The mediator aggregates the votes and issues one verdict for the whole tree: commit or reject. No partial outcomes.
+**Commit is two-phase and atomic.** The submitting participant encrypts each view for its recipients and hands it to the [synchronizer](https://docs.canton.network/global-synchronizer/understand/introduction). The sequencer orders and delivers ciphertext. It sees who receives what, never what's inside. The confirming participants (the ones hosting the signatories, plus the controllers of any exercised choice) re-run their views and vote. The mediator aggregates the votes and issues one verdict for the whole tree: commit or reject. No partial outcomes.
 
 ![fig.1 — one transaction, three views: what the sequencer, mediator and each participant actually receive](/images/Blog/lehman-on-canton/fig1-views.svg)
 
@@ -86,11 +86,11 @@ template Repo
 
 Three things to look at.
 
-`signatory borrower, lender`. The obligation exists only because both sides authorized it. Neither side can delete it alone. Archiving it takes a choice on the contract, and the only choice offered is `Repurchase`. The debt doesn't go away until it's paid.
+`signatory borrower, lender`. The obligation exists only because both sides authorized it. Neither side can delete it alone. The explicit settlement choice is `Repurchase`. Daml also provides an implicit `Archive` choice controlled by all signatories, so borrower and lender could jointly archive it without repayment. The guarantee is that neither can erase the contract alone, and the supervisor can see its archival.
 
 `observer supervisor`. The supervisor is a stakeholder, so its participant receives the `create` view. It sees this repo, with its terms, the moment it commits. It sees nothing else Lehman does that it isn't a stakeholder on.
 
-**A visibility catch.** The collateral `Holding` belongs to the lender during the term, so the borrower isn't a stakeholder on it and can't see it. If Lehman submits `Repurchase` as written, its own participant rejects the submission: the contract isn't visible. The lender has to disclose the collateral contract to the borrower at repurchase time (explicit disclosure). The same catch shows up again in DvP below. Canton's privacy is strict enough that you have to plan for who can even _reference_ a contract.
+**A visibility catch.** The collateral `Holding` belongs to the lender during the term, so the borrower isn't a stakeholder on it and can't see it. If Lehman submits `Repurchase` as written, its own participant rejects the submission: the contract isn't visible. The lender has to disclose the collateral contract to the borrower at repurchase time ([explicit disclosure](https://docs.canton.network/appdev/deep-dives/explicit-contract-disclosure)). The same catch shows up again in DvP below. Canton's privacy is strict enough that you have to plan for who can even _reference_ a contract.
 
 **What Canton can't do.** It doesn't do accounting. Lehman could still _call_ this a sale on its balance sheet. But the obligation can't be invisible to anyone listed on the contract, because the protocol physically delivers the view to them. The only way to hide it is to leave the supervisor off. So the real question isn't technical. It's whether market rules require regulators as observers on certain templates. That's a governance decision.
 
@@ -201,9 +201,15 @@ template DvPOffer
 
 Inside `Accept`, the authority is `seller` (signatory) plus `buyer` (controller). That covers both `Transfer`s. The tree has two subtrees, one per leg. Each leg is confirmed by its custodian (the `Holding` signatory) and by the owner exercising `Transfer`, and the mediator issues one verdict. If any confirmer rejects (wrong amount, already-spent holding, anything), the whole tree is rejected.
 
-There is no "cash moved, bonds didn't" state. The failure that defined October 2008 has nowhere to exist.
+There is no "cash moved, bonds didn't" state. That removes principal risk between these two on-ledger legs. It does not make an unfunded trade settle or eliminate every kind of settlement fail.
 
-One practical detail. The buyer's participant has to see the seller's `bond` contract to submit this. In practice you either pass it in via explicit disclosure, or do what Canton's token standard (CIP-56) does: both sides lock their legs into _allocations_ up front, and a settlement party executes them together. That's how we settle swaps. Same atomicity, cleaner visibility.
+One practical detail. The buyer's participant has to see the seller's `bond` contract to submit this. In practice you can pass it in via [explicit disclosure](https://docs.canton.network/appdev/deep-dives/explicit-contract-disclosure). For standardized token settlement, [CIP-56's DvP workflow](https://github.com/canton-foundation/cips/blob/main/cip-0056/cip-0056.md#delivery-versus-payment-dvp-transfer-workflows) lets both sides reserve their legs in _[allocations](https://docs.canton.network/appdev/deep-dives/token-standard#allocation)_, which a settlement party executes together. Allocations organize the authority and locking; the executor still needs the relevant contract disclosures.
+
+### What we're doing at OneSwap
+
+At [OneSwap](https://www.oneswap.cc/), we build around that same settlement rule. Our settlement batch contract composes the token standard's allocation and transfer choices: for supported synchronous registries, both legs are allocated and executed inside one Daml choice. If a registry cannot complete the allocation synchronously, that transaction aborts. Canton Coin pools use a separate asynchronous reservation-and-settlement workflow, so the whole user journey is not always one transaction.
+
+That's the part I think we're getting right: making the exchange of the two assets an all-or-nothing ledger operation, and treating availability and recovery as separate engineering work. The [OneSwap SDK](https://docs.oneswap.cc/introduction) also lets other apps integrate quotes, swaps and market data. Its deposit-based flow is custodial: a user sends funds, OneSwap performs the atomic swap, then returns the output. The deposit and return are separate steps around that swap. Atomic settlement is a specific guarantee, not a claim that custody or operational risk disappears.
 
 ![fig.4 — settlement states: T+3 bilateral (agreed → failed → claim) vs atomic DvP (commit | reject)](/images/Blog/lehman-on-canton/fig4-settlement.svg)
 
@@ -215,17 +221,23 @@ The part of Lehman that _worked_ is instructive.
 
 DTCC closed out over $500B of Lehman positions, at one point processing 209 million open trades in a day. Central plumbing, central visibility, done in weeks.
 
+There's a present-day connection here. On December 17, 2025, [DTCC announced its partnership with Digital Asset and Canton](https://www.dtcc.com/press-releases/2025/dtcc-and-digital-asset-partner-to-tokenize-dtc-custodied-us-treasury-securities) to tokenize DTC-custodied assets, starting with a subset of U.S. Treasuries. The same announcement said DTCC would join the Canton Foundation as co-chair alongside Euroclear.
+
+That has since moved beyond an announcement. On July 15, 2026, [DTCC reported real production trades using DTC-tokenized assets](https://www.dtcc.com/press-releases/2026/dtcc-turns-tokenization-into-reality), with conversions on Canton and its private Besu network. On October 28, [the DTCC Tokenization Service launched](https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live), integrated with both networks. This is a multi-network service, not a claim that DTCC's entire book has moved onto Canton.
+
+To me, that's what makes this counterfactual worth examining: the institution that helped contain Lehman's unwind is now connecting securities it custodies to the network we're discussing.
+
 The rest was a mess. Most of Lehman's derivatives were bilateral OTC contracts. More than 200 subsidiaries in 21 countries. The insolvency laws of more than 80 jurisdictions. Lehman Brothers Holdings emerged from Chapter 11 in 2012 and was still paying creditors in 2026. LBIE's administration only finished in 2025.
 
 The hard part wasn't the math. It was discovery. There was no single source of truth for what the book even was.
 
-On Canton, the book is the set of active contracts the estate's parties are stakeholders on. The participant already stores it as the active contract set (ACS). An administrator asks the Ledger API's state service for every active contract visible to the estate's parties at a given offset and gets the whole book back as a stream: every repo, every swap, every `LentOut`.
+On Canton, the book is the set of active contracts the estate's parties are stakeholders on. The participant already stores it as the active contract set (ACS). An authorized administrator asks the [Ledger API's StateService](https://docs.canton.network/sdks-tools/api-reference/ledger-api#key-services) for every active contract visible to the estate's parties at a given offset and gets that participant-visible on-ledger book back as a stream: every repo, every swap, every `LentOut`.
 
 Two properties make this different from 2008.
 
 **No reconciliation.** Each counterparty holds the _same_ contract, same contract ID, same payload, confirmed in the same transaction. There's no "our records show X, theirs show Y." Disputes move from "what is the trade" to "what does the law say about the trade."
 
-**A consistent cut.** The query is pinned to a ledger offset. You get the book as it stood at one exact point in the order of transactions, not a patchwork of end-of-day files from 200 entities.
+**A consistent cut.** The query is pinned to a participant-local ledger offset. You get a consistent snapshot of that participant's visible contracts. An estate spread across multiple participants still needs coordinated collection; one offset is not a global snapshot of 200 entities, and off-ledger obligations still need discovery.
 
 Courts still decide netting and priority. Canton doesn't replace bankruptcy law. It turns step one, "what do we have?", from a forensic project into a read.
 
@@ -241,7 +253,7 @@ I'd be lying if I stopped there. The same mechanics cut the other way.
 
 **No weekends.** The NY Fed used Saturday and Sunday to try to save Lehman. On a ledger that commits 24/7, collateral calls and runs don't wait for Monday.
 
-**The synchronizer is load-bearing.** Atomicity comes from the sequencer and mediator. On the Canton global synchronizer they're run by a BFT set of super validators, not one operator. But if ordering stalls, nothing settles anywhere. That's a different failure mode from 2008's, not an absent one.
+**The synchronizer is load-bearing.** Atomicity comes from the sequencer and mediator. On the [Canton Global Synchronizer](https://docs.canton.network/global-synchronizer/understand/introduction) they're run by a BFT set of super validators, not one operator. But if its ordering stalls, transactions depending on that synchronizer cannot settle. That's a different failure mode from 2008's, not an absent one.
 
 **Privacy by default is opacity by default.** Sub-transaction privacy is why banks will use this. It's also why, without deliberate design, nobody sees the whole system. The supervisor only sees a repo if someone wrote `observer supervisor`. Systemic visibility is a template-design and governance choice, not a protocol guarantee.
 
@@ -251,8 +263,8 @@ I'd be lying if I stopped there. The same mechanics cut the other way.
 
 - **Repo 105 hid ~$50B of obligations** → Signatory-bound contract + supervisor observer. **Fixed, if supervisors are on the template**
 - **Funds didn't know where collateral was** → Authority only via client-signed contract; client is stakeholder on every move. **Fixed**
-- **Trillions in settlement fails** → One transaction tree, one mediator verdict. **Fixed**
-- **Years to discover the book** → ACS at a single offset, shared contract IDs. **Fixed for discovery; courts still decide**
+- **Principal risk between settlement legs** → One transaction tree, one mediator verdict. **Removed within the atomic transaction; trades can still fail to settle**
+- **Years to discover the book** → ACS at a participant-local offset, shared contract IDs. **Simpler for visible on-ledger contracts; courts still decide**
 - **Leverage on bad mortgage bets** → nothing. **Not fixed. No ledger fixes this.**
 - **Liquidity crunch** → Prefunded atomic settlement. **Possibly worse**
 
@@ -289,5 +301,14 @@ _Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton N
 - [CCP Global, "The Lehman Case."](https://ccp-global.org/the-lehman-case)
 - [Garbade et al., "The Introduction of the TMPG Fails Charge for U.S. Treasury Securities," FRBNY Economic Policy Review (2010)](https://www.newyorkfed.org/research/epr/10v16n2/exesum_garb.html)
 - [Liberty Street Economics (FRBNY) on Treasury settlement fails](https://libertystreeteconomics.newyorkfed.org/?p=817)
-- [Canton documentation: Daml authorization, privacy and the transaction protocol](https://docs.canton.network/)
-- [CIP-56, Canton Network Token Standard](https://github.com/canton-foundation/cips)
+- [Canton documentation: Daml authorization](https://docs.canton.network/appdev/modules/m3-authorization)
+- [Canton documentation: sub-transaction privacy](https://docs.canton.network/appdev/deep-dives/privacy-model)
+- [Canton documentation: explicit contract disclosure](https://docs.canton.network/appdev/deep-dives/explicit-contract-disclosure)
+- [Canton documentation: token standard and allocations](https://docs.canton.network/appdev/deep-dives/token-standard)
+- [Canton documentation: Ledger API and StateService](https://docs.canton.network/sdks-tools/api-reference/ledger-api)
+- [Canton documentation: Global Synchronizer node roles](https://docs.canton.network/global-synchronizer/understand/introduction)
+- [CIP-56, Canton Network Token Standard](https://github.com/canton-foundation/cips/blob/main/cip-0056/cip-0056.md)
+- [DTCC, Canton tokenization partnership and Foundation co-chair announcement (December 17, 2025)](https://www.dtcc.com/press-releases/2025/dtcc-and-digital-asset-partner-to-tokenize-dtc-custodied-us-treasury-securities)
+- [DTCC, production trades using DTC-tokenized assets (July 15, 2026)](https://www.dtcc.com/press-releases/2026/dtcc-turns-tokenization-into-reality)
+- [DTCC, Tokenization Service launch (October 28, 2026)](https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live)
+- [OneSwap SDK documentation: atomic DvP and the deposit-based swap flow](https://docs.oneswap.cc/introduction)
