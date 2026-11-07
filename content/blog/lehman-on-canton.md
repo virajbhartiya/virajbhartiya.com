@@ -1,7 +1,7 @@
 ---
 title: "What if Lehman Brothers had run on Canton?"
 description: "Lehman didn't die because of one bad bet. It died because nobody could see anything. I modelled the four failures of its last week in Daml and traced what the Canton protocol does with each."
-publishedAt: "2026-11-05"
+publishedAt: "2026-11-07"
 tags: ["Canton", "Daml", "Finance", "Settlement", "Research"]
 image: "/images/Blog/lehman-on-canton/banner.png"
 author: "Viraj Bhartiya"
@@ -15,7 +15,7 @@ I work on DEX infrastructure on Canton. Canton's whole pitch is a ledger where t
 
 So this post takes the four things that broke that week, models each one in Daml, and walks through what the Canton protocol actually does with it. Not marketing. Authorization rules, transaction views, who receives which bytes.
 
-First, what this isn't. Canton would not have saved Lehman. A firm levered 30-to-1 on mortgage paper goes bust on any ledger. That's a judgment problem, not a plumbing problem.
+First, what this isn't. Canton would not have saved Lehman. A firm levered roughly 30-to-1 on mortgage and real-estate paper goes bust on any ledger. That's a judgment problem, not a plumbing problem.
 
 What changes is _how_ it goes bust.
 
@@ -42,7 +42,7 @@ Four failures sit inside that week: a hidden obligation, missing collateral, tra
 
 **Transactions are trees, and each party sees only its branch.** A transaction is a tree of actions: creates, exercises, fetches. The protocol splits it into _views_, one per subtree, and each view goes only to participants hosting the parties that have to see it (its informees). This is sub-transaction privacy. A bank in a three-leg trade sees its leg, not yours.
 
-**Commit is two-phase and atomic.** The submitting participant encrypts each view for its recipients and hands it to the synchronizer. The sequencer orders and delivers ciphertext. It sees who receives what, never what's inside. The confirming participants (the ones hosting signatories) validate their views and vote. The mediator aggregates the votes and issues one verdict for the whole tree: commit or reject. No partial outcomes.
+**Commit is two-phase and atomic.** The submitting participant encrypts each view for its recipients and hands it to the synchronizer. The sequencer orders and delivers ciphertext. It sees who receives what, never what's inside. The confirming participants (the ones hosting the signatories, plus the controllers of any exercised choice) re-run their views and vote. The mediator aggregates the votes and issues one verdict for the whole tree: commit or reject. No partial outcomes.
 
 ![fig.1 — one transaction, three views: what the sequencer, mediator and each participant actually receive](/images/Blog/lehman-on-canton/fig1-views.svg)
 
@@ -54,7 +54,7 @@ Keep those four rules in mind. Each failure below comes down to one of them.
 
 Lehman funded itself with repo: sell securities today, buy them back tomorrow. Economically, it's a loan.
 
-Repo 105 dressed the loan up as a sale. By handing over about $105 of securities for every $100 of cash, Lehman got the trade booked as a _sale_ under its accounting treatment. Cash came in. The liability vanished. Right before quarter-end. The court examiner, Anton Valukas, found Lehman moved about $50B off its balance sheet this way, and concluded it gave the appearance of lower leverage when there wasn't any.
+Repo 105 dressed the loan up as a sale. By handing over about $105 of securities for every $100 of cash, Lehman got the trade booked as a _sale_ under its accounting treatment. Cash came in. The liability vanished. Right before quarter-end. The court examiner, Anton Valukas, found Lehman used it to move about $50B off its balance sheet at the ends of the first and second quarters of 2008, and concluded it gave the appearance of lower leverage when there wasn't any.
 
 The repurchase obligation never stopped existing. It just lived in Lehman's internal systems, where nobody outside was looking.
 
@@ -100,7 +100,7 @@ Three things to look at.
 
 ## 2. Rehypothecation: "where is my collateral?"
 
-Lehman's London arm, LBIE, ran prime brokerage for around 600 hedge funds. Many signed agreements letting Lehman reuse their collateral. US rules cap that reuse at 140% of what the client owes. UK rules had no equivalent cap. LBIE's administrator, PwC, found more than $22B of client assets had been rehypothecated.
+Lehman's London arm, LBIE, ran prime brokerage for around 600 hedge funds. Many signed agreements letting Lehman reuse their collateral. In the US, SEC Rule 15c3-3 caps that reuse at 140% of what the client owes the broker. UK rules had no equivalent cap. LBIE's administrator, PwC, found more than $22B of client assets had been rehypothecated.
 
 When LBIE collapsed, those funds learned their securities weren't "held." They were unsecured claims. Some waited years.
 
@@ -161,7 +161,7 @@ template LentOut
 
 Walk the authority. `Transfer` is controlled by `owner`, the client. The broker can't call it directly. But inside `Rehypothecate`, the broker acts with `client`'s authority (signatory of `RehypoRight`) plus its own (controller). That's enough to exercise `Transfer` on the client's behalf. That's the only path, and it's bounded by `cap`.
 
-Now walk the visibility. `Transfer` is a consuming exercise on a `Holding` where the client is a stakeholder, so the client's participant gets that view and sees its holding archived. The client is also an observer on `LentOut`, so it sees exactly who received the asset and how much. And the cap is enforced in the transaction itself. Go over it and the client's participant rejects the view, so the whole transaction fails.
+Now walk the visibility. `Transfer` is a consuming exercise on a `Holding` where the client is a stakeholder, so the client's participant gets that view and sees its holding archived. The client is also an observer on `LentOut`, so it sees exactly who received the asset and how much. And the cap is enforced in the transaction itself. Go over it and `assertMsg` fails while the broker's own participant is interpreting the transaction, so it's never even submitted. And a broker running a modified participant that skipped the check still couldn't get it through: the client is a signatory of `RehypoRight`, so the client's participant confirms that view, re-runs the check, and rejects.
 
 Canton doesn't ban rehypothecation. That's a business decision. It just makes quiet rehypothecation impossible, and an over-cap one fails at commit time.
 
@@ -171,7 +171,7 @@ Canton doesn't ban rehypothecation. That's a business decision. It just makes qu
 
 ## 3. Settlement fails: the trade that never landed
 
-After Lehman, the US Treasury market, the deepest market on earth, started failing to settle. Trades agreed but never delivered. The New York Fed counted cumulative fails peaking at around $10 trillion in October 2008. With rates near zero there was no cost to failing, so people just didn't deliver. The fix, a "fails charge," arrived in May 2009.
+After Lehman, the US Treasury market, the deepest market on earth, started failing to settle. Trades agreed but never delivered. By the New York Fed's count, cumulative fails peaked in October 2008 in the trillions of dollars for the month. With rates near zero there was no cost to failing, so people just didn't deliver. The fix, a "fails charge," arrived in May 2009.
 
 Each fail is a hanging exposure. I've sent cash, you haven't sent bonds. Now multiply that across every counterparty of a dying bank.
 
@@ -199,7 +199,7 @@ template DvPOffer
         pure (cashOut, bondOut)
 ```
 
-Inside `Accept`, the authority is `seller` (signatory) plus `buyer` (controller). That covers both `Transfer`s. The tree has two subtrees, one per leg. The bond's custodian confirms the bond leg, the cash custodian confirms the cash leg, and the mediator issues one verdict. If either custodian rejects (wrong amount, already-spent holding, anything), the whole tree is rejected.
+Inside `Accept`, the authority is `seller` (signatory) plus `buyer` (controller). That covers both `Transfer`s. The tree has two subtrees, one per leg. Each leg is confirmed by its custodian (the `Holding` signatory) and by the owner exercising `Transfer`, and the mediator issues one verdict. If any confirmer rejects (wrong amount, already-spent holding, anything), the whole tree is rejected.
 
 There is no "cash moved, bonds didn't" state. The failure that defined October 2008 has nowhere to exist.
 
@@ -215,7 +215,7 @@ The part of Lehman that _worked_ is instructive.
 
 DTCC closed out over $500B of Lehman positions, at one point processing 209 million open trades in a day. Central plumbing, central visibility, done in weeks.
 
-The rest was a mess. Most of Lehman's derivatives were bilateral OTC contracts. More than 200 subsidiaries in 21 countries. The insolvency laws of more than 80 jurisdictions. The estate took over a decade to wind down.
+The rest was a mess. Most of Lehman's derivatives were bilateral OTC contracts. More than 200 subsidiaries in 21 countries. The insolvency laws of more than 80 jurisdictions. Lehman Brothers Holdings emerged from Chapter 11 in 2012 and was still paying creditors in 2026. LBIE's administration only finished in 2025.
 
 The hard part wasn't the math. It was discovery. There was no single source of truth for what the book even was.
 
@@ -272,13 +272,16 @@ It might be `observer`.
 
 ---
 
-_Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton Network. Nobody paid for this piece. The code is illustrative, not production, but it compiles on Daml SDK 3.4.8, and every claim above about what succeeds or fails has a Daml Script test. Historical figures are from the public sources below._
+_Disclosure: I work at SatsTerminal, which builds OneSwap, a DEX on the Canton Network. Nobody paid for this piece. The code is illustrative, not production, but it compiles on Daml SDK 3.4.8, and I wrote a Daml Script test for every claim above about what succeeds or fails. Historical figures are from the public sources below._
 
 ---
 
 ## References
 
 - [Anton R. Valukas, Report of Examiner, In re Lehman Brothers Holdings Inc. (2010), Vol. 3 (Repo 105)](https://web.stanford.edu/~jbulow/lehmandocs/VOLUME%203.pdf)
+- [Lehman Brothers Q3 2008 preliminary results, CNN Money (Sep 10, 2008)](https://money.cnn.com/2008/09/10/news/companies/lehman/)
+- [17 CFR 240.15c3-3, customer protection rule](https://www.govinfo.gov/content/pkg/CFR-2010-title17-vol3/pdf/CFR-2010-title17-vol3-sec240-15c3-3.pdf)
+- [PwC, LBIE Final Report (October 2025)](https://www.pwc.co.uk/business-recovery/administrations/lehman/lbie/LBIE_Final_Report_October_2025.pdf)
 - [Felix Salmon, "Lehman Europe and Prime Brokerage Counterparty Risk" (2008)](https://www.felixsalmon.com/2008/10/lehman-europe-and-prime-brokerage-counterparty-risk/)
 - [Euromoney, "Prime brokerage: The day the music stopped."](https://www.euromoney.com/article/b1322h65c9hbf8/prime-brokerage-the-day-the-music-stopped)
 - [Risk.net, "DTCC closes out over $500 billion of Lehman exposure."](https://www.risk.net/infrastructure/clearing/1518577/dtcc-closes-out-over-500-billion-lehman-exposure)
