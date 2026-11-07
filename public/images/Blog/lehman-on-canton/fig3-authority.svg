@@ -1,17 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500"><defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#161b22"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6e7681"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7ee787"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff7b72"/></marker></defs><style>text{font-family:"JetBrains Mono","SF Mono",Menlo,monospace;fill:#c9d1d9;font-size:13px}.d{fill:#6e7681;font-size:12px}.h{fill:#8b949e;font-size:12px;letter-spacing:1px}.t{fill:#6e7681;font-size:14px}.b{fill:#79c0ff}.g{fill:#7ee787}.y{fill:#e3b341}.r{fill:#ff7b72}.box{fill:#0d1117;stroke:#30363d}</style><rect width="100%" height="100%" fill="#0d1117"/><rect width="100%" height="100%" fill="url(#g)"/>
-<text x="32" y="40" class="t">// fig.3 — rehypothecation: authority only flows through what the client signed</text>
-<rect x="32" y="96" width="200" height="80" rx="4" class="box" style="stroke:#79c0ff"/><text x="46" y="120" class="b">RehypoRight</text><text x="46" y="142" style="font-size:12px">signatory client</text><text x="46" y="162" class="d">cap 140 · used 0</text>
-<rect x="272" y="96" width="224" height="80" rx="4" class="box" style="stroke:#7ee787"/><text x="286" y="120">exercise Rehypothecate</text><text x="286" y="142" style="font-size:12px">controller broker</text><text x="286" y="162" class="g" style="font-size:12px">authority {client, broker}</text>
-<rect x="536" y="96" width="200" height="80" rx="4" class="box" style="stroke:#7ee787"/><text x="550" y="120">exercise Transfer</text><text x="550" y="142" style="font-size:12px">controller owner=client</text><text x="550" y="162" class="g" style="font-size:12px">✓ client ∈ authority</text>
-<g stroke="#7ee787" fill="none" marker-end="url(#ag)"><path d="M232 136H268"/><path d="M496 136H532"/><path d="M736 136H756V94H772"/><path d="M736 136H772"/><path d="M736 136H756V178H772"/></g>
-<rect x="776" y="74" width="152" height="40" rx="4" class="box"/><text x="786" y="98" style="font-size:12px">Holding→lender</text>
-<rect x="776" y="116" width="152" height="40" rx="4" class="box"/><text x="786" y="140" style="font-size:12px">LentOut <tspan class="d">obs client</tspan></text>
-<rect x="776" y="158" width="152" height="40" rx="4" class="box"/><text x="786" y="182" style="font-size:12px">RehypoRight <tspan class="d">100/140</tspan></text>
-<text x="32" y="244" class="h">WHAT FAILS</text>
-<rect x="32" y="262" width="440" height="72" rx="4" class="box" style="stroke:#ff7b72"/><text x="46" y="288">broker exercises Transfer directly</text><text x="46" y="312" style="font-size:12px"><tspan class="d">authority {broker} · </tspan><tspan class="r">✗ client's authority missing</tspan></text>
-<rect x="488" y="262" width="440" height="72" rx="4" class="box" style="stroke:#ff7b72"/><text x="502" y="288">Rehypothecate again: 100 + 100 &gt; 140</text><text x="502" y="312" style="font-size:12px" class="r">✗ cap check fails → whole tx rejected</text>
-<text x="32" y="384" class="h">WHAT THE CLIENT'S PARTICIPANT RECEIVES</text>
-<text x="32" y="412">· its Holding archived <tspan class="d">(stakeholder on the consumed contract)</tspan></text>
-<text x="32" y="436">· LentOut: asset, amount, who it went to <tspan class="d">(observer)</tspan></text>
-<text x="32" y="460">· the updated RehypoRight <tspan class="d">(signatory)</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="grid-authority" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/></pattern><marker id="a-authority" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/></marker><marker id="ag-authority" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/></marker><marker id="ar-authority" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#ff5c5c" stroke="none"/></marker></defs>
+<rect width="1200" height="675" fill="#0a0a0a"/><rect width="1200" height="675" fill="url(#grid-authority)"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+<text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.3 — rehypothecation, by authority</text>
+<text x="60" y="102" font-size="18" fill="#7a7a7a">the broker can only move client assets inside a contract the client signed.</text>
+<rect x="60" y="160" width="250" height="100" fill="#111111" stroke="#5eafff" stroke-width="2"/>
+<text x="80" y="194" font-size="20" fill="#5eafff">RehypoRight</text>
+<text x="80" y="222" font-size="17" fill="#c8c8c8">signatory client</text>
+<text x="80" y="246" font-size="17" fill="#7a7a7a">cap 140 · used 0</text>
+<rect x="350" y="160" width="310" height="100" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+<text x="370" y="194" font-size="20" fill="#c8c8c8">Rehypothecate</text>
+<text x="370" y="222" font-size="17" fill="#c8c8c8">controller broker</text>
+<text x="370" y="246" font-size="17" fill="#00efa6">authority {client, broker}</text>
+<rect x="700" y="160" width="300" height="100" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+<text x="720" y="194" font-size="20" fill="#c8c8c8">Transfer</text>
+<text x="720" y="222" font-size="17" fill="#c8c8c8">controller owner = client</text>
+<text x="720" y="246" font-size="17" fill="#00efa6">✓ client ∈ authority</text>
+<path d="M 310 210 H 344" stroke="#00efa6" stroke-width="2" marker-end="url(#ag-authority)"/>
+<path d="M 660 210 H 694" stroke="#00efa6" stroke-width="2" marker-end="url(#ag-authority)"/>
+<path d="M 850 260 V 288 M 620 288 H 1040" stroke="#00efa6" stroke-width="2"/>
+<path d="M 620 288 V 312" stroke="#00efa6" stroke-width="2" marker-end="url(#ag-authority)"/>
+<path d="M 830 288 V 312" stroke="#00efa6" stroke-width="2" marker-end="url(#ag-authority)"/>
+<path d="M 1040 288 V 312" stroke="#00efa6" stroke-width="2" marker-end="url(#ag-authority)"/>
+<rect x="520" y="316" width="200" height="70" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="538" y="345" font-size="18" fill="#c8c8c8">Holding</text>
+<text x="538" y="371" font-size="16" fill="#7a7a7a">owner: lender</text>
+<rect x="730" y="316" width="200" height="70" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="748" y="345" font-size="18" fill="#c8c8c8">LentOut</text>
+<text x="748" y="371" font-size="16" fill="#7a7a7a">observer: client</text>
+<rect x="940" y="316" width="200" height="70" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="958" y="345" font-size="18" fill="#c8c8c8">RehypoRight</text>
+<text x="958" y="371" font-size="16" fill="#7a7a7a">used 100 / 140</text>
+<text x="60" y="436" font-size="17" fill="#7a7a7a">WHAT FAILS</text>
+<rect x="60" y="456" width="530" height="90" fill="#111111" stroke="#ff5c5c" stroke-width="2"/>
+<text x="84" y="492" font-size="19" fill="#c8c8c8">broker calls Transfer directly</text>
+<text x="84" y="524" font-size="17" fill="#ff5c5c">authority {broker} · ✗ client missing</text>
+<rect x="610" y="456" width="530" height="90" fill="#111111" stroke="#ff5c5c" stroke-width="2"/>
+<text x="634" y="492" font-size="19" fill="#c8c8c8">Rehypothecate again: 100+100 &gt; 140</text>
+<text x="634" y="524" font-size="17" fill="#ff5c5c">✗ cap check fails → nothing commits</text>
+<text x="60" y="592" font-size="17" fill="#7a7a7a">CLIENT'S PARTICIPANT RECEIVES</text>
+<text x="60" y="626" font-size="18" fill="#c8c8c8">its Holding archived · the LentOut · the updated RehypoRight</text>
+</g>
 </svg>

@@ -1,18 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420"><defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#161b22"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6e7681"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7ee787"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff7b72"/></marker></defs><style>text{font-family:"JetBrains Mono","SF Mono",Menlo,monospace;fill:#c9d1d9;font-size:13px}.d{fill:#6e7681;font-size:12px}.h{fill:#8b949e;font-size:12px;letter-spacing:1px}.t{fill:#6e7681;font-size:14px}.b{fill:#79c0ff}.g{fill:#7ee787}.y{fill:#e3b341}.r{fill:#ff7b72}.box{fill:#0d1117;stroke:#30363d}</style><rect width="100%" height="100%" fill="#0d1117"/><rect width="100%" height="100%" fill="url(#g)"/>
-<text x="32" y="40" class="t">// fig.2 — Repo 105 at quarter-end: one trade, two pictures</text>
-<rect x="32" y="72" width="400" height="290" rx="4" class="box"/><text x="50" y="100" class="h">LEHMAN 10-Q · 2008</text>
-<text x="50" y="140">repo, booked as loans</text><rect x="260" y="128" width="150" height="16" fill="#79c0ff" opacity=".7"/>
-<text x="50" y="176">repo 105, booked as sales</text><rect x="260" y="164" width="90" height="16" fill="none" stroke="#ff7b72" style="stroke-dasharray:3 3"/><text x="358" y="177" class="r" style="font-size:12px">off</text>
-<text x="50" y="212">net leverage</text><text x="260" y="212" class="g">↓ looks lower</text>
-<text x="50" y="248">obligation to buy back</text><text x="260" y="248" class="r">not shown</text>
-<line x1="50" y1="280" x2="414" y2="280" stroke="#30363d"/><text x="50" y="308" class="d">who can see the obligation:</text><text x="50" y="332">Lehman</text>
-<path d="M440 216H520" stroke="#6e7681" marker-end="url(#a)"/><text x="446" y="206" class="d">same trade</text>
-<rect x="528" y="72" width="400" height="290" rx="4" class="box" style="stroke:#7ee787"/><text x="546" y="100" class="h">SUPERVISOR ACS @ OFFSET N</text>
-<text x="546" y="140"><tspan class="b">Repo</tspan>  #00a3f1…  <tspan class="g">ACTIVE</tspan></text>
-<text x="546" y="172"><tspan class="d">signatory</tspan><tspan x="646">Lehman, RepoLender</tspan></text>
-<text x="546" y="196"><tspan class="d">observer</tspan><tspan x="646">Supervisor</tspan></text>
-<text x="546" y="220"><tspan class="d">cashLent</tspan><tspan x="646">&lt;amount&gt;</tspan></text>
-<text x="546" y="244"><tspan class="d">exits via</tspan><tspan x="646">Repurchase only</tspan></text>
-<line x1="546" y1="280" x2="910" y2="280" stroke="#30363d"/><text x="546" y="308" class="d">who can see the obligation:</text><text x="546" y="332">Lehman, RepoLender, Supervisor</text>
-<text x="32" y="396" class="d">canton doesn't do accounting. it just won't let the obligation disappear from anyone named on it.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="grid-repo105" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/></pattern><marker id="a-repo105" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/></marker><marker id="ag-repo105" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/></marker><marker id="ar-repo105" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#ff5c5c" stroke="none"/></marker></defs>
+<rect width="1200" height="675" fill="#0a0a0a"/><rect width="1200" height="675" fill="url(#grid-repo105)"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+<text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.2 — Repo 105 at quarter-end</text>
+<text x="60" y="102" font-size="18" fill="#7a7a7a">one trade, two pictures. on canton the obligation can't leave the ledger.</text>
+<rect x="60" y="150" width="480" height="420" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="84" y="190" font-size="17" fill="#7a7a7a">LEHMAN 10-Q · 2008</text>
+<text x="84" y="256" font-size="19" fill="#c8c8c8">repo, as loans</text>
+<rect x="350" y="241" width="160" height="18" fill="#3b95e0"/>
+<text x="84" y="311" font-size="19" fill="#c8c8c8">repo 105, as sales</text>
+<rect x="350" y="296" width="100" height="18" fill="none" stroke="#ff5c5c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="462" y="311" font-size="17" fill="#ff5c5c">off</text>
+<text x="84" y="366" font-size="19" fill="#c8c8c8">net leverage</text>
+<text x="350" y="366" font-size="19" fill="#00efa6">↓ looks lower</text>
+<text x="84" y="421" font-size="19" fill="#c8c8c8">buy-back duty</text>
+<text x="350" y="421" font-size="19" fill="#ff5c5c">not shown</text>
+<path d="M 84 462 H 516" stroke="#2a2a2a" stroke-width="2"/>
+<text x="84" y="502" font-size="17" fill="#7a7a7a">who sees the obligation</text>
+<text x="84" y="538" font-size="20" fill="#c8c8c8">Lehman</text>
+<path d="M 552 360 H 648" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-repo105)"/>
+<text x="556" y="346" font-size="17" fill="#7a7a7a">same</text>
+<rect x="660" y="150" width="480" height="420" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+<text x="684" y="190" font-size="17" fill="#7a7a7a">SUPERVISOR ACS @ OFFSET N</text>
+<text x="684" y="256" font-size="19" xml:space="preserve"><tspan fill="#5eafff">Repo</tspan><tspan fill="#7a7a7a"> #00a3f1  </tspan><tspan fill="#00efa6">ACTIVE</tspan></text>
+<text x="684" y="300" font-size="18" fill="#7a7a7a">signatory</text>
+<text x="820" y="300" font-size="19" fill="#c8c8c8">Lehman, RepoLender</text>
+<text x="684" y="340" font-size="18" fill="#7a7a7a">observer</text>
+<text x="820" y="340" font-size="19" fill="#c8c8c8">Supervisor</text>
+<text x="684" y="380" font-size="18" fill="#7a7a7a">cashLent</text>
+<text x="820" y="380" font-size="19" fill="#c8c8c8">&lt;amount&gt;</text>
+<text x="684" y="420" font-size="18" fill="#7a7a7a">exits via</text>
+<text x="820" y="420" font-size="19" fill="#c8c8c8">Repurchase only</text>
+<path d="M 684 462 H 1116" stroke="#2a2a2a" stroke-width="2"/>
+<text x="684" y="502" font-size="17" fill="#7a7a7a">who sees the obligation</text>
+<text x="684" y="538" font-size="20" fill="#c8c8c8">Lehman, RepoLender, Supervisor</text>
+<text x="60" y="628" font-size="17" fill="#7a7a7a">canton doesn't do accounting. it won't let the obligation vanish for anyone named on it.</text>
+</g>
 </svg>

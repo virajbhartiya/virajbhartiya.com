@@ -1,20 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460"><defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#161b22"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6e7681"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7ee787"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff7b72"/></marker></defs><style>text{font-family:"JetBrains Mono","SF Mono",Menlo,monospace;fill:#c9d1d9;font-size:13px}.d{fill:#6e7681;font-size:12px}.h{fill:#8b949e;font-size:12px;letter-spacing:1px}.t{fill:#6e7681;font-size:14px}.b{fill:#79c0ff}.g{fill:#7ee787}.y{fill:#e3b341}.r{fill:#ff7b72}.box{fill:#0d1117;stroke:#30363d}</style><rect width="100%" height="100%" fill="#0d1117"/><rect width="100%" height="100%" fill="url(#g)"/>
-<text x="32" y="40" class="t">// fig.4 — settlement states: T+3 bilateral vs atomic DvP</text>
-<text x="32" y="84" class="h">T+3 BILATERAL · 2008</text>
-<rect x="32" y="100" width="140" height="48" rx="4" class="box"/><text x="72" y="129">AGREED</text>
-<rect x="212" y="100" width="160" height="48" rx="4" class="box"/><text x="242" y="129">CASH SENT</text>
-<rect x="412" y="100" width="160" height="48" rx="4" class="box"/><text x="440" y="129">BONDS DUE</text>
-<rect x="612" y="100" width="140" height="48" rx="4" class="box" style="stroke:#ff7b72"/><text x="652" y="129" class="r">FAILED</text>
-<rect x="792" y="100" width="136" height="48" rx="4" class="box"/><text x="804" y="121" style="font-size:12px">claim / roll /</text><text x="804" y="139" style="font-size:12px">fails charge*</text>
-<g stroke="#6e7681" marker-end="url(#a)"><path d="M172 124H208"/><path d="M372 124H408"/><path d="M572 124H608"/><path d="M752 124H788"/></g>
-<path d="M682 148V182H492V152" fill="none" stroke="#ff7b72" style="stroke-dasharray:4 3" marker-end="url(#ar)"/><text x="530" y="200" class="r" style="font-size:12px">next day, try again</text>
-<text x="212" y="174" class="d">exposure open ↑</text>
-<text x="32" y="270" class="h">ATOMIC DVP · CANTON</text>
-<rect x="32" y="304" width="140" height="48" rx="4" class="box"/><text x="56" y="333">SUBMITTED</text>
-<rect x="232" y="304" width="200" height="48" rx="4" class="box" style="stroke:#8b949e"/><text x="250" y="333">MEDIATOR VERDICT</text>
-<rect x="512" y="282" width="200" height="48" rx="4" class="box" style="stroke:#7ee787"/><text x="526" y="303" class="g">COMMIT</text><text x="526" y="320" class="d">both legs moved</text>
-<rect x="512" y="350" width="200" height="48" rx="4" class="box" style="stroke:#ff7b72"/><text x="526" y="371" class="r">REJECT</text><text x="526" y="388" class="d">neither leg moved</text>
-<path d="M172 328H228" stroke="#6e7681" marker-end="url(#a)"/><path d="M432 328H470V306H508" fill="none" stroke="#7ee787" marker-end="url(#ag)"/><path d="M470 328V374H508" fill="none" stroke="#ff7b72" marker-end="url(#ar)"/>
-<text x="744" y="324" style="font-size:12px">no state where cash</text><text x="744" y="342" style="font-size:12px">moved and bonds didn't.</text>
-<text x="32" y="440" class="d">* the TMPG fails charge arrived in May 2009, after Treasury fails peaked in October 2008.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="grid-settlement" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/></pattern><marker id="a-settlement" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/></marker><marker id="ag-settlement" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/></marker><marker id="ar-settlement" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#ff5c5c" stroke="none"/></marker></defs>
+<rect width="1200" height="675" fill="#0a0a0a"/><rect width="1200" height="675" fill="url(#grid-settlement)"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+<text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.4 — settlement states</text>
+<text x="60" y="102" font-size="18" fill="#7a7a7a">in 2008 a failed trade is a state you can sit in. on canton it isn't one.</text>
+<text x="60" y="160" font-size="17" fill="#7a7a7a">T+3 BILATERAL · 2008</text>
+<rect x="60" y="180" width="170" height="64" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="145" y="219" font-size="19" fill="#c8c8c8" text-anchor="middle">AGREED</text>
+<rect x="270" y="180" width="190" height="64" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="365" y="219" font-size="19" fill="#c8c8c8" text-anchor="middle">CASH SENT</text>
+<rect x="500" y="180" width="190" height="64" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="595" y="219" font-size="19" fill="#c8c8c8" text-anchor="middle">BONDS DUE</text>
+<rect x="730" y="180" width="170" height="64" fill="#111111" stroke="#ff5c5c" stroke-width="2"/>
+<text x="815" y="219" font-size="19" fill="#ff5c5c" text-anchor="middle">FAILED</text>
+<rect x="940" y="180" width="200" height="64" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="1040" y="207" font-size="17" fill="#c8c8c8" text-anchor="middle">claim / roll /</text>
+<text x="1040" y="231" font-size="17" fill="#c8c8c8" text-anchor="middle">fails charge*</text>
+<path d="M 230 212 H 264" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-settlement)"/>
+<path d="M 460 212 H 494" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-settlement)"/>
+<path d="M 690 212 H 724" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-settlement)"/>
+<path d="M 900 212 H 934" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-settlement)"/>
+<path d="M 815 244 V 292 H 595 V 250" stroke="#ff5c5c" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar-settlement)"/>
+<text x="705" y="318" font-size="17" fill="#ff5c5c" text-anchor="middle">next day, try again</text>
+<text x="365" y="276" font-size="17" fill="#7a7a7a" text-anchor="middle">exposure open ↑</text>
+<text x="60" y="390" font-size="17" fill="#7a7a7a">ATOMIC DVP · CANTON</text>
+<rect x="60" y="440" width="190" height="64" fill="#111111" stroke="#2a2a2a" stroke-width="2"/>
+<text x="155" y="479" font-size="19" fill="#c8c8c8" text-anchor="middle">SUBMITTED</text>
+<rect x="300" y="440" width="260" height="64" fill="#111111" stroke="#7a7a7a" stroke-width="2"/>
+<text x="430" y="479" font-size="19" fill="#c8c8c8" text-anchor="middle">MEDIATOR VERDICT</text>
+<path d="M 250 472 H 294" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-settlement)"/>
+<rect x="640" y="404" width="240" height="72" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+<text x="660" y="434" font-size="19" fill="#00efa6">COMMIT</text>
+<text x="660" y="460" font-size="17" fill="#7a7a7a">both legs moved</text>
+<rect x="640" y="504" width="240" height="72" fill="#111111" stroke="#ff5c5c" stroke-width="2"/>
+<text x="660" y="534" font-size="19" fill="#ff5c5c">REJECT</text>
+<text x="660" y="560" font-size="17" fill="#7a7a7a">neither leg moved</text>
+<path d="M 560 472 H 600 V 440 H 634" stroke="#00efa6" stroke-width="2" marker-end="url(#ag-settlement)"/>
+<path d="M 600 472 V 540 H 634" stroke="#ff5c5c" stroke-width="2" marker-end="url(#ar-settlement)"/>
+<text x="905" y="478" font-size="17" fill="#c8c8c8">no state where cash</text>
+<text x="905" y="504" font-size="17" fill="#c8c8c8">moved and bonds didn't.</text>
+<text x="60" y="632" font-size="16" fill="#7a7a7a">* the TMPG fails charge arrived in May 2009, after Treasury fails peaked in October 2008.</text>
+</g>
 </svg>
