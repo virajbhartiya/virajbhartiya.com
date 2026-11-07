@@ -1,18 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560"><defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#161b22"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6e7681"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7ee787"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff7b72"/></marker></defs><style>text{font-family:"JetBrains Mono","SF Mono",Menlo,monospace;fill:#c9d1d9;font-size:13px}.d{fill:#6e7681;font-size:12px}.h{fill:#8b949e;font-size:12px;letter-spacing:1px}.t{fill:#6e7681;font-size:14px}.b{fill:#79c0ff}.g{fill:#7ee787}.y{fill:#e3b341}.r{fill:#ff7b72}.box{fill:#0d1117;stroke:#30363d}</style><rect width="100%" height="100%" fill="#0d1117"/><rect width="100%" height="100%" fill="url(#g)"/>
-<text x="32" y="40" class="t">// fig.1 — one transaction, three views</text>
-<text x="32" y="80" class="h">TRANSACTION TREE</text><text x="344" y="80" class="h">SEQUENCER RECEIVES</text><text x="656" y="80" class="h">PARTICIPANTS RECEIVE</text>
-<path d="M60 158V294M60 210H76M60 294H76" stroke="#30363d" fill="none"/>
-<rect x="32" y="98" width="272" height="60" rx="4" class="box" style="stroke:#79c0ff"/><text x="46" y="122">exercise Accept</text><text x="46" y="144" class="b" style="font-size:12px">view 0 · seller, buyer</text>
-<rect x="76" y="182" width="228" height="56" rx="4" class="box" style="stroke:#7ee787"/><text x="90" y="204">exercise Transfer (cash)</text><text x="90" y="226" class="g" style="font-size:12px">view 1 · + CashBank</text>
-<rect x="76" y="266" width="228" height="56" rx="4" class="box" style="stroke:#e3b341"/><text x="90" y="288">exercise Transfer (bond)</text><text x="90" y="310" class="y" style="font-size:12px">view 2 · + BondCustodian</text>
-<g stroke="#6e7681" marker-end="url(#a)"><path d="M304 128H340"/><path d="M304 210H340"/><path d="M304 294H340"/><path d="M616 128H652"/><path d="M616 210H652"/><path d="M616 294H652"/></g>
-<g style="stroke-dasharray:4 3"><rect x="344" y="106" width="272" height="44" rx="4" class="box" style="stroke:#79c0ff"/><rect x="344" y="188" width="272" height="44" rx="4" class="box" style="stroke:#7ee787"/><rect x="344" y="272" width="272" height="44" rx="4" class="box" style="stroke:#e3b341"/></g>
-<text x="358" y="133">▓▓▓▓▓▓ → P_seller, P_buyer</text><text x="358" y="215">▓▓▓▓ → P_cashbank</text><text x="358" y="299">▓▓▓▓ → P_bondcust</text>
-<text x="344" y="346" class="d">orders + delivers ciphertext.</text><text x="344" y="362" class="d">knows recipients, never contents.</text>
-<rect x="656" y="100" width="272" height="56" rx="4" class="box" style="stroke:#79c0ff"/><text x="670" y="123">P_seller, P_buyer</text><text x="670" y="144" class="b" style="font-size:12px">views 0+1+2 · whole tree</text>
-<rect x="656" y="182" width="272" height="56" rx="4" class="box" style="stroke:#7ee787"/><text x="670" y="205">P_cashbank</text><text x="670" y="226" class="g" style="font-size:12px">view 1 only · cash leg</text>
-<rect x="656" y="266" width="272" height="56" rx="4" class="box" style="stroke:#e3b341"/><text x="670" y="289">P_bondcust</text><text x="670" y="310" class="y" style="font-size:12px">view 2 only · bond leg</text>
-<rect x="344" y="388" width="272" height="104" rx="4" class="box" style="stroke:#8b949e"/><text x="358" y="412" class="h">MEDIATOR</text><text x="358" y="434" style="font-size:12px">tree shape + who must confirm.</text><text x="358" y="452" style="font-size:12px">no payload.</text><text x="358" y="478" style="font-size:12px"><tspan class="g">COMMIT all</tspan> <tspan class="d">|</tspan> <tspan class="r">REJECT all</tspan></text>
-<path d="M792 322V440H620" fill="none" stroke="#6e7681" style="stroke-dasharray:4 3" marker-end="url(#a)"/><text x="660" y="430" class="d">confirm / reject</text>
-<text x="32" y="530" class="d">seller and buyer are informees of the root, so they see every subview. each custodian sees only its own leg.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="grid-views" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" stroke="#1a1a1a" stroke-width="1"/></pattern><marker id="a-views" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7a7a7a" stroke="none"/></marker><marker id="ag-views" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#00efa6" stroke="none"/></marker><marker id="ar-views" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#ff5c5c" stroke="none"/></marker></defs>
+<rect width="1200" height="675" fill="#0a0a0a"/><rect width="1200" height="675" fill="url(#grid-views)"/>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+<text x="60" y="72" font-size="26" fill="#c8c8c8">// fig.1 — one transaction, three views</text>
+<text x="60" y="102" font-size="18" fill="#7a7a7a">each party gets only its branch. sequencer and mediator never see contents.</text>
+<text x="60" y="158" font-size="17" fill="#7a7a7a">TRANSACTION TREE</text>
+<text x="450" y="158" font-size="17" fill="#7a7a7a">SEQUENCER RECEIVES</text>
+<text x="810" y="158" font-size="17" fill="#7a7a7a">PARTICIPANTS RECEIVE</text>
+<path d="M 85 253 V 415 M 85 315 H 110 M 85 415 H 110" stroke="#2a2a2a" stroke-width="2"/>
+<rect x="60" y="177" width="330" height="76" fill="#111111" stroke="#5eafff" stroke-width="2"/>
+<text x="80" y="208" font-size="20" fill="#c8c8c8">exercise Accept</text>
+<text x="80" y="236" font-size="17" fill="#5eafff">view 0 · seller, buyer</text>
+<rect x="110" y="277" width="280" height="76" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+<text x="130" y="308" font-size="20" fill="#c8c8c8">Transfer (cash)</text>
+<text x="130" y="336" font-size="17" fill="#00efa6">view 1 · + CashBank</text>
+<rect x="110" y="377" width="280" height="76" fill="#111111" stroke="#e0692e" stroke-width="2"/>
+<text x="130" y="408" font-size="20" fill="#c8c8c8">Transfer (bond)</text>
+<text x="130" y="436" font-size="17" fill="#e0692e">view 2 · + BondCust</text>
+<path d="M 390 215 H 444" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-views)"/>
+<rect x="450" y="189" width="300" height="52" fill="#111111" stroke="#5eafff" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="472" y="221" font-size="18" fill="#c8c8c8">▓▓▓▓ → seller, buyer</text>
+<path d="M 750 215 H 804" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-views)"/>
+<path d="M 390 315 H 444" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-views)"/>
+<rect x="450" y="289" width="300" height="52" fill="#111111" stroke="#00efa6" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="472" y="321" font-size="18" fill="#c8c8c8">▓▓▓ → CashBank</text>
+<path d="M 750 315 H 804" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-views)"/>
+<path d="M 390 415 H 444" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-views)"/>
+<rect x="450" y="389" width="300" height="52" fill="#111111" stroke="#e0692e" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="472" y="421" font-size="18" fill="#c8c8c8">▓▓▓ → BondCust</text>
+<path d="M 750 415 H 804" stroke="#7a7a7a" stroke-width="2" marker-end="url(#a-views)"/>
+<rect x="810" y="177" width="330" height="76" fill="#111111" stroke="#5eafff" stroke-width="2"/>
+<text x="830" y="208" font-size="20" fill="#c8c8c8">seller + buyer</text>
+<text x="830" y="236" font-size="17" fill="#5eafff">whole tree · views 0,1,2</text>
+<rect x="810" y="277" width="330" height="76" fill="#111111" stroke="#00efa6" stroke-width="2"/>
+<text x="830" y="308" font-size="20" fill="#c8c8c8">CashBank</text>
+<text x="830" y="336" font-size="17" fill="#00efa6">view 1 only · cash leg</text>
+<rect x="810" y="377" width="330" height="76" fill="#111111" stroke="#e0692e" stroke-width="2"/>
+<text x="830" y="408" font-size="20" fill="#c8c8c8">BondCust</text>
+<text x="830" y="436" font-size="17" fill="#e0692e">view 2 only · bond leg</text>
+<text x="450" y="478" font-size="17" fill="#7a7a7a">ciphertext + recipients only</text>
+<rect x="450" y="500" width="300" height="124" fill="#111111" stroke="#7a7a7a" stroke-width="2"/>
+<text x="472" y="532" font-size="17" fill="#7a7a7a">MEDIATOR</text>
+<text x="472" y="562" font-size="18" fill="#c8c8c8">who must confirm,</text>
+<text x="472" y="588" font-size="18" fill="#c8c8c8">never the payload</text>
+<text x="472" y="612" font-size="18" xml:space="preserve"><tspan fill="#00efa6">COMMIT all</tspan><tspan fill="#7a7a7a"> | </tspan><tspan fill="#ff5c5c">REJECT all</tspan></text>
+<path d="M 975 453 V 562 H 756" stroke="#7a7a7a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a-views)"/>
+<text x="800" y="552" font-size="17" fill="#7a7a7a">confirm / reject</text>
+</g>
 </svg>
