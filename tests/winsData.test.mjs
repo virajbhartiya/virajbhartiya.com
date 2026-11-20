@@ -4,7 +4,7 @@ import test from "node:test";
 import { winsData } from "../data/winsData.ts";
 
 const expectedMonthsByTitle = new Map([
-  ["ETHGlobal", "Feb"],
+  ["ETHGlobal HackMoney 2026", "Feb"],
   ["Smart India Hackathon 2025", "Dec"],
   ["Filecoin Dev Summit Toronto 2025", "Apr"],
   ["Prakalpa 2025", "Apr"],

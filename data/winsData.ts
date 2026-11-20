@@ -11,14 +11,14 @@ export interface Win {
 export const winsData: Win[] = [
   {
     title: "ETHGlobal Lisbon 2026",
-    award: "Winner",
+    award: "Winner, World AgentKit Track",
     project: "Turing Pool",
     year: "2026",
     month: "Jul",
   },
   {
-    title: "ETHGlobal",
-    award: "Finalist",
+    title: "ETHGlobal HackMoney 2026",
+    award: "Top 10 Finalist",
     project: "Blip Markets",
     year: "2026",
     month: "Feb",
