@@ -26,6 +26,7 @@ function getProjectType(tags: string[]): string {
         "Bitcoin",
         "Ethereum",
         "HTLC",
+        "Canton",
       ].includes(t),
     )
   )
@@ -40,6 +41,8 @@ function getProjectType(tags: string[]): string {
         "OpenCV",
         "OpenAI",
         "Stable Diffusion",
+        "MLX",
+        "Legal AI",
       ].includes(t),
     )
   )
@@ -47,7 +50,7 @@ function getProjectType(tags: string[]): string {
   if (tags.some((t) => ["Flutter", "Kotlin"].includes(t))) return "mobile";
   if (tags.includes("CLI")) return "cli";
   if (tags.includes("NPM Package")) return "package";
-  if (tags.includes("Electron")) return "desktop";
+  if (tags.some((t) => ["Electron", "Desktop"].includes(t))) return "desktop";
   if (tags.includes("Chrome Extension")) return "extension";
   if (tags.some((t) => ["Distributed Systems", "Consensus"].includes(t)))
     return "systems";

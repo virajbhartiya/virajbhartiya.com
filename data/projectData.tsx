@@ -1,11 +1,53 @@
 export const projectData = [
   {
+    title: "OneSwap: A DEX on Canton",
+    description:
+      "The DEX and token launchpad I build at SatsTerminal. Atomic delivery-versus-payment swaps, liquidity pools, bonding-curve token launches, and EVM bridges on Canton mainnet, with $10M+ in settled volume since its July 2026 launch.",
+    link: "https://www.oneswap.cc",
+    tags: ["Blockchain", "Canton", "Daml"],
+  },
+  {
+    title: "Laya vs Jev: Latency Is Part of the Game",
+    description:
+      "Two AI models play Chrome's dino game side by side in real time: one runs locally on Apple Silicon with MLX, the other is a hosted API a third of a second away. A latency-aware planner keeps requests in flight, and safety shields are counted, not hidden. Live metrics and replay recording.",
+    link: "https://github.com/virajbhartiya/laya-vs-jev",
+    tags: ["MLX", "Real-Time Systems", "AI"],
+  },
+  {
+    title: "flux: Source Control for Huge Monorepos",
+    description:
+      "Open-source, git-compatible source control inspired by Scion, Mononoke, and Piper. The server owns history, changesets are content-addressed deltas, refs move by compare-and-swap, and landing is a server-side rebase, so many people and agents can land on main at once. Ships a full forge and an MCP server.",
+    link: "https://github.com/virajbhartiya/flux",
+    tags: ["Distributed Systems", "Version Control", "Agents"],
+  },
+  {
+    title: "Wing: An Open-Source Browser for Mac",
+    description:
+      "An independent desktop browser for Apple Silicon with Safari's layout and Arc's design: Spaces, a command palette, split view, and Peek. Runs on a native Chromium engine, so Chrome extensions install straight from the Chrome Web Store.",
+    link: "https://github.com/virajbhartiya/wing",
+    tags: ["Desktop", "Chromium", "macOS"],
+  },
+  {
     title: "Turing Pool: Identity-Priced Liquidity",
     description:
       "An AMM that prices order-flow risk using proof of unique human backing. A custom 1inch Aqua app reads World's AgentBook on-chain at quote time, so human-backed agents get a tight fee within a per-human daily quota while anonymous bots pay the compensating surcharge. Deployed on World Chain mainnet with a revenue-neutral controller that reprices after every fill.",
     image: "images/Projects/turing-pool.png",
     link: "https://github.com/virajbhartiya/turing-pool",
     tags: ["Blockchain", "1inch Aqua", "World ID", "The Graph"],
+  },
+  {
+    title: "Blip Markets: Prediction Markets on a Grid",
+    description:
+      "A prediction market without order books or AMM curves: pick a cell on a live price grid and you win if the price lands there. Go settlement and resolver services, a canvas-rendered trading grid, and gasless deposits. ETHGlobal HackMoney 2026 finalist.",
+    link: "/blog/blip-markets",
+    tags: ["Blockchain", "Prediction Markets", "Go"],
+  },
+  {
+    title: "Parity Protocol: Verifiable Compute",
+    description:
+      "A decentralized compute network that verifies work by re-execution, not reputation. Runs untrusted workloads, LLM inference, and federated learning across Docker-isolated nodes, with staking, slashing, a Go SDK, and Solidity contracts. Prakalpa 2025 software track winner.",
+    link: "https://github.com/theblitlabs/parity-protocol",
+    tags: ["Distributed Systems", "Go", "Solidity"],
   },
   {
     title: "fusion-xbtc: Cross-Chain Atomic Swaps for Bitcoin",
@@ -40,12 +82,12 @@ export const projectData = [
     tags: ["Blockchain", "Bitcoin", "Go"],
   },
   {
-    title: "Cognia: Enterprise Memory Infrastructure",
+    title: "Cognia: Research Over Indian Law",
     description:
-      "A decentralized memory layer that captures, indexes, and recalls your digital actions with complete local control and privacy. Built with PostgreSQL, pgvector, and full Ollama support for local AI processing. Features browser extension, semantic search, 3D visualization, and MCP server integration.",
+      "A research tool over a curated library of Indian statutes, rules, and judgments that answers questions with the sources behind them. Started as an enterprise AI memory layer with pgvector, a browser extension, and an MCP server.",
     image: "images/Projects/recallos.png",
-    link: "https://github.com/cogniahq/cognia",
-    tags: ["PostgreSQL", "pgvector", "Ollama", "ETHGlobal"],
+    link: "https://cogniahq.tech",
+    tags: ["Legal AI", "Retrieval", "PostgreSQL"],
   },
   {
     title: "Rail Throughput Optimization (SIH 2025)",
@@ -121,14 +163,6 @@ export const projectData = [
     tags: ["PyTorch", "OpenCV", "PyGame"],
   },
   {
-    title: "Spam Email Classifier with Naive Bayes",
-    description:
-      "Email spam detection is a crucial task in ensuring the security and efficiency of email communication. By leveraging machine learning techniques, such as Natural Language Processing and the Multinomial Naive Bayes algorithm, we can develop effective solutions for detecting spam emails",
-    image: "images/Projects/spam email.jpg",
-    link: "https://github.com/virajbhartiya/Spam-Email-Detection-NLP",
-    tags: ["NLP", "Machine Learning"],
-  },
-  {
     title: "Alien: Browser as a Secondary Display",
     description:
       "Built a desktop app that turns any browser-enabled device into a secondary display over Wi-Fi, combining networking, real-time rendering, and cross-device UX.",
@@ -145,28 +179,12 @@ export const projectData = [
     tags: ["Flutter", "Firebase"],
   },
   {
-    title: "Pyxis: An Android Monitoring Suite",
-    description:
-      "A collection of Spyware tools for monitoring another device stealthily. Text Message, Live picture from front and back camera, Keylogger, Notifications",
-    image: "images/Projects/spyware.webp",
-    link: "https://github.com/virajbhartiya/pyxis-spyware",
-    tags: ["Kotlin", "Firebase"],
-  },
-  {
     title: "Lucid: Text-to-Image with CLIP",
     description:
       "Built text-to-image and multimodal generation tooling around CLIP-style models, spanning image generation, text-to-video experiments, and broader research-hacker workflows.",
     image: "images/Projects/Lucid.jpg",
     link: "https://github.com/virajbhartiya/Lucid",
     tags: ["Python", "OpenAI", "Stable Diffusion"],
-  },
-  {
-    title: "ChatGPT for Google: A Browser Extension",
-    description:
-      "With all the talk about ChatGPT being the Google Search killer, I built a simple browser extension that shows ChatGPT results along with Google Search results.",
-    image: "images/Projects/ChatGPT.jpg",
-    link: "https://github.com/virajbhartiya/ChatGPT-Google",
-    tags: ["Typescript", "Chrome Extension"],
   },
   {
     title: "Riverto: A Music Streaming App",
@@ -207,13 +225,5 @@ export const projectData = [
     image: "images/Projects/falppy bird.gif",
     link: "https://github.com/virajbhartiya/Flappy-Bird-AI",
     tags: ["JavaScript", "Reinforcement Learning", "P5.js"],
-  },
-  {
-    title: "Face Recognition Attendance System",
-    description:
-      "It is a Face recognition system which can be used at an organization of any level for logging the attendance of their employees at a glance.",
-    image: "images/Projects/face recognition.jpg",
-    link: "https://mapleattendance.github.io/",
-    tags: ["Python", "OpenCV", "Firebase"],
   },
 ];

@@ -62,6 +62,11 @@ export function Experience() {
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <span className="text-[15px] sm:text-base text-fg group-hover:text-accent transition-colors min-w-0 break-words">
                     {exp.company}
+                    {exp.period && (
+                      <span className="ml-2.5 text-[11px] text-muted tabular-nums whitespace-nowrap">
+                        {exp.period}
+                      </span>
+                    )}
                   </span>
                   <span className="text-[10px] sm:text-[11px] text-accent-blue uppercase tracking-[0.18em] shrink-0">
                     {exp.title}
